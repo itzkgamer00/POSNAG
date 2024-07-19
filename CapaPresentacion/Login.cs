@@ -16,5 +16,27 @@ namespace CapaPresentacion
         {
             InitializeComponent();
         }
+
+        private void iconButton2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btningresar_Click(object sender, EventArgs e)
+        {
+            Inicio form = new Inicio();
+
+            form.Show();
+            this.Hide();
+
+            form.FormClosing += frm_closing;
+        }
+
+        private void frm_closing(object sender, FormClosingEventArgs e)
+        {
+            txtclave.Text = "";
+            txtusuario.Text = "";
+            this.Show();
+        }
     }
 }
