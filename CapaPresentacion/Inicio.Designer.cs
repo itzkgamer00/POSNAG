@@ -257,8 +257,8 @@
             this.iconMenuItem8.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.iconMenuItem8.ImageTransparentColor = System.Drawing.Color.White;
             this.iconMenuItem8.Name = "iconMenuItem8";
-            this.iconMenuItem8.Size = new System.Drawing.Size(169, 138);
-            this.iconMenuItem8.Text = "AJUSTES";
+            this.iconMenuItem8.Size = new System.Drawing.Size(146, 138);
+            this.iconMenuItem8.Text = "Ajustes";
             this.iconMenuItem8.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // toolStripSeparator1
@@ -301,8 +301,8 @@
             this.iconMenuItem14.ImageTransparentColor = System.Drawing.Color.White;
             this.iconMenuItem14.Name = "iconMenuItem14";
             this.iconMenuItem14.Padding = new System.Windows.Forms.Padding(30, 0, 30, 0);
-            this.iconMenuItem14.Size = new System.Drawing.Size(171, 138);
-            this.iconMenuItem14.Text = "INICIO";
+            this.iconMenuItem14.Size = new System.Drawing.Size(157, 138);
+            this.iconMenuItem14.Text = "Inicio";
             this.iconMenuItem14.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // Inicio
