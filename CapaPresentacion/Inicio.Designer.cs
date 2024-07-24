@@ -31,24 +31,24 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
             this.menu = new System.Windows.Forms.MenuStrip();
             this.iconMenuItem1 = new FontAwesome.Sharp.IconMenuItem();
-            this.iconMenuItem6 = new FontAwesome.Sharp.IconMenuItem();
-            this.iconMenuItem5 = new FontAwesome.Sharp.IconMenuItem();
-            this.iconMenuItem4 = new FontAwesome.Sharp.IconMenuItem();
-            this.iconMenuItem3 = new FontAwesome.Sharp.IconMenuItem();
-            this.iconMenuItem2 = new FontAwesome.Sharp.IconMenuItem();
-            this.menutitulo = new System.Windows.Forms.MenuStrip();
-            this.iconMenuItem7 = new FontAwesome.Sharp.IconMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.iconMenuItem8 = new FontAwesome.Sharp.IconMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.iconMenuItem9 = new FontAwesome.Sharp.IconMenuItem();
+            this.iconMenuItem6 = new FontAwesome.Sharp.IconMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.iconMenuItem10 = new FontAwesome.Sharp.IconMenuItem();
+            this.iconMenuItem5 = new FontAwesome.Sharp.IconMenuItem();
+            this.iconMenuItem4 = new FontAwesome.Sharp.IconMenuItem();
+            this.iconMenuItem3 = new FontAwesome.Sharp.IconMenuItem();
+            this.iconMenuItem2 = new FontAwesome.Sharp.IconMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.iconMenuItem11 = new FontAwesome.Sharp.IconMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.iconMenuItem12 = new FontAwesome.Sharp.IconMenuItem();
+            this.menutitulo = new System.Windows.Forms.MenuStrip();
+            this.iconMenuItem7 = new FontAwesome.Sharp.IconMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
             this.menu.SuspendLayout();
             this.menutitulo.SuspendLayout();
             this.SuspendLayout();
@@ -90,6 +90,34 @@
             this.iconMenuItem1.Text = "Control De Efectivo";
             this.iconMenuItem1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(158, 6);
+            // 
+            // iconMenuItem8
+            // 
+            this.iconMenuItem8.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconMenuItem8.IconColor = System.Drawing.Color.Black;
+            this.iconMenuItem8.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconMenuItem8.Name = "iconMenuItem8";
+            this.iconMenuItem8.Size = new System.Drawing.Size(161, 22);
+            this.iconMenuItem8.Text = "iconMenuItem8";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(158, 6);
+            // 
+            // iconMenuItem9
+            // 
+            this.iconMenuItem9.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconMenuItem9.IconColor = System.Drawing.Color.Black;
+            this.iconMenuItem9.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconMenuItem9.Name = "iconMenuItem9";
+            this.iconMenuItem9.Size = new System.Drawing.Size(161, 22);
+            this.iconMenuItem9.Text = "iconMenuItem9";
+            // 
             // iconMenuItem6
             // 
             this.iconMenuItem6.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -107,6 +135,20 @@
             this.iconMenuItem6.Size = new System.Drawing.Size(125, 60);
             this.iconMenuItem6.Text = "Cambio de Divisas";
             this.iconMenuItem6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(162, 6);
+            // 
+            // iconMenuItem10
+            // 
+            this.iconMenuItem10.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconMenuItem10.IconColor = System.Drawing.Color.Black;
+            this.iconMenuItem10.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconMenuItem10.Name = "iconMenuItem10";
+            this.iconMenuItem10.Size = new System.Drawing.Size(165, 22);
+            this.iconMenuItem10.Text = "iconMenuItem10";
             // 
             // iconMenuItem5
             // 
@@ -173,6 +215,34 @@
             this.iconMenuItem2.Text = "Consultas";
             this.iconMenuItem2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
+            // 
+            // iconMenuItem11
+            // 
+            this.iconMenuItem11.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconMenuItem11.IconColor = System.Drawing.Color.Black;
+            this.iconMenuItem11.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconMenuItem11.Name = "iconMenuItem11";
+            this.iconMenuItem11.Size = new System.Drawing.Size(180, 22);
+            this.iconMenuItem11.Text = "iconMenuItem11";
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
+            // 
+            // iconMenuItem12
+            // 
+            this.iconMenuItem12.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconMenuItem12.IconColor = System.Drawing.Color.Black;
+            this.iconMenuItem12.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconMenuItem12.Name = "iconMenuItem12";
+            this.iconMenuItem12.Size = new System.Drawing.Size(180, 22);
+            this.iconMenuItem12.Text = "iconMenuItem12";
+            // 
             // menutitulo
             // 
             this.menutitulo.AutoSize = false;
@@ -208,83 +278,13 @@
             this.label1.BackColor = System.Drawing.Color.MidnightBlue;
             this.label1.Font = new System.Drawing.Font("Bahnschrift", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(186, 9);
+            this.label1.Location = new System.Drawing.Point(171, 9);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label1.Size = new System.Drawing.Size(453, 61);
             this.label1.TabIndex = 2;
             this.label1.Text = "CONTROL EFECTIVO CAJA";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
-            // 
-            // iconMenuItem8
-            // 
-            this.iconMenuItem8.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconMenuItem8.IconColor = System.Drawing.Color.Black;
-            this.iconMenuItem8.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconMenuItem8.Name = "iconMenuItem8";
-            this.iconMenuItem8.Size = new System.Drawing.Size(180, 22);
-            this.iconMenuItem8.Text = "iconMenuItem8";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
-            // 
-            // iconMenuItem9
-            // 
-            this.iconMenuItem9.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconMenuItem9.IconColor = System.Drawing.Color.Black;
-            this.iconMenuItem9.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconMenuItem9.Name = "iconMenuItem9";
-            this.iconMenuItem9.Size = new System.Drawing.Size(180, 22);
-            this.iconMenuItem9.Text = "iconMenuItem9";
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(177, 6);
-            // 
-            // iconMenuItem10
-            // 
-            this.iconMenuItem10.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconMenuItem10.IconColor = System.Drawing.Color.Black;
-            this.iconMenuItem10.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconMenuItem10.Name = "iconMenuItem10";
-            this.iconMenuItem10.Size = new System.Drawing.Size(180, 22);
-            this.iconMenuItem10.Text = "iconMenuItem10";
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
-            // 
-            // iconMenuItem11
-            // 
-            this.iconMenuItem11.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconMenuItem11.IconColor = System.Drawing.Color.Black;
-            this.iconMenuItem11.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconMenuItem11.Name = "iconMenuItem11";
-            this.iconMenuItem11.Size = new System.Drawing.Size(180, 22);
-            this.iconMenuItem11.Text = "iconMenuItem11";
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
-            // 
-            // iconMenuItem12
-            // 
-            this.iconMenuItem12.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconMenuItem12.IconColor = System.Drawing.Color.Black;
-            this.iconMenuItem12.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconMenuItem12.Name = "iconMenuItem12";
-            this.iconMenuItem12.Size = new System.Drawing.Size(180, 22);
-            this.iconMenuItem12.Text = "iconMenuItem12";
             // 
             // Inicio
             // 
