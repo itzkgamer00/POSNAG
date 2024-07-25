@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
             this.menu = new System.Windows.Forms.MenuStrip();
+            this.iconMenuItem14 = new FontAwesome.Sharp.IconMenuItem();
             this.iconMenuItem1 = new FontAwesome.Sharp.IconMenuItem();
             this.iconMenuItem6 = new FontAwesome.Sharp.IconMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
@@ -40,15 +41,14 @@
             this.iconMenuItem2 = new FontAwesome.Sharp.IconMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.menutitulo = new System.Windows.Forms.MenuStrip();
-            this.iconMenuItem7 = new FontAwesome.Sharp.IconMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
             this.iconMenuItem8 = new FontAwesome.Sharp.IconMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.iconMenuItem9 = new FontAwesome.Sharp.IconMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.iconMenuItem13 = new FontAwesome.Sharp.IconMenuItem();
-            this.iconMenuItem14 = new FontAwesome.Sharp.IconMenuItem();
+            this.menutitulo = new System.Windows.Forms.MenuStrip();
+            this.iconMenuItem7 = new FontAwesome.Sharp.IconMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
             this.menu.SuspendLayout();
             this.menutitulo.SuspendLayout();
             this.SuspendLayout();
@@ -70,9 +70,25 @@
             this.iconMenuItem8});
             this.menu.Location = new System.Drawing.Point(0, 160);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(2251, 146);
+            this.menu.Size = new System.Drawing.Size(2110, 146);
             this.menu.TabIndex = 0;
             this.menu.Text = "menuStrip1";
+            // 
+            // iconMenuItem14
+            // 
+            this.iconMenuItem14.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconMenuItem14.ForeColor = System.Drawing.Color.Navy;
+            this.iconMenuItem14.IconChar = FontAwesome.Sharp.IconChar.HomeLg;
+            this.iconMenuItem14.IconColor = System.Drawing.SystemColors.HotTrack;
+            this.iconMenuItem14.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconMenuItem14.IconSize = 50;
+            this.iconMenuItem14.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.iconMenuItem14.ImageTransparentColor = System.Drawing.Color.White;
+            this.iconMenuItem14.Name = "iconMenuItem14";
+            this.iconMenuItem14.Padding = new System.Windows.Forms.Padding(30, 0, 30, 0);
+            this.iconMenuItem14.Size = new System.Drawing.Size(157, 142);
+            this.iconMenuItem14.Text = "Inicio";
+            this.iconMenuItem14.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // iconMenuItem1
             // 
@@ -86,7 +102,7 @@
             this.iconMenuItem1.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.iconMenuItem1.ImageTransparentColor = System.Drawing.Color.White;
             this.iconMenuItem1.Name = "iconMenuItem1";
-            this.iconMenuItem1.Size = new System.Drawing.Size(311, 138);
+            this.iconMenuItem1.Size = new System.Drawing.Size(311, 142);
             this.iconMenuItem1.Text = "Control De Efectivo";
             this.iconMenuItem1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
@@ -104,7 +120,7 @@
             this.iconMenuItem6.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.iconMenuItem6.ImageTransparentColor = System.Drawing.Color.White;
             this.iconMenuItem6.Name = "iconMenuItem6";
-            this.iconMenuItem6.Size = new System.Drawing.Size(299, 138);
+            this.iconMenuItem6.Size = new System.Drawing.Size(299, 142);
             this.iconMenuItem6.Text = "Cambio de Divisas";
             this.iconMenuItem6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
@@ -133,7 +149,7 @@
             this.iconMenuItem5.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.iconMenuItem5.ImageTransparentColor = System.Drawing.Color.White;
             this.iconMenuItem5.Name = "iconMenuItem5";
-            this.iconMenuItem5.Size = new System.Drawing.Size(284, 138);
+            this.iconMenuItem5.Size = new System.Drawing.Size(284, 142);
             this.iconMenuItem5.Text = "Apertura De Caja";
             this.iconMenuItem5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
@@ -148,7 +164,7 @@
             this.iconMenuItem4.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.iconMenuItem4.ImageTransparentColor = System.Drawing.Color.White;
             this.iconMenuItem4.Name = "iconMenuItem4";
-            this.iconMenuItem4.Size = new System.Drawing.Size(246, 138);
+            this.iconMenuItem4.Size = new System.Drawing.Size(246, 142);
             this.iconMenuItem4.Text = "Cierre De Caja";
             this.iconMenuItem4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
@@ -163,7 +179,7 @@
             this.iconMenuItem3.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.iconMenuItem3.ImageTransparentColor = System.Drawing.Color.White;
             this.iconMenuItem3.Name = "iconMenuItem3";
-            this.iconMenuItem3.Size = new System.Drawing.Size(437, 138);
+            this.iconMenuItem3.Size = new System.Drawing.Size(437, 142);
             this.iconMenuItem3.Text = "Historico de trasnsacciones";
             this.iconMenuItem3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
@@ -181,65 +197,19 @@
             this.iconMenuItem2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.iconMenuItem2.ImageTransparentColor = System.Drawing.Color.White;
             this.iconMenuItem2.Name = "iconMenuItem2";
-            this.iconMenuItem2.Size = new System.Drawing.Size(180, 138);
+            this.iconMenuItem2.Size = new System.Drawing.Size(180, 142);
             this.iconMenuItem2.Text = "Consultas";
             this.iconMenuItem2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(356, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(116, 6);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(356, 6);
-            // 
-            // menutitulo
-            // 
-            this.menutitulo.AutoSize = false;
-            this.menutitulo.BackColor = System.Drawing.Color.MidnightBlue;
-            this.menutitulo.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menutitulo.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
-            this.menutitulo.ImageScalingSize = new System.Drawing.Size(32, 32);
-            this.menutitulo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.iconMenuItem7});
-            this.menutitulo.Location = new System.Drawing.Point(0, 0);
-            this.menutitulo.Name = "menutitulo";
-            this.menutitulo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.menutitulo.Size = new System.Drawing.Size(2251, 160);
-            this.menutitulo.TabIndex = 1;
-            this.menutitulo.Text = "menuStrip2";
-            // 
-            // iconMenuItem7
-            // 
-            this.iconMenuItem7.Font = new System.Drawing.Font("Bahnschrift", 9.75F);
-            this.iconMenuItem7.ForeColor = System.Drawing.Color.White;
-            this.iconMenuItem7.IconChar = FontAwesome.Sharp.IconChar.ArrowAltCircleRight;
-            this.iconMenuItem7.IconColor = System.Drawing.Color.Red;
-            this.iconMenuItem7.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconMenuItem7.IconSize = 40;
-            this.iconMenuItem7.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.iconMenuItem7.ImageTransparentColor = System.Drawing.Color.Transparent;
-            this.iconMenuItem7.Name = "iconMenuItem7";
-            this.iconMenuItem7.Size = new System.Drawing.Size(90, 152);
-            this.iconMenuItem7.Text = "Salir";
-            this.iconMenuItem7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.BackColor = System.Drawing.Color.MidnightBlue;
-            this.label1.Font = new System.Drawing.Font("Bahnschrift", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(674, 17);
-            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label1.Name = "label1";
-            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label1.Size = new System.Drawing.Size(906, 117);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "CONTROL EFECTIVO CAJA";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.toolStripSeparator5.Size = new System.Drawing.Size(116, 6);
             // 
             // iconMenuItem8
             // 
@@ -257,7 +227,8 @@
             this.iconMenuItem8.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.iconMenuItem8.ImageTransparentColor = System.Drawing.Color.White;
             this.iconMenuItem8.Name = "iconMenuItem8";
-            this.iconMenuItem8.Size = new System.Drawing.Size(146, 138);
+            this.iconMenuItem8.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
+            this.iconMenuItem8.Size = new System.Drawing.Size(170, 142);
             this.iconMenuItem8.Text = "Ajustes";
             this.iconMenuItem8.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
@@ -289,34 +260,66 @@
             this.iconMenuItem13.Size = new System.Drawing.Size(381, 48);
             this.iconMenuItem13.Text = "iconMenuItem12";
             // 
-            // iconMenuItem14
+            // menutitulo
             // 
-            this.iconMenuItem14.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconMenuItem14.ForeColor = System.Drawing.Color.Navy;
-            this.iconMenuItem14.IconChar = FontAwesome.Sharp.IconChar.HomeLg;
-            this.iconMenuItem14.IconColor = System.Drawing.SystemColors.HotTrack;
-            this.iconMenuItem14.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconMenuItem14.IconSize = 50;
-            this.iconMenuItem14.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.iconMenuItem14.ImageTransparentColor = System.Drawing.Color.White;
-            this.iconMenuItem14.Name = "iconMenuItem14";
-            this.iconMenuItem14.Padding = new System.Windows.Forms.Padding(30, 0, 30, 0);
-            this.iconMenuItem14.Size = new System.Drawing.Size(157, 138);
-            this.iconMenuItem14.Text = "Inicio";
-            this.iconMenuItem14.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.menutitulo.AutoSize = false;
+            this.menutitulo.BackColor = System.Drawing.Color.MidnightBlue;
+            this.menutitulo.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menutitulo.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.menutitulo.ImageScalingSize = new System.Drawing.Size(32, 32);
+            this.menutitulo.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.iconMenuItem7});
+            this.menutitulo.Location = new System.Drawing.Point(0, 0);
+            this.menutitulo.Name = "menutitulo";
+            this.menutitulo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.menutitulo.Size = new System.Drawing.Size(2110, 160);
+            this.menutitulo.TabIndex = 1;
+            this.menutitulo.Text = "menuStrip2";
+            // 
+            // iconMenuItem7
+            // 
+            this.iconMenuItem7.Font = new System.Drawing.Font("Bahnschrift", 9.75F);
+            this.iconMenuItem7.ForeColor = System.Drawing.Color.White;
+            this.iconMenuItem7.IconChar = FontAwesome.Sharp.IconChar.ArrowAltCircleRight;
+            this.iconMenuItem7.IconColor = System.Drawing.Color.Red;
+            this.iconMenuItem7.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconMenuItem7.IconSize = 50;
+            this.iconMenuItem7.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.iconMenuItem7.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.iconMenuItem7.Margin = new System.Windows.Forms.Padding(30, 20, 30, 30);
+            this.iconMenuItem7.Name = "iconMenuItem7";
+            this.iconMenuItem7.Padding = new System.Windows.Forms.Padding(30, 10, 20, 0);
+            this.iconMenuItem7.Size = new System.Drawing.Size(124, 106);
+            this.iconMenuItem7.Text = "Salir";
+            this.iconMenuItem7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.BackColor = System.Drawing.Color.MidnightBlue;
+            this.label1.Font = new System.Drawing.Font("Bahnschrift", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(604, 17);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label1.Name = "label1";
+            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.label1.Size = new System.Drawing.Size(906, 117);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "CONTROL EFECTIVO CAJA";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(2251, 971);
+            this.ClientSize = new System.Drawing.Size(2110, 1157);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menu);
             this.Controls.Add(this.menutitulo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menu;
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Inicio";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
