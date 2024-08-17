@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.iconPictureBox1 = new FontAwesome.Sharp.IconPictureBox();
@@ -37,6 +38,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btningresar = new FontAwesome.Sharp.IconButton();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +56,7 @@
             this.label2.BackColor = System.Drawing.SystemColors.Highlight;
             this.label2.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(12, 9);
+            this.label2.Location = new System.Drawing.Point(11, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(209, 53);
             this.label2.TabIndex = 1;
@@ -80,7 +82,7 @@
             // 
             this.label3.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(281, 57);
+            this.label3.Location = new System.Drawing.Point(280, 80);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(78, 23);
             this.label3.TabIndex = 3;
@@ -88,17 +90,17 @@
             // 
             // txtusuario
             // 
-            this.txtusuario.BackColor = System.Drawing.Color.Moccasin;
-            this.txtusuario.Location = new System.Drawing.Point(284, 83);
+            this.txtusuario.BackColor = System.Drawing.Color.Gainsboro;
+            this.txtusuario.Location = new System.Drawing.Point(284, 106);
             this.txtusuario.Name = "txtusuario";
             this.txtusuario.Size = new System.Drawing.Size(221, 20);
             this.txtusuario.TabIndex = 4;
             // 
             // txtclave
             // 
-            this.txtclave.BackColor = System.Drawing.Color.Moccasin;
+            this.txtclave.BackColor = System.Drawing.Color.Gainsboro;
             this.txtclave.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtclave.Location = new System.Drawing.Point(284, 133);
+            this.txtclave.Location = new System.Drawing.Point(284, 156);
             this.txtclave.Name = "txtclave";
             this.txtclave.PasswordChar = '*';
             this.txtclave.Size = new System.Drawing.Size(221, 20);
@@ -108,7 +110,7 @@
             // 
             this.label4.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(281, 106);
+            this.label4.Location = new System.Drawing.Point(280, 129);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(93, 24);
             this.label4.TabIndex = 6;
@@ -154,12 +156,25 @@
             this.iconButton2.UseVisualStyleBackColor = false;
             this.iconButton2.Click += new System.EventHandler(this.iconButton2_Click);
             // 
+            // label5
+            // 
+            this.label5.BackColor = System.Drawing.SystemColors.Highlight;
+            this.label5.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Transparent;
+            this.label5.Location = new System.Drawing.Point(227, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(333, 60);
+            this.label5.TabIndex = 9;
+            this.label5.Text = "BIENVENIDO A PAYBOX";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(559, 249);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.iconButton2);
             this.Controls.Add(this.btningresar);
             this.Controls.Add(this.label4);
@@ -171,6 +186,7 @@
             this.Controls.Add(this.label1);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
@@ -191,5 +207,6 @@
         private System.Windows.Forms.Label label4;
         private FontAwesome.Sharp.IconButton btningresar;
         private FontAwesome.Sharp.IconButton iconButton2;
+        private System.Windows.Forms.Label label5;
     }
 }

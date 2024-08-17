@@ -40,6 +40,9 @@
             this.iconMenuItem3 = new FontAwesome.Sharp.IconMenuItem();
             this.iconMenuItem2 = new FontAwesome.Sharp.IconMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.iconMenuItem11 = new FontAwesome.Sharp.IconMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.saldosEnBovedaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.iconMenuItem8 = new FontAwesome.Sharp.IconMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.iconMenuItem9 = new FontAwesome.Sharp.IconMenuItem();
@@ -48,9 +51,6 @@
             this.menutitulo = new System.Windows.Forms.MenuStrip();
             this.iconMenuItem7 = new FontAwesome.Sharp.IconMenuItem();
             this.label1 = new System.Windows.Forms.Label();
-            this.iconMenuItem11 = new FontAwesome.Sharp.IconMenuItem();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
-            this.saldosEnBovedaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menu.SuspendLayout();
             this.menutitulo.SuspendLayout();
             this.SuspendLayout();
@@ -69,10 +69,10 @@
             this.iconMenuItem3,
             this.iconMenuItem2,
             this.iconMenuItem8});
-            this.menu.Location = new System.Drawing.Point(0, 114);
+            this.menu.Location = new System.Drawing.Point(0, 115);
             this.menu.Name = "menu";
             this.menu.Padding = new System.Windows.Forms.Padding(3, 1, 0, 1);
-            this.menu.Size = new System.Drawing.Size(1144, 76);
+            this.menu.Size = new System.Drawing.Size(1143, 76);
             this.menu.TabIndex = 0;
             this.menu.Text = "menuStrip1";
             // 
@@ -208,7 +208,27 @@
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(222, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(206, 6);
+            // 
+            // iconMenuItem11
+            // 
+            this.iconMenuItem11.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.iconMenuItem11.IconColor = System.Drawing.Color.Black;
+            this.iconMenuItem11.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconMenuItem11.Name = "iconMenuItem11";
+            this.iconMenuItem11.Size = new System.Drawing.Size(209, 24);
+            this.iconMenuItem11.Text = "Saldos En Caja";
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(206, 6);
+            // 
+            // saldosEnBovedaToolStripMenuItem
+            // 
+            this.saldosEnBovedaToolStripMenuItem.Name = "saldosEnBovedaToolStripMenuItem";
+            this.saldosEnBovedaToolStripMenuItem.Size = new System.Drawing.Size(209, 24);
+            this.saldosEnBovedaToolStripMenuItem.Text = "Saldos En Boveda";
             // 
             // iconMenuItem8
             // 
@@ -234,7 +254,7 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(205, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(189, 6);
             // 
             // iconMenuItem9
             // 
@@ -242,13 +262,13 @@
             this.iconMenuItem9.IconColor = System.Drawing.Color.Black;
             this.iconMenuItem9.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconMenuItem9.Name = "iconMenuItem9";
-            this.iconMenuItem9.Size = new System.Drawing.Size(208, 38);
+            this.iconMenuItem9.Size = new System.Drawing.Size(192, 24);
             this.iconMenuItem9.Text = "iconMenuItem11";
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(205, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(189, 6);
             // 
             // iconMenuItem13
             // 
@@ -256,7 +276,7 @@
             this.iconMenuItem13.IconColor = System.Drawing.Color.Black;
             this.iconMenuItem13.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconMenuItem13.Name = "iconMenuItem13";
-            this.iconMenuItem13.Size = new System.Drawing.Size(208, 38);
+            this.iconMenuItem13.Size = new System.Drawing.Size(192, 24);
             this.iconMenuItem13.Text = "iconMenuItem12";
             // 
             // menutitulo
@@ -271,7 +291,7 @@
             this.menutitulo.Name = "menutitulo";
             this.menutitulo.Padding = new System.Windows.Forms.Padding(3, 1, 0, 1);
             this.menutitulo.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.menutitulo.Size = new System.Drawing.Size(1144, 114);
+            this.menutitulo.Size = new System.Drawing.Size(1143, 115);
             this.menutitulo.TabIndex = 1;
             this.menutitulo.Text = "menuStrip2";
             // 
@@ -288,7 +308,7 @@
             this.iconMenuItem7.Margin = new System.Windows.Forms.Padding(30, 20, 30, 30);
             this.iconMenuItem7.Name = "iconMenuItem7";
             this.iconMenuItem7.Padding = new System.Windows.Forms.Padding(0);
-            this.iconMenuItem7.Size = new System.Drawing.Size(49, 62);
+            this.iconMenuItem7.Size = new System.Drawing.Size(49, 63);
             this.iconMenuItem7.Text = "Salir";
             this.iconMenuItem7.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             // 
@@ -298,40 +318,20 @@
             this.label1.BackColor = System.Drawing.Color.MidnightBlue;
             this.label1.Font = new System.Drawing.Font("Bahnschrift", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(331, 23);
+            this.label1.Location = new System.Drawing.Point(468, 9);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.label1.Size = new System.Drawing.Size(453, 61);
+            this.label1.Size = new System.Drawing.Size(148, 94);
             this.label1.TabIndex = 2;
-            this.label1.Text = "CONTROL EFECTIVO CAJA";
+            this.label1.Text = "PAYBOX";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // iconMenuItem11
-            // 
-            this.iconMenuItem11.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconMenuItem11.IconColor = System.Drawing.Color.Black;
-            this.iconMenuItem11.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconMenuItem11.Name = "iconMenuItem11";
-            this.iconMenuItem11.Size = new System.Drawing.Size(225, 38);
-            this.iconMenuItem11.Text = "Saldos En Caja";
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(222, 6);
-            // 
-            // saldosEnBovedaToolStripMenuItem
-            // 
-            this.saldosEnBovedaToolStripMenuItem.Name = "saldosEnBovedaToolStripMenuItem";
-            this.saldosEnBovedaToolStripMenuItem.Size = new System.Drawing.Size(225, 38);
-            this.saldosEnBovedaToolStripMenuItem.Text = "Saldos En Boveda";
             // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1144, 510);
+            this.ClientSize = new System.Drawing.Size(1143, 501);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menu);
             this.Controls.Add(this.menutitulo);
