@@ -24,7 +24,7 @@ namespace CapaPresentacion
 
         private void btningresar_Click(object sender, EventArgs e)
         {
-           Inicio form = new Inicio();
+           Entrada form = new Entrada();
 
             form.Show();
             this.Hide();
