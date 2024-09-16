@@ -74,7 +74,7 @@
             this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Regular;
             this.iconPictureBox1.IconSize = 269;
             this.iconPictureBox1.Location = new System.Drawing.Point(88, 160);
-            this.iconPictureBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.iconPictureBox1.Margin = new System.Windows.Forms.Padding(6);
             this.iconPictureBox1.Name = "iconPictureBox1";
             this.iconPictureBox1.Size = new System.Drawing.Size(280, 269);
             this.iconPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -96,7 +96,7 @@
             // 
             this.txtusuario.BackColor = System.Drawing.Color.Gainsboro;
             this.txtusuario.Location = new System.Drawing.Point(567, 171);
-            this.txtusuario.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtusuario.Margin = new System.Windows.Forms.Padding(6);
             this.txtusuario.Multiline = true;
             this.txtusuario.Name = "txtusuario";
             this.txtusuario.Size = new System.Drawing.Size(438, 46);
@@ -107,7 +107,7 @@
             this.txtclave.BackColor = System.Drawing.Color.Gainsboro;
             this.txtclave.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtclave.Location = new System.Drawing.Point(567, 288);
-            this.txtclave.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtclave.Margin = new System.Windows.Forms.Padding(6);
             this.txtclave.Multiline = true;
             this.txtclave.Name = "txtclave";
             this.txtclave.PasswordChar = '*';
@@ -137,10 +137,10 @@
             this.btningresar.IconColor = System.Drawing.Color.Teal;
             this.btningresar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btningresar.IconSize = 30;
-            this.btningresar.Location = new System.Drawing.Point(568, 369);
-            this.btningresar.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btningresar.Location = new System.Drawing.Point(567, 369);
+            this.btningresar.Margin = new System.Windows.Forms.Padding(6);
             this.btningresar.Name = "btningresar";
-            this.btningresar.Size = new System.Drawing.Size(220, 72);
+            this.btningresar.Size = new System.Drawing.Size(221, 72);
             this.btningresar.TabIndex = 7;
             this.btningresar.Text = "Ingresar";
             this.btningresar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -161,7 +161,7 @@
             this.iconButton2.IconSize = 30;
             this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.iconButton2.Location = new System.Drawing.Point(800, 369);
-            this.iconButton2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.iconButton2.Margin = new System.Windows.Forms.Padding(6);
             this.iconButton2.Name = "iconButton2";
             this.iconButton2.Size = new System.Drawing.Size(210, 72);
             this.iconButton2.TabIndex = 8;
@@ -202,7 +202,7 @@
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
