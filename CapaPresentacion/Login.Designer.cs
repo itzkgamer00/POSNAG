@@ -47,9 +47,8 @@
             this.label1.BackColor = System.Drawing.Color.Teal;
             this.label1.Dock = System.Windows.Forms.DockStyle.Left;
             this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(464, 479);
+            this.label1.Size = new System.Drawing.Size(232, 249);
             this.label1.TabIndex = 0;
             // 
             // label2
@@ -57,10 +56,9 @@
             this.label2.BackColor = System.Drawing.Color.Teal;
             this.label2.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(22, 17);
-            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label2.Location = new System.Drawing.Point(11, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(418, 102);
+            this.label2.Size = new System.Drawing.Size(209, 53);
             this.label2.TabIndex = 1;
             this.label2.Text = "SISTEMA DE CAJA";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -72,11 +70,10 @@
             this.iconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.User;
             this.iconPictureBox1.IconColor = System.Drawing.Color.White;
             this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Regular;
-            this.iconPictureBox1.IconSize = 269;
-            this.iconPictureBox1.Location = new System.Drawing.Point(88, 160);
-            this.iconPictureBox1.Margin = new System.Windows.Forms.Padding(6);
+            this.iconPictureBox1.IconSize = 140;
+            this.iconPictureBox1.Location = new System.Drawing.Point(44, 83);
             this.iconPictureBox1.Name = "iconPictureBox1";
-            this.iconPictureBox1.Size = new System.Drawing.Size(280, 269);
+            this.iconPictureBox1.Size = new System.Drawing.Size(140, 140);
             this.iconPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.iconPictureBox1.TabIndex = 2;
             this.iconPictureBox1.TabStop = false;
@@ -85,43 +82,39 @@
             // 
             this.label3.Font = new System.Drawing.Font("Bahnschrift Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Teal;
-            this.label3.Location = new System.Drawing.Point(561, 132);
-            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label3.Location = new System.Drawing.Point(280, 69);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(156, 44);
+            this.label3.Size = new System.Drawing.Size(78, 23);
             this.label3.TabIndex = 3;
             this.label3.Text = "Usuario:";
             // 
             // txtusuario
             // 
             this.txtusuario.BackColor = System.Drawing.Color.Gainsboro;
-            this.txtusuario.Location = new System.Drawing.Point(567, 171);
-            this.txtusuario.Margin = new System.Windows.Forms.Padding(6);
+            this.txtusuario.Location = new System.Drawing.Point(284, 89);
             this.txtusuario.Multiline = true;
             this.txtusuario.Name = "txtusuario";
-            this.txtusuario.Size = new System.Drawing.Size(438, 46);
+            this.txtusuario.Size = new System.Drawing.Size(221, 26);
             this.txtusuario.TabIndex = 4;
             // 
             // txtclave
             // 
             this.txtclave.BackColor = System.Drawing.Color.Gainsboro;
             this.txtclave.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtclave.Location = new System.Drawing.Point(567, 288);
-            this.txtclave.Margin = new System.Windows.Forms.Padding(6);
+            this.txtclave.Location = new System.Drawing.Point(284, 150);
             this.txtclave.Multiline = true;
             this.txtclave.Name = "txtclave";
             this.txtclave.PasswordChar = '*';
-            this.txtclave.Size = new System.Drawing.Size(438, 46);
+            this.txtclave.Size = new System.Drawing.Size(221, 26);
             this.txtclave.TabIndex = 5;
             // 
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("Bahnschrift Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Teal;
-            this.label4.Location = new System.Drawing.Point(561, 236);
-            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label4.Location = new System.Drawing.Point(280, 123);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(186, 46);
+            this.label4.Size = new System.Drawing.Size(93, 24);
             this.label4.TabIndex = 6;
             this.label4.Text = "Contraseña";
             // 
@@ -136,11 +129,10 @@
             this.btningresar.IconChar = FontAwesome.Sharp.IconChar.DoorOpen;
             this.btningresar.IconColor = System.Drawing.Color.Teal;
             this.btningresar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btningresar.IconSize = 30;
-            this.btningresar.Location = new System.Drawing.Point(567, 369);
-            this.btningresar.Margin = new System.Windows.Forms.Padding(6);
+            this.btningresar.IconSize = 20;
+            this.btningresar.Location = new System.Drawing.Point(284, 192);
             this.btningresar.Name = "btningresar";
-            this.btningresar.Size = new System.Drawing.Size(221, 72);
+            this.btningresar.Size = new System.Drawing.Size(110, 37);
             this.btningresar.TabIndex = 7;
             this.btningresar.Text = "Ingresar";
             this.btningresar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -158,12 +150,11 @@
             this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.TimesCircle;
             this.iconButton2.IconColor = System.Drawing.Color.Red;
             this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton2.IconSize = 30;
+            this.iconButton2.IconSize = 20;
             this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.iconButton2.Location = new System.Drawing.Point(800, 369);
-            this.iconButton2.Margin = new System.Windows.Forms.Padding(6);
+            this.iconButton2.Location = new System.Drawing.Point(400, 192);
             this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Size = new System.Drawing.Size(210, 72);
+            this.iconButton2.Size = new System.Drawing.Size(105, 37);
             this.iconButton2.TabIndex = 8;
             this.iconButton2.Text = "Cerrar";
             this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -175,20 +166,19 @@
             this.label5.BackColor = System.Drawing.Color.Teal;
             this.label5.Font = new System.Drawing.Font("Bahnschrift", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Transparent;
-            this.label5.Location = new System.Drawing.Point(454, 0);
-            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label5.Location = new System.Drawing.Point(227, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(666, 115);
+            this.label5.Size = new System.Drawing.Size(333, 60);
             this.label5.TabIndex = 9;
             this.label5.Text = "BIENVENIDO A PAYBOX";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Login
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1118, 479);
+            this.ClientSize = new System.Drawing.Size(559, 249);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.iconButton2);
             this.Controls.Add(this.btningresar);
@@ -202,7 +192,6 @@
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
