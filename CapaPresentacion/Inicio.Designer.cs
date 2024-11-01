@@ -31,12 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.btnHome = new FontAwesome.Sharp.IconButton();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.iconButton4 = new FontAwesome.Sharp.IconButton();
-            this.iconButton5 = new FontAwesome.Sharp.IconButton();
+            this.btnControlEfectivo = new FontAwesome.Sharp.IconButton();
+            this.PanelContenedor = new System.Windows.Forms.Panel();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,10 +47,10 @@
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(110, 0);
+            this.panel2.Location = new System.Drawing.Point(109, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(920, 73);
+            this.panel2.Size = new System.Drawing.Size(1034, 73);
             this.panel2.TabIndex = 4;
             // 
             // label1
@@ -63,33 +64,34 @@
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label1.Size = new System.Drawing.Size(356, 49);
+            this.label1.Size = new System.Drawing.Size(517, 49);
             this.label1.TabIndex = 0;
             this.label1.Text = "Sistema De Gestion De Efectivo";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // iconButton1
+            // btnHome
             // 
-            this.iconButton1.BackColor = System.Drawing.Color.Teal;
-            this.iconButton1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.iconButton1.FlatAppearance.BorderSize = 5;
-            this.iconButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton1.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton1.ForeColor = System.Drawing.Color.Black;
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.HomeLg;
-            this.iconButton1.IconColor = System.Drawing.Color.Black;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.IconSize = 30;
-            this.iconButton1.Location = new System.Drawing.Point(11, 72);
-            this.iconButton1.Margin = new System.Windows.Forms.Padding(2);
-            this.iconButton1.Name = "iconButton1";
-            this.iconButton1.Size = new System.Drawing.Size(87, 60);
-            this.iconButton1.TabIndex = 5;
-            this.iconButton1.Text = "Home";
-            this.iconButton1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.iconButton1.UseVisualStyleBackColor = false;
+            this.btnHome.BackColor = System.Drawing.Color.Teal;
+            this.btnHome.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnHome.FlatAppearance.BorderSize = 5;
+            this.btnHome.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnHome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHome.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnHome.ForeColor = System.Drawing.Color.Black;
+            this.btnHome.IconChar = FontAwesome.Sharp.IconChar.HomeLg;
+            this.btnHome.IconColor = System.Drawing.Color.Black;
+            this.btnHome.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnHome.IconSize = 30;
+            this.btnHome.Location = new System.Drawing.Point(11, 72);
+            this.btnHome.Margin = new System.Windows.Forms.Padding(2);
+            this.btnHome.Name = "btnHome";
+            this.btnHome.Size = new System.Drawing.Size(87, 60);
+            this.btnHome.TabIndex = 5;
+            this.btnHome.Text = "Home";
+            this.btnHome.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnHome.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnHome.UseVisualStyleBackColor = false;
+            this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
             // menuStrip1
             // 
@@ -100,7 +102,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(3, 1, 0, 1);
-            this.menuStrip1.Size = new System.Drawing.Size(110, 508);
+            this.menuStrip1.Size = new System.Drawing.Size(109, 604);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -171,40 +173,52 @@
             this.iconButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.iconButton4.UseVisualStyleBackColor = false;
             // 
-            // iconButton5
+            // btnControlEfectivo
             // 
-            this.iconButton5.BackColor = System.Drawing.Color.Teal;
-            this.iconButton5.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.iconButton5.FlatAppearance.BorderSize = 5;
-            this.iconButton5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.iconButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton5.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton5.ForeColor = System.Drawing.Color.Black;
-            this.iconButton5.IconChar = FontAwesome.Sharp.IconChar.MoneyCheckDollar;
-            this.iconButton5.IconColor = System.Drawing.Color.Black;
-            this.iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton5.IconSize = 25;
-            this.iconButton5.Location = new System.Drawing.Point(11, 145);
-            this.iconButton5.Margin = new System.Windows.Forms.Padding(2);
-            this.iconButton5.Name = "iconButton5";
-            this.iconButton5.Size = new System.Drawing.Size(87, 64);
-            this.iconButton5.TabIndex = 10;
-            this.iconButton5.Text = "Control De Efectivo";
-            this.iconButton5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.iconButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.iconButton5.UseVisualStyleBackColor = false;
+            this.btnControlEfectivo.BackColor = System.Drawing.Color.Teal;
+            this.btnControlEfectivo.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnControlEfectivo.FlatAppearance.BorderSize = 5;
+            this.btnControlEfectivo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.btnControlEfectivo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnControlEfectivo.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnControlEfectivo.ForeColor = System.Drawing.Color.Black;
+            this.btnControlEfectivo.IconChar = FontAwesome.Sharp.IconChar.MoneyCheckDollar;
+            this.btnControlEfectivo.IconColor = System.Drawing.Color.Black;
+            this.btnControlEfectivo.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnControlEfectivo.IconSize = 25;
+            this.btnControlEfectivo.Location = new System.Drawing.Point(11, 145);
+            this.btnControlEfectivo.Margin = new System.Windows.Forms.Padding(2);
+            this.btnControlEfectivo.Name = "btnControlEfectivo";
+            this.btnControlEfectivo.Size = new System.Drawing.Size(87, 64);
+            this.btnControlEfectivo.TabIndex = 10;
+            this.btnControlEfectivo.Text = "Control De Efectivo";
+            this.btnControlEfectivo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnControlEfectivo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnControlEfectivo.UseVisualStyleBackColor = false;
+            this.btnControlEfectivo.Click += new System.EventHandler(this.btnControlEfectivo_Click);
+            this.btnControlEfectivo.PaddingChanged += new System.EventHandler(this.btnControlEfectivo_Click);
+            // 
+            // PanelContenedor
+            // 
+            this.PanelContenedor.AutoSize = true;
+            this.PanelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelContenedor.Location = new System.Drawing.Point(109, 73);
+            this.PanelContenedor.Name = "PanelContenedor";
+            this.PanelContenedor.Size = new System.Drawing.Size(1034, 531);
+            this.PanelContenedor.TabIndex = 11;
             // 
             // Inicio
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1030, 508);
-            this.Controls.Add(this.iconButton5);
+            this.ClientSize = new System.Drawing.Size(1143, 604);
+            this.Controls.Add(this.PanelContenedor);
+            this.Controls.Add(this.btnControlEfectivo);
             this.Controls.Add(this.iconButton4);
             this.Controls.Add(this.iconButton3);
             this.Controls.Add(this.iconButton2);
-            this.Controls.Add(this.iconButton1);
+            this.Controls.Add(this.btnHome);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -212,18 +226,20 @@
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label1;
-        private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton btnHome;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private FontAwesome.Sharp.IconButton iconButton2;
         private FontAwesome.Sharp.IconButton iconButton3;
         private FontAwesome.Sharp.IconButton iconButton4;
-        private FontAwesome.Sharp.IconButton iconButton5;
+        private FontAwesome.Sharp.IconButton btnControlEfectivo;
+        private System.Windows.Forms.Panel PanelContenedor;
     }
 }
 
