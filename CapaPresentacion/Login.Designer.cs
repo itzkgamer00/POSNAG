@@ -137,6 +137,7 @@
             this.btningresar.Text = "Ingresar";
             this.btningresar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btningresar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btningresar.UseCompatibleTextRendering = true;
             this.btningresar.UseVisualStyleBackColor = false;
             this.btningresar.Click += new System.EventHandler(this.btningresar_Click);
             // 
