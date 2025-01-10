@@ -7,29 +7,29 @@ go
 CREATE TABLE Roles (
     IdRol  int primary key identity(1,1),
     Descripcion VARCHAR(100),
-	FechaCreacion datetime default getdate(),
+	FechaCreacion datetime default getdate()
 
 );
 
--- Usuarios
+-- Usuario
 CREATE TABLE Usuario (
-    usuario_id int primary key identity(1,1),
-    NombreCompleto varchar(100),
-    Correo varchar(100),
-    usuario VARCHAR(50),
-    contraseña varchar(100),
-	IdRol int references Rol(IdRol),
-	estado bit,
-	FechaCreacion datetime default getdate(),
+    usuario_id int primary key identity(1,1)not null,
+    NombreCompleto varchar(100)not null,
+    Correo varchar(100)null,
+    usuario VARCHAR(50)not null,
+    contraseña varchar(100)not null,
+	IdRol int references Roles(IdRol)not null,
+	estado bit not null,
+	FechaCreacion datetime default getdate()not null,
 );
 
 
 -- Permisos
 CREATE TABLE Permiso (
     idPermiso int primary key identity(1,1),
-	IdRol int references Rol(IdRol),
+	IdRol int references Roles(IdRol),
 	NombreMenu varchar(100),
-	FechaCreacion datetime default getdate(),
+	FechaCreacion datetime default getdate()
 
 	);
 CREATE TABLE CambioDivisa (
@@ -41,10 +41,10 @@ CREATE TABLE CambioDivisa (
     tasa_cambio DECIMAL(10, 4),
     descripcion VARCHAR(255),
     fecha_hora datetime DEFAULT GETDATE(),
-    FOREIGN KEY (usuario_id) REFERENCES Usuarios(usuario_id)
+    FOREIGN KEY (usuario_id) REFERENCES Usuario(usuario_id)
 );
 
-CREATE TABLE Transaccione (
+CREATE TABLE Transacciones (
     transaccion_id int PRIMARY KEY IDENTITY(1,1),
     usuario_id int,
     cambio_id INT REFERENCES CambioDivisa(cambio_id), -- Puede ser NULL si la transacción no es un cambio de divisas
@@ -53,7 +53,7 @@ CREATE TABLE Transaccione (
     monto DECIMAL(10, 2),
     descripcion VARCHAR(255),
     fecha_hora datetime DEFAULT GETDATE(),
-    FOREIGN KEY (usuario_id) REFERENCES Usuarios(usuario_id),
+    FOREIGN KEY (usuario_id) REFERENCES Usuario(usuario_id),
     
 ); 
 
@@ -75,7 +75,7 @@ CREATE TABLE CierreCaja (
 
 
 -- Historial de Transacciones
-CREATE TABLE HistorialTransaccione (
+CREATE TABLE HistorialTransacciones (
     historial_id INT PRIMARY KEY,
     transaccion_id int,
     accion varchar(50),
