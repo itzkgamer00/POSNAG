@@ -51,9 +51,9 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(109, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(887, 73);
+            this.panel2.Size = new System.Drawing.Size(905, 73);
             this.panel2.TabIndex = 4;
             // 
             // label1
@@ -67,7 +67,7 @@
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label1.Size = new System.Drawing.Size(548, 49);
+            this.label1.Size = new System.Drawing.Size(566, 49);
             this.label1.TabIndex = 0;
             this.label1.Text = "Sistema De Gestion De Efectivo";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -86,7 +86,7 @@
             this.btnHome.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnHome.IconSize = 30;
             this.btnHome.Location = new System.Drawing.Point(11, 72);
-            this.btnHome.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnHome.Margin = new System.Windows.Forms.Padding(2);
             this.btnHome.Name = "btnHome";
             this.btnHome.Size = new System.Drawing.Size(87, 60);
             this.btnHome.TabIndex = 5;
@@ -109,7 +109,7 @@
             this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton2.IconSize = 20;
             this.iconButton2.Location = new System.Drawing.Point(11, 374);
-            this.iconButton2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.iconButton2.Margin = new System.Windows.Forms.Padding(2);
             this.iconButton2.Name = "iconButton2";
             this.iconButton2.Size = new System.Drawing.Size(87, 60);
             this.iconButton2.TabIndex = 7;
@@ -131,7 +131,7 @@
             this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton3.IconSize = 25;
             this.iconButton3.Location = new System.Drawing.Point(11, 300);
-            this.iconButton3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.iconButton3.Margin = new System.Windows.Forms.Padding(2);
             this.iconButton3.Name = "iconButton3";
             this.iconButton3.Size = new System.Drawing.Size(87, 60);
             this.iconButton3.TabIndex = 8;
@@ -154,7 +154,7 @@
             this.iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton4.IconSize = 25;
             this.iconButton4.Location = new System.Drawing.Point(11, 222);
-            this.iconButton4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.iconButton4.Margin = new System.Windows.Forms.Padding(2);
             this.iconButton4.Name = "iconButton4";
             this.iconButton4.Size = new System.Drawing.Size(87, 65);
             this.iconButton4.TabIndex = 9;
@@ -177,7 +177,7 @@
             this.btnControlEfectivo.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnControlEfectivo.IconSize = 25;
             this.btnControlEfectivo.Location = new System.Drawing.Point(11, 145);
-            this.btnControlEfectivo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnControlEfectivo.Margin = new System.Windows.Forms.Padding(2);
             this.btnControlEfectivo.Name = "btnControlEfectivo";
             this.btnControlEfectivo.Size = new System.Drawing.Size(87, 64);
             this.btnControlEfectivo.TabIndex = 10;
@@ -198,7 +198,7 @@
             this.PanelContenedor.MaximumSize = new System.Drawing.Size(1380, 760);
             this.PanelContenedor.Name = "PanelContenedor";
             this.PanelContenedor.Padding = new System.Windows.Forms.Padding(5);
-            this.PanelContenedor.Size = new System.Drawing.Size(863, 491);
+            this.PanelContenedor.Size = new System.Drawing.Size(881, 513);
             this.PanelContenedor.TabIndex = 11;
             // 
             // iconButton1
@@ -214,7 +214,7 @@
             this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton1.IconSize = 20;
             this.iconButton1.Location = new System.Drawing.Point(11, 447);
-            this.iconButton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.iconButton1.Margin = new System.Windows.Forms.Padding(2);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.Size = new System.Drawing.Size(87, 60);
             this.iconButton1.TabIndex = 12;
@@ -236,7 +236,7 @@
             this.iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton5.IconSize = 20;
             this.iconButton5.Location = new System.Drawing.Point(11, 591);
-            this.iconButton5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.iconButton5.Margin = new System.Windows.Forms.Padding(2);
             this.iconButton5.Name = "iconButton5";
             this.iconButton5.Size = new System.Drawing.Size(87, 60);
             this.iconButton5.TabIndex = 13;
@@ -258,7 +258,7 @@
             this.iconButton6.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton6.IconSize = 20;
             this.iconButton6.Location = new System.Drawing.Point(11, 519);
-            this.iconButton6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.iconButton6.Margin = new System.Windows.Forms.Padding(2);
             this.iconButton6.Name = "iconButton6";
             this.iconButton6.Size = new System.Drawing.Size(87, 60);
             this.iconButton6.TabIndex = 14;
@@ -276,7 +276,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(3, 1, 0, 1);
-            this.menuStrip1.Size = new System.Drawing.Size(109, 587);
+            this.menuStrip1.Size = new System.Drawing.Size(109, 671);
             this.menuStrip1.TabIndex = 6;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -284,9 +284,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
+            this.AutoScroll = true;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(996, 587);
+            this.ClientSize = new System.Drawing.Size(1014, 671);
             this.Controls.Add(this.iconButton6);
             this.Controls.Add(this.iconButton5);
             this.Controls.Add(this.iconButton1);
@@ -299,12 +300,13 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximumSize = new System.Drawing.Size(1380, 760);
-            this.MinimumSize = new System.Drawing.Size(1012, 626);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1030, 710);
+            this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(1030, 710);
             this.Name = "Inicio";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 

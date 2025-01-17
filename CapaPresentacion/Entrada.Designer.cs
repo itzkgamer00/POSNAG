@@ -33,9 +33,6 @@
             this.menuStrip2 = new System.Windows.Forms.MenuStrip();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.iconButton3 = new FontAwesome.Sharp.IconButton();
-            this.iconButton4 = new FontAwesome.Sharp.IconButton();
-            this.iconButton8 = new FontAwesome.Sharp.IconButton();
             this.iconButton9 = new FontAwesome.Sharp.IconButton();
             this.iconButton10 = new FontAwesome.Sharp.IconButton();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -47,7 +44,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.iconButton7 = new FontAwesome.Sharp.IconButton();
             this.iconButton6 = new FontAwesome.Sharp.IconButton();
             this.iconButton5 = new FontAwesome.Sharp.IconButton();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
@@ -60,6 +56,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.iconButton3 = new FontAwesome.Sharp.IconButton();
+            this.iconButton4 = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -103,7 +101,7 @@
             this.menuStrip2.BackColor = System.Drawing.Color.Teal;
             this.menuStrip2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.menuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip2.Location = new System.Drawing.Point(8, 429);
+            this.menuStrip2.Location = new System.Drawing.Point(8, 452);
             this.menuStrip2.Name = "menuStrip2";
             this.menuStrip2.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
             this.menuStrip2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -119,15 +117,14 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(8, 76);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(831, 353);
+            this.panel1.Size = new System.Drawing.Size(831, 376);
             this.panel1.TabIndex = 19;
             // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.groupBox2.Controls.Add(this.iconButton3);
             this.groupBox2.Controls.Add(this.iconButton4);
-            this.groupBox2.Controls.Add(this.iconButton8);
+            this.groupBox2.Controls.Add(this.iconButton3);
             this.groupBox2.Controls.Add(this.iconButton9);
             this.groupBox2.Controls.Add(this.iconButton10);
             this.groupBox2.Controls.Add(this.textBox4);
@@ -142,49 +139,10 @@
             this.groupBox2.ForeColor = System.Drawing.Color.Black;
             this.groupBox2.Location = new System.Drawing.Point(419, 25);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(392, 301);
+            this.groupBox2.Size = new System.Drawing.Size(392, 286);
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "DOLARES";
-            // 
-            // iconButton3
-            // 
-            this.iconButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton3.IconColor = System.Drawing.Color.Black;
-            this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton3.Location = new System.Drawing.Point(249, 256);
-            this.iconButton3.Name = "iconButton3";
-            this.iconButton3.Size = new System.Drawing.Size(75, 39);
-            this.iconButton3.TabIndex = 15;
-            this.iconButton3.Text = "iconButton3";
-            this.iconButton3.UseVisualStyleBackColor = true;
-            // 
-            // iconButton4
-            // 
-            this.iconButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton4.IconColor = System.Drawing.Color.Black;
-            this.iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton4.Location = new System.Drawing.Point(131, 256);
-            this.iconButton4.Name = "iconButton4";
-            this.iconButton4.Size = new System.Drawing.Size(75, 39);
-            this.iconButton4.TabIndex = 14;
-            this.iconButton4.Text = "iconButton4";
-            this.iconButton4.UseVisualStyleBackColor = true;
-            // 
-            // iconButton8
-            // 
-            this.iconButton8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton8.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton8.IconColor = System.Drawing.Color.Black;
-            this.iconButton8.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton8.Location = new System.Drawing.Point(23, 256);
-            this.iconButton8.Name = "iconButton8";
-            this.iconButton8.Size = new System.Drawing.Size(75, 39);
-            this.iconButton8.TabIndex = 13;
-            this.iconButton8.Text = "iconButton8";
-            this.iconButton8.UseVisualStyleBackColor = true;
             // 
             // iconButton9
             // 
@@ -223,9 +181,9 @@
             // textBox5
             // 
             this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(103, 187);
+            this.textBox5.Location = new System.Drawing.Point(112, 187);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(144, 29);
+            this.textBox5.Size = new System.Drawing.Size(153, 29);
             this.textBox5.TabIndex = 6;
             // 
             // textBox6
@@ -250,7 +208,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(87, 160);
+            this.label5.Location = new System.Drawing.Point(101, 160);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(178, 24);
             this.label5.TabIndex = 3;
@@ -282,14 +240,13 @@
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.Location = new System.Drawing.Point(19, 33);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(146, 24);
+            this.label8.Size = new System.Drawing.Size(225, 24);
             this.label8.TabIndex = 0;
-            this.label8.Text = "TRANSACCION";
+            this.label8.Text = "TIPO DE TRANSACCION";
             // 
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.groupBox1.Controls.Add(this.iconButton7);
             this.groupBox1.Controls.Add(this.iconButton6);
             this.groupBox1.Controls.Add(this.iconButton5);
             this.groupBox1.Controls.Add(this.iconButton2);
@@ -306,49 +263,56 @@
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
             this.groupBox1.Location = new System.Drawing.Point(17, 25);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(385, 303);
+            this.groupBox1.Size = new System.Drawing.Size(385, 286);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "CORDOBAS";
             // 
-            // iconButton7
-            // 
-            this.iconButton7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton7.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton7.IconColor = System.Drawing.Color.Black;
-            this.iconButton7.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton7.Location = new System.Drawing.Point(249, 256);
-            this.iconButton7.Name = "iconButton7";
-            this.iconButton7.Size = new System.Drawing.Size(75, 39);
-            this.iconButton7.TabIndex = 15;
-            this.iconButton7.Text = "iconButton7";
-            this.iconButton7.UseVisualStyleBackColor = true;
-            // 
             // iconButton6
             // 
-            this.iconButton6.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton6.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton6.IconColor = System.Drawing.Color.Black;
-            this.iconButton6.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton6.Location = new System.Drawing.Point(131, 256);
+            this.iconButton6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.iconButton6.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.iconButton6.FlatAppearance.BorderSize = 4;
+            this.iconButton6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.iconButton6.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.iconButton6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton6.IconChar = FontAwesome.Sharp.IconChar.X;
+            this.iconButton6.IconColor = System.Drawing.Color.Maroon;
+            this.iconButton6.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.iconButton6.IconSize = 25;
+            this.iconButton6.Location = new System.Drawing.Point(23, 222);
             this.iconButton6.Name = "iconButton6";
-            this.iconButton6.Size = new System.Drawing.Size(75, 39);
+            this.iconButton6.Size = new System.Drawing.Size(107, 54);
             this.iconButton6.TabIndex = 14;
-            this.iconButton6.Text = "iconButton6";
-            this.iconButton6.UseVisualStyleBackColor = true;
+            this.iconButton6.Text = "Limpiar";
+            this.iconButton6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.iconButton6.UseVisualStyleBackColor = false;
             // 
             // iconButton5
             // 
-            this.iconButton5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton5.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton5.IconColor = System.Drawing.Color.Black;
+            this.iconButton5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.iconButton5.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.iconButton5.FlatAppearance.BorderSize = 4;
+            this.iconButton5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
+            this.iconButton5.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
+            this.iconButton5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton5.ForeColor = System.Drawing.Color.Black;
+            this.iconButton5.IconChar = FontAwesome.Sharp.IconChar.SignInAlt;
+            this.iconButton5.IconColor = System.Drawing.Color.DarkGreen;
             this.iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton5.Location = new System.Drawing.Point(23, 256);
+            this.iconButton5.IconSize = 27;
+            this.iconButton5.Location = new System.Drawing.Point(249, 222);
             this.iconButton5.Name = "iconButton5";
-            this.iconButton5.Size = new System.Drawing.Size(75, 39);
+            this.iconButton5.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.iconButton5.Size = new System.Drawing.Size(112, 54);
             this.iconButton5.TabIndex = 13;
-            this.iconButton5.Text = "iconButton5";
-            this.iconButton5.UseVisualStyleBackColor = true;
+            this.iconButton5.Text = "Guardar";
+            this.iconButton5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.iconButton5.UseVisualStyleBackColor = false;
             // 
             // iconButton2
             // 
@@ -387,10 +351,11 @@
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(103, 187);
+            this.textBox2.Location = new System.Drawing.Point(115, 187);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(144, 29);
+            this.textBox2.Size = new System.Drawing.Size(141, 29);
             this.textBox2.TabIndex = 6;
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // textBox1
             // 
@@ -405,6 +370,10 @@
             this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.ItemHeight = 20;
+            this.comboBox1.Items.AddRange(new object[] {
+            "PAGO WU",
+            "DEPOSITO BANPRO",
+            "RETIRO BANPRO"});
             this.comboBox1.Location = new System.Drawing.Point(23, 59);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(338, 28);
@@ -414,7 +383,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(87, 160);
+            this.label4.Location = new System.Drawing.Point(101, 160);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(178, 24);
             this.label4.TabIndex = 3;
@@ -446,9 +415,55 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(19, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(146, 24);
+            this.label1.Size = new System.Drawing.Size(225, 24);
             this.label1.TabIndex = 0;
-            this.label1.Text = "TRANSACCION";
+            this.label1.Text = "TIPO DE TRANSACCION";
+            // 
+            // iconButton3
+            // 
+            this.iconButton3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.iconButton3.FlatAppearance.BorderColor = System.Drawing.Color.Green;
+            this.iconButton3.FlatAppearance.BorderSize = 4;
+            this.iconButton3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
+            this.iconButton3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
+            this.iconButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton3.ForeColor = System.Drawing.Color.Black;
+            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.SignInAlt;
+            this.iconButton3.IconColor = System.Drawing.Color.DarkGreen;
+            this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton3.IconSize = 27;
+            this.iconButton3.Location = new System.Drawing.Point(249, 222);
+            this.iconButton3.Name = "iconButton3";
+            this.iconButton3.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.iconButton3.Size = new System.Drawing.Size(112, 54);
+            this.iconButton3.TabIndex = 16;
+            this.iconButton3.Text = "Guardar";
+            this.iconButton3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.iconButton3.UseVisualStyleBackColor = false;
+            // 
+            // iconButton4
+            // 
+            this.iconButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
+            this.iconButton4.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.iconButton4.FlatAppearance.BorderSize = 4;
+            this.iconButton4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.iconButton4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.iconButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.X;
+            this.iconButton4.IconColor = System.Drawing.Color.Maroon;
+            this.iconButton4.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.iconButton4.IconSize = 25;
+            this.iconButton4.Location = new System.Drawing.Point(23, 222);
+            this.iconButton4.Name = "iconButton4";
+            this.iconButton4.Size = new System.Drawing.Size(107, 54);
+            this.iconButton4.TabIndex = 17;
+            this.iconButton4.Text = "Limpiar";
+            this.iconButton4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.iconButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.iconButton4.UseVisualStyleBackColor = false;
             // 
             // Entrada
             // 
@@ -457,8 +472,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(847, 475);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(847, 498);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip2);
             this.Controls.Add(this.label11);
@@ -466,6 +480,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Entrada";
+            this.Opacity = 0.5D;
             this.Padding = new System.Windows.Forms.Padding(8);
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -499,12 +514,8 @@
         private FontAwesome.Sharp.IconButton iconButton1;
         private FontAwesome.Sharp.IconButton iconButton2;
         private FontAwesome.Sharp.IconButton iconButton5;
-        private FontAwesome.Sharp.IconButton iconButton7;
         private FontAwesome.Sharp.IconButton iconButton6;
         private System.Windows.Forms.GroupBox groupBox2;
-        private FontAwesome.Sharp.IconButton iconButton3;
-        private FontAwesome.Sharp.IconButton iconButton4;
-        private FontAwesome.Sharp.IconButton iconButton8;
         private FontAwesome.Sharp.IconButton iconButton9;
         private FontAwesome.Sharp.IconButton iconButton10;
         private System.Windows.Forms.TextBox textBox4;
@@ -515,5 +526,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
+        private FontAwesome.Sharp.IconButton iconButton3;
+        private FontAwesome.Sharp.IconButton iconButton4;
     }
 }
