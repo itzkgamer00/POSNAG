@@ -51,7 +51,7 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(109, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(903, 73);
             this.panel2.TabIndex = 4;
@@ -86,7 +86,7 @@
             this.btnHome.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnHome.IconSize = 30;
             this.btnHome.Location = new System.Drawing.Point(11, 72);
-            this.btnHome.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnHome.Margin = new System.Windows.Forms.Padding(2);
             this.btnHome.Name = "btnHome";
             this.btnHome.Size = new System.Drawing.Size(87, 60);
             this.btnHome.TabIndex = 5;
@@ -109,7 +109,7 @@
             this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton2.IconSize = 20;
             this.iconButton2.Location = new System.Drawing.Point(11, 374);
-            this.iconButton2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.iconButton2.Margin = new System.Windows.Forms.Padding(2);
             this.iconButton2.Name = "iconButton2";
             this.iconButton2.Size = new System.Drawing.Size(87, 60);
             this.iconButton2.TabIndex = 7;
@@ -131,7 +131,7 @@
             this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton3.IconSize = 25;
             this.iconButton3.Location = new System.Drawing.Point(11, 300);
-            this.iconButton3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.iconButton3.Margin = new System.Windows.Forms.Padding(2);
             this.iconButton3.Name = "iconButton3";
             this.iconButton3.Size = new System.Drawing.Size(87, 60);
             this.iconButton3.TabIndex = 8;
@@ -154,7 +154,7 @@
             this.iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton4.IconSize = 25;
             this.iconButton4.Location = new System.Drawing.Point(11, 222);
-            this.iconButton4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.iconButton4.Margin = new System.Windows.Forms.Padding(2);
             this.iconButton4.Name = "iconButton4";
             this.iconButton4.Size = new System.Drawing.Size(87, 65);
             this.iconButton4.TabIndex = 9;
@@ -177,7 +177,7 @@
             this.btnControlEfectivo.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnControlEfectivo.IconSize = 25;
             this.btnControlEfectivo.Location = new System.Drawing.Point(11, 145);
-            this.btnControlEfectivo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnControlEfectivo.Margin = new System.Windows.Forms.Padding(2);
             this.btnControlEfectivo.Name = "btnControlEfectivo";
             this.btnControlEfectivo.Size = new System.Drawing.Size(87, 64);
             this.btnControlEfectivo.TabIndex = 10;
@@ -194,7 +194,7 @@
             this.PanelContenedor.Location = new System.Drawing.Point(125, 87);
             this.PanelContenedor.MaximumSize = new System.Drawing.Size(1380, 760);
             this.PanelContenedor.Name = "PanelContenedor";
-            this.PanelContenedor.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.PanelContenedor.Padding = new System.Windows.Forms.Padding(5);
             this.PanelContenedor.Size = new System.Drawing.Size(875, 564);
             this.PanelContenedor.TabIndex = 11;
             // 
@@ -211,7 +211,7 @@
             this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton1.IconSize = 20;
             this.iconButton1.Location = new System.Drawing.Point(11, 447);
-            this.iconButton1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.iconButton1.Margin = new System.Windows.Forms.Padding(2);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.Size = new System.Drawing.Size(87, 60);
             this.iconButton1.TabIndex = 12;
@@ -233,7 +233,7 @@
             this.iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton5.IconSize = 20;
             this.iconButton5.Location = new System.Drawing.Point(11, 591);
-            this.iconButton5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.iconButton5.Margin = new System.Windows.Forms.Padding(2);
             this.iconButton5.Name = "iconButton5";
             this.iconButton5.Size = new System.Drawing.Size(87, 60);
             this.iconButton5.TabIndex = 13;
@@ -255,7 +255,7 @@
             this.iconButton6.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton6.IconSize = 20;
             this.iconButton6.Location = new System.Drawing.Point(11, 519);
-            this.iconButton6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.iconButton6.Margin = new System.Windows.Forms.Padding(2);
             this.iconButton6.Name = "iconButton6";
             this.iconButton6.Size = new System.Drawing.Size(87, 60);
             this.iconButton6.TabIndex = 14;
@@ -299,7 +299,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(1029, 709);
-            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(1027, 597);
             this.Name = "Inicio";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
