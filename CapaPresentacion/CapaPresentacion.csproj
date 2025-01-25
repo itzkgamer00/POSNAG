@@ -56,6 +56,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cambiodivisas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cambiodivisas.Designer.cs">
+      <DependentUpon>Cambiodivisas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entrada.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -76,6 +82,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Cambiodivisas.resx">
+      <DependentUpon>Cambiodivisas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Entrada.resx">
       <DependentUpon>Entrada.cs</DependentUpon>
     </EmbeddedResource>
