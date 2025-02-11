@@ -142,7 +142,7 @@
             this.groupBox5.Controls.Add(this.MesaCambio);
             this.groupBox5.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.ForeColor = System.Drawing.Color.Black;
-            this.groupBox5.Location = new System.Drawing.Point(668, 9);
+            this.groupBox5.Location = new System.Drawing.Point(336, 13);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(163, 320);
             this.groupBox5.TabIndex = 4;
@@ -183,7 +183,7 @@
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.Black;
-            this.groupBox2.Location = new System.Drawing.Point(341, 13);
+            this.groupBox2.Location = new System.Drawing.Point(515, 13);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(312, 316);
             this.groupBox2.TabIndex = 3;

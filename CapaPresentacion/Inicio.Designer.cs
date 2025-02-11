@@ -191,7 +191,7 @@
             // PanelContenedor
             // 
             this.PanelContenedor.AutoScroll = true;
-            this.PanelContenedor.Location = new System.Drawing.Point(125, 87);
+            this.PanelContenedor.Location = new System.Drawing.Point(125, 111);
             this.PanelContenedor.MaximumSize = new System.Drawing.Size(1380, 760);
             this.PanelContenedor.Name = "PanelContenedor";
             this.PanelContenedor.Padding = new System.Windows.Forms.Padding(5);
