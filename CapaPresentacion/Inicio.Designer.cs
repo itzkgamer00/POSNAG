@@ -195,7 +195,7 @@
             this.PanelContenedor.MaximumSize = new System.Drawing.Size(1380, 760);
             this.PanelContenedor.Name = "PanelContenedor";
             this.PanelContenedor.Padding = new System.Windows.Forms.Padding(5);
-            this.PanelContenedor.Size = new System.Drawing.Size(875, 564);
+            this.PanelContenedor.Size = new System.Drawing.Size(875, 511);
             this.PanelContenedor.TabIndex = 11;
             // 
             // iconButton1
