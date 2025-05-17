@@ -55,5 +55,26 @@ namespace CapaPresentacion
             // Limpia el panel de cualquier control restante
             PanelContenedor.Controls.Clear();
         }
+
+        private void btnMesaCambio_Click(object sender, EventArgs e)
+        {
+            // Cerrar cualquier formulario que ya esté en el panel.
+            foreach (Control control in PanelContenedor.Controls)
+            {
+                control.Dispose();
+            }
+
+            // Crear instancia del formulario secundario.
+            Cambiodivisas frmMesadeCambio = new Cambiodivisas
+            {
+                TopLevel = false, // Para que se comporte como un control en el panel
+                Dock = DockStyle.Fill // Para que ocupe todo el espacio del panel
+            };
+
+            PanelContenedor.Controls.Add(frmMesadeCambio);
+            PanelContenedor.Tag = frmMesadeCambio;
+            frmMesadeCambio.Show();
+
+        }
     }
 }

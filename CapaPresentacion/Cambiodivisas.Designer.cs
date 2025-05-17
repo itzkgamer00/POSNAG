@@ -62,9 +62,8 @@
             this.menuStrip1.Location = new System.Drawing.Point(12, 12);
             this.menuStrip1.MaximumSize = new System.Drawing.Size(2070, 1110);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
             this.menuStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.menuStrip1.Size = new System.Drawing.Size(762, 84);
+            this.menuStrip1.Size = new System.Drawing.Size(963, 84);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -86,7 +85,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox1.Size = new System.Drawing.Size(761, 354);
+            this.groupBox1.Size = new System.Drawing.Size(960, 354);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "MONTOS";
@@ -95,9 +94,9 @@
             // 
             this.groupBox6.Controls.Add(this.textBox2);
             this.groupBox6.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox6.Location = new System.Drawing.Point(226, 192);
+            this.groupBox6.Location = new System.Drawing.Point(31, 184);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(205, 60);
+            this.groupBox6.Size = new System.Drawing.Size(202, 60);
             this.groupBox6.TabIndex = 33;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "MONEDA LOCAL";
@@ -110,16 +109,16 @@
             this.textBox2.Location = new System.Drawing.Point(3, 22);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(199, 35);
+            this.textBox2.Size = new System.Drawing.Size(196, 35);
             this.textBox2.TabIndex = 2;
             // 
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.textBox1);
             this.groupBox5.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(25, 192);
+            this.groupBox5.Location = new System.Drawing.Point(28, 105);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(195, 60);
+            this.groupBox5.Size = new System.Drawing.Size(205, 60);
             this.groupBox5.TabIndex = 33;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "MONEDA EXTRANJERA";
@@ -132,16 +131,16 @@
             this.textBox1.Location = new System.Drawing.Point(3, 22);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(189, 35);
+            this.textBox1.Size = new System.Drawing.Size(199, 35);
             this.textBox1.TabIndex = 1;
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.comboBox1);
             this.groupBox4.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(25, 20);
+            this.groupBox4.Location = new System.Drawing.Point(28, 23);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(334, 56);
+            this.groupBox4.Size = new System.Drawing.Size(412, 56);
             this.groupBox4.TabIndex = 32;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "TIPO DE TRANSACCION";
@@ -156,16 +155,16 @@
             "ASDASD"});
             this.comboBox1.Location = new System.Drawing.Point(3, 22);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(328, 29);
+            this.comboBox1.Size = new System.Drawing.Size(406, 29);
             this.comboBox1.TabIndex = 0;
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.comboBox2);
             this.groupBox3.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(398, 20);
+            this.groupBox3.Location = new System.Drawing.Point(527, 23);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(275, 56);
+            this.groupBox3.Size = new System.Drawing.Size(267, 56);
             this.groupBox3.TabIndex = 31;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "TIPO DE CAMBIO";
@@ -180,14 +179,14 @@
             "ASDASD"});
             this.comboBox2.Location = new System.Drawing.Point(3, 22);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(269, 29);
+            this.comboBox2.Size = new System.Drawing.Size(261, 29);
             this.comboBox2.TabIndex = 0;
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.textBox3);
             this.groupBox2.Font = new System.Drawing.Font("Bahnschrift", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(25, 103);
+            this.groupBox2.Location = new System.Drawing.Point(527, 95);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(153, 53);
             this.groupBox2.TabIndex = 30;
@@ -239,11 +238,11 @@
             this.iconButton5.IconColor = System.Drawing.Color.DarkGreen;
             this.iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton5.IconSize = 22;
-            this.iconButton5.Location = new System.Drawing.Point(632, 297);
+            this.iconButton5.Location = new System.Drawing.Point(663, 297);
             this.iconButton5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.iconButton5.Name = "iconButton5";
             this.iconButton5.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.iconButton5.Size = new System.Drawing.Size(121, 47);
+            this.iconButton5.Size = new System.Drawing.Size(128, 47);
             this.iconButton5.TabIndex = 13;
             this.iconButton5.Text = "Guardar";
             this.iconButton5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -263,10 +262,10 @@
             this.iconButton6.IconColor = System.Drawing.Color.Maroon;
             this.iconButton6.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton6.IconSize = 22;
-            this.iconButton6.Location = new System.Drawing.Point(477, 297);
+            this.iconButton6.Location = new System.Drawing.Point(527, 297);
             this.iconButton6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.iconButton6.Name = "iconButton6";
-            this.iconButton6.Size = new System.Drawing.Size(123, 47);
+            this.iconButton6.Size = new System.Drawing.Size(128, 47);
             this.iconButton6.TabIndex = 14;
             this.iconButton6.Text = "Limpiar";
             this.iconButton6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -299,9 +298,8 @@
             this.menuStrip2.Location = new System.Drawing.Point(12, 487);
             this.menuStrip2.MaximumSize = new System.Drawing.Size(2070, 1110);
             this.menuStrip2.Name = "menuStrip2";
-            this.menuStrip2.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
             this.menuStrip2.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.menuStrip2.Size = new System.Drawing.Size(762, 52);
+            this.menuStrip2.Size = new System.Drawing.Size(963, 52);
             this.menuStrip2.TabIndex = 6;
             this.menuStrip2.Text = "menuStrip2";
             // 
@@ -312,7 +310,7 @@
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(786, 551);
+            this.ClientSize = new System.Drawing.Size(987, 551);
             this.Controls.Add(this.menuStrip2);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.groupBox1);
@@ -322,7 +320,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Cambiodivisas";
-            this.Padding = new System.Windows.Forms.Padding(12, 12, 12, 12);
+            this.Padding = new System.Windows.Forms.Padding(12);
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mesa De Cambio";
