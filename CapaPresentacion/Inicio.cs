@@ -37,6 +37,7 @@ namespace CapaPresentacion
             formControlEfectivo.Show();
 
 
+
         }
 
         private void btnHome_Click(object sender, EventArgs e)
@@ -76,5 +77,6 @@ namespace CapaPresentacion
             frmMesadeCambio.Show();
 
         }
+
     }
 }
