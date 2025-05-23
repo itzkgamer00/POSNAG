@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CapaPresentacion
 {
-    public partial class Entrada : Form
+    public partial class FrmlEntrada : Form
     {
-        public Entrada()
+        public FrmlEntrada()
         {
             InitializeComponent();
         }
@@ -25,7 +25,7 @@ namespace CapaPresentacion
         private void MesaCambio_Click(object sender, EventArgs e)
         {
             {
-                Cambiodivisas entrada = new Cambiodivisas(); // Crear una instancia de Form2
+                Frmlcambiodivisas entrada = new Frmlcambiodivisas(); // Crear una instancia de Form2
                 entrada.StartPosition = FormStartPosition.CenterParent; // Centrar el formulario emergente
                 entrada.ShowDialog(); // Mostrarlo como emergente
             }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CapaPresentacion
 {
-    public partial class Cambiodivisas : Form
+    public partial class Frmlcambiodivisas : Form
     {
-        public Cambiodivisas()
+        public Frmlcambiodivisas()
         {
             InitializeComponent();
         }

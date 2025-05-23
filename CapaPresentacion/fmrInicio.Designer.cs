@@ -1,6 +1,6 @@
 ﻿namespace CapaPresentacion
 {
-    partial class Inicio
+    partial class fmrInicio
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Inicio));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fmrInicio));
             this.panel2 = new System.Windows.Forms.Panel();
             this.iconButton5 = new FontAwesome.Sharp.IconButton();
             this.iconButton6 = new FontAwesome.Sharp.IconButton();
@@ -78,7 +78,7 @@
             this.iconButton5.IconColor = System.Drawing.Color.Black;
             this.iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton5.IconSize = 20;
-            this.iconButton5.Location = new System.Drawing.Point(1009, 75);
+            this.iconButton5.Location = new System.Drawing.Point(1014, 75);
             this.iconButton5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton5.Name = "iconButton5";
             this.iconButton5.Size = new System.Drawing.Size(116, 85);
@@ -103,7 +103,7 @@
             this.iconButton6.IconColor = System.Drawing.Color.Black;
             this.iconButton6.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton6.IconSize = 20;
-            this.iconButton6.Location = new System.Drawing.Point(875, 75);
+            this.iconButton6.Location = new System.Drawing.Point(876, 75);
             this.iconButton6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton6.Name = "iconButton6";
             this.iconButton6.Size = new System.Drawing.Size(116, 85);
@@ -167,16 +167,16 @@
             this.iconButton1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
             this.iconButton1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.iconButton1.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.Map;
+            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.User;
             this.iconButton1.IconColor = System.Drawing.Color.Black;
             this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.IconSize = 20;
+            this.iconButton1.IconSize = 25;
             this.iconButton1.Location = new System.Drawing.Point(736, 75);
             this.iconButton1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.Size = new System.Drawing.Size(116, 85);
             this.iconButton1.TabIndex = 12;
-            this.iconButton1.Text = "HISTORIAL";
+            this.iconButton1.Text = "Usuarios";
             this.iconButton1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.iconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.iconButton1.UseVisualStyleBackColor = false;
@@ -220,7 +220,7 @@
             this.btnMesaCambio.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnMesaCambio.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMesaCambio.ForeColor = System.Drawing.Color.Black;
-            this.btnMesaCambio.IconChar = FontAwesome.Sharp.IconChar.MoneyBillTransfer;
+            this.btnMesaCambio.IconChar = FontAwesome.Sharp.IconChar.CashRegister;
             this.btnMesaCambio.IconColor = System.Drawing.Color.Black;
             this.btnMesaCambio.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnMesaCambio.IconSize = 25;
@@ -229,11 +229,10 @@
             this.btnMesaCambio.Name = "btnMesaCambio";
             this.btnMesaCambio.Size = new System.Drawing.Size(116, 85);
             this.btnMesaCambio.TabIndex = 9;
-            this.btnMesaCambio.Text = "Mesa De Cambio";
+            this.btnMesaCambio.Text = "Control De Caja";
             this.btnMesaCambio.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnMesaCambio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnMesaCambio.UseVisualStyleBackColor = false;
-            this.btnMesaCambio.Click += new System.EventHandler(this.btnMesaCambio_Click);
             // 
             // iconButton2
             // 
@@ -246,16 +245,16 @@
             this.iconButton2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
             this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.iconButton2.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.X;
+            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.ClipboardList;
             this.iconButton2.IconColor = System.Drawing.Color.Black;
             this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton2.IconSize = 20;
+            this.iconButton2.IconSize = 25;
             this.iconButton2.Location = new System.Drawing.Point(591, 75);
             this.iconButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton2.Name = "iconButton2";
             this.iconButton2.Size = new System.Drawing.Size(116, 85);
             this.iconButton2.TabIndex = 7;
-            this.iconButton2.Text = "Cierre De Caja";
+            this.iconButton2.Text = "Reportes";
             this.iconButton2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.iconButton2.UseVisualStyleBackColor = false;
@@ -271,7 +270,7 @@
             this.iconButton3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Lime;
             this.iconButton3.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.iconButton3.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.ClipboardCheck;
+            this.iconButton3.IconChar = FontAwesome.Sharp.IconChar.Clipboard;
             this.iconButton3.IconColor = System.Drawing.Color.Black;
             this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton3.IconSize = 25;
@@ -280,7 +279,7 @@
             this.iconButton3.Name = "iconButton3";
             this.iconButton3.Size = new System.Drawing.Size(116, 87);
             this.iconButton3.TabIndex = 8;
-            this.iconButton3.Text = "Apertura";
+            this.iconButton3.Text = "Historial De Caja";
             this.iconButton3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.iconButton3.UseVisualStyleBackColor = false;
@@ -293,14 +292,14 @@
             this.PanelContenedor.AutoScroll = true;
             this.PanelContenedor.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.PanelContenedor.Location = new System.Drawing.Point(201, 195);
-            this.PanelContenedor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.PanelContenedor.Margin = new System.Windows.Forms.Padding(4);
             this.PanelContenedor.MaximumSize = new System.Drawing.Size(1300, 700);
             this.PanelContenedor.Name = "PanelContenedor";
             this.PanelContenedor.Padding = new System.Windows.Forms.Padding(7, 6, 7, 6);
             this.PanelContenedor.Size = new System.Drawing.Size(1300, 700);
             this.PanelContenedor.TabIndex = 11;
             // 
-            // Inicio
+            // fmrInicio
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.White;
@@ -308,9 +307,9 @@
             this.Controls.Add(this.PanelContenedor);
             this.Controls.Add(this.panel2);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1120, 623);
-            this.Name = "Inicio";
+            this.Name = "fmrInicio";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panel2.ResumeLayout(false);

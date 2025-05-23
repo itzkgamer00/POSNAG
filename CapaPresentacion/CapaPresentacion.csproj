@@ -56,23 +56,23 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cambiodivisas.cs">
+    <Compile Include="Frmlcambiodivisas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Cambiodivisas.Designer.cs">
-      <DependentUpon>Cambiodivisas.cs</DependentUpon>
+    <Compile Include="Frmlcambiodivisas.Designer.cs">
+      <DependentUpon>Frmlcambiodivisas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Entrada.cs">
+    <Compile Include="FrmlEntrada.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Entrada.Designer.cs">
-      <DependentUpon>Entrada.cs</DependentUpon>
+    <Compile Include="FrmlEntrada.Designer.cs">
+      <DependentUpon>FrmlEntrada.cs</DependentUpon>
     </Compile>
-    <Compile Include="Inicio.cs">
+    <Compile Include="fmrInicio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Inicio.Designer.cs">
-      <DependentUpon>Inicio.cs</DependentUpon>
+    <Compile Include="fmrInicio.Designer.cs">
+      <DependentUpon>fmrInicio.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -82,14 +82,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Cambiodivisas.resx">
-      <DependentUpon>Cambiodivisas.cs</DependentUpon>
+    <EmbeddedResource Include="Frmlcambiodivisas.resx">
+      <DependentUpon>Frmlcambiodivisas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Entrada.resx">
-      <DependentUpon>Entrada.cs</DependentUpon>
+    <EmbeddedResource Include="FrmlEntrada.resx">
+      <DependentUpon>FrmlEntrada.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Inicio.resx">
-      <DependentUpon>Inicio.cs</DependentUpon>
+    <EmbeddedResource Include="fmrInicio.resx">
+      <DependentUpon>fmrInicio.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
