@@ -68,6 +68,12 @@
     <Compile Include="FrmCaja.Designer.cs">
       <DependentUpon>FrmCaja.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmCierre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCierre.Designer.cs">
+      <DependentUpon>FrmCierre.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frmlcambiodivisas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCaja.resx">
       <DependentUpon>FrmCaja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCierre.resx">
+      <DependentUpon>FrmCierre.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frmlcambiodivisas.resx">
       <DependentUpon>Frmlcambiodivisas.cs</DependentUpon>
