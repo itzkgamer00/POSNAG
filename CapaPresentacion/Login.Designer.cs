@@ -91,6 +91,7 @@
             // txtusuario
             // 
             this.txtusuario.BackColor = System.Drawing.Color.Gainsboro;
+            this.txtusuario.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtusuario.Location = new System.Drawing.Point(284, 89);
             this.txtusuario.Multiline = true;
             this.txtusuario.Name = "txtusuario";
@@ -101,6 +102,7 @@
             // 
             this.txtclave.BackColor = System.Drawing.Color.Gainsboro;
             this.txtclave.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtclave.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtclave.Location = new System.Drawing.Point(284, 150);
             this.txtclave.Multiline = true;
             this.txtclave.Name = "txtclave";
@@ -148,7 +150,7 @@
             this.iconButton2.FlatAppearance.BorderSize = 5;
             this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.iconButton2.ForeColor = System.Drawing.Color.Red;
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.TimesCircle;
+            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.CircleXmark;
             this.iconButton2.IconColor = System.Drawing.Color.Red;
             this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton2.IconSize = 20;

@@ -30,17 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fmrInicio));
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.PanelContenedor = new System.Windows.Forms.FlowLayoutPanel();
             this.iconButton4 = new FontAwesome.Sharp.IconButton();
             this.iconButton5 = new FontAwesome.Sharp.IconButton();
             this.iconButton6 = new FontAwesome.Sharp.IconButton();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnControlEfectivo = new FontAwesome.Sharp.IconButton();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.btnHome = new FontAwesome.Sharp.IconButton();
-            this.btnMesaCambio = new FontAwesome.Sharp.IconButton();
+            this.btnCaja = new FontAwesome.Sharp.IconButton();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
+            this.PanelContenedor = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,7 +55,7 @@
             this.panel2.Controls.Add(this.btnControlEfectivo);
             this.panel2.Controls.Add(this.iconButton1);
             this.panel2.Controls.Add(this.btnHome);
-            this.panel2.Controls.Add(this.btnMesaCambio);
+            this.panel2.Controls.Add(this.btnCaja);
             this.panel2.Controls.Add(this.iconButton2);
             this.panel2.Controls.Add(this.iconButton3);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -64,30 +64,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1184, 157);
             this.panel2.TabIndex = 4;
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.DarkSlateGray;
-            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label1.Font = new System.Drawing.Font("Bahnschrift", 19.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.Window;
-            this.label1.Location = new System.Drawing.Point(37, 18);
-            this.label1.Name = "label1";
-            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label1.Size = new System.Drawing.Size(399, 39);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "BIENVENIDO A PAYBOX";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // PanelContenedor
-            // 
-            this.PanelContenedor.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.PanelContenedor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelContenedor.Location = new System.Drawing.Point(0, 157);
-            this.PanelContenedor.Name = "PanelContenedor";
-            this.PanelContenedor.Size = new System.Drawing.Size(1184, 504);
-            this.PanelContenedor.TabIndex = 5;
             // 
             // iconButton4
             // 
@@ -165,6 +141,21 @@
             this.iconButton6.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.iconButton6.UseVisualStyleBackColor = false;
             // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.DarkSlateGray;
+            this.label1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.label1.Font = new System.Drawing.Font("Bahnschrift", 19.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.Window;
+            this.label1.Location = new System.Drawing.Point(37, 18);
+            this.label1.Name = "label1";
+            this.label1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.label1.Size = new System.Drawing.Size(399, 39);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "BIENVENIDO A PAYBOX";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // btnControlEfectivo
             // 
             this.btnControlEfectivo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -181,7 +172,7 @@
             this.btnControlEfectivo.IconColor = System.Drawing.Color.Black;
             this.btnControlEfectivo.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnControlEfectivo.IconSize = 25;
-            this.btnControlEfectivo.Location = new System.Drawing.Point(165, 72);
+            this.btnControlEfectivo.Location = new System.Drawing.Point(290, 72);
             this.btnControlEfectivo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnControlEfectivo.Name = "btnControlEfectivo";
             this.btnControlEfectivo.Size = new System.Drawing.Size(110, 72);
@@ -246,31 +237,32 @@
             this.btnHome.UseVisualStyleBackColor = false;
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
-            // btnMesaCambio
+            // btnCaja
             // 
-            this.btnMesaCambio.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.btnMesaCambio.BackColor = System.Drawing.Color.Silver;
-            this.btnMesaCambio.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.btnMesaCambio.FlatAppearance.BorderSize = 4;
-            this.btnMesaCambio.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnMesaCambio.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
-            this.btnMesaCambio.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
-            this.btnMesaCambio.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMesaCambio.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMesaCambio.ForeColor = System.Drawing.Color.Black;
-            this.btnMesaCambio.IconChar = FontAwesome.Sharp.IconChar.CashRegister;
-            this.btnMesaCambio.IconColor = System.Drawing.Color.Black;
-            this.btnMesaCambio.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnMesaCambio.IconSize = 25;
-            this.btnMesaCambio.Location = new System.Drawing.Point(290, 72);
-            this.btnMesaCambio.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnMesaCambio.Name = "btnMesaCambio";
-            this.btnMesaCambio.Size = new System.Drawing.Size(110, 72);
-            this.btnMesaCambio.TabIndex = 9;
-            this.btnMesaCambio.Text = "Control De Caja";
-            this.btnMesaCambio.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btnMesaCambio.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnMesaCambio.UseVisualStyleBackColor = false;
+            this.btnCaja.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnCaja.BackColor = System.Drawing.Color.Silver;
+            this.btnCaja.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.btnCaja.FlatAppearance.BorderSize = 4;
+            this.btnCaja.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnCaja.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btnCaja.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightGray;
+            this.btnCaja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCaja.Font = new System.Drawing.Font("Bahnschrift", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCaja.ForeColor = System.Drawing.Color.Black;
+            this.btnCaja.IconChar = FontAwesome.Sharp.IconChar.CashRegister;
+            this.btnCaja.IconColor = System.Drawing.Color.Black;
+            this.btnCaja.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnCaja.IconSize = 25;
+            this.btnCaja.Location = new System.Drawing.Point(162, 72);
+            this.btnCaja.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnCaja.Name = "btnCaja";
+            this.btnCaja.Size = new System.Drawing.Size(110, 72);
+            this.btnCaja.TabIndex = 9;
+            this.btnCaja.Text = "Control De Caja";
+            this.btnCaja.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.btnCaja.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnCaja.UseVisualStyleBackColor = false;
+            this.btnCaja.Click += new System.EventHandler(this.btnCaja_Click);
             // 
             // iconButton2
             // 
@@ -322,6 +314,18 @@
             this.iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.iconButton3.UseVisualStyleBackColor = false;
             // 
+            // PanelContenedor
+            // 
+            this.PanelContenedor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PanelContenedor.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.PanelContenedor.FlowDirection = System.Windows.Forms.FlowDirection.BottomUp;
+            this.PanelContenedor.Location = new System.Drawing.Point(0, 157);
+            this.PanelContenedor.Name = "PanelContenedor";
+            this.PanelContenedor.Size = new System.Drawing.Size(1184, 504);
+            this.PanelContenedor.TabIndex = 5;
+            // 
             // fmrInicio
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
@@ -346,7 +350,7 @@
         private FontAwesome.Sharp.IconButton btnHome;
         private FontAwesome.Sharp.IconButton iconButton2;
         private FontAwesome.Sharp.IconButton iconButton3;
-        private FontAwesome.Sharp.IconButton btnMesaCambio;
+        private FontAwesome.Sharp.IconButton btnCaja;
         private FontAwesome.Sharp.IconButton btnControlEfectivo;
         private FontAwesome.Sharp.IconButton iconButton1;
         private FontAwesome.Sharp.IconButton iconButton5;

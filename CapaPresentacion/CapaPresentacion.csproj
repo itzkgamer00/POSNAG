@@ -56,6 +56,12 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmApertura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmApertura.Designer.cs">
+      <DependentUpon>FrmApertura.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmCaja.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +94,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmApertura.resx">
+      <DependentUpon>FrmApertura.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmCaja.resx">
       <DependentUpon>FrmCaja.cs</DependentUpon>
     </EmbeddedResource>
@@ -127,9 +136,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="resourses\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="Resources\iconoprinc.jpg" />
   </ItemGroup>
@@ -146,6 +153,9 @@
       <Project>{1470729c-d588-40a9-828a-7241d221cb39}</Project>
       <Name>CapaNegocio</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resourses\cajaapertura.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
