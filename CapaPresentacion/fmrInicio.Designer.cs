@@ -62,7 +62,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1184, 157);
+            this.panel2.Size = new System.Drawing.Size(1182, 157);
             this.panel2.TabIndex = 4;
             // 
             // iconButton4
@@ -81,10 +81,10 @@
             this.iconButton4.IconColor = System.Drawing.Color.Black;
             this.iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton4.IconSize = 20;
-            this.iconButton4.Location = new System.Drawing.Point(1115, 72);
+            this.iconButton4.Location = new System.Drawing.Point(1096, 72);
             this.iconButton4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton4.Name = "iconButton4";
-            this.iconButton4.Size = new System.Drawing.Size(57, 72);
+            this.iconButton4.Size = new System.Drawing.Size(74, 72);
             this.iconButton4.TabIndex = 15;
             this.iconButton4.Text = "SALIR";
             this.iconButton4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -323,20 +323,23 @@
             this.PanelContenedor.FlowDirection = System.Windows.Forms.FlowDirection.BottomUp;
             this.PanelContenedor.Location = new System.Drawing.Point(0, 157);
             this.PanelContenedor.Name = "PanelContenedor";
+            this.PanelContenedor.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.PanelContenedor.Size = new System.Drawing.Size(1184, 504);
             this.PanelContenedor.TabIndex = 5;
+            this.PanelContenedor.TabStop = true;
             // 
             // fmrInicio
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1184, 661);
+            this.ClientSize = new System.Drawing.Size(1182, 661);
             this.Controls.Add(this.PanelContenedor);
             this.Controls.Add(this.panel2);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "fmrInicio";
-            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel2.ResumeLayout(false);
