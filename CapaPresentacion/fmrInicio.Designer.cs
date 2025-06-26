@@ -62,7 +62,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1182, 157);
+            this.panel2.Size = new System.Drawing.Size(1229, 157);
             this.panel2.TabIndex = 4;
             // 
             // iconButton4
@@ -81,7 +81,7 @@
             this.iconButton4.IconColor = System.Drawing.Color.Black;
             this.iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton4.IconSize = 20;
-            this.iconButton4.Location = new System.Drawing.Point(1096, 72);
+            this.iconButton4.Location = new System.Drawing.Point(1143, 72);
             this.iconButton4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton4.Name = "iconButton4";
             this.iconButton4.Size = new System.Drawing.Size(74, 72);
@@ -316,23 +316,22 @@
             // 
             // PanelContenedor
             // 
-            this.PanelContenedor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.PanelContenedor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.PanelContenedor.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.PanelContenedor.FlowDirection = System.Windows.Forms.FlowDirection.BottomUp;
-            this.PanelContenedor.Location = new System.Drawing.Point(0, 157);
+            this.PanelContenedor.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.PanelContenedor.Location = new System.Drawing.Point(47, 178);
+            this.PanelContenedor.MaximumSize = new System.Drawing.Size(1300, 620);
             this.PanelContenedor.Name = "PanelContenedor";
             this.PanelContenedor.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.PanelContenedor.Size = new System.Drawing.Size(1184, 504);
+            this.PanelContenedor.Size = new System.Drawing.Size(1163, 599);
             this.PanelContenedor.TabIndex = 5;
             this.PanelContenedor.TabStop = true;
             // 
             // fmrInicio
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
-            this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1182, 661);
+            this.BackColor = System.Drawing.Color.Silver;
+            this.ClientSize = new System.Drawing.Size(1229, 794);
             this.Controls.Add(this.PanelContenedor);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -340,6 +339,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "fmrInicio";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel2.ResumeLayout(false);
@@ -358,8 +358,8 @@
         private FontAwesome.Sharp.IconButton iconButton1;
         private FontAwesome.Sharp.IconButton iconButton5;
         private FontAwesome.Sharp.IconButton iconButton6;
-        private System.Windows.Forms.FlowLayoutPanel PanelContenedor;
         private FontAwesome.Sharp.IconButton iconButton4;
+        private System.Windows.Forms.FlowLayoutPanel PanelContenedor;
     }
 }
 
