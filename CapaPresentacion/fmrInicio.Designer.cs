@@ -172,7 +172,7 @@
             this.btnControlEfectivo.IconColor = System.Drawing.Color.Black;
             this.btnControlEfectivo.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnControlEfectivo.IconSize = 25;
-            this.btnControlEfectivo.Location = new System.Drawing.Point(290, 72);
+            this.btnControlEfectivo.Location = new System.Drawing.Point(164, 72);
             this.btnControlEfectivo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnControlEfectivo.Name = "btnControlEfectivo";
             this.btnControlEfectivo.Size = new System.Drawing.Size(110, 72);
@@ -253,7 +253,7 @@
             this.btnCaja.IconColor = System.Drawing.Color.Black;
             this.btnCaja.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnCaja.IconSize = 25;
-            this.btnCaja.Location = new System.Drawing.Point(162, 72);
+            this.btnCaja.Location = new System.Drawing.Point(291, 72);
             this.btnCaja.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCaja.Name = "btnCaja";
             this.btnCaja.Size = new System.Drawing.Size(110, 72);

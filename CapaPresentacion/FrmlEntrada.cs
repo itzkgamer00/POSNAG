@@ -39,5 +39,15 @@ namespace CapaPresentacion
                 detalle1.ShowDialog(); // Mostrarlo como emergente
             }
         }
+
+        private void btndetalleout1_Click(object sender, EventArgs e)
+        {
+            {
+                FrmDetalle detalle2 = new FrmDetalle(); // Crear una instancia de Form2
+                detalle2.StartPosition = FormStartPosition.CenterParent; // Centrar el formulario emergente
+                detalle2.ShowDialog(); // Mostrarlo como emergente
+            }
+
+        }
     }
 }

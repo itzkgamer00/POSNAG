@@ -38,8 +38,8 @@
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
-            this.iconButton9 = new FontAwesome.Sharp.IconButton();
-            this.iconButton10 = new FontAwesome.Sharp.IconButton();
+            this.btndetalleout2 = new FontAwesome.Sharp.IconButton();
+            this.btndetallein2 = new FontAwesome.Sharp.IconButton();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
@@ -50,7 +50,7 @@
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.comboBox3 = new System.Windows.Forms.ComboBox();
             this.iconButton5 = new FontAwesome.Sharp.IconButton();
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
+            this.btndetalleout1 = new FontAwesome.Sharp.IconButton();
             this.btndetallein1 = new FontAwesome.Sharp.IconButton();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -185,7 +185,7 @@
             this.MesaCambio.Name = "MesaCambio";
             this.MesaCambio.Size = new System.Drawing.Size(174, 81);
             this.MesaCambio.TabIndex = 0;
-            this.MesaCambio.Text = "APLICAR\r\nMESA DE CAMBIO";
+            this.MesaCambio.Text = "MESA DE CAMBIO";
             this.MesaCambio.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.MesaCambio.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.MesaCambio.UseVisualStyleBackColor = false;
@@ -243,35 +243,35 @@
             this.iconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.iconButton3.UseVisualStyleBackColor = false;
             // 
-            // iconButton9
+            // btndetalleout2
             // 
-            this.iconButton9.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.iconButton9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton9.IconChar = FontAwesome.Sharp.IconChar.MoneyBillWave;
-            this.iconButton9.IconColor = System.Drawing.Color.Black;
-            this.iconButton9.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconButton9.IconSize = 20;
-            this.iconButton9.Location = new System.Drawing.Point(363, 114);
-            this.iconButton9.Margin = new System.Windows.Forms.Padding(4);
-            this.iconButton9.Name = "iconButton9";
-            this.iconButton9.Size = new System.Drawing.Size(54, 33);
-            this.iconButton9.TabIndex = 12;
-            this.iconButton9.UseVisualStyleBackColor = true;
+            this.btndetalleout2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btndetalleout2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btndetalleout2.IconChar = FontAwesome.Sharp.IconChar.MoneyBillWave;
+            this.btndetalleout2.IconColor = System.Drawing.Color.Black;
+            this.btndetalleout2.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btndetalleout2.IconSize = 20;
+            this.btndetalleout2.Location = new System.Drawing.Point(363, 114);
+            this.btndetalleout2.Margin = new System.Windows.Forms.Padding(4);
+            this.btndetalleout2.Name = "btndetalleout2";
+            this.btndetalleout2.Size = new System.Drawing.Size(54, 33);
+            this.btndetalleout2.TabIndex = 12;
+            this.btndetalleout2.UseVisualStyleBackColor = true;
             // 
-            // iconButton10
+            // btndetallein2
             // 
-            this.iconButton10.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.iconButton10.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton10.IconChar = FontAwesome.Sharp.IconChar.MoneyBillWave;
-            this.iconButton10.IconColor = System.Drawing.Color.Black;
-            this.iconButton10.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconButton10.IconSize = 20;
-            this.iconButton10.Location = new System.Drawing.Point(142, 115);
-            this.iconButton10.Margin = new System.Windows.Forms.Padding(4);
-            this.iconButton10.Name = "iconButton10";
-            this.iconButton10.Size = new System.Drawing.Size(52, 33);
-            this.iconButton10.TabIndex = 11;
-            this.iconButton10.UseVisualStyleBackColor = true;
+            this.btndetallein2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btndetallein2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btndetallein2.IconChar = FontAwesome.Sharp.IconChar.MoneyBillWave;
+            this.btndetallein2.IconColor = System.Drawing.Color.Black;
+            this.btndetallein2.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btndetallein2.IconSize = 20;
+            this.btndetallein2.Location = new System.Drawing.Point(142, 115);
+            this.btndetallein2.Margin = new System.Windows.Forms.Padding(4);
+            this.btndetallein2.Name = "btndetallein2";
+            this.btndetallein2.Size = new System.Drawing.Size(52, 33);
+            this.btndetallein2.TabIndex = 11;
+            this.btndetallein2.UseVisualStyleBackColor = true;
             // 
             // textBox4
             // 
@@ -356,7 +356,7 @@
             this.groupBox1.BackColor = System.Drawing.Color.DarkGray;
             this.groupBox1.Controls.Add(this.groupBox6);
             this.groupBox1.Controls.Add(this.iconButton5);
-            this.groupBox1.Controls.Add(this.iconButton2);
+            this.groupBox1.Controls.Add(this.btndetalleout1);
             this.groupBox1.Controls.Add(this.btndetallein1);
             this.groupBox1.Controls.Add(this.textBox3);
             this.groupBox1.Controls.Add(this.textBox2);
@@ -428,20 +428,21 @@
             this.iconButton5.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.iconButton5.UseVisualStyleBackColor = false;
             // 
-            // iconButton2
+            // btndetalleout1
             // 
-            this.iconButton2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.iconButton2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.MoneyBillWave;
-            this.iconButton2.IconColor = System.Drawing.Color.Black;
-            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconButton2.IconSize = 20;
-            this.iconButton2.Location = new System.Drawing.Point(355, 113);
-            this.iconButton2.Margin = new System.Windows.Forms.Padding(4);
-            this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Size = new System.Drawing.Size(56, 35);
-            this.iconButton2.TabIndex = 12;
-            this.iconButton2.UseVisualStyleBackColor = true;
+            this.btndetalleout1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btndetalleout1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btndetalleout1.IconChar = FontAwesome.Sharp.IconChar.MoneyBillWave;
+            this.btndetalleout1.IconColor = System.Drawing.Color.Black;
+            this.btndetalleout1.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btndetalleout1.IconSize = 20;
+            this.btndetalleout1.Location = new System.Drawing.Point(355, 113);
+            this.btndetalleout1.Margin = new System.Windows.Forms.Padding(4);
+            this.btndetalleout1.Name = "btndetalleout1";
+            this.btndetalleout1.Size = new System.Drawing.Size(56, 35);
+            this.btndetalleout1.TabIndex = 12;
+            this.btndetalleout1.UseVisualStyleBackColor = true;
+            this.btndetalleout1.Click += new System.EventHandler(this.btndetalleout1_Click);
             // 
             // btndetallein1
             // 
@@ -668,8 +669,8 @@
             this.groupBox2.BackColor = System.Drawing.Color.DarkGray;
             this.groupBox2.Controls.Add(this.groupBox7);
             this.groupBox2.Controls.Add(this.iconButton3);
-            this.groupBox2.Controls.Add(this.iconButton9);
-            this.groupBox2.Controls.Add(this.iconButton10);
+            this.groupBox2.Controls.Add(this.btndetalleout2);
+            this.groupBox2.Controls.Add(this.btndetallein2);
             this.groupBox2.Controls.Add(this.textBox4);
             this.groupBox2.Controls.Add(this.textBox5);
             this.groupBox2.Controls.Add(this.textBox6);
@@ -742,11 +743,11 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox1;
         private FontAwesome.Sharp.IconButton btndetallein1;
-        private FontAwesome.Sharp.IconButton iconButton2;
+        private FontAwesome.Sharp.IconButton btndetalleout1;
         private FontAwesome.Sharp.IconButton iconButton5;
         private FontAwesome.Sharp.IconButton iconButton6;
-        private FontAwesome.Sharp.IconButton iconButton9;
-        private FontAwesome.Sharp.IconButton iconButton10;
+        private FontAwesome.Sharp.IconButton btndetalleout2;
+        private FontAwesome.Sharp.IconButton btndetallein2;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox6;
