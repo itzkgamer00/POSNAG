@@ -19,22 +19,11 @@ namespace CapaPresentacion
 
         private void btnaptcaja_Click(object sender, EventArgs e)
         {
-            // Cerrar cualquier formulario que ya esté en el panel.
-            foreach (Control control in PanelContenedorCaja.Controls)
-            {
-                control.Dispose();
-            }
 
-            // Crear instancia del formulario secundario.
-            FrmApertura formControlEfectivo = new FrmApertura
-            {
-                TopLevel = false, // Para que se comporte como un control en el panel
-                Dock = DockStyle.Fill // Para que ocupe todo el espacio del panel
-            };
+        }
 
-            PanelContenedorCaja.Controls.Add(formControlEfectivo);
-            PanelContenedorCaja.Tag = formControlEfectivo;
-            formControlEfectivo.Show();
+        private void tabPage2_Click(object sender, EventArgs e)
+        {
 
         }
     }

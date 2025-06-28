@@ -56,23 +56,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrmApertura.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmApertura.Designer.cs">
-      <DependentUpon>FrmApertura.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmCaja.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FrmCaja.Designer.cs">
       <DependentUpon>FrmCaja.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FrmCierre.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmCierre.Designer.cs">
-      <DependentUpon>FrmCierre.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmDetalle.cs">
       <SubType>Form</SubType>
@@ -106,14 +94,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FrmApertura.resx">
-      <DependentUpon>FrmApertura.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmCaja.resx">
       <DependentUpon>FrmCaja.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FrmCierre.resx">
-      <DependentUpon>FrmCierre.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmDetalle.resx">
       <DependentUpon>FrmDetalle.cs</DependentUpon>
