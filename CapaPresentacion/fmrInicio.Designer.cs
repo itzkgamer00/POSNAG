@@ -62,7 +62,7 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1166, 157);
+            this.panel2.Size = new System.Drawing.Size(1337, 157);
             this.panel2.TabIndex = 4;
             // 
             // iconButton4
@@ -81,7 +81,7 @@
             this.iconButton4.IconColor = System.Drawing.Color.Black;
             this.iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton4.IconSize = 20;
-            this.iconButton4.Location = new System.Drawing.Point(1080, 72);
+            this.iconButton4.Location = new System.Drawing.Point(1251, 72);
             this.iconButton4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton4.Name = "iconButton4";
             this.iconButton4.Size = new System.Drawing.Size(74, 72);
@@ -319,11 +319,11 @@
             this.PanelContenedor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.PanelContenedor.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.PanelContenedor.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.PanelContenedor.Location = new System.Drawing.Point(136, 188);
+            this.PanelContenedor.Location = new System.Drawing.Point(92, 187);
             this.PanelContenedor.MaximumSize = new System.Drawing.Size(1300, 620);
             this.PanelContenedor.Name = "PanelContenedor";
             this.PanelContenedor.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.PanelContenedor.Size = new System.Drawing.Size(874, 488);
+            this.PanelContenedor.Size = new System.Drawing.Size(1163, 620);
             this.PanelContenedor.TabIndex = 5;
             this.PanelContenedor.TabStop = true;
             // 
@@ -331,7 +331,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.Color.Silver;
-            this.ClientSize = new System.Drawing.Size(1166, 737);
+            this.ClientSize = new System.Drawing.Size(1337, 819);
             this.Controls.Add(this.PanelContenedor);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
