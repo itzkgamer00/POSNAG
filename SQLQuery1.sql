@@ -99,8 +99,8 @@ CREATE TABLE CierreCaja (
 );
 
 
-INSERT INTO Usuario (NombreCompleto, usuario, password_hash, IdRol, estado)
-VALUES ('Administrador', 'admin', '12345', 1, 1);
+INSERT INTO Usuario (NombreCompleto, correo, usuario, password_hash, IdRol, estado)
+VALUES ('Administrador','kenrrichg@gmail.com', 'admin', '12345', 1, 1);
 
 INSERT INTO Roles (Descripcion)
 VALUES ('Administrador');
@@ -113,3 +113,8 @@ VALUES ('Supervisor');
 
 
 select * from Usuario;
+DELETE FROM Usuario;
+
+
+
+
