@@ -39,7 +39,6 @@
             this.btningresar = new FontAwesome.Sharp.IconButton();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnProbarConexion = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.iconPictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -75,7 +74,7 @@
             this.iconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.Regular;
             this.iconPictureBox1.IconSize = 172;
             this.iconPictureBox1.Location = new System.Drawing.Point(59, 102);
-            this.iconPictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.iconPictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.iconPictureBox1.Name = "iconPictureBox1";
             this.iconPictureBox1.Size = new System.Drawing.Size(187, 172);
             this.iconPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -98,7 +97,7 @@
             this.txtusuario.BackColor = System.Drawing.Color.Gainsboro;
             this.txtusuario.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtusuario.Location = new System.Drawing.Point(379, 110);
-            this.txtusuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtusuario.Margin = new System.Windows.Forms.Padding(4);
             this.txtusuario.Multiline = true;
             this.txtusuario.Name = "txtusuario";
             this.txtusuario.Size = new System.Drawing.Size(293, 31);
@@ -110,7 +109,7 @@
             this.txtclave.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtclave.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtclave.Location = new System.Drawing.Point(379, 185);
-            this.txtclave.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtclave.Margin = new System.Windows.Forms.Padding(4);
             this.txtclave.Multiline = true;
             this.txtclave.Name = "txtclave";
             this.txtclave.PasswordChar = '*';
@@ -141,7 +140,7 @@
             this.btningresar.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btningresar.IconSize = 20;
             this.btningresar.Location = new System.Drawing.Point(379, 236);
-            this.btningresar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btningresar.Margin = new System.Windows.Forms.Padding(4);
             this.btningresar.Name = "btningresar";
             this.btningresar.Size = new System.Drawing.Size(147, 46);
             this.btningresar.TabIndex = 7;
@@ -165,7 +164,7 @@
             this.iconButton2.IconSize = 20;
             this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.iconButton2.Location = new System.Drawing.Point(533, 236);
-            this.iconButton2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.iconButton2.Margin = new System.Windows.Forms.Padding(4);
             this.iconButton2.Name = "iconButton2";
             this.iconButton2.Size = new System.Drawing.Size(140, 46);
             this.iconButton2.TabIndex = 8;
@@ -187,23 +186,12 @@
             this.label5.Text = "BIENVENIDO A PAYBOX";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnProbarConexion
-            // 
-            this.btnProbarConexion.Location = new System.Drawing.Point(529, 151);
-            this.btnProbarConexion.Name = "btnProbarConexion";
-            this.btnProbarConexion.Size = new System.Drawing.Size(204, 23);
-            this.btnProbarConexion.TabIndex = 10;
-            this.btnProbarConexion.Text = "Probar Conexión";
-            this.btnProbarConexion.UseVisualStyleBackColor = true;
-            this.btnProbarConexion.Click += new System.EventHandler(this.btnProbarConexion_Click);
-            // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(745, 306);
-            this.Controls.Add(this.btnProbarConexion);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.iconButton2);
             this.Controls.Add(this.btningresar);
@@ -217,7 +205,7 @@
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
@@ -239,6 +227,5 @@
         private FontAwesome.Sharp.IconButton iconButton2;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtclave;
-        private System.Windows.Forms.Button btnProbarConexion;
     }
 }

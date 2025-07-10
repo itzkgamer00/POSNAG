@@ -15,7 +15,7 @@ namespace CapaNegocio
         public List<Usuario> Listar()
         {
 
-            return objcd_usuario.Listar();
+            return objcd_usuario.listar();
         }
     }
 }

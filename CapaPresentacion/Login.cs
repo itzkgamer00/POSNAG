@@ -31,8 +31,27 @@ namespace CapaPresentacion
 
         private void btningresar_Click(object sender, EventArgs e)
         {
+
+            List<Usuario> TEST = new CN_Usuario().Listar();
+
             Usuario ousuario = (Usuario)new CN_Usuario().Listar().Where(u => u.usuario == txtusuario.Text && u.password_hash == txtclave.Text).FirstOrDefault();
 
+            if (ousuario != null)
+            {
+                MessageBox.Show($"✅ Bienvenido {ousuario.NombreCompleto}");
+
+                fmrInicio frm = new fmrInicio();
+                frm.Show();
+                this.Hide();
+                frm.FormClosing += frm_closing; 
+
+            }
+            else
+            {
+                MessageBox.Show("❌ Usuario o contraseña incorrectos");
+            }
+
+            
         }
 
         private void frm_closing(object sender, FormClosingEventArgs e)
@@ -42,22 +61,6 @@ namespace CapaPresentacion
             this.Show();
         }
 
-        private void btnProbarConexion_Click(object sender, EventArgs e)
-        {
-            string connectionString =   "Server=localhost;Database=SistemaCaja;User Id=sa;Password=kenrrichpg0621;";
-
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                try
-                {
-                    con.Open();
-                    MessageBox.Show("✅ Conexión exitosa a la base de datos.");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("❌ Error al conectar: " + ex.Message);
-                }
-            }
-        }
+        
     }
 }
