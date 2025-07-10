@@ -3,82 +3,113 @@ go
 use SistemaCaja
 go
 
--- Rol
+-- Tabla de Roles
 CREATE TABLE Roles (
-    IdRol  int primary key identity(1,1),
+    IdRol INT PRIMARY KEY IDENTITY(1,1),
     Descripcion VARCHAR(100),
-	FechaCreacion datetime default getdate()
-
+    Estado BIT DEFAULT 1,
+    FechaCreacion DATETIME DEFAULT GETDATE()
 );
 
--- Usuario
+-- Tabla de Usuarios
 CREATE TABLE Usuario (
-    usuario_id int primary key identity(1,1)not null,
-    NombreCompleto varchar(100)not null,
-    Correo varchar(100)null,
-    usuario VARCHAR(50)not null,
-    contraseña varchar(100)not null,
-	IdRol int references Roles(IdRol)not null,
-	estado bit not null,
-	FechaCreacion datetime default getdate()not null,
+    usuario_id INT PRIMARY KEY IDENTITY(1,1),
+    NombreCompleto VARCHAR(100) NOT NULL,
+    Correo VARCHAR(100),
+    usuario VARCHAR(50) NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    IdRol INT NOT NULL FOREIGN KEY REFERENCES Roles(IdRol),
+    estado BIT NOT NULL DEFAULT 1,
+    FechaCreacion DATETIME DEFAULT GETDATE()
 );
 
+-- Tabla de Menús
+CREATE TABLE Menu (
+    MenuId INT PRIMARY KEY IDENTITY(1,1),
+    NombreMenu VARCHAR(100) NOT NULL,
+    Ruta VARCHAR(255),
+    Icono VARCHAR(100),
+    FechaCreacion DATETIME DEFAULT GETDATE()
+);
 
--- Permisos
+-- Tabla de Permisos
 CREATE TABLE Permiso (
-    idPermiso int primary key identity(1,1),
-	IdRol int references Roles(IdRol),
-	NombreMenu varchar(100),
-	FechaCreacion datetime default getdate()
-
-	);
-CREATE TABLE CambioDivisa (
-    cambio_id INT primary key IDENTITY(1,1),
-    usuario_id INT,
-    tipo varchar (50), -- VENTA O COMPRA
-    moneda varchar (50), -- DÓLAR O CÓRDOBA
-    monto DECIMAL(10, 2),
-    tasa_cambio DECIMAL(10, 4),
-    descripcion VARCHAR(255),
-    fecha_hora datetime DEFAULT GETDATE(),
-    FOREIGN KEY (usuario_id) REFERENCES Usuario(usuario_id)
+    idPermiso INT PRIMARY KEY IDENTITY(1,1),
+    IdRol INT FOREIGN KEY REFERENCES Roles(IdRol),
+    MenuId INT FOREIGN KEY REFERENCES Menu(MenuId),
+    Accion VARCHAR(50) DEFAULT 'Acceso',
+    FechaCreacion DATETIME DEFAULT GETDATE()
 );
 
-CREATE TABLE Transacciones (
-    transaccion_id int PRIMARY KEY IDENTITY(1,1),
-    usuario_id int,
-    cambio_id INT REFERENCES CambioDivisa(cambio_id), -- Puede ser NULL si la transacción no es un cambio de divisas
-    tipo_transaccion varchar(50), -- entrada o salida
-    moneda varchar (50), -- dólar o córdoba
-    monto DECIMAL(10, 2),
-    descripcion VARCHAR(255),
-    fecha_hora datetime DEFAULT GETDATE(),
-    FOREIGN KEY (usuario_id) REFERENCES Usuario(usuario_id),
-    
-); 
+-- Tabla de Monedas
+CREATE TABLE Moneda (
+    moneda_id INT PRIMARY KEY IDENTITY(1,1),
+    nombre VARCHAR(50) NOT NULL,
+    simbolo VARCHAR(10),
+    estado BIT DEFAULT 1,
+    FechaCreacion DATETIME DEFAULT GETDATE()
+);
 
+-- Tabla de Cambio de Divisas
+CREATE TABLE CambioDivisa (
+    cambio_id INT PRIMARY KEY IDENTITY(1,1),
+    usuario_id INT FOREIGN KEY REFERENCES Usuario(usuario_id),
+    tipo VARCHAR(50) CHECK (tipo IN ('VENTA', 'COMPRA')),
+    moneda_id INT FOREIGN KEY REFERENCES Moneda(moneda_id),
+    monto DECIMAL(10,2),
+    tasa_cambio DECIMAL(10,4),
+    descripcion VARCHAR(255),
+    estado BIT DEFAULT 1,
+    fecha_hora DATETIME DEFAULT GETDATE()
+);
+
+-- Tabla de Transacciones 
+CREATE TABLE Transacciones (
+    transaccion_id INT PRIMARY KEY IDENTITY(1,1),
+    usuario_id INT FOREIGN KEY REFERENCES Usuario(usuario_id),
+    moneda_id INT FOREIGN KEY REFERENCES Moneda(moneda_id),
+    monto_entrada DECIMAL(10,2),
+    monto_cobrado DECIMAL(10,2),
+    monto_salida DECIMAL(10,2), 
+    descripcion VARCHAR(255),
+    referencia VARCHAR(100),
+    fecha_hora DATETIME DEFAULT GETDATE(),
+    estado BIT DEFAULT 1,
+    usuario_modifico INT NULL FOREIGN KEY REFERENCES Usuario(usuario_id),
+    fecha_modificacion DATETIME NULL
+);
+
+-- Tabla de Apertura de Caja
 CREATE TABLE AperturaCaja (
     apertura_id INT PRIMARY KEY IDENTITY(1,1),
-    usuario_id INT,
+    usuario_id INT FOREIGN KEY REFERENCES Usuario(usuario_id),
     fecha_hora DATETIME DEFAULT GETDATE(),
-    monto_inicial DECIMAL(10, 2),
-    FOREIGN KEY (usuario_id) REFERENCES Usuario(usuario_id)
+    monto_inicial DECIMAL(10,2),
+    observaciones VARCHAR(255)
 );
 
+-- Tabla de Cierre de Caja
 CREATE TABLE CierreCaja (
     cierre_id INT PRIMARY KEY IDENTITY(1,1),
-    usuario_id INT,
+    usuario_id INT FOREIGN KEY REFERENCES Usuario(usuario_id),
+    apertura_id INT FOREIGN KEY REFERENCES AperturaCaja(apertura_id),
     fecha_hora DATETIME DEFAULT GETDATE(),
-    monto_final DECIMAL(10, 2),
-    FOREIGN KEY (usuario_id) REFERENCES Usuario(usuario_id)
+    monto_final DECIMAL(10,2),
+    observaciones VARCHAR(255)
 );
 
 
--- Historial de Transacciones
-CREATE TABLE HistorialTransacciones (
-    historial_id INT PRIMARY KEY,
-    transaccion_id int,
-    accion varchar(50),
-    fecha_hora TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (transaccion_id) REFERENCES Transacciones(transaccion_id)
-);
+INSERT INTO Usuario (NombreCompleto, usuario, password_hash, IdRol, estado)
+VALUES ('Administrador', 'admin', '12345', 1, 1);
+
+INSERT INTO Roles (Descripcion)
+VALUES ('Administrador');
+
+INSERT INTO Roles (Descripcion)
+VALUES ('Cajero');
+
+INSERT INTO Roles (Descripcion)
+VALUES ('Supervisor');
+
+
+select * from Usuario;
