@@ -103,10 +103,10 @@
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(3, 22);
+            this.textBox2.Location = new System.Drawing.Point(3, 18);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(196, 44);
+            this.textBox2.Size = new System.Drawing.Size(196, 48);
             this.textBox2.TabIndex = 2;
             // 
             // groupBox5
@@ -125,10 +125,10 @@
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(3, 22);
+            this.textBox1.Location = new System.Drawing.Point(3, 18);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(199, 44);
+            this.textBox1.Size = new System.Drawing.Size(199, 48);
             this.textBox1.TabIndex = 1;
             // 
             // groupBox4
@@ -151,9 +151,9 @@
             this.comboBox1.Items.AddRange(new object[] {
             "VENTA",
             "COMPRA"});
-            this.comboBox1.Location = new System.Drawing.Point(3, 22);
+            this.comboBox1.Location = new System.Drawing.Point(3, 18);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(310, 44);
+            this.comboBox1.Size = new System.Drawing.Size(310, 37);
             this.comboBox1.TabIndex = 0;
             // 
             // groupBox3
@@ -176,9 +176,9 @@
             this.comboBox2.Items.AddRange(new object[] {
             "PUBLICO",
             "PREFERENCIAL"});
-            this.comboBox2.Location = new System.Drawing.Point(3, 22);
+            this.comboBox2.Location = new System.Drawing.Point(3, 18);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(295, 44);
+            this.comboBox2.Size = new System.Drawing.Size(295, 37);
             this.comboBox2.TabIndex = 0;
             // 
             // iconButton5
@@ -222,10 +222,10 @@
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(3, 22);
+            this.textBox3.Location = new System.Drawing.Point(3, 18);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(147, 30);
+            this.textBox3.Size = new System.Drawing.Size(147, 34);
             this.textBox3.TabIndex = 0;
             this.textBox3.Text = "36.45";
             // 
@@ -245,7 +245,7 @@
             this.label2.Location = new System.Drawing.Point(11, 215);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(114, 19);
+            this.label2.Size = new System.Drawing.Size(90, 16);
             this.label2.TabIndex = 28;
             this.label2.Text = "OBSERVACION";
             // 
@@ -261,14 +261,14 @@
             this.label11.Location = new System.Drawing.Point(17, 25);
             this.label11.Name = "label11";
             this.label11.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label11.Size = new System.Drawing.Size(270, 41);
+            this.label11.Size = new System.Drawing.Size(215, 33);
             this.label11.TabIndex = 5;
             this.label11.Text = "Mesa De Cambio";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Frmlcambiodivisas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -278,6 +278,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Microsoft Tai Le", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
