@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fmrInicio));
             this.panel2 = new System.Windows.Forms.Panel();
-            this.PanelContenedor = new System.Windows.Forms.FlowLayoutPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.iconButton5 = new FontAwesome.Sharp.IconButton();
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
@@ -39,15 +39,18 @@
             this.iconButton6 = new FontAwesome.Sharp.IconButton();
             this.btnControlEfectivo = new FontAwesome.Sharp.IconButton();
             this.btnCaja = new FontAwesome.Sharp.IconButton();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.PanelContenedor = new System.Windows.Forms.FlowLayoutPanel();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel2
             // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.BackColor = System.Drawing.Color.DodgerBlue;
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.iconButton5);
             this.panel2.Controls.Add(this.iconButton3);
@@ -57,26 +60,22 @@
             this.panel2.Controls.Add(this.iconButton6);
             this.panel2.Controls.Add(this.btnControlEfectivo);
             this.panel2.Controls.Add(this.btnCaja);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1252, 141);
             this.panel2.TabIndex = 4;
             // 
-            // PanelContenedor
+            // pictureBox1
             // 
-            this.PanelContenedor.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.PanelContenedor.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.PanelContenedor.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.PanelContenedor.Location = new System.Drawing.Point(12, 155);
-            this.PanelContenedor.MaximumSize = new System.Drawing.Size(1300, 620);
-            this.PanelContenedor.Name = "PanelContenedor";
-            this.PanelContenedor.Padding = new System.Windows.Forms.Padding(0, 20, 0, 0);
-            this.PanelContenedor.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.PanelContenedor.Size = new System.Drawing.Size(918, 505);
-            this.PanelContenedor.TabIndex = 5;
-            this.PanelContenedor.TabStop = true;
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pictureBox1.Image = global::CapaPresentacion.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(130, 130);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 16;
+            this.pictureBox1.TabStop = false;
             // 
             // iconButton5
             // 
@@ -94,10 +93,10 @@
             this.iconButton5.IconColor = System.Drawing.Color.Black;
             this.iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton5.IconSize = 20;
-            this.iconButton5.Location = new System.Drawing.Point(848, 40);
+            this.iconButton5.Location = new System.Drawing.Point(900, 52);
             this.iconButton5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton5.Name = "iconButton5";
-            this.iconButton5.Size = new System.Drawing.Size(110, 73);
+            this.iconButton5.Size = new System.Drawing.Size(121, 81);
             this.iconButton5.TabIndex = 13;
             this.iconButton5.Text = "AJUSTES";
             this.iconButton5.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -120,10 +119,10 @@
             this.iconButton3.IconColor = System.Drawing.Color.Black;
             this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton3.IconSize = 25;
-            this.iconButton3.Location = new System.Drawing.Point(616, 40);
+            this.iconButton3.Location = new System.Drawing.Point(646, 52);
             this.iconButton3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton3.Name = "iconButton3";
-            this.iconButton3.Size = new System.Drawing.Size(110, 73);
+            this.iconButton3.Size = new System.Drawing.Size(121, 81);
             this.iconButton3.TabIndex = 8;
             this.iconButton3.Text = "Historial De Caja";
             this.iconButton3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -146,10 +145,10 @@
             this.iconButton2.IconColor = System.Drawing.Color.Black;
             this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton2.IconSize = 25;
-            this.iconButton2.Location = new System.Drawing.Point(732, 40);
+            this.iconButton2.Location = new System.Drawing.Point(773, 52);
             this.iconButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Size = new System.Drawing.Size(110, 73);
+            this.iconButton2.Size = new System.Drawing.Size(121, 81);
             this.iconButton2.TabIndex = 7;
             this.iconButton2.Text = "Reportes";
             this.iconButton2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -172,7 +171,7 @@
             this.iconButton4.IconColor = System.Drawing.Color.Black;
             this.iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton4.IconSize = 20;
-            this.iconButton4.Location = new System.Drawing.Point(1158, 38);
+            this.iconButton4.Location = new System.Drawing.Point(1156, 36);
             this.iconButton4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton4.Name = "iconButton4";
             this.iconButton4.Size = new System.Drawing.Size(82, 75);
@@ -200,10 +199,10 @@
             this.btnHome.IconColor = System.Drawing.Color.Black;
             this.btnHome.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnHome.IconSize = 30;
-            this.btnHome.Location = new System.Drawing.Point(152, 38);
+            this.btnHome.Location = new System.Drawing.Point(138, 50);
             this.btnHome.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(110, 75);
+            this.btnHome.Size = new System.Drawing.Size(121, 81);
             this.btnHome.TabIndex = 5;
             this.btnHome.Text = "Home";
             this.btnHome.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -227,10 +226,10 @@
             this.iconButton6.IconColor = System.Drawing.Color.Black;
             this.iconButton6.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton6.IconSize = 20;
-            this.iconButton6.Location = new System.Drawing.Point(500, 40);
+            this.iconButton6.Location = new System.Drawing.Point(519, 52);
             this.iconButton6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton6.Name = "iconButton6";
-            this.iconButton6.Size = new System.Drawing.Size(110, 73);
+            this.iconButton6.Size = new System.Drawing.Size(121, 81);
             this.iconButton6.TabIndex = 14;
             this.iconButton6.Text = "ANULACION";
             this.iconButton6.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -254,10 +253,10 @@
             this.btnControlEfectivo.IconColor = System.Drawing.Color.Black;
             this.btnControlEfectivo.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnControlEfectivo.IconSize = 25;
-            this.btnControlEfectivo.Location = new System.Drawing.Point(268, 40);
+            this.btnControlEfectivo.Location = new System.Drawing.Point(265, 50);
             this.btnControlEfectivo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnControlEfectivo.Name = "btnControlEfectivo";
-            this.btnControlEfectivo.Size = new System.Drawing.Size(110, 73);
+            this.btnControlEfectivo.Size = new System.Drawing.Size(121, 81);
             this.btnControlEfectivo.TabIndex = 10;
             this.btnControlEfectivo.Text = "Control De Efectivo";
             this.btnControlEfectivo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -283,10 +282,10 @@
             this.btnCaja.IconColor = System.Drawing.Color.Black;
             this.btnCaja.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnCaja.IconSize = 25;
-            this.btnCaja.Location = new System.Drawing.Point(384, 40);
+            this.btnCaja.Location = new System.Drawing.Point(392, 52);
             this.btnCaja.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCaja.Name = "btnCaja";
-            this.btnCaja.Size = new System.Drawing.Size(110, 73);
+            this.btnCaja.Size = new System.Drawing.Size(121, 81);
             this.btnCaja.TabIndex = 9;
             this.btnCaja.Text = "Control De Caja";
             this.btnCaja.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -294,22 +293,26 @@
             this.btnCaja.UseVisualStyleBackColor = false;
             this.btnCaja.Click += new System.EventHandler(this.btnCaja_Click);
             // 
-            // pictureBox1
+            // PanelContenedor
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.pictureBox1.Image = global::CapaPresentacion.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(130, 135);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 16;
-            this.pictureBox1.TabStop = false;
+            this.PanelContenedor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.PanelContenedor.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.PanelContenedor.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.PanelContenedor.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.PanelContenedor.Location = new System.Drawing.Point(0, 146);
+            this.PanelContenedor.MaximumSize = new System.Drawing.Size(1252, 598);
+            this.PanelContenedor.Name = "PanelContenedor";
+            this.PanelContenedor.Padding = new System.Windows.Forms.Padding(0, 20, 0, 0);
+            this.PanelContenedor.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.PanelContenedor.Size = new System.Drawing.Size(1252, 598);
+            this.PanelContenedor.TabIndex = 5;
+            this.PanelContenedor.TabStop = true;
             // 
             // fmrInicio
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.ClientSize = new System.Drawing.Size(1252, 683);
+            this.ClientSize = new System.Drawing.Size(1252, 756);
             this.Controls.Add(this.PanelContenedor);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -319,7 +322,7 @@
             this.Name = "fmrInicio";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
