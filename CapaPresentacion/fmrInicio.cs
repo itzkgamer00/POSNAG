@@ -29,7 +29,7 @@ namespace CapaPresentacion
             FrmlEntrada formControlEfectivo = new FrmlEntrada
             {
                 TopLevel = false, // Para que se comporte como un control en el panel
-                Dock = DockStyle.Fill // Para que ocupe todo el espacio del panel
+                //Dock = DockStyle.Fill // Para que ocupe todo el espacio del panel
             };
 
             PanelContenedor.Controls.Add(formControlEfectivo);
@@ -63,6 +63,11 @@ namespace CapaPresentacion
                 caja.StartPosition = FormStartPosition.CenterParent; // Centrar el formulario emergente
                 caja.ShowDialog(); // Mostrarlo como emergente
             }
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
