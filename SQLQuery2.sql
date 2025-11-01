@@ -1,5 +1,3 @@
-create database SistemaCaja
-go
 use DbPaybox
 go
 
@@ -72,7 +70,6 @@ CREATE TABLE Transacciones (
     monto_cobrado DECIMAL(10,2),
     monto_salida DECIMAL(10,2), 
     descripcion VARCHAR(255),
-    referencia VARCHAR(100),
     fecha_hora DATETIME DEFAULT GETDATE(),
     estado BIT DEFAULT 1,
     usuario_modifico INT NULL FOREIGN KEY REFERENCES Usuario(usuario_id),
@@ -100,7 +97,7 @@ CREATE TABLE CierreCaja (
 
 
 INSERT INTO Usuario (NombreCompleto, correo, usuario, password_hash, IdRol, estado)
-VALUES ('Administrador','kenrrichg@gmail.com', 'admin', '12345', 1, 1);
+VALUES ('Administrador','kenrrichg@gmail.com', 'admin', 'admin', 1, 1);
 
 INSERT INTO Roles (Descripcion)
 VALUES ('Administrador');
@@ -112,8 +109,8 @@ INSERT INTO Roles (Descripcion)
 VALUES ('Supervisor');
 
 
-select * from Roles;
-DELETE FROM Usuario;
+select * from Usuario;
+DELETE FROM Usuario where usuario_id=1;
 
 
 

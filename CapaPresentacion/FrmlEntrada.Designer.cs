@@ -58,7 +58,7 @@
             this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
-            this.iconButton4 = new FontAwesome.Sharp.IconButton();
+            this.btndetallein = new FontAwesome.Sharp.IconButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -323,7 +323,7 @@
             this.groupBox1.Controls.Add(this.groupBox6);
             this.groupBox1.Controls.Add(this.iconButton1);
             this.groupBox1.Controls.Add(this.iconButton2);
-            this.groupBox1.Controls.Add(this.iconButton4);
+            this.groupBox1.Controls.Add(this.btndetallein);
             this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox1.Font = new System.Drawing.Font("Microsoft YaHei", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
@@ -341,9 +341,9 @@
             this.groupBox11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox11.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox11.Location = new System.Drawing.Point(7, 188);
-            this.groupBox11.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox11.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox11.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox11.Size = new System.Drawing.Size(305, 67);
             this.groupBox11.TabIndex = 41;
             this.groupBox11.TabStop = false;
@@ -368,9 +368,9 @@
             this.groupBox10.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox10.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox10.Location = new System.Drawing.Point(87, 135);
-            this.groupBox10.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox10.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox10.Name = "groupBox10";
-            this.groupBox10.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox10.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox10.Size = new System.Drawing.Size(147, 49);
             this.groupBox10.TabIndex = 40;
             this.groupBox10.TabStop = false;
@@ -394,9 +394,9 @@
             this.groupBox9.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox9.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox9.Location = new System.Drawing.Point(165, 83);
-            this.groupBox9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox9.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox9.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox9.Size = new System.Drawing.Size(147, 49);
             this.groupBox9.TabIndex = 39;
             this.groupBox9.TabStop = false;
@@ -420,9 +420,9 @@
             this.groupBox8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox8.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox8.Location = new System.Drawing.Point(5, 83);
-            this.groupBox8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox8.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox8.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox8.Size = new System.Drawing.Size(147, 49);
             this.groupBox8.TabIndex = 38;
             this.groupBox8.TabStop = false;
@@ -445,9 +445,9 @@
             this.groupBox6.Controls.Add(this.comboBox2);
             this.groupBox6.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox6.Location = new System.Drawing.Point(5, 22);
-            this.groupBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox6.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox6.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox6.Size = new System.Drawing.Size(307, 57);
             this.groupBox6.TabIndex = 34;
             this.groupBox6.TabStop = false;
@@ -463,7 +463,7 @@
             this.comboBox2.Items.AddRange(new object[] {
             "ASDASD"});
             this.comboBox2.Location = new System.Drawing.Point(2, 23);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(302, 32);
             this.comboBox2.TabIndex = 0;
@@ -508,20 +508,21 @@
             this.iconButton2.TabIndex = 12;
             this.iconButton2.UseVisualStyleBackColor = false;
             // 
-            // iconButton4
+            // btndetallein
             // 
-            this.iconButton4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.iconButton4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.iconButton4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.MoneyBillWave;
-            this.iconButton4.IconColor = System.Drawing.Color.Black;
-            this.iconButton4.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconButton4.IconSize = 20;
-            this.iconButton4.Location = new System.Drawing.Point(7, 138);
-            this.iconButton4.Name = "iconButton4";
-            this.iconButton4.Size = new System.Drawing.Size(39, 27);
-            this.iconButton4.TabIndex = 11;
-            this.iconButton4.UseVisualStyleBackColor = false;
+            this.btndetallein.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btndetallein.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btndetallein.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btndetallein.IconChar = FontAwesome.Sharp.IconChar.MoneyBillWave;
+            this.btndetallein.IconColor = System.Drawing.Color.Black;
+            this.btndetallein.IconFont = FontAwesome.Sharp.IconFont.Solid;
+            this.btndetallein.IconSize = 20;
+            this.btndetallein.Location = new System.Drawing.Point(7, 138);
+            this.btndetallein.Name = "btndetallein";
+            this.btndetallein.Size = new System.Drawing.Size(39, 27);
+            this.btndetallein.TabIndex = 11;
+            this.btndetallein.UseVisualStyleBackColor = false;
+            this.btndetallein.Click += new System.EventHandler(this.btndetallein_Click);
             // 
             // groupBox2
             // 
@@ -554,9 +555,9 @@
             this.groupBox7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox7.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox7.Location = new System.Drawing.Point(7, 188);
-            this.groupBox7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox7.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox7.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox7.Size = new System.Drawing.Size(305, 67);
             this.groupBox7.TabIndex = 41;
             this.groupBox7.TabStop = false;
@@ -581,9 +582,9 @@
             this.groupBox12.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox12.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox12.Location = new System.Drawing.Point(89, 138);
-            this.groupBox12.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox12.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox12.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox12.Size = new System.Drawing.Size(147, 49);
             this.groupBox12.TabIndex = 40;
             this.groupBox12.TabStop = false;
@@ -607,9 +608,9 @@
             this.groupBox13.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox13.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox13.Location = new System.Drawing.Point(165, 83);
-            this.groupBox13.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox13.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox13.Name = "groupBox13";
-            this.groupBox13.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox13.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox13.Size = new System.Drawing.Size(147, 49);
             this.groupBox13.TabIndex = 39;
             this.groupBox13.TabStop = false;
@@ -633,9 +634,9 @@
             this.groupBox14.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.groupBox14.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox14.Location = new System.Drawing.Point(5, 83);
-            this.groupBox14.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox14.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox14.Name = "groupBox14";
-            this.groupBox14.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox14.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox14.Size = new System.Drawing.Size(147, 51);
             this.groupBox14.TabIndex = 38;
             this.groupBox14.TabStop = false;
@@ -658,9 +659,9 @@
             this.groupBox15.Controls.Add(this.comboBox1);
             this.groupBox15.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox15.Location = new System.Drawing.Point(5, 22);
-            this.groupBox15.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox15.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox15.Name = "groupBox15";
-            this.groupBox15.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox15.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox15.Size = new System.Drawing.Size(307, 57);
             this.groupBox15.TabIndex = 34;
             this.groupBox15.TabStop = false;
@@ -676,7 +677,7 @@
             this.comboBox1.Items.AddRange(new object[] {
             "ASDASD"});
             this.comboBox1.Location = new System.Drawing.Point(2, 23);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox1.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(304, 32);
             this.comboBox1.TabIndex = 0;
@@ -758,10 +759,9 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmlEntrada";
             this.Opacity = 0.5D;
-            this.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Padding = new System.Windows.Forms.Padding(4);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.Entrada_Load);
             this.PaddingChanged += new System.EventHandler(this.Entrada_Load);
             this.groupBox5.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
@@ -815,7 +815,7 @@
         private System.Windows.Forms.ComboBox comboBox2;
         private FontAwesome.Sharp.IconButton iconButton1;
         private FontAwesome.Sharp.IconButton iconButton2;
-        private FontAwesome.Sharp.IconButton iconButton4;
+        private FontAwesome.Sharp.IconButton btndetallein;
         private System.Windows.Forms.GroupBox groupBox11;
         private System.Windows.Forms.TextBox textBox9;
         private System.Windows.Forms.GroupBox groupBox10;

@@ -30,6 +30,8 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.textBox9 = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
@@ -42,22 +44,19 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
+            this.groupBox11.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.groupBox11.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
             this.menuStrip1.AutoSize = false;
             this.menuStrip1.BackColor = System.Drawing.Color.DodgerBlue;
-            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Location = new System.Drawing.Point(5, 5);
             this.menuStrip1.MaximumSize = new System.Drawing.Size(2070, 1110);
@@ -89,6 +88,32 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "MONTOS";
             // 
+            // groupBox11
+            // 
+            this.groupBox11.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox11.Controls.Add(this.textBox9);
+            this.groupBox11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.groupBox11.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox11.Location = new System.Drawing.Point(8, 284);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(567, 110);
+            this.groupBox11.TabIndex = 42;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "COMENTARIO: ";
+            // 
+            // textBox9
+            // 
+            this.textBox9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox9.Location = new System.Drawing.Point(3, 23);
+            this.textBox9.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox9.MaxLength = 100000;
+            this.textBox9.Multiline = true;
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(561, 84);
+            this.textBox9.TabIndex = 8;
+            this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.textBox2);
@@ -105,10 +130,10 @@
             this.textBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.Location = new System.Drawing.Point(6, 28);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(218, 28);
+            this.textBox2.Size = new System.Drawing.Size(218, 31);
             this.textBox2.TabIndex = 2;
             // 
             // groupBox5
@@ -127,10 +152,10 @@
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(6, 28);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(218, 28);
+            this.textBox1.Size = new System.Drawing.Size(218, 31);
             this.textBox1.TabIndex = 1;
             // 
             // groupBox4
@@ -156,7 +181,7 @@
             "COMPRA"});
             this.comboBox1.Location = new System.Drawing.Point(3, 36);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(310, 51);
+            this.comboBox1.Size = new System.Drawing.Size(310, 37);
             this.comboBox1.TabIndex = 0;
             // 
             // groupBox3
@@ -182,7 +207,7 @@
             "PREFERENCIAL"});
             this.comboBox2.Location = new System.Drawing.Point(6, 36);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(289, 51);
+            this.comboBox2.Size = new System.Drawing.Size(289, 37);
             this.comboBox2.TabIndex = 0;
             // 
             // iconButton5
@@ -199,7 +224,7 @@
             this.iconButton5.IconColor = System.Drawing.Color.DarkGreen;
             this.iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton5.IconSize = 40;
-            this.iconButton5.Location = new System.Drawing.Point(641, 295);
+            this.iconButton5.Location = new System.Drawing.Point(641, 318);
             this.iconButton5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.iconButton5.Name = "iconButton5";
             this.iconButton5.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -226,10 +251,10 @@
             this.textBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox3.Location = new System.Drawing.Point(3, 18);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(147, 28);
+            this.textBox3.Size = new System.Drawing.Size(147, 31);
             this.textBox3.TabIndex = 0;
             this.textBox3.Text = "36.45";
             // 
@@ -245,40 +270,14 @@
             this.label11.Location = new System.Drawing.Point(10, 18);
             this.label11.Name = "label11";
             this.label11.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label11.Size = new System.Drawing.Size(317, 48);
+            this.label11.Size = new System.Drawing.Size(215, 33);
             this.label11.TabIndex = 5;
             this.label11.Text = "Mesa De Cambio";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // groupBox11
-            // 
-            this.groupBox11.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.groupBox11.Controls.Add(this.textBox9);
-            this.groupBox11.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.groupBox11.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox11.Location = new System.Drawing.Point(8, 284);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(567, 110);
-            this.groupBox11.TabIndex = 42;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "COMENTARIO: ";
-            // 
-            // textBox9
-            // 
-            this.textBox9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBox9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox9.Location = new System.Drawing.Point(3, 33);
-            this.textBox9.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.textBox9.MaxLength = 100000;
-            this.textBox9.Multiline = true;
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(561, 74);
-            this.textBox9.TabIndex = 8;
-            this.textBox9.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // Frmlcambiodivisas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -297,6 +296,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Mesa De Cambio";
             this.groupBox1.ResumeLayout(false);
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
@@ -305,8 +306,6 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.groupBox11.ResumeLayout(false);
-            this.groupBox11.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
