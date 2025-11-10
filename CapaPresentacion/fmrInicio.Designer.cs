@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fmrInicio));
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.iconButton5 = new FontAwesome.Sharp.IconButton();
             this.iconButton3 = new FontAwesome.Sharp.IconButton();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
@@ -39,48 +37,15 @@
             this.iconButton6 = new FontAwesome.Sharp.IconButton();
             this.btnControlEfectivo = new FontAwesome.Sharp.IconButton();
             this.btnCaja = new FontAwesome.Sharp.IconButton();
-            this.PanelContenedor = new System.Windows.Forms.FlowLayoutPanel();
-            this.panel2.SuspendLayout();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel2
-            // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel2.BackColor = System.Drawing.Color.DodgerBlue;
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Controls.Add(this.iconButton5);
-            this.panel2.Controls.Add(this.iconButton3);
-            this.panel2.Controls.Add(this.iconButton2);
-            this.panel2.Controls.Add(this.iconButton4);
-            this.panel2.Controls.Add(this.btnHome);
-            this.panel2.Controls.Add(this.iconButton6);
-            this.panel2.Controls.Add(this.btnControlEfectivo);
-            this.panel2.Controls.Add(this.btnCaja);
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1130, 141);
-            this.panel2.TabIndex = 4;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.pictureBox1.Image = global::CapaPresentacion.Properties.Resources.logo;
-            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(130, 130);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 16;
-            this.pictureBox1.TabStop = false;
-            // 
             // iconButton5
             // 
-            this.iconButton5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.iconButton5.AutoSize = true;
             this.iconButton5.BackColor = System.Drawing.Color.Silver;
             this.iconButton5.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.iconButton5.FlatAppearance.BorderSize = 4;
@@ -93,7 +58,7 @@
             this.iconButton5.IconColor = System.Drawing.Color.Black;
             this.iconButton5.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton5.IconSize = 20;
-            this.iconButton5.Location = new System.Drawing.Point(729, 60);
+            this.iconButton5.Location = new System.Drawing.Point(627, 2);
             this.iconButton5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton5.Name = "iconButton5";
             this.iconButton5.Size = new System.Drawing.Size(90, 71);
@@ -105,7 +70,7 @@
             // 
             // iconButton3
             // 
-            this.iconButton3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.iconButton3.AutoSize = true;
             this.iconButton3.BackColor = System.Drawing.Color.Silver;
             this.iconButton3.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.iconButton3.FlatAppearance.BorderSize = 4;
@@ -118,10 +83,10 @@
             this.iconButton3.IconColor = System.Drawing.Color.Black;
             this.iconButton3.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton3.IconSize = 25;
-            this.iconButton3.Location = new System.Drawing.Point(538, 60);
+            this.iconButton3.Location = new System.Drawing.Point(488, 2);
             this.iconButton3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton3.Name = "iconButton3";
-            this.iconButton3.Size = new System.Drawing.Size(90, 71);
+            this.iconButton3.Size = new System.Drawing.Size(133, 71);
             this.iconButton3.TabIndex = 8;
             this.iconButton3.Text = "Historial De Caja";
             this.iconButton3.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -130,7 +95,7 @@
             // 
             // iconButton2
             // 
-            this.iconButton2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.iconButton2.AutoSize = true;
             this.iconButton2.BackColor = System.Drawing.Color.Silver;
             this.iconButton2.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.iconButton2.FlatAppearance.BorderSize = 4;
@@ -143,7 +108,7 @@
             this.iconButton2.IconColor = System.Drawing.Color.Black;
             this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton2.IconSize = 25;
-            this.iconButton2.Location = new System.Drawing.Point(633, 60);
+            this.iconButton2.Location = new System.Drawing.Point(723, 2);
             this.iconButton2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton2.Name = "iconButton2";
             this.iconButton2.Size = new System.Drawing.Size(90, 71);
@@ -155,8 +120,6 @@
             // 
             // iconButton4
             // 
-            this.iconButton4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.iconButton4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.iconButton4.BackColor = System.Drawing.Color.Salmon;
             this.iconButton4.FlatAppearance.BorderColor = System.Drawing.Color.DarkRed;
             this.iconButton4.FlatAppearance.BorderSize = 4;
@@ -169,10 +132,10 @@
             this.iconButton4.IconColor = System.Drawing.Color.Black;
             this.iconButton4.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton4.IconSize = 20;
-            this.iconButton4.Location = new System.Drawing.Point(1063, 3);
+            this.iconButton4.Location = new System.Drawing.Point(927, 2);
             this.iconButton4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton4.Name = "iconButton4";
-            this.iconButton4.Size = new System.Drawing.Size(60, 53);
+            this.iconButton4.Size = new System.Drawing.Size(80, 74);
             this.iconButton4.TabIndex = 15;
             this.iconButton4.Text = "SALIR";
             this.iconButton4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -196,7 +159,7 @@
             this.btnHome.IconColor = System.Drawing.Color.Black;
             this.btnHome.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnHome.IconSize = 30;
-            this.btnHome.Location = new System.Drawing.Point(159, 60);
+            this.btnHome.Location = new System.Drawing.Point(99, 2);
             this.btnHome.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnHome.Name = "btnHome";
             this.btnHome.Size = new System.Drawing.Size(90, 71);
@@ -209,7 +172,7 @@
             // 
             // iconButton6
             // 
-            this.iconButton6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.iconButton6.AutoSize = true;
             this.iconButton6.BackColor = System.Drawing.Color.Silver;
             this.iconButton6.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.iconButton6.FlatAppearance.BorderSize = 4;
@@ -222,10 +185,10 @@
             this.iconButton6.IconColor = System.Drawing.Color.Black;
             this.iconButton6.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton6.IconSize = 20;
-            this.iconButton6.Location = new System.Drawing.Point(443, 60);
+            this.iconButton6.Location = new System.Drawing.Point(819, 2);
             this.iconButton6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.iconButton6.Name = "iconButton6";
-            this.iconButton6.Size = new System.Drawing.Size(90, 71);
+            this.iconButton6.Size = new System.Drawing.Size(102, 71);
             this.iconButton6.TabIndex = 14;
             this.iconButton6.Text = "ANULACION";
             this.iconButton6.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -234,7 +197,7 @@
             // 
             // btnControlEfectivo
             // 
-            this.btnControlEfectivo.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.btnControlEfectivo.AutoSize = true;
             this.btnControlEfectivo.BackColor = System.Drawing.Color.Silver;
             this.btnControlEfectivo.FlatAppearance.BorderColor = System.Drawing.Color.White;
             this.btnControlEfectivo.FlatAppearance.BorderSize = 4;
@@ -248,10 +211,10 @@
             this.btnControlEfectivo.IconColor = System.Drawing.Color.Black;
             this.btnControlEfectivo.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnControlEfectivo.IconSize = 25;
-            this.btnControlEfectivo.Location = new System.Drawing.Point(253, 60);
+            this.btnControlEfectivo.Location = new System.Drawing.Point(332, 2);
             this.btnControlEfectivo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnControlEfectivo.Name = "btnControlEfectivo";
-            this.btnControlEfectivo.Size = new System.Drawing.Size(90, 71);
+            this.btnControlEfectivo.Size = new System.Drawing.Size(150, 71);
             this.btnControlEfectivo.TabIndex = 10;
             this.btnControlEfectivo.Text = "Control De Efectivo";
             this.btnControlEfectivo.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -276,10 +239,10 @@
             this.btnCaja.IconColor = System.Drawing.Color.Black;
             this.btnCaja.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnCaja.IconSize = 25;
-            this.btnCaja.Location = new System.Drawing.Point(347, 60);
+            this.btnCaja.Location = new System.Drawing.Point(195, 2);
             this.btnCaja.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCaja.Name = "btnCaja";
-            this.btnCaja.Size = new System.Drawing.Size(90, 71);
+            this.btnCaja.Size = new System.Drawing.Size(131, 71);
             this.btnCaja.TabIndex = 9;
             this.btnCaja.Text = "Control De Caja";
             this.btnCaja.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -287,26 +250,42 @@
             this.btnCaja.UseVisualStyleBackColor = false;
             this.btnCaja.Click += new System.EventHandler(this.btnCaja_Click);
             // 
-            // PanelContenedor
+            // flowLayoutPanel1
             // 
-            this.PanelContenedor.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.PanelContenedor.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.PanelContenedor.Location = new System.Drawing.Point(12, 146);
-            this.PanelContenedor.MaximumSize = new System.Drawing.Size(1252, 598);
-            this.PanelContenedor.Name = "PanelContenedor";
-            this.PanelContenedor.Padding = new System.Windows.Forms.Padding(0, 20, 0, 0);
-            this.PanelContenedor.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.PanelContenedor.Size = new System.Drawing.Size(900, 467);
-            this.PanelContenedor.TabIndex = 5;
-            this.PanelContenedor.TabStop = true;
+            this.flowLayoutPanel1.BackColor = System.Drawing.SystemColors.MenuHighlight;
+            this.flowLayoutPanel1.Controls.Add(this.pictureBox1);
+            this.flowLayoutPanel1.Controls.Add(this.btnHome);
+            this.flowLayoutPanel1.Controls.Add(this.btnCaja);
+            this.flowLayoutPanel1.Controls.Add(this.btnControlEfectivo);
+            this.flowLayoutPanel1.Controls.Add(this.iconButton3);
+            this.flowLayoutPanel1.Controls.Add(this.iconButton5);
+            this.flowLayoutPanel1.Controls.Add(this.iconButton2);
+            this.flowLayoutPanel1.Controls.Add(this.iconButton6);
+            this.flowLayoutPanel1.Controls.Add(this.iconButton4);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1130, 127);
+            this.flowLayoutPanel1.TabIndex = 6;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pictureBox1.Image = global::CapaPresentacion.Properties.Resources.logo;
+            this.pictureBox1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(90, 94);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
             // 
             // fmrInicio
             // 
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.ClientSize = new System.Drawing.Size(1130, 625);
-            this.Controls.Add(this.PanelContenedor);
-            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -315,14 +294,14 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.panel2.ResumeLayout(false);
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.Panel panel2;
         private FontAwesome.Sharp.IconButton btnHome;
         private FontAwesome.Sharp.IconButton iconButton2;
         private FontAwesome.Sharp.IconButton iconButton3;
@@ -331,7 +310,7 @@
         private FontAwesome.Sharp.IconButton iconButton5;
         private FontAwesome.Sharp.IconButton iconButton6;
         private FontAwesome.Sharp.IconButton iconButton4;
-        private System.Windows.Forms.FlowLayoutPanel PanelContenedor;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
