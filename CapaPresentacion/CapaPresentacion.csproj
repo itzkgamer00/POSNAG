@@ -172,28 +172,28 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrmCaja.cs">
+    <Compile Include="Formularios\FrmCaja.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmCaja.Designer.cs">
+    <Compile Include="Formularios\FrmCaja.Designer.cs">
       <DependentUpon>FrmCaja.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmDetalle.cs">
+    <Compile Include="Formularios\FrmDetalle.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmDetalle.Designer.cs">
+    <Compile Include="Formularios\FrmDetalle.Designer.cs">
       <DependentUpon>FrmDetalle.cs</DependentUpon>
     </Compile>
-    <Compile Include="Frmlcambiodivisas.cs">
+    <Compile Include="Formularios\Frmlcambiodivisas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Frmlcambiodivisas.Designer.cs">
+    <Compile Include="Formularios\Frmlcambiodivisas.Designer.cs">
       <DependentUpon>Frmlcambiodivisas.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmlEntrada.cs">
+    <Compile Include="Formularios\FrmlEntrada.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmlEntrada.Designer.cs">
+    <Compile Include="Formularios\FrmlEntrada.Designer.cs">
       <DependentUpon>FrmlEntrada.cs</DependentUpon>
     </Compile>
     <Compile Include="fmrInicio.cs">
@@ -202,30 +202,30 @@
     <Compile Include="fmrInicio.Designer.cs">
       <DependentUpon>fmrInicio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs">
+    <Compile Include="Formularios\Login.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Login.Designer.cs">
+    <Compile Include="Formularios\Login.Designer.cs">
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FrmCaja.resx">
+    <EmbeddedResource Include="Formularios\FrmCaja.resx">
       <DependentUpon>FrmCaja.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmDetalle.resx">
+    <EmbeddedResource Include="Formularios\FrmDetalle.resx">
       <DependentUpon>FrmDetalle.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Frmlcambiodivisas.resx">
+    <EmbeddedResource Include="Formularios\Frmlcambiodivisas.resx">
       <DependentUpon>Frmlcambiodivisas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmlEntrada.resx">
+    <EmbeddedResource Include="Formularios\FrmlEntrada.resx">
       <DependentUpon>FrmlEntrada.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fmrInicio.resx">
       <DependentUpon>fmrInicio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
+    <EmbeddedResource Include="Formularios\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

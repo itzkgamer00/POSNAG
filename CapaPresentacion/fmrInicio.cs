@@ -19,25 +19,25 @@ namespace CapaPresentacion
 
         private void btnControlEfectivo_Click(object sender, EventArgs e)
         {
-            //// Cerrar cualquier formulario que ya esté en el panel.
-            //foreach (Control control in PanelContenedor.Controls)
-            //{
-            //    control.Dispose();
-            //}
+            //Cerrar cualquier formulario que ya esté en el panel.
+            foreach (Control control in PanelContenedor.Controls)
+            {
+                control.Dispose();
+            }
 
-            //// Crear instancia del formulario secundario.
-            //FrmlEntrada formControlEfectivo = new FrmlEntrada
-            //{
-            //    TopLevel = false, // Para que se comporte como un control en el panel
-            //    //Dock = DockStyle.Fill // Para que ocupe todo el espacio del panel
-            //};
+            //Crear instancia del formulario secundario.
+           FrmlEntrada formControlEfectivo = new FrmlEntrada
+           {
+               TopLevel = false, // Para que se comporte como un control en el panel
+               Dock = DockStyle.Fill // Para que ocupe todo el espacio del panel
+           };
 
-            //PanelContenedor.Controls.Add(formControlEfectivo);
-            //PanelContenedor.Tag = formControlEfectivo;
-            //formControlEfectivo.Show();
-            FrmlEntrada efectivo = new FrmlEntrada(); // Crear una instancia del fmrcaja
-            efectivo.StartPosition = FormStartPosition.CenterParent; // Centrar el formulario emergente
-            efectivo.ShowDialog(); // Mostrarlo como emergente
+            PanelContenedor.Controls.Add(formControlEfectivo);
+            PanelContenedor.Tag = formControlEfectivo;
+            formControlEfectivo.Show();
+            //FrmlEntrada efectivo = new FrmlEntrada(); // Crear una instancia del fmrcaja
+            //efectivo.StartPosition = FormStartPosition.CenterParent; // Centrar el formulario emergente
+            //efectivo.ShowDialog(); // Mostrarlo como emergente
 
         }
 
@@ -70,6 +70,17 @@ namespace CapaPresentacion
         private void panel2_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void fmrInicio_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tmTiempo_Tick(object sender, EventArgs e)
+        {
+           lblfecha.Text = DateTime.Now.ToLongDateString();
+           lblHora.Text = DateTime.Now.ToLongTimeString();
         }
     }
 }
