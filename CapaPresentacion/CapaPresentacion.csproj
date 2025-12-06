@@ -184,6 +184,12 @@
     <Compile Include="Formularios\FrmDetalle.Designer.cs">
       <DependentUpon>FrmDetalle.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FrmIngreso.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmIngreso.Designer.cs">
+      <DependentUpon>FrmIngreso.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Frmlcambiodivisas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,6 +208,12 @@
     <Compile Include="fmrInicio.Designer.cs">
       <DependentUpon>fmrInicio.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\FrmSalida.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmSalida.Designer.cs">
+      <DependentUpon>FrmSalida.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -216,6 +228,9 @@
     <EmbeddedResource Include="Formularios\FrmDetalle.resx">
       <DependentUpon>FrmDetalle.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmIngreso.resx">
+      <DependentUpon>FrmIngreso.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Frmlcambiodivisas.resx">
       <DependentUpon>Frmlcambiodivisas.cs</DependentUpon>
     </EmbeddedResource>
@@ -224,6 +239,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fmrInicio.resx">
       <DependentUpon>fmrInicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmSalida.resx">
+      <DependentUpon>FrmSalida.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -274,6 +292,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="resourses\cajaapertura.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resourses\edificio_de_oficinas.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resourses\yes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resourses\eye.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets" Condition="Exists('..\packages\Microsoft.Data.SqlClient.SNI.6.0.2\build\net462\Microsoft.Data.SqlClient.SNI.targets')" />

@@ -26,5 +26,11 @@ namespace CapaPresentacion
         {
 
         }
+
+        private void tmfechaapert_Tick(object sender, EventArgs e)
+        {
+            //lblFechaactual.Text = DateTime.Now.ToLongDateString();
+            //lblFechaactual.Text = DateTime.Now.ToLongTimeString();
+        }
     }
 }

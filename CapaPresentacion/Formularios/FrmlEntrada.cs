@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaPresentacion.Formularios;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -38,6 +39,22 @@ namespace CapaPresentacion
                 detalle1.StartPosition = FormStartPosition.CenterParent; // Centrar el formulario emergente
                 detalle1.ShowDialog(); // Mostrarlo como emergente
             }
+        }
+
+        private void btningr_Click(object sender, EventArgs e)
+        {
+            {
+                FrmIngreso ingre = new FrmIngreso(); // Crear una instancia del fmrcaja
+                ingre.StartPosition = FormStartPosition.CenterParent; // Centrar el formulario emergente
+                ingre.ShowDialog(); // Mostrarlo como emergente
+            }
+        }
+
+        private void btnegre_Click(object sender, EventArgs e)
+        {
+            FrmSalida sali = new FrmSalida(); // Crear una instancia del fmrcaja
+            sali.StartPosition = FormStartPosition.CenterParent; // Centrar el formulario emergente
+            sali.ShowDialog(); // Mostrarlo como emergente
         }
     }
 }
