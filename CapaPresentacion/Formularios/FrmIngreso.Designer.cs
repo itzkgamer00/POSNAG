@@ -43,6 +43,10 @@
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.btnguardaringreso = new FontAwesome.Sharp.IconButton();
             this.btndetalleingr = new FontAwesome.Sharp.IconButton();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -106,7 +110,7 @@
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(18, 340);
+            this.textBox2.Location = new System.Drawing.Point(18, 454);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(284, 43);
@@ -116,7 +120,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft YaHei UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 301);
+            this.label4.Location = new System.Drawing.Point(12, 415);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(181, 36);
             this.label4.TabIndex = 7;
@@ -125,7 +129,7 @@
             // textBox3
             // 
             this.textBox3.Font = new System.Drawing.Font("Microsoft JhengHei UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(18, 455);
+            this.textBox3.Location = new System.Drawing.Point(18, 554);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(665, 98);
@@ -135,7 +139,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft YaHei UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(12, 412);
+            this.label5.Location = new System.Drawing.Point(12, 511);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(202, 36);
             this.label5.TabIndex = 9;
@@ -149,7 +153,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(777, 82);
+            this.panel1.Size = new System.Drawing.Size(727, 82);
             this.panel1.TabIndex = 43;
             // 
             // label11
@@ -180,7 +184,7 @@
             this.iconButton2.IconColor = System.Drawing.Color.Red;
             this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.iconButton2.IconSize = 30;
-            this.iconButton2.Location = new System.Drawing.Point(18, 576);
+            this.iconButton2.Location = new System.Drawing.Point(18, 685);
             this.iconButton2.Name = "iconButton2";
             this.iconButton2.Size = new System.Drawing.Size(196, 57);
             this.iconButton2.TabIndex = 13;
@@ -200,7 +204,7 @@
             this.btnguardaringreso.IconColor = System.Drawing.Color.Green;
             this.btnguardaringreso.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnguardaringreso.IconSize = 30;
-            this.btnguardaringreso.Location = new System.Drawing.Point(547, 576);
+            this.btnguardaringreso.Location = new System.Drawing.Point(497, 685);
             this.btnguardaringreso.Name = "btnguardaringreso";
             this.btnguardaringreso.Size = new System.Drawing.Size(182, 57);
             this.btnguardaringreso.TabIndex = 12;
@@ -213,19 +217,62 @@
             this.btndetalleingr.IconChar = FontAwesome.Sharp.IconChar.Table;
             this.btndetalleingr.IconColor = System.Drawing.Color.Black;
             this.btndetalleingr.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btndetalleingr.Location = new System.Drawing.Point(690, 235);
+            this.btndetalleingr.Location = new System.Drawing.Point(308, 344);
             this.btndetalleingr.Name = "btndetalleingr";
-            this.btndetalleingr.Size = new System.Drawing.Size(75, 43);
+            this.btndetalleingr.Size = new System.Drawing.Size(67, 43);
             this.btndetalleingr.TabIndex = 6;
             this.btndetalleingr.UseVisualStyleBackColor = true;
             this.btndetalleingr.Click += new System.EventHandler(this.btndetalleingr_Click);
+            // 
+            // textBox4
+            // 
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.Location = new System.Drawing.Point(18, 344);
+            this.textBox4.Multiline = true;
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(284, 43);
+            this.textBox4.TabIndex = 45;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft YaHei UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(12, 305);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(277, 36);
+            this.label6.TabIndex = 44;
+            this.label6.Text = "IMPORTE RECIBIDO";
+            // 
+            // textBox5
+            // 
+            this.textBox5.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox5.Location = new System.Drawing.Point(399, 344);
+            this.textBox5.Multiline = true;
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(284, 43);
+            this.textBox5.TabIndex = 47;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft YaHei UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(393, 305);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(277, 36);
+            this.label7.TabIndex = 46;
+            this.label7.Text = "ENTREGAR VUELTO";
             // 
             // FrmIngreso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(777, 676);
+            this.ClientSize = new System.Drawing.Size(727, 785);
+            this.Controls.Add(this.textBox5);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.iconButton2);
             this.Controls.Add(this.btnguardaringreso);
@@ -268,5 +315,9 @@
         private FontAwesome.Sharp.IconButton iconButton2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label label7;
     }
 }

@@ -1,4 +1,4 @@
-use DbPaybox
+use SistemaCaja
 go
 
 -- Tabla de Roles
@@ -67,7 +67,6 @@ CREATE TABLE Transacciones (
     usuario_id INT FOREIGN KEY REFERENCES Usuario(usuario_id),
     moneda_id INT FOREIGN KEY REFERENCES Moneda(moneda_id),
     monto_entrada DECIMAL(10,2),
-    monto_cobrado DECIMAL(10,2),
     monto_salida DECIMAL(10,2), 
     descripcion VARCHAR(255),
     fecha_hora DATETIME DEFAULT GETDATE(),
@@ -109,9 +108,10 @@ INSERT INTO Roles (Descripcion)
 VALUES ('Supervisor');
 
 
-select * from Usuario;
+select * from Transacciones;
 DELETE FROM Usuario where usuario_id=1;
 
-
+ALTER TABLE Transacciones
+DROP COLUMN monto_cobrado;
 
 
