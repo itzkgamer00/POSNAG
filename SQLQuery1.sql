@@ -1,6 +1,6 @@
 create database SistemaCaja
 go
-use DbPaybox
+use master
 go
 
 -- Tabla de Roles
@@ -68,9 +68,8 @@ CREATE TABLE Transacciones (
     transaccion_id INT PRIMARY KEY IDENTITY(1,1),
     usuario_id INT FOREIGN KEY REFERENCES Usuario(usuario_id),
     moneda_id INT FOREIGN KEY REFERENCES Moneda(moneda_id),
-    monto_entrada DECIMAL(10,2),
-    monto_cobrado DECIMAL(10,2),
-    monto_salida DECIMAL(10,2), 
+	tipo VARCHAR(10) NOT NULL, -- INGRESO | EGRESO
+    monto DECIMAL(10,2),
     descripcion VARCHAR(255),
     referencia VARCHAR(100),
     fecha_hora DATETIME DEFAULT GETDATE(),
@@ -112,9 +111,7 @@ INSERT INTO Roles (Descripcion)
 VALUES ('Supervisor');
 
 
-select * from Roles;
+select * from Transacciones;
 DELETE FROM Usuario;
 
-
-
-
+drop database SistemaCaja;
