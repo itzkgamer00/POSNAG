@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Forms;
 
 namespace CapaPresentacion
@@ -81,6 +82,23 @@ namespace CapaPresentacion
         {
            lblfecha.Text = DateTime.Now.ToLongDateString();
            lblHora.Text = DateTime.Now.ToLongTimeString();
+        }
+
+        private void iconButton4_Click(object sender, EventArgs e)
+        {
+
+            DialogResult resultado = System.Windows.Forms.MessageBox.Show("¿Estás seguro que deseas cerrar sesión?","Cerrar sesión",System.Windows.Forms.MessageBoxButtons.YesNo,System.Windows.Forms.MessageBoxIcon.Question
+);
+
+            if (resultado == System.Windows.Forms.DialogResult.Yes)
+            {
+                this.Hide(); // Oculta el formulario actual
+                Login login = new Login();
+                login.Show();
+            }
+
+
+
         }
     }
 }

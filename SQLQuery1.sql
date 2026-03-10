@@ -1,6 +1,6 @@
 create database SistemaCaja
 go
-use master
+use SistemaCaja;
 go
 
 -- Tabla de Roles
@@ -44,7 +44,7 @@ CREATE TABLE Permiso (
 -- Tabla de Monedas
 CREATE TABLE Moneda (
     moneda_id INT PRIMARY KEY IDENTITY(1,1),
-    nombre VARCHAR(50) NOT NULL,
+    nombre VARCHAR(50) NOT NULL,	
     simbolo VARCHAR(10),
     estado BIT DEFAULT 1,
     FechaCreacion DATETIME DEFAULT GETDATE()
@@ -111,7 +111,7 @@ INSERT INTO Roles (Descripcion)
 VALUES ('Supervisor');
 
 
-select * from Transacciones;
+select * from Usuario;
 DELETE FROM Usuario;
 
 drop database SistemaCaja;
