@@ -59,14 +59,7 @@ namespace CapaPresentacion
             PanelContenedor.Controls.Clear();
         }
 
-        private void btnCaja_Click(object sender, EventArgs e)
-        {
-            {
-                FrmCaja caja = new FrmCaja(); // Crear una instancia del fmrcaja
-                caja.StartPosition = FormStartPosition.CenterParent; // Centrar el formulario emergente
-                caja.ShowDialog(); // Mostrarlo como emergente
-            }
-        }
+      
 
         private void panel2_Paint(object sender, PaintEventArgs e)
         {

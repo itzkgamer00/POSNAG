@@ -41,7 +41,16 @@ namespace CapaPresentacion
             }
         }
 
-        private void btningr_Click(object sender, EventArgs e)
+    
+
+        private void btnegre_Click(object sender, EventArgs e)
+        {
+            FrmSalida sali = new FrmSalida(); // Crear una instancia del fmrcaja
+            sali.StartPosition = FormStartPosition.CenterParent; // Centrar el formulario emergente
+            sali.ShowDialog(); // Mostrarlo como emergente
+        }
+
+        private void btningre_Click(object sender, EventArgs e)
         {
             {
                 FrmIngreso ingre = new FrmIngreso(); // Crear una instancia del fmrcaja
@@ -50,11 +59,13 @@ namespace CapaPresentacion
             }
         }
 
-        private void btnegre_Click(object sender, EventArgs e)
+        private void btnarqueo_Click(object sender, EventArgs e)
         {
-            FrmSalida sali = new FrmSalida(); // Crear una instancia del fmrcaja
-            sali.StartPosition = FormStartPosition.CenterParent; // Centrar el formulario emergente
-            sali.ShowDialog(); // Mostrarlo como emergente
+            {
+                FrmCaja caja = new FrmCaja(); // Crear una instancia del fmrcaja
+                caja.StartPosition = FormStartPosition.CenterParent; // Centrar el formulario emergente
+                caja.ShowDialog(); // Mostrarlo como emergente
+            }
         }
     }
 }

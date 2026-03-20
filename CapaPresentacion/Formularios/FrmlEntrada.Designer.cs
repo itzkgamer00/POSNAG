@@ -31,121 +31,188 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmlEntrada));
             this.label11 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btningr = new FontAwesome.Sharp.IconButton();
-            this.btnegre = new FontAwesome.Sharp.IconButton();
-            this.iconButton9 = new FontAwesome.Sharp.IconButton();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            this.MesaCambio = new Guna.UI2.WinForms.Guna2Button();
+            this.btningre = new Guna.UI2.WinForms.Guna2Button();
+            this.btnarqueo = new Guna.UI2.WinForms.Guna2Button();
+            this.btnegre = new Guna.UI2.WinForms.Guna2Button();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // label11
             // 
-            this.label11.BackColor = System.Drawing.Color.DodgerBlue;
+            this.label11.BackColor = System.Drawing.Color.Gainsboro;
             this.label11.Font = new System.Drawing.Font("Bahnschrift", 19.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.SystemColors.Window;
-            this.label11.Location = new System.Drawing.Point(3, 0);
+            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.Location = new System.Drawing.Point(1, 2);
             this.label11.Name = "label11";
             this.label11.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label11.Size = new System.Drawing.Size(347, 50);
+            this.label11.Size = new System.Drawing.Size(347, 79);
             this.label11.TabIndex = 4;
-            this.label11.Text = "Control De Efectivo";
+            this.label11.Text = "MOVIMIENTOS";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.DodgerBlue;
+            this.panel1.BackColor = System.Drawing.Color.Gainsboro;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.label11);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(5, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1026, 82);
+            this.panel1.Size = new System.Drawing.Size(1026, 83);
             this.panel1.TabIndex = 42;
             // 
-            // dataGridView1
+            // guna2Button1
             // 
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(5, 203);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1023, 349);
-            this.dataGridView1.TabIndex = 43;
+            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button1.BorderColor = System.Drawing.Color.White;
+            this.guna2Button1.BorderRadius = 15;
+            this.guna2Button1.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
+            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button1.ForeColor = System.Drawing.Color.Black;
+            this.guna2Button1.ImageSize = new System.Drawing.Size(30, 30);
+            this.guna2Button1.IndicateFocus = true;
+            this.guna2Button1.Location = new System.Drawing.Point(195, 262);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.Size = new System.Drawing.Size(160, 83);
+            this.guna2Button1.TabIndex = 51;
+            this.guna2Button1.Text = "TRANSFERIR";
             // 
-            // btningr
+            // guna2Button2
             // 
-            this.btningr.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btningr.FlatAppearance.BorderSize = 12;
-            this.btningr.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
-            this.btningr.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btningr.Font = new System.Drawing.Font("Microsoft YaHei UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btningr.IconChar = FontAwesome.Sharp.IconChar.ArrowCircleDown;
-            this.btningr.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btningr.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btningr.Location = new System.Drawing.Point(8, 93);
-            this.btningr.Name = "btningr";
-            this.btningr.Size = new System.Drawing.Size(176, 87);
-            this.btningr.TabIndex = 46;
-            this.btningr.Text = "INGRESO";
-            this.btningr.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btningr.UseVisualStyleBackColor = true;
-            this.btningr.Click += new System.EventHandler(this.btningr_Click);
+            this.guna2Button2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button2.BorderColor = System.Drawing.Color.White;
+            this.guna2Button2.BorderRadius = 15;
+            this.guna2Button2.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
+            this.guna2Button2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button2.ForeColor = System.Drawing.Color.Black;
+            this.guna2Button2.ImageSize = new System.Drawing.Size(30, 30);
+            this.guna2Button2.IndicateFocus = true;
+            this.guna2Button2.Location = new System.Drawing.Point(361, 262);
+            this.guna2Button2.Name = "guna2Button2";
+            this.guna2Button2.Size = new System.Drawing.Size(160, 83);
+            this.guna2Button2.TabIndex = 52;
+            this.guna2Button2.Text = "OPERACIONES";
+            // 
+            // MesaCambio
+            // 
+            this.MesaCambio.BackColor = System.Drawing.Color.Transparent;
+            this.MesaCambio.BorderColor = System.Drawing.Color.White;
+            this.MesaCambio.BorderRadius = 15;
+            this.MesaCambio.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
+            this.MesaCambio.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.MesaCambio.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.MesaCambio.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.MesaCambio.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.MesaCambio.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.MesaCambio.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MesaCambio.ForeColor = System.Drawing.Color.Black;
+            this.MesaCambio.ImageOffset = new System.Drawing.Point(0, 2);
+            this.MesaCambio.ImageSize = new System.Drawing.Size(30, 30);
+            this.MesaCambio.IndicateFocus = true;
+            this.MesaCambio.Location = new System.Drawing.Point(527, 159);
+            this.MesaCambio.Name = "MesaCambio";
+            this.MesaCambio.Size = new System.Drawing.Size(160, 83);
+            this.MesaCambio.TabIndex = 50;
+            this.MesaCambio.Text = "COMPRA Y VENTA";
+            this.MesaCambio.Click += new System.EventHandler(this.MesaCambio_Click);
+            // 
+            // btningre
+            // 
+            this.btningre.BackColor = System.Drawing.Color.Transparent;
+            this.btningre.BorderColor = System.Drawing.Color.White;
+            this.btningre.BorderRadius = 15;
+            this.btningre.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
+            this.btningre.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btningre.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btningre.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btningre.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btningre.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btningre.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btningre.ForeColor = System.Drawing.Color.Black;
+            this.btningre.ImageSize = new System.Drawing.Size(30, 30);
+            this.btningre.IndicateFocus = true;
+            this.btningre.Location = new System.Drawing.Point(361, 159);
+            this.btningre.Name = "btningre";
+            this.btningre.PressedColor = System.Drawing.Color.Lime;
+            this.btningre.Size = new System.Drawing.Size(160, 83);
+            this.btningre.TabIndex = 49;
+            this.btningre.Text = "INGRESO";
+            this.btningre.Click += new System.EventHandler(this.btningre_Click);
+            // 
+            // btnarqueo
+            // 
+            this.btnarqueo.BackColor = System.Drawing.Color.Transparent;
+            this.btnarqueo.BorderColor = System.Drawing.Color.White;
+            this.btnarqueo.BorderRadius = 15;
+            this.btnarqueo.BorderStyle = System.Drawing.Drawing2D.DashStyle.DashDot;
+            this.btnarqueo.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnarqueo.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnarqueo.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnarqueo.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnarqueo.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.btnarqueo.Font = new System.Drawing.Font("Segoe UI", 13.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnarqueo.ForeColor = System.Drawing.Color.Black;
+            this.btnarqueo.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnarqueo.IndicateFocus = true;
+            this.btnarqueo.Location = new System.Drawing.Point(693, 159);
+            this.btnarqueo.Name = "btnarqueo";
+            this.btnarqueo.Size = new System.Drawing.Size(160, 83);
+            this.btnarqueo.TabIndex = 48;
+            this.btnarqueo.Text = "CAJA";
+            this.btnarqueo.Click += new System.EventHandler(this.btnarqueo_Click);
             // 
             // btnegre
             // 
-            this.btnegre.FlatAppearance.BorderSize = 12;
-            this.btnegre.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnegre.Font = new System.Drawing.Font("Microsoft YaHei UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnegre.IconChar = FontAwesome.Sharp.IconChar.ArrowCircleUp;
-            this.btnegre.IconColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.btnegre.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnegre.Location = new System.Drawing.Point(209, 93);
+            this.btnegre.BackColor = System.Drawing.Color.Transparent;
+            this.btnegre.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnegre.BorderColor = System.Drawing.Color.White;
+            this.btnegre.BorderRadius = 15;
+            this.btnegre.BorderStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            this.btnegre.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnegre.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnegre.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnegre.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnegre.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnegre.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnegre.ForeColor = System.Drawing.Color.Black;
+            this.btnegre.Image = global::CapaPresentacion.Properties.Resources.arrowup;
+            this.btnegre.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnegre.IndicateFocus = true;
+            this.btnegre.Location = new System.Drawing.Point(195, 159);
             this.btnegre.Name = "btnegre";
-            this.btnegre.Size = new System.Drawing.Size(176, 87);
-            this.btnegre.TabIndex = 45;
-            this.btnegre.Text = "SALIDA";
-            this.btnegre.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnegre.UseVisualStyleBackColor = true;
+            this.btnegre.Size = new System.Drawing.Size(160, 83);
+            this.btnegre.TabIndex = 47;
+            this.btnegre.Text = "EGRESO";
             this.btnegre.Click += new System.EventHandler(this.btnegre_Click);
-            // 
-            // iconButton9
-            // 
-            this.iconButton9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.iconButton9.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.iconButton9.BackColor = System.Drawing.SystemColors.Control;
-            this.iconButton9.Font = new System.Drawing.Font("Microsoft YaHei", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton9.IconChar = FontAwesome.Sharp.IconChar.MoneyBillTransfer;
-            this.iconButton9.IconColor = System.Drawing.Color.Black;
-            this.iconButton9.IconFont = FontAwesome.Sharp.IconFont.Solid;
-            this.iconButton9.IconSize = 25;
-            this.iconButton9.Location = new System.Drawing.Point(915, 93);
-            this.iconButton9.Margin = new System.Windows.Forms.Padding(4);
-            this.iconButton9.Name = "iconButton9";
-            this.iconButton9.Size = new System.Drawing.Size(112, 83);
-            this.iconButton9.TabIndex = 42;
-            this.iconButton9.Text = "MESA DE CAMBIO";
-            this.iconButton9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.iconButton9.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.iconButton9.UseVisualStyleBackColor = false;
-            this.iconButton9.Click += new System.EventHandler(this.MesaCambio_Click);
             // 
             // FrmlEntrada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoValidate = System.Windows.Forms.AutoValidate.Disable;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackColor = System.Drawing.Color.Silver;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(1036, 560);
             this.ControlBox = false;
-            this.Controls.Add(this.btningr);
+            this.Controls.Add(this.guna2Button1);
+            this.Controls.Add(this.guna2Button2);
+            this.Controls.Add(this.MesaCambio);
+            this.Controls.Add(this.btningre);
+            this.Controls.Add(this.btnarqueo);
             this.Controls.Add(this.btnegre);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.iconButton9);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -155,7 +222,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.PaddingChanged += new System.EventHandler(this.Entrada_Load);
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -163,9 +229,11 @@
         #endregion
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Panel panel1;
-        private FontAwesome.Sharp.IconButton iconButton9;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private FontAwesome.Sharp.IconButton btnegre;
-        private FontAwesome.Sharp.IconButton btningr;
+        private Guna.UI2.WinForms.Guna2Button btnegre;
+        private Guna.UI2.WinForms.Guna2Button btnarqueo;
+        private Guna.UI2.WinForms.Guna2Button btningre;
+        private Guna.UI2.WinForms.Guna2Button MesaCambio;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button guna2Button2;
     }
 }

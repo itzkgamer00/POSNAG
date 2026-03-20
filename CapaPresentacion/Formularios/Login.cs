@@ -29,9 +29,22 @@ namespace CapaPresentacion
             this.Close();
         }
 
-        private void btningresar_Click(object sender, EventArgs e)
+       
+
+        private void frm_closing(object sender, FormClosingEventArgs e)
+        {
+            txtclave.Text = "";
+            txtusuario.Text = "";
+            this.Show();
+        }
+
+        private void Login_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btningresa_Click(object sender, EventArgs e)
+        {
             List<Usuario> TEST = new CN_Usuario().Listar();
 
             Usuario ousuario = (Usuario)new CN_Usuario().Listar().Where(u => u.usuario == txtusuario.Text && u.password_hash == txtclave.Text).FirstOrDefault();
@@ -43,7 +56,7 @@ namespace CapaPresentacion
                 fmrInicio frm = new fmrInicio();
                 frm.Show();
                 this.Hide();
-                frm.FormClosing += frm_closing; 
+                frm.FormClosing += frm_closing;
 
             }
             else
@@ -51,16 +64,6 @@ namespace CapaPresentacion
                 MessageBox.Show("❌ Usuario o contraseña incorrectos");
             }
 
-            
         }
-
-        private void frm_closing(object sender, FormClosingEventArgs e)
-        {
-            txtclave.Text = "";
-            txtusuario.Text = "";
-            this.Show();
-        }
-
-        
     }
 }
