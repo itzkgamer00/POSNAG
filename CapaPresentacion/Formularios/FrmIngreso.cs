@@ -17,11 +17,18 @@ namespace CapaPresentacion.Formularios
             InitializeComponent();
         }
 
-        private void btndetalleingr_Click(object sender, EventArgs e)
+        
+
+        private void btndetalleingre_Click(object sender, EventArgs e)
         {
             FrmDetalle detal = new FrmDetalle(); // Crear una instancia del fmrcaja
-            detal.StartPosition = FormStartPosition.CenterParent; // Centrar el formulario emergente
+            detal.StartPosition = FormStartPosition.CenterScreen; // Centrar el formulario emergente
             detal.ShowDialog(); // Mostrarlo como emergente
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

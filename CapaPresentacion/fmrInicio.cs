@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CapaPresentacion.Formularios;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -44,19 +45,22 @@ namespace CapaPresentacion
 
         private void btnHome_Click(object sender, EventArgs e)
         {
-            // Recorre cada control en el panel y verifica si es un formulario
+            //Cerrar cualquier formulario que ya esté en el panel.
             foreach (Control control in PanelContenedor.Controls)
             {
-                if (control is Form)
-                {
-                    // Cierra el formulario
-                    Form formularioSecundario = (Form)control;
-                    formularioSecundario.Close();
-                }
+                control.Dispose();
             }
 
-            // Limpia el panel de cualquier control restante
-            PanelContenedor.Controls.Clear();
+            //Crear instancia del formulario secundario.
+            Dashboard dash = new Dashboard
+            {
+                TopLevel = false, // Para que se comporte como un control en el panel
+                Dock = DockStyle.Fill // Para que ocupe todo el espacio del panel
+            };
+
+            PanelContenedor.Controls.Add(dash);
+            PanelContenedor.Tag = dash;
+            dash.Show();
         }
 
       
@@ -77,10 +81,15 @@ namespace CapaPresentacion
            lblHora.Text = DateTime.Now.ToLongTimeString();
         }
 
-        private void iconButton4_Click(object sender, EventArgs e)
+        
+        private void PanelContenedor_Paint(object sender, PaintEventArgs e)
         {
 
-            DialogResult resultado = System.Windows.Forms.MessageBox.Show("¿Estás seguro que deseas cerrar sesión?","Cerrar sesión",System.Windows.Forms.MessageBoxButtons.YesNo,System.Windows.Forms.MessageBoxIcon.Question
+        }
+
+        private void btnlog_Click(object sender, EventArgs e)
+        {
+            DialogResult resultado = System.Windows.Forms.MessageBox.Show("¿Estás seguro que deseas cerrar sesión?", "Cerrar sesión", System.Windows.Forms.MessageBoxButtons.YesNo, System.Windows.Forms.MessageBoxIcon.Question
 );
 
             if (resultado == System.Windows.Forms.DialogResult.Yes)
@@ -89,9 +98,6 @@ namespace CapaPresentacion
                 Login login = new Login();
                 login.Show();
             }
-
-
-
         }
     }
 }

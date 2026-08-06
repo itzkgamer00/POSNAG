@@ -46,16 +46,16 @@ namespace CapaPresentacion
         private void btnegre_Click(object sender, EventArgs e)
         {
             FrmSalida sali = new FrmSalida(); // Crear una instancia del fmrcaja
-            sali.StartPosition = FormStartPosition.CenterParent; // Centrar el formulario emergente
-            sali.ShowDialog(); // Mostrarlo como emergente
+            sali.StartPosition = FormStartPosition.CenterScreen; // Centrar el formulario emergente
+            sali.Show(); // Mostrarlo como emergente
         }
 
         private void btningre_Click(object sender, EventArgs e)
         {
             {
                 FrmIngreso ingre = new FrmIngreso(); // Crear una instancia del fmrcaja
-                ingre.StartPosition = FormStartPosition.CenterParent; // Centrar el formulario emergente
-                ingre.ShowDialog(); // Mostrarlo como emergente
+                ingre.StartPosition = FormStartPosition.CenterScreen; // Centrar el formulario emergente
+                ingre.Show(); // Mostrarlo como emergente
             }
         }
 

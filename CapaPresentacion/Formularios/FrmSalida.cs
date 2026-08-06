@@ -23,5 +23,12 @@ namespace CapaPresentacion.Formularios
             detalsal.StartPosition = FormStartPosition.CenterParent; // Centrar el formulario emergente
             detalsal.ShowDialog(); // Mostrarlo como emergente
         }
+
+        private void btnegredetalle_Click(object sender, EventArgs e)
+        {
+            FrmDetalle detal = new FrmDetalle(); // Crear una instancia del fmrcaja
+            detal.StartPosition = FormStartPosition.CenterScreen; // Centrar el formulario emergente
+            detal.ShowDialog(); // Mostrarlo como emergente
+        }
     }
 }

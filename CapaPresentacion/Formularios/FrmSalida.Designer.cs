@@ -30,220 +30,299 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
-            this.btnguardaregreso = new FontAwesome.Sharp.IconButton();
+            this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnguardaringre = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2ComboBox3 = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.btnegredetalle = new Guna.UI2.WinForms.Guna2Button();
+            this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.guna2ComboBox2 = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.guna2ComboBox1 = new Guna.UI2.WinForms.Guna2ComboBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.btndetsalida = new FontAwesome.Sharp.IconButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.label11);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(777, 82);
+            this.panel1.Size = new System.Drawing.Size(981, 82);
             this.panel1.TabIndex = 57;
             // 
             // label11
             // 
-            this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
             this.label11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label11.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.label11.Font = new System.Drawing.Font("Bahnschrift", 19.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.SystemColors.InactiveCaptionText;
-            this.label11.Location = new System.Drawing.Point(220, 7);
+            this.label11.Font = new System.Drawing.Font("Bahnschrift", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(10, 16);
             this.label11.Name = "label11";
             this.label11.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.label11.Size = new System.Drawing.Size(347, 50);
+            this.label11.Size = new System.Drawing.Size(213, 50);
             this.label11.TabIndex = 4;
             this.label11.Text = "EGRESO";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // iconButton2
+            // guna2Separator1
             // 
-            this.iconButton2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.iconButton2.CausesValidation = false;
-            this.iconButton2.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.iconButton2.FlatAppearance.BorderSize = 5;
-            this.iconButton2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.RectangleXmark;
-            this.iconButton2.IconColor = System.Drawing.Color.Red;
-            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton2.IconSize = 30;
-            this.iconButton2.Location = new System.Drawing.Point(18, 572);
-            this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Size = new System.Drawing.Size(187, 57);
-            this.iconButton2.TabIndex = 56;
-            this.iconButton2.Text = "CANCELAR";
-            this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton2.UseVisualStyleBackColor = true;
+            this.guna2Separator1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Separator1.FillColor = System.Drawing.Color.Gray;
+            this.guna2Separator1.FillStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            this.guna2Separator1.FillThickness = 3;
+            this.guna2Separator1.Location = new System.Drawing.Point(672, 523);
+            this.guna2Separator1.Name = "guna2Separator1";
+            this.guna2Separator1.Size = new System.Drawing.Size(297, 21);
+            this.guna2Separator1.TabIndex = 75;
             // 
-            // btnguardaregreso
+            // guna2Button1
             // 
-            this.btnguardaregreso.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnguardaregreso.FlatAppearance.BorderColor = System.Drawing.Color.Green;
-            this.btnguardaregreso.FlatAppearance.BorderSize = 5;
-            this.btnguardaregreso.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btnguardaregreso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnguardaregreso.Font = new System.Drawing.Font("Microsoft JhengHei UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnguardaregreso.IconChar = FontAwesome.Sharp.IconChar.ClipboardCheck;
-            this.btnguardaregreso.IconColor = System.Drawing.Color.Green;
-            this.btnguardaregreso.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnguardaregreso.IconSize = 30;
-            this.btnguardaregreso.Location = new System.Drawing.Point(553, 572);
-            this.btnguardaregreso.Name = "btnguardaregreso";
-            this.btnguardaregreso.Size = new System.Drawing.Size(182, 57);
-            this.btnguardaregreso.TabIndex = 55;
-            this.btnguardaregreso.Text = "GUARDAR";
-            this.btnguardaregreso.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnguardaregreso.UseVisualStyleBackColor = true;
+            this.guna2Button1.BorderRadius = 10;
+            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button1.FillColor = System.Drawing.Color.Silver;
+            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2Button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(58)))), ((int)(((byte)(138)))));
+            this.guna2Button1.Image = global::CapaPresentacion.Properties.Resources.Close_Window;
+            this.guna2Button1.Location = new System.Drawing.Point(672, 550);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.Size = new System.Drawing.Size(297, 59);
+            this.guna2Button1.TabIndex = 74;
+            this.guna2Button1.Text = "Cancelar Tramite";
+            // 
+            // btnguardaringre
+            // 
+            this.btnguardaringre.BorderRadius = 10;
+            this.btnguardaringre.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnguardaringre.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnguardaringre.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnguardaringre.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnguardaringre.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(58)))), ((int)(((byte)(138)))));
+            this.btnguardaringre.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnguardaringre.ForeColor = System.Drawing.Color.White;
+            this.btnguardaringre.Image = global::CapaPresentacion.Properties.Resources.Checked_Checkbox;
+            this.btnguardaringre.Location = new System.Drawing.Point(672, 458);
+            this.btnguardaringre.Name = "btnguardaringre";
+            this.btnguardaringre.Size = new System.Drawing.Size(297, 59);
+            this.btnguardaringre.TabIndex = 73;
+            this.btnguardaringre.Text = "Finalizar Operacion";
+            // 
+            // guna2ComboBox3
+            // 
+            this.guna2ComboBox3.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ComboBox3.BorderRadius = 6;
+            this.guna2ComboBox3.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.guna2ComboBox3.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.guna2ComboBox3.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox3.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2ComboBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.guna2ComboBox3.ItemHeight = 30;
+            this.guna2ComboBox3.Items.AddRange(new object[] {
+            "Efectivo Ventanilla",
+            "Cheque",
+            "Transferencia"});
+            this.guna2ComboBox3.Location = new System.Drawing.Point(504, 248);
+            this.guna2ComboBox3.Name = "guna2ComboBox3";
+            this.guna2ComboBox3.Size = new System.Drawing.Size(311, 36);
+            this.guna2ComboBox3.TabIndex = 72;
+            // 
+            // btnegredetalle
+            // 
+            this.btnegredetalle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnegredetalle.BorderColor = System.Drawing.Color.Silver;
+            this.btnegredetalle.BorderRadius = 10;
+            this.btnegredetalle.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+            this.btnegredetalle.BorderThickness = 2;
+            this.btnegredetalle.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnegredetalle.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnegredetalle.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnegredetalle.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnegredetalle.FillColor = System.Drawing.Color.White;
+            this.btnegredetalle.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnegredetalle.ForeColor = System.Drawing.Color.Black;
+            this.btnegredetalle.Image = global::CapaPresentacion.Properties.Resources.Cash;
+            this.btnegredetalle.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnegredetalle.ImageOffset = new System.Drawing.Point(7, -4);
+            this.btnegredetalle.ImageSize = new System.Drawing.Size(45, 45);
+            this.btnegredetalle.IndicateFocus = true;
+            this.btnegredetalle.Location = new System.Drawing.Point(12, 308);
+            this.btnegredetalle.Name = "btnegredetalle";
+            this.btnegredetalle.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.btnegredetalle.Size = new System.Drawing.Size(353, 85);
+            this.btnegredetalle.TabIndex = 69;
+            this.btnegredetalle.Text = "Detallar Efectivo (Denominacion)";
+            this.btnegredetalle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btnegredetalle.Click += new System.EventHandler(this.btnegredetalle_Click);
+            // 
+            // guna2TextBox1
+            // 
+            this.guna2TextBox1.BorderRadius = 6;
+            this.guna2TextBox1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.guna2TextBox1.DefaultText = "";
+            this.guna2TextBox1.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.guna2TextBox1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.guna2TextBox1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2TextBox1.Location = new System.Drawing.Point(13, 236);
+            this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.guna2TextBox1.Name = "guna2TextBox1";
+            this.guna2TextBox1.PlaceholderText = "";
+            this.guna2TextBox1.SelectedText = "";
+            this.guna2TextBox1.Size = new System.Drawing.Size(380, 48);
+            this.guna2TextBox1.TabIndex = 68;
+            // 
+            // guna2ComboBox2
+            // 
+            this.guna2ComboBox2.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ComboBox2.BorderRadius = 6;
+            this.guna2ComboBox2.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.guna2ComboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.guna2ComboBox2.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox2.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2ComboBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.guna2ComboBox2.ItemHeight = 30;
+            this.guna2ComboBox2.Items.AddRange(new object[] {
+            "CORDOBAS NICARAGUENSE (NIO)",
+            "DOLAR ESTADOUNIDENSE (USD)"});
+            this.guna2ComboBox2.Location = new System.Drawing.Point(504, 150);
+            this.guna2ComboBox2.Name = "guna2ComboBox2";
+            this.guna2ComboBox2.Size = new System.Drawing.Size(311, 36);
+            this.guna2ComboBox2.TabIndex = 67;
+            // 
+            // guna2ComboBox1
+            // 
+            this.guna2ComboBox1.AutoCompleteCustomSource.AddRange(new string[] {
+            "--SELECCIONE UNA OPCION--"});
+            this.guna2ComboBox1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ComboBox1.BorderRadius = 6;
+            this.guna2ComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.guna2ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.guna2ComboBox1.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.guna2ComboBox1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.guna2ComboBox1.IntegralHeight = false;
+            this.guna2ComboBox1.ItemHeight = 30;
+            this.guna2ComboBox1.Items.AddRange(new object[] {
+            "--- SELECCIONE UNA OPERACION ---",
+            "DEPOSITO BANPRO",
+            "DEPOSITO BAC",
+            "PAGALO TODO",
+            "DOTACION"});
+            this.guna2ComboBox1.Location = new System.Drawing.Point(12, 150);
+            this.guna2ComboBox1.Name = "guna2ComboBox1";
+            this.guna2ComboBox1.Size = new System.Drawing.Size(465, 36);
+            this.guna2ComboBox1.TabIndex = 66;
             // 
             // textBox3
             // 
             this.textBox3.Font = new System.Drawing.Font("Microsoft JhengHei UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(18, 451);
+            this.textBox3.Location = new System.Drawing.Point(12, 458);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(665, 98);
-            this.textBox3.TabIndex = 54;
+            this.textBox3.Size = new System.Drawing.Size(634, 151);
+            this.textBox3.TabIndex = 63;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft YaHei UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(12, 408);
+            this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(6, 424);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(202, 36);
-            this.label5.TabIndex = 53;
-            this.label5.Text = "DESCRIPCION";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft JhengHei UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(18, 336);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(284, 43);
-            this.textBox2.TabIndex = 52;
+            this.label5.Size = new System.Drawing.Size(282, 31);
+            this.label5.TabIndex = 62;
+            this.label5.Text = "Concepto/Descripcion";
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft YaHei UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 297);
+            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(498, 199);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(181, 36);
-            this.label4.TabIndex = 51;
-            this.label4.Text = "REFERENCIA";
-            // 
-            // btndetsalida
-            // 
-            this.btndetsalida.IconChar = FontAwesome.Sharp.IconChar.Table;
-            this.btndetsalida.IconColor = System.Drawing.Color.Black;
-            this.btndetsalida.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btndetsalida.Location = new System.Drawing.Point(690, 231);
-            this.btndetsalida.Name = "btndetsalida";
-            this.btndetsalida.Size = new System.Drawing.Size(75, 43);
-            this.btndetsalida.TabIndex = 50;
-            this.btndetsalida.UseVisualStyleBackColor = true;
-            this.btndetsalida.Click += new System.EventHandler(this.btndetsalida_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(399, 231);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(284, 43);
-            this.textBox1.TabIndex = 49;
+            this.label4.Size = new System.Drawing.Size(125, 25);
+            this.label4.TabIndex = 61;
+            this.label4.Text = "Tipo De Pago";
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft YaHei UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(393, 192);
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(6, 199);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(127, 36);
-            this.label3.TabIndex = 48;
-            this.label3.Text = "MONTO";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft YaHei UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(18, 231);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(284, 43);
-            this.comboBox2.TabIndex = 47;
+            this.label3.Size = new System.Drawing.Size(70, 25);
+            this.label3.TabIndex = 60;
+            this.label3.Text = "Monto";
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft YaHei UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 192);
+            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(498, 116);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(144, 36);
-            this.label2.TabIndex = 46;
-            this.label2.Text = "MONEDA";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft YaHei UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(18, 134);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(665, 43);
-            this.comboBox1.TabIndex = 45;
+            this.label2.Size = new System.Drawing.Size(83, 25);
+            this.label2.TabIndex = 59;
+            this.label2.Text = "Moneda";
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft JhengHei UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 95);
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(6, 116);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(185, 36);
-            this.label1.TabIndex = 44;
+            this.label1.Size = new System.Drawing.Size(119, 25);
+            this.label1.TabIndex = 58;
             this.label1.Text = "OPERACION";
             // 
             // FrmSalida
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(777, 676);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.iconButton2);
-            this.Controls.Add(this.btnguardaregreso);
+            this.ClientSize = new System.Drawing.Size(981, 641);
+            this.Controls.Add(this.guna2Separator1);
+            this.Controls.Add(this.guna2Button1);
+            this.Controls.Add(this.btnguardaringre);
+            this.Controls.Add(this.guna2ComboBox3);
+            this.Controls.Add(this.btnegredetalle);
+            this.Controls.Add(this.guna2TextBox1);
+            this.Controls.Add(this.guna2ComboBox2);
+            this.Controls.Add(this.guna2ComboBox1);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.btndetsalida);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmSalida";
-            this.ShowIcon = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -254,18 +333,19 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label11;
-        private FontAwesome.Sharp.IconButton iconButton2;
-        private FontAwesome.Sharp.IconButton btnguardaregreso;
+        private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button btnguardaringre;
+        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox3;
+        private Guna.UI2.WinForms.Guna2Button btnegredetalle;
+        private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox2;
+        private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox1;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label4;
-        private FontAwesome.Sharp.IconButton btndetsalida;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
     }
 }
