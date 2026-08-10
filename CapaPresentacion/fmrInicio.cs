@@ -19,56 +19,52 @@ namespace CapaPresentacion
             InitializeComponent();
         }
 
-        private void btnControlEfectivo_Click(object sender, EventArgs e)
-        {
-            //Cerrar cualquier formulario que ya esté en el panel.
-            foreach (Control control in PanelContenedor.Controls)
-            {
-                control.Dispose();
-            }
+        //private void btnControlEfectivo_Click(object sender, EventArgs e)
+        //{
+        //    //Cerrar cualquier formulario que ya esté en el panel.
+        //    foreach (Control control in PanelContenedor.Controls)
+        //    {
+        //        control.Dispose();
+        //    }
 
-            //Crear instancia del formulario secundario.
-           FrmlEntrada formControlEfectivo = new FrmlEntrada
-           {
-               TopLevel = false, // Para que se comporte como un control en el panel
-               Dock = DockStyle.Fill // Para que ocupe todo el espacio del panel
-           };
+        //    //Crear instancia del formulario secundario.
+        //   FrmlEntrada formControlEfectivo = new FrmlEntrada
+        //   {
+        //       TopLevel = false, // Para que se comporte como un control en el panel
+        //       Dock = DockStyle.Fill // Para que ocupe todo el espacio del panel
+        //   };
 
-            PanelContenedor.Controls.Add(formControlEfectivo);
-            PanelContenedor.Tag = formControlEfectivo;
-            formControlEfectivo.Show();
+        //    PanelContenedor.Controls.Add(formControlEfectivo);
+        //    PanelContenedor.Tag = formControlEfectivo;
+        //    formControlEfectivo.Show();
             //FrmlEntrada efectivo = new FrmlEntrada(); // Crear una instancia del fmrcaja
             //efectivo.StartPosition = FormStartPosition.CenterParent; // Centrar el formulario emergente
             //efectivo.ShowDialog(); // Mostrarlo como emergente
 
-        }
+        //}
 
-        private void btnHome_Click(object sender, EventArgs e)
-        {
-            //Cerrar cualquier formulario que ya esté en el panel.
-            foreach (Control control in PanelContenedor.Controls)
-            {
-                control.Dispose();
-            }
+        //private void btnHome_Click(object sender, EventArgs e)
+        //{
+        //    //Cerrar cualquier formulario que ya esté en el panel.
+        //    foreach (Control control in PanelContenedor.Controls)
+        //    {
+        //        control.Dispose();
+        //    }
 
-            //Crear instancia del formulario secundario.
-            Dashboard dash = new Dashboard
-            {
-                TopLevel = false, // Para que se comporte como un control en el panel
-                Dock = DockStyle.Fill // Para que ocupe todo el espacio del panel
-            };
+        //    //Crear instancia del formulario secundario.
+        //    Dashboard dash = new Dashboard
+        //    {
+        //        TopLevel = false, // Para que se comporte como un control en el panel
+        //        Dock = DockStyle.Fill // Para que ocupe todo el espacio del panel
+        //    };
 
-            PanelContenedor.Controls.Add(dash);
-            PanelContenedor.Tag = dash;
-            dash.Show();
-        }
+        //    PanelContenedor.Controls.Add(dash);
+        //    PanelContenedor.Tag = dash;
+        //    dash.Show();
+        //}
 
       
 
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void fmrInicio_Load(object sender, EventArgs e)
         {
@@ -82,10 +78,7 @@ namespace CapaPresentacion
         }
 
         
-        private void PanelContenedor_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+     
 
         private void btnlog_Click(object sender, EventArgs e)
         {
@@ -94,9 +87,34 @@ namespace CapaPresentacion
 
             if (resultado == System.Windows.Forms.DialogResult.Yes)
             {
-                this.Hide(); // Oculta el formulario actual
+                this.Hide(); // Cierra el formulario actual
                 Login login = new Login();
                 login.Show();
+            }
+        }
+
+        private void btningreso_Click(object sender, EventArgs e)
+        {
+            {
+                FrmIngreso ingre = new FrmIngreso(); // Crear una instancia del fmrcaja
+                ingre.StartPosition = FormStartPosition.CenterScreen; // Centrar el formulario emergente
+                ingre.ShowDialog(); // Mostrarlo como emergente
+            }
+        }
+
+        private void btnegreso_Click(object sender, EventArgs e)
+        {
+            FrmSalida sali = new FrmSalida(); // Crear una instancia del fmrcaja
+            sali.StartPosition = FormStartPosition.CenterScreen; // Centrar el formulario emergente
+            sali.ShowDialog(); // Mostrarlo como emergente
+        }
+
+        private void MesaCambio_Click(object sender, EventArgs e)
+        {
+            {
+                Frmlcambiodivisas entrada = new Frmlcambiodivisas(); // Crear una instancia de Form2
+                entrada.StartPosition = FormStartPosition.CenterParent; // Centrar el formulario emergente
+                entrada.ShowDialog(); // Mostrarlo como emergente
             }
         }
     }

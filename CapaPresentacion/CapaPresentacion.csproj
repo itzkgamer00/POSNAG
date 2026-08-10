@@ -193,12 +193,6 @@
     <Compile Include="Formularios\Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
-    <Compile Include="Formularios\FrmCaja.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\FrmCaja.Designer.cs">
-      <DependentUpon>FrmCaja.cs</DependentUpon>
-    </Compile>
     <Compile Include="Formularios\FrmDetalle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -216,12 +210,6 @@
     </Compile>
     <Compile Include="Formularios\Frmlcambiodivisas.Designer.cs">
       <DependentUpon>Frmlcambiodivisas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Formularios\FrmlEntrada.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Formularios\FrmlEntrada.Designer.cs">
-      <DependentUpon>FrmlEntrada.cs</DependentUpon>
     </Compile>
     <Compile Include="fmrInicio.cs">
       <SubType>Form</SubType>
@@ -243,9 +231,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Formularios\FrmCaja.resx">
-      <DependentUpon>FrmCaja.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmDetalle.resx">
       <DependentUpon>FrmDetalle.cs</DependentUpon>
     </EmbeddedResource>
@@ -254,9 +239,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Frmlcambiodivisas.resx">
       <DependentUpon>Frmlcambiodivisas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Formularios\FrmlEntrada.resx">
-      <DependentUpon>FrmlEntrada.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fmrInicio.resx">
       <DependentUpon>fmrInicio.cs</DependentUpon>
