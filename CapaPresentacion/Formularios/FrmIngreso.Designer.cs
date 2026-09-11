@@ -57,9 +57,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 109);
+            this.label1.Location = new System.Drawing.Point(19, 75);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(141, 31);
+            this.label1.Size = new System.Drawing.Size(119, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "OPERACION";
             // 
@@ -69,9 +69,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(504, 109);
+            this.label2.Location = new System.Drawing.Point(504, 75);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(100, 31);
+            this.label2.Size = new System.Drawing.Size(83, 25);
             this.label2.TabIndex = 2;
             this.label2.Text = "Moneda";
             // 
@@ -81,9 +81,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 192);
+            this.label3.Location = new System.Drawing.Point(19, 142);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(84, 31);
+            this.label3.Size = new System.Drawing.Size(70, 25);
             this.label3.TabIndex = 4;
             this.label3.Text = "Monto";
             // 
@@ -93,19 +93,19 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 399);
+            this.label4.Location = new System.Drawing.Point(19, 316);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(154, 31);
+            this.label4.Size = new System.Drawing.Size(125, 25);
             this.label4.TabIndex = 7;
             this.label4.Text = "Tipo De Pago";
             // 
             // textBox3
             // 
             this.textBox3.Font = new System.Drawing.Font("Microsoft JhengHei UI", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(18, 516);
+            this.textBox3.Location = new System.Drawing.Point(17, 423);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(634, 151);
+            this.textBox3.Size = new System.Drawing.Size(570, 93);
             this.textBox3.TabIndex = 10;
             // 
             // label5
@@ -113,7 +113,7 @@
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(12, 482);
+            this.label5.Location = new System.Drawing.Point(20, 389);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(282, 31);
             this.label5.TabIndex = 9;
@@ -127,7 +127,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(981, 77);
+            this.panel1.Size = new System.Drawing.Size(981, 61);
             this.panel1.TabIndex = 43;
             // 
             // label11
@@ -135,7 +135,7 @@
             this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(150)))), ((int)(((byte)(105)))));
             this.label11.Font = new System.Drawing.Font("Bahnschrift", 19.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(9, 7);
+            this.label11.Location = new System.Drawing.Point(3, -2);
             this.label11.Name = "label11";
             this.label11.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.label11.Size = new System.Drawing.Size(245, 57);
@@ -149,9 +149,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(504, 192);
+            this.label6.Location = new System.Drawing.Point(505, 144);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(180, 31);
+            this.label6.Size = new System.Drawing.Size(148, 25);
             this.label6.TabIndex = 44;
             this.label6.Text = "Monto Recibido";
             // 
@@ -161,9 +161,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(504, 283);
+            this.label7.Location = new System.Drawing.Point(504, 229);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(197, 31);
+            this.label7.Size = new System.Drawing.Size(163, 25);
             this.label7.TabIndex = 46;
             this.label7.Text = "Vuelto A Entregar";
             // 
@@ -179,13 +179,7 @@
             this.guna2ComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.guna2ComboBox1.IntegralHeight = false;
             this.guna2ComboBox1.ItemHeight = 30;
-            this.guna2ComboBox1.Items.AddRange(new object[] {
-            "--- SELECCIONE UNA OPERACION ---",
-            "DEPOSITO BANPRO",
-            "DEPOSITO BAC",
-            "PAGALO TODO",
-            "DOTACION"});
-            this.guna2ComboBox1.Location = new System.Drawing.Point(18, 143);
+            this.guna2ComboBox1.Location = new System.Drawing.Point(18, 103);
             this.guna2ComboBox1.Name = "guna2ComboBox1";
             this.guna2ComboBox1.Size = new System.Drawing.Size(465, 36);
             this.guna2ComboBox1.TabIndex = 48;
@@ -201,10 +195,7 @@
             this.guna2ComboBox2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2ComboBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.guna2ComboBox2.ItemHeight = 30;
-            this.guna2ComboBox2.Items.AddRange(new object[] {
-            "CORDOBAS NICARAGUENSE (NIO)",
-            "DOLAR ESTADOUNIDENSE (USD)"});
-            this.guna2ComboBox2.Location = new System.Drawing.Point(510, 143);
+            this.guna2ComboBox2.Location = new System.Drawing.Point(509, 103);
             this.guna2ComboBox2.Name = "guna2ComboBox2";
             this.guna2ComboBox2.Size = new System.Drawing.Size(311, 36);
             this.guna2ComboBox2.TabIndex = 49;
@@ -221,7 +212,7 @@
             this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Location = new System.Drawing.Point(18, 229);
+            this.guna2TextBox1.Location = new System.Drawing.Point(18, 173);
             this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.guna2TextBox1.Name = "guna2TextBox1";
             this.guna2TextBox1.PlaceholderText = "";
@@ -241,7 +232,7 @@
             this.guna2TextBox2.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2TextBox2.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2TextBox2.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox2.Location = new System.Drawing.Point(510, 229);
+            this.guna2TextBox2.Location = new System.Drawing.Point(509, 175);
             this.guna2TextBox2.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.guna2TextBox2.Name = "guna2TextBox2";
             this.guna2TextBox2.PlaceholderText = "";
@@ -263,7 +254,7 @@
             this.guna2TextBox3.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2TextBox3.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2TextBox3.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox3.Location = new System.Drawing.Point(510, 320);
+            this.guna2TextBox3.Location = new System.Drawing.Point(509, 260);
             this.guna2TextBox3.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.guna2TextBox3.Name = "guna2TextBox3";
             this.guna2TextBox3.PlaceholderText = "";
@@ -283,11 +274,7 @@
             this.guna2ComboBox3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2ComboBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.guna2ComboBox3.ItemHeight = 30;
-            this.guna2ComboBox3.Items.AddRange(new object[] {
-            "Efectivo Ventanilla",
-            "Cheque",
-            "Transferencia"});
-            this.guna2ComboBox3.Location = new System.Drawing.Point(18, 433);
+            this.guna2ComboBox3.Location = new System.Drawing.Point(18, 344);
             this.guna2ComboBox3.Name = "guna2ComboBox3";
             this.guna2ComboBox3.Size = new System.Drawing.Size(353, 36);
             this.guna2ComboBox3.TabIndex = 54;
@@ -303,12 +290,13 @@
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(58)))), ((int)(((byte)(138)))));
             this.guna2Button1.Image = global::CapaPresentacion.Properties.Resources.Close_Window;
-            this.guna2Button1.Location = new System.Drawing.Point(672, 608);
+            this.guna2Button1.Location = new System.Drawing.Point(647, 471);
             this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(297, 59);
+            this.guna2Button1.Size = new System.Drawing.Size(297, 45);
             this.guna2Button1.TabIndex = 56;
             this.guna2Button1.Text = "Cancelar Tramite";
-            // 
+            this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
+            //
             // btnguardaringre
             // 
             this.btnguardaringre.BorderRadius = 10;
@@ -320,12 +308,13 @@
             this.btnguardaringre.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnguardaringre.ForeColor = System.Drawing.Color.White;
             this.btnguardaringre.Image = global::CapaPresentacion.Properties.Resources.Checked_Checkbox;
-            this.btnguardaringre.Location = new System.Drawing.Point(672, 516);
+            this.btnguardaringre.Location = new System.Drawing.Point(647, 392);
             this.btnguardaringre.Name = "btnguardaringre";
-            this.btnguardaringre.Size = new System.Drawing.Size(297, 59);
+            this.btnguardaringre.Size = new System.Drawing.Size(297, 46);
             this.btnguardaringre.TabIndex = 55;
             this.btnguardaringre.Text = "Finalizar Operacion";
-            // 
+            this.btnguardaringre.Click += new System.EventHandler(this.btnguardaringre_Click);
+            //
             // btndetalleingre
             // 
             this.btndetalleingre.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -345,10 +334,10 @@
             this.btndetalleingre.ImageOffset = new System.Drawing.Point(7, -4);
             this.btndetalleingre.ImageSize = new System.Drawing.Size(45, 45);
             this.btndetalleingre.IndicateFocus = true;
-            this.btndetalleingre.Location = new System.Drawing.Point(18, 301);
+            this.btndetalleingre.Location = new System.Drawing.Point(17, 235);
             this.btndetalleingre.Name = "btndetalleingre";
             this.btndetalleingre.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btndetalleingre.Size = new System.Drawing.Size(353, 85);
+            this.btndetalleingre.Size = new System.Drawing.Size(353, 67);
             this.btndetalleingre.TabIndex = 51;
             this.btndetalleingre.Text = "Detallar Efectivo (Denominacion)";
             this.btndetalleingre.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -360,7 +349,7 @@
             this.guna2Separator1.FillColor = System.Drawing.Color.Gray;
             this.guna2Separator1.FillStyle = System.Drawing.Drawing2D.DashStyle.Custom;
             this.guna2Separator1.FillThickness = 3;
-            this.guna2Separator1.Location = new System.Drawing.Point(672, 581);
+            this.guna2Separator1.Location = new System.Drawing.Point(647, 444);
             this.guna2Separator1.Name = "guna2Separator1";
             this.guna2Separator1.Size = new System.Drawing.Size(297, 21);
             this.guna2Separator1.TabIndex = 57;
@@ -369,7 +358,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(981, 692);
+            this.ClientSize = new System.Drawing.Size(981, 531);
             this.Controls.Add(this.guna2Separator1);
             this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.btnguardaringre);

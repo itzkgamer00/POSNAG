@@ -157,9 +157,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AperturaCaja.cs" />
+    <Compile Include="AperturaCajaMoneda.cs" />
+    <Compile Include="Caja.cs" />
+    <Compile Include="CierreCaja.cs" />
+    <Compile Include="CierreCajaMoneda.cs" />
+    <Compile Include="Concepto.cs" />
+    <Compile Include="FormaPago.cs" />
+    <Compile Include="HistorialCierre.cs" />
+    <Compile Include="Moneda.cs" />
     <Compile Include="Permiso.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ResultadoAutenticacion.cs" />
     <Compile Include="Roles.cs" />
+    <Compile Include="Transaccion.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>
   <ItemGroup>

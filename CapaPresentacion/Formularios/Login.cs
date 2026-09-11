@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System;
 using System.Windows.Forms;
-
 using CapaEntidad;
 using CapaNegocio;
 
@@ -16,54 +7,42 @@ namespace CapaPresentacion
 {
     public partial class Login : Form
     {
-        
+        private readonly CN_Usuario _negocioUsuario = new CN_Usuario();
 
         public Login()
         {
             InitializeComponent();
-    
-        }
-
-        private void iconButton2_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-       
-
-        private void frm_closing(object sender, FormClosingEventArgs e)
-        {
-            txtclave.Text = "";
-            txtusuario.Text = "";
-            this.Show();
-        }
-
-        private void Login_Load(object sender, EventArgs e)
-        {
-
+            this.AcceptButton = btningresa;
         }
 
         private void btningresa_Click(object sender, EventArgs e)
         {
-            List<Usuario> TEST = new CN_Usuario().Listar();
+            ResultadoAutenticacion resultado;
 
-            Usuario ousuario = (Usuario)new CN_Usuario().Listar().Where(u => u.usuario == txtusuario.Text && u.password_hash == txtclave.Text).FirstOrDefault();
-
-            if (ousuario != null)
+            btningresa.Enabled = false;
+            this.UseWaitCursor = true;
+            try
             {
-                MessageBox.Show($"✅ Bienvenido {ousuario.NombreCompleto}");
-
-                fmrInicio frm = new fmrInicio();
-                frm.Show();
-                this.Hide();
-                frm.FormClosing += frm_closing;
-
+                resultado = _negocioUsuario.Autenticar(txtusuario.Text, txtclave.Text);
             }
-            else
+            finally
             {
-                MessageBox.Show("❌ Usuario o contraseña incorrectos");
+                this.UseWaitCursor = false;
+                btningresa.Enabled = true;
             }
 
+            if (!resultado.Exitoso)
+            {
+                MessageBox.Show(resultado.Mensaje, "No se pudo iniciar sesión",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtclave.Clear();
+                txtclave.Focus();
+                return;
+            }
+
+            SesionActual.Iniciar(resultado.Usuario);
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
     }
 }

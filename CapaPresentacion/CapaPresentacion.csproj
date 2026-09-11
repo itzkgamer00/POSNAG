@@ -47,6 +47,9 @@
     <Reference Include="Guna.UI2, Version=2.0.4.7, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.7\lib\net472\Guna.UI2.dll</HintPath>
     </Reference>
+    <Reference Include="MaterialSkin, Version=2.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MaterialSkin.2.2.3.1\lib\net461\MaterialSkin.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -193,6 +196,18 @@
     <Compile Include="Formularios\Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formularios\Frmcajaregistradora.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Frmcajaregistradora.Designer.cs">
+      <DependentUpon>Frmcajaregistradora.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\Frmclientes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\Frmclientes.Designer.cs">
+      <DependentUpon>Frmclientes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\FrmDetalle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -231,6 +246,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Formularios\Apertura.resx">
+      <DependentUpon>Apertura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Cierre.resx">
+      <DependentUpon>Cierre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Frmcajaregistradora.resx">
+      <DependentUpon>Frmcajaregistradora.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\Frmclientes.resx">
+      <DependentUpon>Frmclientes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmDetalle.resx">
       <DependentUpon>FrmDetalle.cs</DependentUpon>
     </EmbeddedResource>
@@ -272,6 +299,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="connections.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="connections.config.example">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\iconoprinc.jpg" />
@@ -299,6 +332,7 @@
     <Content Include="Resources\arrowdown.ico" />
     <Content Include="Resources\arrowup.ico" />
     <Content Include="Resources\Buscar.png" />
+    <None Include="Resources\Buscar1.png" />
     <Content Include="Resources\cajaapertura.png" />
     <Content Include="Resources\Cancel.png" />
     <Content Include="Resources\Cancel_1.png" />
@@ -310,6 +344,7 @@
     <Content Include="Resources\cheque.png" />
     <Content Include="Resources\Client_.png" />
     <None Include="Resources\Close Window.ico" />
+    <None Include="Resources\Close.ico" />
     <Content Include="Resources\Cotizaciones_PB.png" />
     <Content Include="Resources\CreateBackup.png" />
     <Content Include="Resources\cross.png" />
@@ -335,6 +370,7 @@
     <Content Include="Resources\OK.jfif" />
     <Content Include="Resources\permission.png" />
     <Content Include="Resources\permissions_PB.png" />
+    <None Include="Resources\Plus.ico" />
     <Content Include="Resources\printer.png" />
     <Content Include="Resources\Process_.png" />
     <Content Include="Resources\Product.png" />

@@ -158,6 +158,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CD_AperturaCaja.cs" />
+    <Compile Include="CD_Caja.cs" />
+    <Compile Include="CD_Concepto.cs" />
+    <Compile Include="CD_FormaPago.cs" />
+    <Compile Include="CD_Moneda.cs" />
+    <Compile Include="CD_Transaccion.cs" />
     <Compile Include="CD_Usuarios.cs" />
     <Compile Include="conexiondb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

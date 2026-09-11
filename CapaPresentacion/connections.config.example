@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Plantilla de configuración de conexión. Copie este archivo como 'connections.config'
+  (mismo directorio) y complete los datos de SU equipo. 'connections.config' está en
+  .gitignore y no debe subirse al repositorio.
+
+  Recomendado: autenticación integrada de Windows (sin usuario ni contraseña en texto):
+      Data Source=.\SQLEXPRESS;Initial Catalog=SistemaCaja;Integrated Security=True;TrustServerCertificate=True;Connection Timeout=30;
+
+  Si necesita autenticación SQL, use una cuenta específica de la aplicación con
+  permisos mínimos (NUNCA 'sa'):
+      Data Source=.\SQLEXPRESS;Initial Catalog=SistemaCaja;User ID=app_caja;Password=__CAMBIAR__;TrustServerCertificate=True;Connection Timeout=30;
+-->
+<connectionStrings>
+  <add name="cadena_conexion"
+       connectionString="Data Source=.\SQLEXPRESS;Initial Catalog=SistemaCaja;Integrated Security=True;TrustServerCertificate=True;Connection Timeout=30;"
+       providerName="System.Data.SqlClient" />
+</connectionStrings>

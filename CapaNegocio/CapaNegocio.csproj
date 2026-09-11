@@ -157,7 +157,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CN_AperturaCaja.cs" />
+    <Compile Include="CN_Transaccion.cs" />
     <Compile Include="CN_Usuario.cs" />
+    <Compile Include="Seguridad\PasswordHasher.cs" />
+    <Compile Include="SesionActual.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
