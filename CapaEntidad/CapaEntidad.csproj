@@ -170,6 +170,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResultadoAutenticacion.cs" />
     <Compile Include="Roles.cs" />
+    <Compile Include="TasaCambio.cs" />
     <Compile Include="Transaccion.cs" />
     <Compile Include="Usuario.cs" />
   </ItemGroup>

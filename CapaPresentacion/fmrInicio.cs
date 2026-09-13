@@ -1,4 +1,5 @@
 ﻿using CapaPresentacion.Formularios;
+using CapaPresentacion.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -20,6 +21,7 @@ namespace CapaPresentacion
 
         private readonly CN_AperturaCaja _negocioCaja = new CN_AperturaCaja();
         private readonly CN_Transaccion _negocioTransaccion = new CN_Transaccion();
+        private readonly CN_Usuario _negocioUsuario = new CN_Usuario();
         private AperturaCaja _aperturaActual;
         private List<Transaccion> _movimientosActuales = new List<Transaccion>();
 
@@ -102,6 +104,91 @@ namespace CapaPresentacion
             ActualizarEstadoCaja();
             CargarMovimientos();
             CargarHistorial();
+            CargarCajas();
+            CargarDatosReportes();
+        }
+
+        /// <summary>Trae de la base de datos todas las cajas registradoras (activas e inactivas) y refresca la pestaña Cajas.</summary>
+        private void CargarCajas()
+        {
+            List<Caja> cajas = _negocioCaja.ListarTodasLasCajas();
+
+            var tabla = new DataTable();
+            tabla.Columns.Add("Id", typeof(int));
+            tabla.Columns.Add("Nombre");
+            tabla.Columns.Add("Estado");
+            tabla.Columns.Add("Fecha de Creacion");
+
+            foreach (Caja caja in cajas)
+            {
+                tabla.Rows.Add(
+                    caja.CajaId,
+                    caja.Nombre,
+                    caja.Estado ? "Activa" : "Inactiva",
+                    caja.FechaCreacion.ToString("dd/MM/yyyy hh:mm tt", CultureInfo.CurrentCulture));
+            }
+
+            guna2DataGridView2.DataSource = tabla;
+            guna2DataGridView2.ReadOnly = true;
+            guna2DataGridView2.AllowUserToAddRows = false;
+            guna2DataGridView2.Columns["Id"].Visible = false;
+        }
+
+        /// <summary>Caja seleccionada actualmente en la grilla de la pestaña Cajas, o null si no hay seleccion.</summary>
+        private Caja ObtenerCajaSeleccionada()
+        {
+            if (guna2DataGridView2.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione una caja de la lista.", "Cajas Registradoras",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return null;
+            }
+
+            DataRowView fila = (DataRowView)guna2DataGridView2.CurrentRow.DataBoundItem;
+            return new Caja
+            {
+                CajaId = Convert.ToInt32(fila["Id"]),
+                Nombre = Convert.ToString(fila["Nombre"]),
+                Estado = Convert.ToString(fila["Estado"]) == "Activa"
+            };
+        }
+
+        private void btnEditarCaja_Click(object sender, EventArgs e)
+        {
+            Caja caja = ObtenerCajaSeleccionada();
+            if (caja == null) return;
+
+            Frmcajaregistradora editor = new Frmcajaregistradora(caja);
+            editor.StartPosition = FormStartPosition.CenterParent;
+            if (editor.ShowDialog() == DialogResult.OK)
+                CargarCajas();
+        }
+
+        private void btnEstadoCaja_Click(object sender, EventArgs e)
+        {
+            Caja caja = ObtenerCajaSeleccionada();
+            if (caja == null) return;
+
+            bool nuevoEstado = !caja.Estado;
+            string accion = nuevoEstado ? "activar" : "desactivar";
+
+            DialogResult confirmacion = MessageBox.Show(
+                $"¿Desea {accion} la caja \"{caja.Nombre}\"?", "Cajas Registradoras",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirmacion != DialogResult.Yes) return;
+
+            try
+            {
+                _negocioCaja.CambiarEstadoCaja(caja.CajaId, nuevoEstado);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo cambiar el estado de la caja: " + ex.Message, "Cajas Registradoras",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            CargarCajas();
         }
 
         /// <summary>Trae de la base de datos las sesiones de caja cerradas y refresca la pestaña Historial.</summary>
@@ -362,18 +449,25 @@ namespace CapaPresentacion
 
         private void MesaCambio_Click(object sender, EventArgs e)
         {
+            if (_aperturaActual == null)
             {
-                Frmlcambiodivisas entrada = new Frmlcambiodivisas(); // Crear una instancia de Form2
-                entrada.StartPosition = FormStartPosition.CenterParent; // Centrar el formulario emergente
-                entrada.ShowDialog(); // Mostrarlo como emergente
+                MessageBox.Show("Debe abrir la caja antes de registrar una operacion de cambio.", "Mesa de Cambio",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
+
+            Frmlcambiodivisas entrada = new Frmlcambiodivisas(_aperturaActual);
+            entrada.StartPosition = FormStartPosition.CenterParent;
+            if (entrada.ShowDialog() == DialogResult.OK)
+                CargarMovimientos();
         }
 
         private void btncajaregistradora_Click(object sender, EventArgs e)
         {
-            Frmcajaregistradora cajaregis = new Frmcajaregistradora(); // Crear una instancia de Form2
-            cajaregis.StartPosition = FormStartPosition.CenterParent; // Centrar el formulario emergente
-            cajaregis.ShowDialog(); // Mostrarlo como emergente
+            Frmcajaregistradora cajaregis = new Frmcajaregistradora();
+            cajaregis.StartPosition = FormStartPosition.CenterParent;
+            if (cajaregis.ShowDialog() == DialogResult.OK)
+                CargarCajas();
         }
 
         private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -386,6 +480,220 @@ namespace CapaPresentacion
             Frmclientes cliente = new Frmclientes(); // Crear una instancia de Form2
             cliente.StartPosition = FormStartPosition.CenterParent; // Centrar el formulario emergente
             cliente.ShowDialog(); // Mostrarlo como emergente
+        }
+
+        // ===================== Pestaña Reportes =====================
+        // Los controles (botones, combos, DataGridViews) estan declarados en fmrInicio.Designer.cs
+        // para poder editarlos visualmente desde el diseñador de Visual Studio.
+
+        /// <summary>Item de un combo de filtro con un Id opcional (null = "Todos/Todas").</summary>
+        private class OpcionFiltro
+        {
+            public int? Id;
+            public string Texto;
+            public override string ToString() => Texto;
+        }
+
+        private void CargarComboCajas(ComboBox combo)
+        {
+            combo.Items.Clear();
+            combo.Items.Add(new OpcionFiltro { Id = null, Texto = "Todas las cajas" });
+            foreach (Caja c in _negocioCaja.ListarTodasLasCajas())
+                combo.Items.Add(new OpcionFiltro { Id = c.CajaId, Texto = c.Nombre });
+            combo.SelectedIndex = 0;
+        }
+
+        private void CargarComboUsuarios(ComboBox combo)
+        {
+            combo.Items.Clear();
+            combo.Items.Add(new OpcionFiltro { Id = null, Texto = "Todos los cajeros" });
+            foreach (Usuario u in _negocioUsuario.Listar())
+                combo.Items.Add(new OpcionFiltro { Id = u.usuario_id, Texto = u.NombreCompleto });
+            combo.SelectedIndex = 0;
+        }
+
+        private void CargarComboConceptos(ComboBox combo)
+        {
+            combo.Items.Clear();
+            combo.Items.Add(new OpcionFiltro { Id = null, Texto = "Todos los conceptos" });
+            foreach (Concepto c in _negocioTransaccion.ListarConceptosActivos())
+                combo.Items.Add(new OpcionFiltro { Id = c.ConceptoId, Texto = $"{c.Nombre} ({(c.Tipo == "INGRESO" ? "Ingreso" : "Egreso")})" });
+            combo.SelectedIndex = 0;
+        }
+
+        /// <summary>Llena los combos de filtro y ejecuta la primera busqueda de ambos reportes. Se llama desde fmrInicio_Load (requiere BD).</summary>
+        private void CargarDatosReportes()
+        {
+            CargarComboCajas(cboMcCaja);
+            CargarComboUsuarios(cboMcUsuario);
+            CargarReporteMesaCambio();
+
+            CargarComboCajas(cboMpCaja);
+            CargarComboUsuarios(cboMpUsuario);
+            CargarComboConceptos(cboMpConcepto);
+            CargarReporteMovimientosPorConcepto();
+        }
+
+        // ---------- Reporte: Mesa de Cambio ----------
+
+        private void btnMcBuscar_Click(object sender, EventArgs e) => CargarReporteMesaCambio();
+
+        private void btnMcExportar_Click(object sender, EventArgs e) => ExportadorCsv.Exportar(this, dgvMcDetalle, "MesaCambio");
+
+        private void CargarReporteMesaCambio()
+        {
+            DateTime desde = dtpMcDesde.Value.Date;
+            DateTime hasta = dtpMcHasta.Value.Date;
+            if (hasta < desde)
+            {
+                MessageBox.Show("La fecha 'Hasta' no puede ser anterior a 'Desde'.", "Mesa de Cambio",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int? cajaId = (cboMcCaja.SelectedItem as OpcionFiltro)?.Id;
+            int? usuarioId = (cboMcUsuario.SelectedItem as OpcionFiltro)?.Id;
+
+            List<Transaccion> movimientos = _negocioTransaccion.ListarCambiosDivisaParaReporte(desde, hasta, cajaId, usuarioId);
+
+            var detalle = new DataTable();
+            detalle.Columns.Add("Fecha");
+            detalle.Columns.Add("Caja");
+            detalle.Columns.Add("Cajero");
+            detalle.Columns.Add("Operacion");
+            detalle.Columns.Add("Moneda");
+            detalle.Columns.Add("Monto");
+            detalle.Columns.Add("Forma de pago");
+            detalle.Columns.Add("Descripcion");
+
+            foreach (Transaccion t in movimientos)
+            {
+                detalle.Rows.Add(
+                    t.FechaHora.ToString("dd/MM/yyyy hh:mm tt", CultureInfo.CurrentCulture),
+                    t.CajaNombre,
+                    t.UsuarioNombre,
+                    t.Tipo == "INGRESO" ? "Recibido" : "Entregado",
+                    $"{t.MonedaNombre} ({t.MonedaCodigo})",
+                    t.Monto.ToString("N2", CultureInfo.CurrentCulture),
+                    t.FormaPagoNombre ?? "-",
+                    t.Descripcion);
+            }
+
+            dgvMcDetalle.DataSource = detalle;
+
+            var resumen = new DataTable();
+            resumen.Columns.Add("Moneda");
+            resumen.Columns.Add("Total Recibido");
+            resumen.Columns.Add("Total Entregado");
+
+            var porMoneda = movimientos
+                .GroupBy(t => new { t.MonedaCodigo, t.MonedaNombre })
+                .Select(g => new
+                {
+                    g.Key.MonedaCodigo,
+                    g.Key.MonedaNombre,
+                    Recibido = g.Where(t => t.Tipo == "INGRESO").Sum(t => t.Monto),
+                    Entregado = g.Where(t => t.Tipo == "EGRESO").Sum(t => t.Monto)
+                })
+                .OrderBy(x => x.MonedaCodigo);
+
+            foreach (var m in porMoneda)
+            {
+                resumen.Rows.Add(
+                    $"{m.MonedaNombre} ({m.MonedaCodigo})",
+                    m.Recibido.ToString("N2", CultureInfo.CurrentCulture),
+                    m.Entregado.ToString("N2", CultureInfo.CurrentCulture));
+            }
+
+            dgvMcResumen.DataSource = resumen;
+        }
+
+        // ---------- Reporte: Movimientos por Concepto ----------
+
+        private void btnMpBuscar_Click(object sender, EventArgs e) => CargarReporteMovimientosPorConcepto();
+
+        private void btnMpExportar_Click(object sender, EventArgs e) => ExportadorCsv.Exportar(this, dgvMpDetalle, "MovimientosPorConcepto");
+
+        private void CargarReporteMovimientosPorConcepto()
+        {
+            DateTime desde = dtpMpDesde.Value.Date;
+            DateTime hasta = dtpMpHasta.Value.Date;
+            if (hasta < desde)
+            {
+                MessageBox.Show("La fecha 'Hasta' no puede ser anterior a 'Desde'.", "Movimientos por Concepto",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int? cajaId = (cboMpCaja.SelectedItem as OpcionFiltro)?.Id;
+            int? usuarioId = (cboMpUsuario.SelectedItem as OpcionFiltro)?.Id;
+            int? conceptoId = (cboMpConcepto.SelectedItem as OpcionFiltro)?.Id;
+            string tipoFiltro = cboMpTipo.SelectedItem as string ?? "Todos";
+
+            IEnumerable<Transaccion> movimientos = _negocioTransaccion.ListarParaReporte(desde, hasta, cajaId, usuarioId, conceptoId);
+            if (tipoFiltro == "Ingreso")
+                movimientos = movimientos.Where(t => t.Tipo == "INGRESO");
+            else if (tipoFiltro == "Egreso")
+                movimientos = movimientos.Where(t => t.Tipo == "EGRESO");
+            movimientos = movimientos.ToList();
+
+            var detalle = new DataTable();
+            detalle.Columns.Add("Fecha");
+            detalle.Columns.Add("Caja");
+            detalle.Columns.Add("Cajero");
+            detalle.Columns.Add("Concepto");
+            detalle.Columns.Add("Tipo");
+            detalle.Columns.Add("Moneda");
+            detalle.Columns.Add("Monto");
+            detalle.Columns.Add("Forma de pago");
+            detalle.Columns.Add("Descripcion");
+
+            foreach (Transaccion t in movimientos)
+            {
+                detalle.Rows.Add(
+                    t.FechaHora.ToString("dd/MM/yyyy hh:mm tt", CultureInfo.CurrentCulture),
+                    t.CajaNombre,
+                    t.UsuarioNombre,
+                    t.ConceptoNombre,
+                    t.Tipo == "INGRESO" ? "Ingreso" : "Egreso",
+                    $"{t.MonedaNombre} ({t.MonedaCodigo})",
+                    t.Monto.ToString("N2", CultureInfo.CurrentCulture),
+                    t.FormaPagoNombre ?? "-",
+                    t.Descripcion);
+            }
+
+            dgvMpDetalle.DataSource = detalle;
+
+            var resumen = new DataTable();
+            resumen.Columns.Add("Concepto");
+            resumen.Columns.Add("Tipo");
+            resumen.Columns.Add("Moneda");
+            resumen.Columns.Add("Cantidad");
+            resumen.Columns.Add("Total");
+
+            var porConcepto = movimientos
+                .GroupBy(t => new { t.ConceptoNombre, t.Tipo, t.MonedaCodigo })
+                .Select(g => new
+                {
+                    g.Key.ConceptoNombre,
+                    g.Key.Tipo,
+                    g.Key.MonedaCodigo,
+                    Cantidad = g.Count(),
+                    Total = g.Sum(t => t.Monto)
+                })
+                .OrderBy(x => x.ConceptoNombre).ThenBy(x => x.MonedaCodigo);
+
+            foreach (var c in porConcepto)
+            {
+                resumen.Rows.Add(
+                    c.ConceptoNombre,
+                    c.Tipo == "INGRESO" ? "Ingreso" : "Egreso",
+                    c.MonedaCodigo,
+                    c.Cantidad,
+                    c.Total.ToString("N2", CultureInfo.CurrentCulture));
+            }
+
+            dgvMpResumen.DataSource = resumen;
         }
     }
 }

@@ -14,6 +14,44 @@ namespace CapaNegocio
 
         public List<Caja> ListarCajasActivas() => _datosCaja.ListarActivas();
 
+        /// <summary>Todas las cajas (activas e inactivas), para la pantalla de administracion.</summary>
+        public List<Caja> ListarTodasLasCajas() => _datosCaja.ListarTodas();
+
+        /// <summary>Registra una nueva caja registradora.</summary>
+        /// <exception cref="ArgumentException">Si el nombre esta vacio.</exception>
+        /// <exception cref="InvalidOperationException">Si ya existe una caja con ese nombre.</exception>
+        public Caja RegistrarCaja(string nombre)
+        {
+            if (string.IsNullOrWhiteSpace(nombre))
+                throw new ArgumentException("Debe indicar el nombre de la caja.");
+
+            nombre = nombre.Trim();
+
+            if (_datosCaja.ExisteNombre(nombre))
+                throw new InvalidOperationException("Ya existe una caja con ese nombre.");
+
+            return _datosCaja.Registrar(nombre);
+        }
+
+        /// <summary>Renombra una caja existente.</summary>
+        /// <exception cref="ArgumentException">Si el nombre esta vacio.</exception>
+        /// <exception cref="InvalidOperationException">Si ya existe otra caja con ese nombre.</exception>
+        public void ActualizarCaja(int cajaId, string nombre)
+        {
+            if (string.IsNullOrWhiteSpace(nombre))
+                throw new ArgumentException("Debe indicar el nombre de la caja.");
+
+            nombre = nombre.Trim();
+
+            if (_datosCaja.ExisteNombre(nombre, cajaId))
+                throw new InvalidOperationException("Ya existe una caja con ese nombre.");
+
+            _datosCaja.Actualizar(cajaId, nombre);
+        }
+
+        /// <summary>Activa o desactiva una caja registradora.</summary>
+        public void CambiarEstadoCaja(int cajaId, bool estado) => _datosCaja.CambiarEstado(cajaId, estado);
+
         public List<Moneda> ListarMonedasActivas() => _datosMoneda.ListarActivas();
 
         public AperturaCaja ObtenerAperturaAbierta(int cajaId) => _datosApertura.ObtenerAperturaAbierta(cajaId);

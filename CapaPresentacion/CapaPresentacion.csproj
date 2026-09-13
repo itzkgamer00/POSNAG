@@ -245,6 +245,7 @@
       <DependentUpon>Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
+    <Compile Include="Utilidades\ExportadorCsv.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Formularios\Apertura.resx">
       <DependentUpon>Apertura.cs</DependentUpon>
@@ -352,6 +353,7 @@
     <Content Include="Resources\DataBase.png" />
     <Content Include="Resources\Data_Base_PB.png" />
     <Content Include="Resources\delete-one.png" />
+    <None Include="Resources\delete-one1.png" />
     <Content Include="Resources\delete.png" />
     <Content Include="Resources\edificio_de_oficinas.png" />
     <Content Include="Resources\Edit.png" />

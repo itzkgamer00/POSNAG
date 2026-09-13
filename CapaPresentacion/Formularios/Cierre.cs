@@ -9,14 +9,24 @@ namespace CapaPresentacion.Formularios
 {
     public partial class Cierre : Form
     {
-        private const int ColMonedaId = 0;
-        private const int ColMoneda = 1;
-        private const int ColMontoSistema = 2;
-        private const int ColMontoContado = 3;
-        private const int ColDiferencia = 4;
+        private const int AltoFila = 42;
+        private const int AnchoMoneda = 320;
+        private const int AnchoSistema = 150;
+        private const int AnchoContado = 150;
+        private const int AnchoDiferencia = 150;
 
         private readonly CN_AperturaCaja _negocio = new CN_AperturaCaja();
         private readonly AperturaCaja _apertura;
+
+        private class FilaCierre
+        {
+            public int MonedaId;
+            public decimal MontoSistema;
+            public TextBox Contado;
+            public Label Diferencia;
+        }
+
+        private readonly List<FilaCierre> _filas = new List<FilaCierre>();
 
         /// <summary>Cierre creado, disponible despues de aceptar el formulario.</summary>
         public CierreCaja CierreCreado { get; private set; }
@@ -31,39 +41,21 @@ namespace CapaPresentacion.Formularios
             txtUsuario.Text = SesionActual.Usuario?.NombreCompleto ?? string.Empty;
             txtFechaHora.Text = DateTime.Now.ToString("dd/MM/yyyy hh:mm tt");
 
-            ConfigurarGrilla();
             CargarMontos();
         }
 
-        private void ConfigurarGrilla()
-        {
-            dgvMontos.Columns.Add("colMonedaId", "Id");
-            dgvMontos.Columns.Add("colMoneda", "Moneda");
-            dgvMontos.Columns.Add("colMontoSistema", "Monto Sistema");
-            dgvMontos.Columns.Add("colMontoContado", "Monto Contado");
-            dgvMontos.Columns.Add("colDiferencia", "Diferencia");
-
-            dgvMontos.Columns[ColMonedaId].Visible = false;
-            dgvMontos.Columns[ColMoneda].ReadOnly = true;
-            dgvMontos.Columns[ColMoneda].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvMontos.Columns[ColMontoSistema].ReadOnly = true;
-            dgvMontos.Columns[ColMontoSistema].Width = 150;
-            dgvMontos.Columns[ColMontoContado].Width = 150;
-            dgvMontos.Columns[ColDiferencia].ReadOnly = true;
-            dgvMontos.Columns[ColDiferencia].Width = 150;
-
-            dgvMontos.CellValueChanged += DgvMontos_CellValueChanged;
-            dgvMontos.CurrentCellDirtyStateChanged += (s, e) =>
-            {
-                if (dgvMontos.IsCurrentCellDirty)
-                    dgvMontos.CommitEdit(DataGridViewDataErrorContexts.Commit);
-            };
-        }
-
+        /// <summary>Genera dinamicamente encabezado + una fila (Moneda, Monto Sistema, Monto Contado, Diferencia) por cada moneda de la apertura.</summary>
         private void CargarMontos()
         {
             Dictionary<int, decimal> montoSistema = _negocio.CalcularMontoSistema(_apertura.AperturaId);
 
+            var fuenteEncabezado = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            pnlMontos.Controls.Add(new Label { Text = "Moneda", Font = fuenteEncabezado, Location = new System.Drawing.Point(8, 6), Size = new System.Drawing.Size(AnchoMoneda, 22) });
+            pnlMontos.Controls.Add(new Label { Text = "Monto Sistema", Font = fuenteEncabezado, Location = new System.Drawing.Point(8 + AnchoMoneda, 6), Size = new System.Drawing.Size(AnchoSistema, 22), TextAlign = System.Drawing.ContentAlignment.MiddleRight });
+            pnlMontos.Controls.Add(new Label { Text = "Monto Contado", Font = fuenteEncabezado, Location = new System.Drawing.Point(8 + AnchoMoneda + AnchoSistema + 16, 6), Size = new System.Drawing.Size(AnchoContado, 22), TextAlign = System.Drawing.ContentAlignment.MiddleRight });
+            pnlMontos.Controls.Add(new Label { Text = "Diferencia", Font = fuenteEncabezado, Location = new System.Drawing.Point(8 + AnchoMoneda + AnchoSistema + AnchoContado + 24, 6), Size = new System.Drawing.Size(AnchoDiferencia, 22), TextAlign = System.Drawing.ContentAlignment.MiddleRight });
+
+            int y = 32;
             foreach (AperturaCajaMoneda monto in _apertura.Montos)
             {
                 string etiqueta = string.IsNullOrWhiteSpace(monto.MonedaSimbolo)
@@ -72,24 +64,68 @@ namespace CapaPresentacion.Formularios
 
                 decimal sistema = montoSistema.TryGetValue(monto.MonedaId, out decimal valor) ? valor : monto.MontoInicial;
 
-                dgvMontos.Rows.Add(monto.MonedaId, etiqueta, sistema.ToString("N2", CultureInfo.CurrentCulture), "0.00", "0.00");
+                var lblMoneda = new Label { Text = etiqueta, Location = new System.Drawing.Point(8, y + 4), Size = new System.Drawing.Size(AnchoMoneda, 24) };
+
+                var lblSistema = new Label
+                {
+                    Text = sistema.ToString("N2", CultureInfo.CurrentCulture),
+                    Location = new System.Drawing.Point(8 + AnchoMoneda, y + 4),
+                    Size = new System.Drawing.Size(AnchoSistema, 24),
+                    TextAlign = System.Drawing.ContentAlignment.MiddleRight
+                };
+
+                var txtContado = new TextBox
+                {
+                    Text = "0.00",
+                    Location = new System.Drawing.Point(8 + AnchoMoneda + AnchoSistema + 16, y),
+                    Size = new System.Drawing.Size(AnchoContado, 28),
+                    TextAlign = HorizontalAlignment.Right
+                };
+
+                var lblDiferencia = new Label
+                {
+                    Text = "0.00",
+                    Location = new System.Drawing.Point(8 + AnchoMoneda + AnchoSistema + AnchoContado + 24, y + 4),
+                    Size = new System.Drawing.Size(AnchoDiferencia, 24),
+                    TextAlign = System.Drawing.ContentAlignment.MiddleRight,
+                    ForeColor = System.Drawing.Color.FromArgb(185, 51, 73)
+                };
+
+                var fila = new FilaCierre { MonedaId = monto.MonedaId, MontoSistema = sistema, Contado = txtContado, Diferencia = lblDiferencia };
+                txtContado.KeyPress += MontoTextBox_KeyPress;
+                txtContado.TextChanged += (s, e) => ActualizarDiferencia(fila);
+
+                pnlMontos.Controls.Add(lblMoneda);
+                pnlMontos.Controls.Add(lblSistema);
+                pnlMontos.Controls.Add(txtContado);
+                pnlMontos.Controls.Add(lblDiferencia);
+                _filas.Add(fila);
+
+                y += AltoFila;
             }
         }
 
-        private void DgvMontos_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        /// <summary>Restringe el monto contado a digitos y un unico separador decimal.</summary>
+        private void MontoTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.RowIndex < 0 || e.ColumnIndex != ColMontoContado) return;
-            ActualizarDiferencia(dgvMontos.Rows[e.RowIndex]);
+            if (char.IsControl(e.KeyChar)) return;
+            if (char.IsDigit(e.KeyChar)) return;
+
+            var textBox = (TextBox)sender;
+            char separador = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator[0];
+            if (e.KeyChar == separador && textBox.Text.IndexOf(separador) < 0)
+                return;
+
+            e.Handled = true;
         }
 
-        private void ActualizarDiferencia(DataGridViewRow fila)
+        private void ActualizarDiferencia(FilaCierre fila)
         {
-            decimal.TryParse(Convert.ToString(fila.Cells[ColMontoSistema].Value), NumberStyles.Number, CultureInfo.CurrentCulture, out decimal sistema);
-            decimal.TryParse(Convert.ToString(fila.Cells[ColMontoContado].Value), NumberStyles.Number, CultureInfo.CurrentCulture, out decimal contado);
+            decimal.TryParse(fila.Contado.Text, NumberStyles.Number, CultureInfo.CurrentCulture, out decimal contado);
 
-            decimal diferencia = contado - sistema;
-            fila.Cells[ColDiferencia].Value = diferencia.ToString("N2", CultureInfo.CurrentCulture);
-            fila.Cells[ColDiferencia].Style.ForeColor = diferencia < 0
+            decimal diferencia = contado - fila.MontoSistema;
+            fila.Diferencia.Text = diferencia.ToString("N2", CultureInfo.CurrentCulture);
+            fila.Diferencia.ForeColor = diferencia < 0
                 ? System.Drawing.Color.FromArgb(185, 51, 73)
                 : System.Drawing.Color.FromArgb(5, 150, 105);
         }
@@ -97,17 +133,17 @@ namespace CapaPresentacion.Formularios
         private void btnCerrarCaja_Click(object sender, EventArgs e)
         {
             var montosFinales = new Dictionary<int, decimal>();
-            foreach (DataGridViewRow fila in dgvMontos.Rows)
+            foreach (FilaCierre fila in _filas)
             {
-                string texto = Convert.ToString(fila.Cells[ColMontoContado].Value);
-                if (!decimal.TryParse(texto, NumberStyles.Number, CultureInfo.CurrentCulture, out decimal contado) || contado < 0)
+                if (!decimal.TryParse(fila.Contado.Text, NumberStyles.Number, CultureInfo.CurrentCulture, out decimal contado) || contado < 0)
                 {
-                    MessageBox.Show($"Monto contado invalido para {fila.Cells[ColMoneda].Value}.", "Cierre de caja",
+                    MessageBox.Show("Ingrese un monto contado valido (mayor o igual a 0) para cada moneda.", "Cierre de caja",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    fila.Contado.Focus();
                     return;
                 }
 
-                montosFinales[Convert.ToInt32(fila.Cells[ColMonedaId].Value)] = contado;
+                montosFinales[fila.MonedaId] = contado;
             }
 
             try

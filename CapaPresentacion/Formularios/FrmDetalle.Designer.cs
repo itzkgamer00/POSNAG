@@ -523,7 +523,8 @@
             this.iconButton1.TabIndex = 47;
             this.iconButton1.Text = "Acceptar";
             this.iconButton1.UseVisualStyleBackColor = true;
-            // 
+            this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
+            //
             // FrmDetalle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Windows.Forms;
 using CapaEntidad;
@@ -42,9 +43,14 @@ namespace CapaPresentacion.Formularios
 
         private void CargarFormasPago()
         {
-            guna2ComboBox3.DataSource = _negocio.ListarFormasPagoActivas();
+            List<FormaPago> formasPago = _negocio.ListarFormasPagoActivas();
+            guna2ComboBox3.DataSource = formasPago;
             guna2ComboBox3.DisplayMember = nameof(FormaPago.Nombre);
             guna2ComboBox3.ValueMember = nameof(FormaPago.FormaPagoId);
+
+            FormaPago efectivo = formasPago.Find(f => f.Nombre == "Efectivo");
+            if (efectivo != null)
+                guna2ComboBox3.SelectedValue = efectivo.FormaPagoId;
         }
 
         private void btndetsalida_Click(object sender, EventArgs e)
@@ -56,9 +62,12 @@ namespace CapaPresentacion.Formularios
 
         private void btnegredetalle_Click(object sender, EventArgs e)
         {
-            FrmDetalle detal = new FrmDetalle(); // Crear una instancia del fmrcaja
-            detal.StartPosition = FormStartPosition.CenterScreen; // Centrar el formulario emergente
-            detal.ShowDialog(); // Mostrarlo como emergente
+            using (FrmDetalle detal = new FrmDetalle())
+            {
+                detal.StartPosition = FormStartPosition.CenterScreen;
+                if (detal.ShowDialog() == DialogResult.OK)
+                    guna2TextBox1.Text = detal.Total.ToString("N2", CultureInfo.CurrentCulture);
+            }
         }
 
         private void btnguardaringre_Click(object sender, EventArgs e)

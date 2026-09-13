@@ -34,6 +34,7 @@
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.btncancelcjregis = new Guna.UI2.WinForms.Guna2Button();
             this.guna2TextBox1 = new Guna.UI2.WinForms.Guna2TextBox();
+            this.chkActiva = new Guna.UI2.WinForms.Guna2CheckBox();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel1.SuspendLayout();
             this.SuspendLayout();
@@ -96,6 +97,7 @@
             this.guna2Button2.Size = new System.Drawing.Size(121, 45);
             this.guna2Button2.TabIndex = 5;
             this.guna2Button2.Text = "Guardar";
+            this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
             // btncancelcjregis
             // 
@@ -138,7 +140,27 @@
             this.guna2TextBox1.Size = new System.Drawing.Size(460, 59);
             this.guna2TextBox1.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.guna2TextBox1.TabIndex = 4;
-            // 
+            //
+            // chkActiva
+            //
+            this.chkActiva.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.chkActiva.CheckedState.BorderRadius = 0;
+            this.chkActiva.CheckedState.BorderThickness = 0;
+            this.chkActiva.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.chkActiva.Checked = true;
+            this.chkActiva.ForeColor = System.Drawing.Color.Black;
+            this.chkActiva.Location = new System.Drawing.Point(37, 175);
+            this.chkActiva.Name = "chkActiva";
+            this.chkActiva.Size = new System.Drawing.Size(120, 24);
+            this.chkActiva.TabIndex = 8;
+            this.chkActiva.Text = "Caja activa";
+            this.chkActiva.UncheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.chkActiva.UncheckedState.BorderRadius = 0;
+            this.chkActiva.UncheckedState.BorderThickness = 0;
+            this.chkActiva.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
+            this.chkActiva.UseVisualStyleBackColor = false;
+            this.chkActiva.Visible = false;
+            //
             // guna2Panel1
             // 
             this.guna2Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(52)))), ((int)(((byte)(60)))));
@@ -163,6 +185,7 @@
             this.Controls.Add(this.guna2Panel1);
             this.Controls.Add(this.btncancelcjregis);
             this.Controls.Add(this.guna2Button2);
+            this.Controls.Add(this.chkActiva);
             this.Controls.Add(this.guna2TextBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
@@ -182,6 +205,7 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private Guna.UI2.WinForms.Guna2Button btncancelcjregis;
         private Guna.UI2.WinForms.Guna2TextBox guna2TextBox1;
+        private Guna.UI2.WinForms.Guna2CheckBox chkActiva;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
     }
 }

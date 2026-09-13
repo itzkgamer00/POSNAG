@@ -40,5 +40,33 @@ namespace CapaDatos
 
             return lista;
         }
+
+        /// <summary>Busca un concepto activo por su codigo de operacion unico (p.ej. "CAMBIO_DIVISA_RECIBIDO").</summary>
+        public Concepto ObtenerPorOperacion(string operacion)
+        {
+            const string sql =
+                "SELECT concepto_id, operacion, nombre, tipo, estado " +
+                "FROM Concepto WHERE estado = 1 AND operacion = @operacion";
+
+            using (SqlConnection cn = new SqlConnection(conexiondb.cadena))
+            using (SqlCommand cmd = new SqlCommand(sql, cn))
+            {
+                cmd.Parameters.Add("@operacion", SqlDbType.VarChar, 30).Value = operacion;
+                cn.Open();
+                using (SqlDataReader dr = cmd.ExecuteReader())
+                {
+                    if (!dr.Read()) return null;
+
+                    return new Concepto
+                    {
+                        ConceptoId = Convert.ToInt32(dr["concepto_id"]),
+                        Operacion = dr["operacion"] as string,
+                        Nombre = dr["nombre"] as string,
+                        Tipo = dr["tipo"] as string,
+                        Estado = Convert.ToBoolean(dr["estado"])
+                    };
+                }
+            }
+        }
     }
 }

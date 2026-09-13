@@ -240,7 +240,7 @@
             this.guna2Button1.TabIndex = 74;
             this.guna2Button1.Text = "Cancelar Tramite";
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
-            //
+            // 
             // btnguardaringre
             // 
             this.btnguardaringre.BorderRadius = 10;
@@ -258,13 +258,11 @@
             this.btnguardaringre.TabIndex = 73;
             this.btnguardaringre.Text = "Finalizar Operacion";
             this.btnguardaringre.Click += new System.EventHandler(this.btnguardaringre_Click);
-            //
+            // 
             // btnegredetalle
             // 
             this.btnegredetalle.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnegredetalle.BorderColor = System.Drawing.Color.Silver;
             this.btnegredetalle.BorderRadius = 10;
-            this.btnegredetalle.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             this.btnegredetalle.BorderThickness = 2;
             this.btnegredetalle.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnegredetalle.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -273,7 +271,6 @@
             this.btnegredetalle.FillColor = System.Drawing.Color.White;
             this.btnegredetalle.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnegredetalle.ForeColor = System.Drawing.Color.Black;
-            this.btnegredetalle.Image = global::CapaPresentacion.Properties.Resources.Cash;
             this.btnegredetalle.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnegredetalle.ImageOffset = new System.Drawing.Point(7, -4);
             this.btnegredetalle.ImageSize = new System.Drawing.Size(45, 45);
@@ -281,10 +278,9 @@
             this.btnegredetalle.Location = new System.Drawing.Point(11, 246);
             this.btnegredetalle.Name = "btnegredetalle";
             this.btnegredetalle.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btnegredetalle.Size = new System.Drawing.Size(353, 65);
+            this.btnegredetalle.Size = new System.Drawing.Size(381, 65);
             this.btnegredetalle.TabIndex = 69;
             this.btnegredetalle.Text = "Detallar Efectivo (Denominacion)";
-            this.btnegredetalle.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.btnegredetalle.Click += new System.EventHandler(this.btnegredetalle_Click);
             // 
             // FrmSalida

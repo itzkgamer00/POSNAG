@@ -25,8 +25,14 @@ namespace CapaEntidad
 
         /// <summary>Poblados mediante JOIN, para mostrar en la UI sin otra consulta.</summary>
         public string ConceptoNombre { get; set; }
+
+        /// <summary>Codigo unico del concepto (p.ej. "CAMBIO_DIVISA_RECIBIDO"), util para filtrar Mesa de Cambio en reportes.</summary>
+        public string ConceptoOperacion { get; set; }
         public string MonedaNombre { get; set; }
         public string MonedaCodigo { get; set; }
+        public string MonedaSimbolo { get; set; }
         public string FormaPagoNombre { get; set; }
+        public string CajaNombre { get; set; }
+        public string UsuarioNombre { get; set; }
     }
 }

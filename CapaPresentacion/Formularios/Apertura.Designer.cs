@@ -38,17 +38,16 @@ namespace CapaPresentacion.Formularios
             this.cboCaja = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txtUsuario = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtFechaHora = new Guna.UI2.WinForms.Guna2TextBox();
-            this.dgvMontos = new System.Windows.Forms.DataGridView();
+            this.pnlMontos = new System.Windows.Forms.Panel();
             this.txtObservaciones = new System.Windows.Forms.TextBox();
             this.btnAbrirCaja = new Guna.UI2.WinForms.Guna2Button();
             this.btnCancelarApertura = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMontos)).BeginInit();
             this.SuspendLayout();
-            //
+            // 
             // panel1
-            //
+            // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.lblTitulo);
@@ -57,9 +56,9 @@ namespace CapaPresentacion.Formularios
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(981, 61);
             this.panel1.TabIndex = 0;
-            //
+            // 
             // lblTitulo
-            //
+            // 
             this.lblTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
             this.lblTitulo.Font = new System.Drawing.Font("Bahnschrift", 19.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.Color.White;
@@ -70,59 +69,59 @@ namespace CapaPresentacion.Formularios
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "APERTURA DE CAJA";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            //
+            // 
             // lblCaja
-            //
+            // 
             this.lblCaja.AutoSize = true;
             this.lblCaja.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCaja.Location = new System.Drawing.Point(19, 75);
             this.lblCaja.Name = "lblCaja";
-            this.lblCaja.Size = new System.Drawing.Size(60, 25);
+            this.lblCaja.Size = new System.Drawing.Size(58, 31);
             this.lblCaja.TabIndex = 1;
             this.lblCaja.Text = "Caja";
-            //
+            // 
             // lblUsuario
-            //
+            // 
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuario.Location = new System.Drawing.Point(504, 75);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(88, 25);
+            this.lblUsuario.Size = new System.Drawing.Size(94, 31);
             this.lblUsuario.TabIndex = 2;
             this.lblUsuario.Text = "Usuario";
-            //
+            // 
             // lblFechaHora
-            //
+            // 
             this.lblFechaHora.AutoSize = true;
             this.lblFechaHora.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFechaHora.Location = new System.Drawing.Point(19, 165);
             this.lblFechaHora.Name = "lblFechaHora";
-            this.lblFechaHora.Size = new System.Drawing.Size(204, 25);
+            this.lblFechaHora.Size = new System.Drawing.Size(281, 31);
             this.lblFechaHora.TabIndex = 3;
             this.lblFechaHora.Text = "Fecha y Hora de Apertura";
-            //
+            // 
             // lblMontos
-            //
+            // 
             this.lblMontos.AutoSize = true;
             this.lblMontos.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMontos.Location = new System.Drawing.Point(19, 255);
             this.lblMontos.Name = "lblMontos";
-            this.lblMontos.Size = new System.Drawing.Size(340, 25);
+            this.lblMontos.Size = new System.Drawing.Size(318, 31);
             this.lblMontos.TabIndex = 4;
             this.lblMontos.Text = "Montos Iniciales por Moneda";
-            //
+            // 
             // lblObservaciones
-            //
+            // 
             this.lblObservaciones.AutoSize = true;
             this.lblObservaciones.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblObservaciones.Location = new System.Drawing.Point(19, 458);
             this.lblObservaciones.Name = "lblObservaciones";
-            this.lblObservaciones.Size = new System.Drawing.Size(180, 25);
+            this.lblObservaciones.Size = new System.Drawing.Size(167, 31);
             this.lblObservaciones.TabIndex = 5;
             this.lblObservaciones.Text = "Observaciones";
-            //
+            // 
             // cboCaja
-            //
+            // 
             this.cboCaja.BackColor = System.Drawing.Color.Transparent;
             this.cboCaja.BorderRadius = 6;
             this.cboCaja.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
@@ -132,15 +131,16 @@ namespace CapaPresentacion.Formularios
             this.cboCaja.Font = new System.Drawing.Font("Segoe UI", 13.8F);
             this.cboCaja.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cboCaja.ItemHeight = 30;
-            this.cboCaja.Location = new System.Drawing.Point(18, 103);
+            this.cboCaja.Location = new System.Drawing.Point(18, 109);
             this.cboCaja.Name = "cboCaja";
             this.cboCaja.Size = new System.Drawing.Size(465, 36);
             this.cboCaja.TabIndex = 6;
-            //
+            // 
             // txtUsuario
-            //
+            // 
             this.txtUsuario.BackColor = System.Drawing.Color.Transparent;
             this.txtUsuario.BorderRadius = 6;
+            this.txtUsuario.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtUsuario.DefaultText = "";
             this.txtUsuario.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtUsuario.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -149,19 +149,20 @@ namespace CapaPresentacion.Formularios
             this.txtUsuario.FillColor = System.Drawing.Color.Silver;
             this.txtUsuario.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtUsuario.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsuario.Location = new System.Drawing.Point(509, 103);
+            this.txtUsuario.Location = new System.Drawing.Point(509, 109);
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.PlaceholderText = "";
             this.txtUsuario.ReadOnly = true;
             this.txtUsuario.SelectedText = "";
-            this.txtUsuario.Size = new System.Drawing.Size(445, 48);
+            this.txtUsuario.Size = new System.Drawing.Size(445, 36);
             this.txtUsuario.TabIndex = 7;
-            //
+            // 
             // txtFechaHora
-            //
+            // 
             this.txtFechaHora.BackColor = System.Drawing.Color.Transparent;
             this.txtFechaHora.BorderRadius = 6;
+            this.txtFechaHora.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtFechaHora.DefaultText = "";
             this.txtFechaHora.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtFechaHora.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -170,7 +171,7 @@ namespace CapaPresentacion.Formularios
             this.txtFechaHora.FillColor = System.Drawing.Color.Silver;
             this.txtFechaHora.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtFechaHora.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFechaHora.Location = new System.Drawing.Point(18, 193);
+            this.txtFechaHora.Location = new System.Drawing.Point(18, 202);
             this.txtFechaHora.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtFechaHora.Name = "txtFechaHora";
             this.txtFechaHora.PlaceholderText = "";
@@ -178,31 +179,27 @@ namespace CapaPresentacion.Formularios
             this.txtFechaHora.SelectedText = "";
             this.txtFechaHora.Size = new System.Drawing.Size(465, 48);
             this.txtFechaHora.TabIndex = 8;
-            //
-            // dgvMontos
-            //
-            this.dgvMontos.AllowUserToAddRows = false;
-            this.dgvMontos.AllowUserToDeleteRows = false;
-            this.dgvMontos.AllowUserToResizeRows = false;
-            this.dgvMontos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMontos.Location = new System.Drawing.Point(18, 283);
-            this.dgvMontos.Name = "dgvMontos";
-            this.dgvMontos.RowHeadersVisible = false;
-            this.dgvMontos.RowTemplate.Height = 32;
-            this.dgvMontos.Size = new System.Drawing.Size(936, 160);
-            this.dgvMontos.TabIndex = 9;
-            //
+            // 
+            // pnlMontos
+            // 
+            this.pnlMontos.AutoScroll = true;
+            this.pnlMontos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlMontos.Location = new System.Drawing.Point(18, 289);
+            this.pnlMontos.Name = "pnlMontos";
+            this.pnlMontos.Size = new System.Drawing.Size(936, 160);
+            this.pnlMontos.TabIndex = 9;
+            // 
             // txtObservaciones
-            //
+            // 
             this.txtObservaciones.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtObservaciones.Location = new System.Drawing.Point(18, 486);
             this.txtObservaciones.Multiline = true;
             this.txtObservaciones.Name = "txtObservaciones";
-            this.txtObservaciones.Size = new System.Drawing.Size(570, 90);
+            this.txtObservaciones.Size = new System.Drawing.Size(570, 103);
             this.txtObservaciones.TabIndex = 10;
-            //
+            // 
             // btnAbrirCaja
-            //
+            // 
             this.btnAbrirCaja.BorderRadius = 10;
             this.btnAbrirCaja.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnAbrirCaja.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -212,15 +209,15 @@ namespace CapaPresentacion.Formularios
             this.btnAbrirCaja.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAbrirCaja.ForeColor = System.Drawing.Color.White;
             this.btnAbrirCaja.Image = global::CapaPresentacion.Properties.Resources.Checked_Checkbox;
-            this.btnAbrirCaja.Location = new System.Drawing.Point(647, 486);
+            this.btnAbrirCaja.Location = new System.Drawing.Point(647, 485);
             this.btnAbrirCaja.Name = "btnAbrirCaja";
             this.btnAbrirCaja.Size = new System.Drawing.Size(307, 46);
             this.btnAbrirCaja.TabIndex = 11;
             this.btnAbrirCaja.Text = "Abrir Caja";
             this.btnAbrirCaja.Click += new System.EventHandler(this.btnAbrirCaja_Click);
-            //
+            // 
             // btnCancelarApertura
-            //
+            // 
             this.btnCancelarApertura.BorderRadius = 10;
             this.btnCancelarApertura.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnCancelarApertura.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -230,26 +227,26 @@ namespace CapaPresentacion.Formularios
             this.btnCancelarApertura.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelarApertura.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(58)))), ((int)(((byte)(138)))));
             this.btnCancelarApertura.Image = global::CapaPresentacion.Properties.Resources.Close_Window;
-            this.btnCancelarApertura.Location = new System.Drawing.Point(647, 538);
+            this.btnCancelarApertura.Location = new System.Drawing.Point(647, 551);
             this.btnCancelarApertura.Name = "btnCancelarApertura";
             this.btnCancelarApertura.Size = new System.Drawing.Size(307, 38);
             this.btnCancelarApertura.TabIndex = 12;
             this.btnCancelarApertura.Text = "Cancelar";
             this.btnCancelarApertura.Click += new System.EventHandler(this.btnCancelarApertura_Click);
-            //
+            // 
             // guna2Separator1
-            //
+            // 
             this.guna2Separator1.BackColor = System.Drawing.Color.Transparent;
             this.guna2Separator1.FillColor = System.Drawing.Color.Gray;
             this.guna2Separator1.FillStyle = System.Drawing.Drawing2D.DashStyle.Custom;
             this.guna2Separator1.FillThickness = 3;
-            this.guna2Separator1.Location = new System.Drawing.Point(647, 583);
+            this.guna2Separator1.Location = new System.Drawing.Point(647, 537);
             this.guna2Separator1.Name = "guna2Separator1";
             this.guna2Separator1.Size = new System.Drawing.Size(307, 8);
             this.guna2Separator1.TabIndex = 13;
-            //
+            // 
             // Apertura
-            //
+            // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(981, 601);
@@ -257,7 +254,7 @@ namespace CapaPresentacion.Formularios
             this.Controls.Add(this.btnCancelarApertura);
             this.Controls.Add(this.btnAbrirCaja);
             this.Controls.Add(this.txtObservaciones);
-            this.Controls.Add(this.dgvMontos);
+            this.Controls.Add(this.pnlMontos);
             this.Controls.Add(this.txtFechaHora);
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.cboCaja);
@@ -274,7 +271,6 @@ namespace CapaPresentacion.Formularios
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Apertura de Caja";
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMontos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -292,7 +288,7 @@ namespace CapaPresentacion.Formularios
         private Guna.UI2.WinForms.Guna2ComboBox cboCaja;
         private Guna.UI2.WinForms.Guna2TextBox txtUsuario;
         private Guna.UI2.WinForms.Guna2TextBox txtFechaHora;
-        private System.Windows.Forms.DataGridView dgvMontos;
+        private System.Windows.Forms.Panel pnlMontos;
         private System.Windows.Forms.TextBox txtObservaciones;
         private Guna.UI2.WinForms.Guna2Button btnAbrirCaja;
         private Guna.UI2.WinForms.Guna2Button btnCancelarApertura;

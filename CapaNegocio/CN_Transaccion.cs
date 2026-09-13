@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using CapaDatos;
 using CapaEntidad;
 
@@ -7,6 +8,9 @@ namespace CapaNegocio
 {
     public class CN_Transaccion
     {
+        private const string ConceptoCambioRecibido = "CAMBIO_DIVISA_RECIBIDO";
+        private const string ConceptoCambioEntregado = "CAMBIO_DIVISA_ENTREGADO";
+
         private readonly CD_Transaccion _datosTransaccion = new CD_Transaccion();
         private readonly CD_Concepto _datosConcepto = new CD_Concepto();
         private readonly CD_FormaPago _datosFormaPago = new CD_FormaPago();
@@ -16,12 +20,46 @@ namespace CapaNegocio
 
         public List<Concepto> ListarConceptosEgreso() => _datosConcepto.ListarPorTipo("EGRESO");
 
+        /// <summary>Todos los conceptos activos (ingreso y egreso), para el filtro del reporte de movimientos.</summary>
+        public List<Concepto> ListarConceptosActivos() =>
+            _datosConcepto.ListarPorTipo("INGRESO")
+                .Concat(_datosConcepto.ListarPorTipo("EGRESO"))
+                .OrderBy(c => c.Nombre)
+                .ToList();
+
         public List<FormaPago> ListarFormasPagoActivas() => _datosFormaPago.ListarActivas();
 
         public List<Moneda> ListarMonedasActivas() => _datosMoneda.ListarActivas();
 
         /// <summary>Movimientos de una apertura, del mas reciente al mas antiguo.</summary>
         public List<Transaccion> ListarPorApertura(int aperturaId) => _datosTransaccion.ListarPorApertura(aperturaId);
+
+        /// <summary>Solo los movimientos de Mesa de Cambio de una apertura, del mas reciente al mas antiguo.</summary>
+        public List<Transaccion> ListarCambiosDivisaPorApertura(int aperturaId) => _datosTransaccion.ListarCambiosDivisaPorApertura(aperturaId);
+
+        /// <summary>
+        /// Movimientos filtrados por rango de fecha (inclusive en ambos extremos) y, opcionalmente,
+        /// caja/usuario/concepto. Para el reporte de Movimientos por Concepto.
+        /// </summary>
+        public List<Transaccion> ListarParaReporte(DateTime desde, DateTime hasta, int? cajaId = null, int? usuarioId = null, int? conceptoId = null)
+        {
+            if (hasta.Date < desde.Date)
+                throw new ArgumentException("La fecha 'hasta' no puede ser anterior a la fecha 'desde'.");
+
+            return _datosTransaccion.ListarParaReporte(desde.Date, hasta.Date.AddDays(1), cajaId, usuarioId, conceptoId);
+        }
+
+        /// <summary>
+        /// Solo movimientos de Mesa de Cambio, filtrados por rango de fecha (inclusive en ambos extremos)
+        /// y, opcionalmente, caja/usuario. Para el reporte de Mesa de Cambio.
+        /// </summary>
+        public List<Transaccion> ListarCambiosDivisaParaReporte(DateTime desde, DateTime hasta, int? cajaId = null, int? usuarioId = null)
+        {
+            if (hasta.Date < desde.Date)
+                throw new ArgumentException("La fecha 'hasta' no puede ser anterior a la fecha 'desde'.");
+
+            return _datosTransaccion.ListarCambiosDivisaParaReporte(desde.Date, hasta.Date.AddDays(1), cajaId, usuarioId);
+        }
 
         public Transaccion RegistrarIngreso(AperturaCaja apertura, int usuarioId, int conceptoId, int monedaId,
             int? formaPagoId, decimal monto, string descripcion)
@@ -55,6 +93,38 @@ namespace CapaNegocio
 
             transaccion.TransaccionId = _datosTransaccion.Registrar(transaccion);
             return transaccion;
+        }
+
+        /// <summary>
+        /// Registra una operacion de Mesa de Cambio como un par de movimientos en Transacciones:
+        /// un INGRESO por la moneda que el cliente entrega y un EGRESO por la moneda que la caja
+        /// entrega al cliente.
+        /// </summary>
+        public void RegistrarCambioDivisa(AperturaCaja apertura, int usuarioId,
+            int monedaRecibidaId, decimal montoRecibido, int monedaEntregadaId, decimal montoEntregado,
+            int? formaPagoId, string descripcion)
+        {
+            if (apertura == null)
+                throw new InvalidOperationException("Debe abrir la caja antes de registrar una operacion de cambio.");
+
+            if (montoRecibido <= 0 || montoEntregado <= 0)
+                throw new ArgumentException("Los montos recibido y entregado deben ser mayores que cero.");
+
+            if (monedaRecibidaId == monedaEntregadaId)
+                throw new ArgumentException("La moneda recibida y la moneda entregada deben ser distintas.");
+
+            Concepto conceptoRecibido = _datosConcepto.ObtenerPorOperacion(ConceptoCambioRecibido);
+            Concepto conceptoEntregado = _datosConcepto.ObtenerPorOperacion(ConceptoCambioEntregado);
+
+            if (conceptoRecibido == null || conceptoEntregado == null)
+                throw new InvalidOperationException(
+                    "Faltan los conceptos de Mesa de Cambio en la base de datos. Ejecute sql/06_seed_cambio_divisas.sql.");
+
+            Registrar(apertura, usuarioId, conceptoRecibido.ConceptoId, monedaRecibidaId,
+                formaPagoId, montoRecibido, descripcion, "INGRESO");
+
+            Registrar(apertura, usuarioId, conceptoEntregado.ConceptoId, monedaEntregadaId,
+                formaPagoId, montoEntregado, descripcion, "EGRESO");
         }
     }
 }

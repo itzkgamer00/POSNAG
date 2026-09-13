@@ -44,10 +44,10 @@
             this.guna2TextBox2 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2TextBox3 = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2ComboBox3 = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.btnguardaringre = new Guna.UI2.WinForms.Guna2Button();
             this.btndetalleingre = new Guna.UI2.WinForms.Guna2Button();
-            this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -59,7 +59,7 @@
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(19, 75);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(119, 25);
+            this.label1.Size = new System.Drawing.Size(141, 31);
             this.label1.TabIndex = 0;
             this.label1.Text = "OPERACION";
             // 
@@ -71,7 +71,7 @@
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(504, 75);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 25);
+            this.label2.Size = new System.Drawing.Size(100, 31);
             this.label2.TabIndex = 2;
             this.label2.Text = "Moneda";
             // 
@@ -83,7 +83,7 @@
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(19, 142);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(70, 25);
+            this.label3.Size = new System.Drawing.Size(84, 31);
             this.label3.TabIndex = 4;
             this.label3.Text = "Monto";
             // 
@@ -95,7 +95,7 @@
             this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(19, 316);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(125, 25);
+            this.label4.Size = new System.Drawing.Size(154, 31);
             this.label4.TabIndex = 7;
             this.label4.Text = "Tipo De Pago";
             // 
@@ -151,7 +151,7 @@
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(505, 144);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(148, 25);
+            this.label6.Size = new System.Drawing.Size(180, 31);
             this.label6.TabIndex = 44;
             this.label6.Text = "Monto Recibido";
             // 
@@ -161,9 +161,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(504, 229);
+            this.label7.Location = new System.Drawing.Point(13, 221);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(163, 25);
+            this.label7.Size = new System.Drawing.Size(197, 31);
             this.label7.TabIndex = 46;
             this.label7.Text = "Vuelto A Entregar";
             // 
@@ -219,6 +219,7 @@
             this.guna2TextBox1.SelectedText = "";
             this.guna2TextBox1.Size = new System.Drawing.Size(353, 48);
             this.guna2TextBox1.TabIndex = 50;
+            this.guna2TextBox1.TextChanged += new System.EventHandler(this.Montos_TextChanged);
             // 
             // guna2TextBox2
             // 
@@ -239,6 +240,7 @@
             this.guna2TextBox2.SelectedText = "";
             this.guna2TextBox2.Size = new System.Drawing.Size(311, 48);
             this.guna2TextBox2.TabIndex = 52;
+            this.guna2TextBox2.TextChanged += new System.EventHandler(this.Montos_TextChanged);
             // 
             // guna2TextBox3
             // 
@@ -254,13 +256,13 @@
             this.guna2TextBox3.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2TextBox3.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2TextBox3.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox3.Location = new System.Drawing.Point(509, 260);
+            this.guna2TextBox3.Location = new System.Drawing.Point(18, 252);
             this.guna2TextBox3.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.guna2TextBox3.Name = "guna2TextBox3";
             this.guna2TextBox3.PlaceholderText = "";
             this.guna2TextBox3.ReadOnly = true;
             this.guna2TextBox3.SelectedText = "";
-            this.guna2TextBox3.Size = new System.Drawing.Size(311, 48);
+            this.guna2TextBox3.Size = new System.Drawing.Size(353, 48);
             this.guna2TextBox3.TabIndex = 53;
             // 
             // guna2ComboBox3
@@ -274,10 +276,21 @@
             this.guna2ComboBox3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2ComboBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.guna2ComboBox3.ItemHeight = 30;
-            this.guna2ComboBox3.Location = new System.Drawing.Point(18, 344);
+            this.guna2ComboBox3.Location = new System.Drawing.Point(18, 350);
             this.guna2ComboBox3.Name = "guna2ComboBox3";
             this.guna2ComboBox3.Size = new System.Drawing.Size(353, 36);
             this.guna2ComboBox3.TabIndex = 54;
+            // 
+            // guna2Separator1
+            // 
+            this.guna2Separator1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Separator1.FillColor = System.Drawing.Color.Gray;
+            this.guna2Separator1.FillStyle = System.Drawing.Drawing2D.DashStyle.Custom;
+            this.guna2Separator1.FillThickness = 3;
+            this.guna2Separator1.Location = new System.Drawing.Point(647, 444);
+            this.guna2Separator1.Name = "guna2Separator1";
+            this.guna2Separator1.Size = new System.Drawing.Size(297, 21);
+            this.guna2Separator1.TabIndex = 57;
             // 
             // guna2Button1
             // 
@@ -296,7 +309,7 @@
             this.guna2Button1.TabIndex = 56;
             this.guna2Button1.Text = "Cancelar Tramite";
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
-            //
+            // 
             // btnguardaringre
             // 
             this.btnguardaringre.BorderRadius = 10;
@@ -314,13 +327,12 @@
             this.btnguardaringre.TabIndex = 55;
             this.btnguardaringre.Text = "Finalizar Operacion";
             this.btnguardaringre.Click += new System.EventHandler(this.btnguardaringre_Click);
-            //
+            // 
             // btndetalleingre
             // 
             this.btndetalleingre.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btndetalleingre.BorderColor = System.Drawing.Color.Silver;
             this.btndetalleingre.BorderRadius = 10;
-            this.btndetalleingre.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
             this.btndetalleingre.BorderThickness = 2;
             this.btndetalleingre.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btndetalleingre.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -329,30 +341,18 @@
             this.btndetalleingre.FillColor = System.Drawing.Color.White;
             this.btndetalleingre.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btndetalleingre.ForeColor = System.Drawing.Color.Black;
-            this.btndetalleingre.Image = global::CapaPresentacion.Properties.Resources.Cash;
             this.btndetalleingre.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btndetalleingre.ImageOffset = new System.Drawing.Point(7, -4);
             this.btndetalleingre.ImageSize = new System.Drawing.Size(45, 45);
             this.btndetalleingre.IndicateFocus = true;
-            this.btndetalleingre.Location = new System.Drawing.Point(17, 235);
+            this.btndetalleingre.Location = new System.Drawing.Point(509, 252);
             this.btndetalleingre.Name = "btndetalleingre";
             this.btndetalleingre.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.btndetalleingre.Size = new System.Drawing.Size(353, 67);
+            this.btndetalleingre.Size = new System.Drawing.Size(311, 67);
             this.btndetalleingre.TabIndex = 51;
             this.btndetalleingre.Text = "Detallar Efectivo (Denominacion)";
-            this.btndetalleingre.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btndetalleingre.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btndetalleingre.Click += new System.EventHandler(this.btndetalleingre_Click);
-            // 
-            // guna2Separator1
-            // 
-            this.guna2Separator1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Separator1.FillColor = System.Drawing.Color.Gray;
-            this.guna2Separator1.FillStyle = System.Drawing.Drawing2D.DashStyle.Custom;
-            this.guna2Separator1.FillThickness = 3;
-            this.guna2Separator1.Location = new System.Drawing.Point(647, 444);
-            this.guna2Separator1.Name = "guna2Separator1";
-            this.guna2Separator1.Size = new System.Drawing.Size(297, 21);
-            this.guna2Separator1.TabIndex = 57;
             // 
             // FrmIngreso
             // 

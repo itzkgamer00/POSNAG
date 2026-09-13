@@ -10,11 +10,14 @@ namespace CapaPresentacion.Formularios
 {
     public partial class Apertura : Form
     {
-        private const int ColMonedaId = 0;
-        private const int ColMoneda = 1;
-        private const int ColMontoInicial = 2;
+        private const int AltoFila = 42;
+        private const int AnchoEtiqueta = 380;
+        private const int AnchoMonto = 180;
 
         private readonly CN_AperturaCaja _negocio = new CN_AperturaCaja();
+
+        /// <summary>Mapa MonedaId -> TextBox donde el usuario digita el monto inicial de esa moneda.</summary>
+        private readonly Dictionary<int, TextBox> _montoPorMoneda = new Dictionary<int, TextBox>();
 
         /// <summary>Apertura creada, disponible despues de aceptar el formulario.</summary>
         public AperturaCaja AperturaCreada { get; private set; }
@@ -26,21 +29,8 @@ namespace CapaPresentacion.Formularios
             txtUsuario.Text = SesionActual.Usuario?.NombreCompleto ?? string.Empty;
             txtFechaHora.Text = DateTime.Now.ToString("dd/MM/yyyy hh:mm tt");
 
-            ConfigurarGrilla();
             CargarCajas();
             CargarMonedas();
-        }
-
-        private void ConfigurarGrilla()
-        {
-            dgvMontos.Columns.Add("colMonedaId", "Id");
-            dgvMontos.Columns.Add("colMoneda", "Moneda");
-            dgvMontos.Columns.Add("colMontoInicial", "Monto Inicial");
-
-            dgvMontos.Columns[ColMonedaId].Visible = false;
-            dgvMontos.Columns[ColMoneda].ReadOnly = true;
-            dgvMontos.Columns[ColMoneda].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgvMontos.Columns[ColMontoInicial].Width = 180;
         }
 
         private void CargarCajas()
@@ -51,17 +41,56 @@ namespace CapaPresentacion.Formularios
             cboCaja.ValueMember = nameof(Caja.CajaId);
         }
 
+        /// <summary>Genera dinamicamente una fila Etiqueta + TextBox por cada moneda activa dentro de pnlMontos.</summary>
         private void CargarMonedas()
         {
             List<Moneda> monedas = _negocio.ListarMonedasActivas();
+            int y = 8;
+
             foreach (Moneda moneda in monedas)
             {
                 string etiqueta = string.IsNullOrWhiteSpace(moneda.Simbolo)
                     ? $"{moneda.Nombre} ({moneda.Codigo})"
                     : $"{moneda.Nombre} ({moneda.Codigo}) {moneda.Simbolo}";
 
-                dgvMontos.Rows.Add(moneda.MonedaId, etiqueta, "0.00");
+                var lbl = new Label
+                {
+                    Text = etiqueta,
+                    Location = new System.Drawing.Point(8, y + 4),
+                    Size = new System.Drawing.Size(AnchoEtiqueta, 24),
+                    Font = new System.Drawing.Font("Segoe UI", 11F)
+                };
+
+                var txt = new TextBox
+                {
+                    Text = "0.00",
+                    Location = new System.Drawing.Point(AnchoEtiqueta + 16, y),
+                    Size = new System.Drawing.Size(AnchoMonto, 28),
+                    TextAlign = HorizontalAlignment.Right,
+                    Font = new System.Drawing.Font("Segoe UI", 11F)
+                };
+                txt.KeyPress += MontoTextBox_KeyPress;
+
+                pnlMontos.Controls.Add(lbl);
+                pnlMontos.Controls.Add(txt);
+                _montoPorMoneda[moneda.MonedaId] = txt;
+
+                y += AltoFila;
             }
+        }
+
+        /// <summary>Restringe el monto a digitos y un unico separador decimal.</summary>
+        private void MontoTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsControl(e.KeyChar)) return;
+            if (char.IsDigit(e.KeyChar)) return;
+
+            var textBox = (TextBox)sender;
+            char separador = CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator[0];
+            if (e.KeyChar == separador && textBox.Text.IndexOf(separador) < 0)
+                return;
+
+            e.Handled = true;
         }
 
         private void btnAbrirCaja_Click(object sender, EventArgs e)
@@ -73,19 +102,19 @@ namespace CapaPresentacion.Formularios
             }
 
             var montos = new List<AperturaCajaMoneda>();
-            foreach (DataGridViewRow fila in dgvMontos.Rows)
+            foreach (KeyValuePair<int, TextBox> par in _montoPorMoneda)
             {
-                string texto = Convert.ToString(fila.Cells[ColMontoInicial].Value);
-                if (!decimal.TryParse(texto, NumberStyles.Number, CultureInfo.CurrentCulture, out decimal monto) || monto < 0)
+                if (!decimal.TryParse(par.Value.Text, NumberStyles.Number, CultureInfo.CurrentCulture, out decimal monto) || monto < 0)
                 {
-                    MessageBox.Show($"Monto invalido para {fila.Cells[ColMoneda].Value}.", "Apertura de caja",
+                    MessageBox.Show("Ingrese un monto inicial valido (mayor o igual a 0) para cada moneda.", "Apertura de caja",
                         MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    par.Value.Focus();
                     return;
                 }
 
                 montos.Add(new AperturaCajaMoneda
                 {
-                    MonedaId = Convert.ToInt32(fila.Cells[ColMonedaId].Value),
+                    MonedaId = par.Key,
                     MontoInicial = monto
                 });
             }

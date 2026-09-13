@@ -38,13 +38,12 @@ namespace CapaPresentacion.Formularios
             this.txtCaja = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtUsuario = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtFechaHora = new Guna.UI2.WinForms.Guna2TextBox();
-            this.dgvMontos = new System.Windows.Forms.DataGridView();
+            this.pnlMontos = new System.Windows.Forms.Panel();
             this.txtObservaciones = new System.Windows.Forms.TextBox();
             this.btnCerrarCaja = new Guna.UI2.WinForms.Guna2Button();
             this.btnCancelarCierre = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMontos)).BeginInit();
             this.SuspendLayout();
             //
             // panel1
@@ -184,18 +183,14 @@ namespace CapaPresentacion.Formularios
             this.txtFechaHora.Size = new System.Drawing.Size(465, 48);
             this.txtFechaHora.TabIndex = 8;
             //
-            // dgvMontos
+            // pnlMontos
             //
-            this.dgvMontos.AllowUserToAddRows = false;
-            this.dgvMontos.AllowUserToDeleteRows = false;
-            this.dgvMontos.AllowUserToResizeRows = false;
-            this.dgvMontos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMontos.Location = new System.Drawing.Point(18, 283);
-            this.dgvMontos.Name = "dgvMontos";
-            this.dgvMontos.RowHeadersVisible = false;
-            this.dgvMontos.RowTemplate.Height = 32;
-            this.dgvMontos.Size = new System.Drawing.Size(936, 160);
-            this.dgvMontos.TabIndex = 9;
+            this.pnlMontos.AutoScroll = true;
+            this.pnlMontos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlMontos.Location = new System.Drawing.Point(18, 283);
+            this.pnlMontos.Name = "pnlMontos";
+            this.pnlMontos.Size = new System.Drawing.Size(936, 160);
+            this.pnlMontos.TabIndex = 9;
             //
             // txtObservaciones
             //
@@ -262,7 +257,7 @@ namespace CapaPresentacion.Formularios
             this.Controls.Add(this.btnCancelarCierre);
             this.Controls.Add(this.btnCerrarCaja);
             this.Controls.Add(this.txtObservaciones);
-            this.Controls.Add(this.dgvMontos);
+            this.Controls.Add(this.pnlMontos);
             this.Controls.Add(this.txtFechaHora);
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.txtCaja);
@@ -279,7 +274,6 @@ namespace CapaPresentacion.Formularios
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cierre de Caja";
             this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvMontos)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -297,7 +291,7 @@ namespace CapaPresentacion.Formularios
         private Guna.UI2.WinForms.Guna2TextBox txtCaja;
         private Guna.UI2.WinForms.Guna2TextBox txtUsuario;
         private Guna.UI2.WinForms.Guna2TextBox txtFechaHora;
-        private System.Windows.Forms.DataGridView dgvMontos;
+        private System.Windows.Forms.Panel pnlMontos;
         private System.Windows.Forms.TextBox txtObservaciones;
         private Guna.UI2.WinForms.Guna2Button btnCerrarCaja;
         private Guna.UI2.WinForms.Guna2Button btnCancelarCierre;
