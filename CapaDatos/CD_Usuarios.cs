@@ -10,7 +10,7 @@ namespace CapaDatos
     {
         private const string SelectBase =
             "SELECT u.usuario_id, u.NombreCompleto, u.usuario, u.password_hash, " +
-            "       u.IdRol, u.estado, r.Descripcion AS RolDescripcion " +
+            "       u.IdRol, u.estado, u.fechacreacion, r.Descripcion AS RolDescripcion " +
             "FROM Usuario u " +
             "LEFT JOIN Roles r ON r.IdRol = u.IdRol ";
 
@@ -67,8 +67,95 @@ namespace CapaDatos
                 password_hash = dr["password_hash"] as string,
                 IdRol = dr["IdRol"] == DBNull.Value ? 0 : Convert.ToInt32(dr["IdRol"]),
                 RolDescripcion = dr["RolDescripcion"] as string,
-                estado = dr["estado"] != DBNull.Value && Convert.ToBoolean(dr["estado"])
+                estado = dr["estado"] != DBNull.Value && Convert.ToBoolean(dr["estado"]),
+                fechacreacion = Convert.ToDateTime(dr["fechacreacion"])
             };
+        }
+
+        /// <summary>True si ya existe un usuario con ese nombre de usuario, excluyendo (si se indica) el propio usuario que se esta editando.</summary>
+        public bool ExisteUsuario(string usuario, int excluirUsuarioId = 0)
+        {
+            const string sql = "SELECT 1 FROM Usuario WHERE usuario = @usuario AND usuario_id <> @excluirUsuarioId";
+
+            using (SqlConnection cn = new SqlConnection(conexiondb.cadena))
+            using (SqlCommand cmd = new SqlCommand(sql, cn))
+            {
+                cmd.Parameters.Add("@usuario", SqlDbType.NVarChar, 50).Value = usuario;
+                cmd.Parameters.Add("@excluirUsuarioId", SqlDbType.Int).Value = excluirUsuarioId;
+                cn.Open();
+                return cmd.ExecuteScalar() != null;
+            }
+        }
+
+        /// <summary>Inserta un nuevo usuario y devuelve su usuario_id generado.</summary>
+        public int Registrar(Usuario usuario)
+        {
+            const string sql =
+                "INSERT INTO Usuario (NombreCompleto, usuario, password_hash, IdRol, estado) " +
+                "OUTPUT INSERTED.usuario_id " +
+                "VALUES (@nombreCompleto, @usuario, @passwordHash, @idRol, @estado)";
+
+            using (SqlConnection cn = new SqlConnection(conexiondb.cadena))
+            using (SqlCommand cmd = new SqlCommand(sql, cn))
+            {
+                cmd.Parameters.Add("@nombreCompleto", SqlDbType.NVarChar, 100).Value = usuario.NombreCompleto;
+                cmd.Parameters.Add("@usuario", SqlDbType.NVarChar, 50).Value = usuario.usuario;
+                cmd.Parameters.Add("@passwordHash", SqlDbType.VarChar, 200).Value = usuario.password_hash;
+                cmd.Parameters.Add("@idRol", SqlDbType.Int).Value = usuario.IdRol == 0 ? (object)DBNull.Value : usuario.IdRol;
+                cmd.Parameters.Add("@estado", SqlDbType.Bit).Value = usuario.estado;
+
+                cn.Open();
+                return (int)cmd.ExecuteScalar();
+            }
+        }
+
+        /// <summary>Actualiza nombre completo, nombre de usuario y rol. La contraseña se cambia con ActualizarPassword.</summary>
+        public void Actualizar(int usuarioId, string nombreCompleto, string nombreUsuario, int? idRol)
+        {
+            const string sql =
+                "UPDATE Usuario SET NombreCompleto = @nombreCompleto, usuario = @usuario, IdRol = @idRol " +
+                "WHERE usuario_id = @usuarioId";
+
+            using (SqlConnection cn = new SqlConnection(conexiondb.cadena))
+            using (SqlCommand cmd = new SqlCommand(sql, cn))
+            {
+                cmd.Parameters.Add("@nombreCompleto", SqlDbType.NVarChar, 100).Value = nombreCompleto;
+                cmd.Parameters.Add("@usuario", SqlDbType.NVarChar, 50).Value = nombreUsuario;
+                cmd.Parameters.Add("@idRol", SqlDbType.Int).Value = (object)idRol ?? DBNull.Value;
+                cmd.Parameters.Add("@usuarioId", SqlDbType.Int).Value = usuarioId;
+                cn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        /// <summary>Reemplaza el hash de contraseña de un usuario existente.</summary>
+        public void ActualizarPassword(int usuarioId, string passwordHash)
+        {
+            const string sql = "UPDATE Usuario SET password_hash = @passwordHash WHERE usuario_id = @usuarioId";
+
+            using (SqlConnection cn = new SqlConnection(conexiondb.cadena))
+            using (SqlCommand cmd = new SqlCommand(sql, cn))
+            {
+                cmd.Parameters.Add("@passwordHash", SqlDbType.VarChar, 200).Value = passwordHash;
+                cmd.Parameters.Add("@usuarioId", SqlDbType.Int).Value = usuarioId;
+                cn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
+        /// <summary>Activa o desactiva un usuario.</summary>
+        public void CambiarEstado(int usuarioId, bool estado)
+        {
+            const string sql = "UPDATE Usuario SET estado = @estado WHERE usuario_id = @usuarioId";
+
+            using (SqlConnection cn = new SqlConnection(conexiondb.cadena))
+            using (SqlCommand cmd = new SqlCommand(sql, cn))
+            {
+                cmd.Parameters.Add("@estado", SqlDbType.Bit).Value = estado;
+                cmd.Parameters.Add("@usuarioId", SqlDbType.Int).Value = usuarioId;
+                cn.Open();
+                cmd.ExecuteNonQuery();
+            }
         }
     }
 }

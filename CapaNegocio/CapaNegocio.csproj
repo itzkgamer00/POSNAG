@@ -161,6 +161,10 @@
     <Compile Include="CN_TasaCambio.cs" />
     <Compile Include="CN_Transaccion.cs" />
     <Compile Include="CN_Usuario.cs" />
+    <Compile Include="CN_Roles.cs" />
+    <Compile Include="CN_Moneda.cs" />
+    <Compile Include="CN_FormaPago.cs" />
+    <Compile Include="CN_Concepto.cs" />
     <Compile Include="Seguridad\PasswordHasher.cs" />
     <Compile Include="SesionActual.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

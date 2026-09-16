@@ -126,5 +126,13 @@ namespace CapaNegocio
             Registrar(apertura, usuarioId, conceptoEntregado.ConceptoId, monedaEntregadaId,
                 formaPagoId, montoEntregado, descripcion, "EGRESO");
         }
+
+        /// <summary>Anula un movimiento (ingreso, egreso o Mesa de Cambio) registrado por error. Queda en el historial marcado como Inactivo.</summary>
+        /// <exception cref="InvalidOperationException">Si la transaccion no existe o ya estaba anulada.</exception>
+        public void AnularTransaccion(int transaccionId)
+        {
+            if (!_datosTransaccion.Anular(transaccionId))
+                throw new InvalidOperationException("La transaccion no existe o ya estaba anulada.");
+        }
     }
 }

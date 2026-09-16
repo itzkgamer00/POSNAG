@@ -1,3 +1,5 @@
+using System;
+
 namespace CapaEntidad
 {
     public class Moneda
@@ -7,5 +9,6 @@ namespace CapaEntidad
         public string Codigo { get; set; }
         public string Simbolo { get; set; }
         public bool Estado { get; set; }
+        public DateTime FechaCreacion { get; set; }
     }
 }

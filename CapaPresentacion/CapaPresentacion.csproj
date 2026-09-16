@@ -205,6 +205,42 @@
     <Compile Include="Formularios\Frmclientes.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\FrmUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmUsuario.Designer.cs">
+      <DependentUpon>FrmUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmRol.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmRol.Designer.cs">
+      <DependentUpon>FrmRol.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmMoneda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmMoneda.Designer.cs">
+      <DependentUpon>FrmMoneda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmFormaPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmFormaPago.Designer.cs">
+      <DependentUpon>FrmFormaPago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmTasaCambio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmTasaCambio.Designer.cs">
+      <DependentUpon>FrmTasaCambio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formularios\FrmConcepto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmConcepto.Designer.cs">
+      <DependentUpon>FrmConcepto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Frmclientes.Designer.cs">
       <DependentUpon>Frmclientes.cs</DependentUpon>
     </Compile>
@@ -258,6 +294,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Frmclientes.resx">
       <DependentUpon>Frmclientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmUsuario.resx">
+      <DependentUpon>FrmUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmRol.resx">
+      <DependentUpon>FrmRol.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmMoneda.resx">
+      <DependentUpon>FrmMoneda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmFormaPago.resx">
+      <DependentUpon>FrmFormaPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmTasaCambio.resx">
+      <DependentUpon>FrmTasaCambio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmConcepto.resx">
+      <DependentUpon>FrmConcepto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\FrmDetalle.resx">
       <DependentUpon>FrmDetalle.cs</DependentUpon>

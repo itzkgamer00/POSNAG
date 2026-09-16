@@ -157,5 +157,19 @@ namespace CapaDatos
                 return (int)cmd.ExecuteScalar();
             }
         }
+
+        /// <summary>Anula (estado = 0) una transaccion activa. Devuelve false si no existe o ya estaba anulada.</summary>
+        public bool Anular(int transaccionId)
+        {
+            const string sql = "UPDATE Transacciones SET estado = 0 WHERE transaccion_id = @transaccionId AND estado = 1";
+
+            using (SqlConnection cn = new SqlConnection(conexiondb.cadena))
+            using (SqlCommand cmd = new SqlCommand(sql, cn))
+            {
+                cmd.Parameters.Add("@transaccionId", SqlDbType.Int).Value = transaccionId;
+                cn.Open();
+                return cmd.ExecuteNonQuery() > 0;
+            }
+        }
     }
 }

@@ -76,5 +76,11 @@ namespace CapaPresentacion.Formularios
         {
             this.Close();
         }
+
+        private void btncancelcjregis_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
     }
 }

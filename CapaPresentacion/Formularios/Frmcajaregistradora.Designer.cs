@@ -116,7 +116,8 @@
             this.btncancelcjregis.Size = new System.Drawing.Size(121, 45);
             this.btncancelcjregis.TabIndex = 6;
             this.btncancelcjregis.Text = "Cancelar";
-            // 
+            this.btncancelcjregis.Click += new System.EventHandler(this.btncancelcjregis_Click);
+            //
             // guna2TextBox1
             // 
             this.guna2TextBox1.BorderColor = System.Drawing.Color.Transparent;

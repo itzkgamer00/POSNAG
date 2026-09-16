@@ -161,6 +161,7 @@
     <Compile Include="CD_AperturaCaja.cs" />
     <Compile Include="CD_Caja.cs" />
     <Compile Include="CD_Concepto.cs" />
+    <Compile Include="CD_Roles.cs" />
     <Compile Include="CD_FormaPago.cs" />
     <Compile Include="CD_Moneda.cs" />
     <Compile Include="CD_TasaCambio.cs" />

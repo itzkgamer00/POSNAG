@@ -22,8 +22,16 @@ namespace CapaPresentacion
         private readonly CN_AperturaCaja _negocioCaja = new CN_AperturaCaja();
         private readonly CN_Transaccion _negocioTransaccion = new CN_Transaccion();
         private readonly CN_Usuario _negocioUsuario = new CN_Usuario();
+        private readonly CN_Roles _negocioRoles = new CN_Roles();
+        private readonly CN_Moneda _negocioMoneda = new CN_Moneda();
+        private readonly CN_FormaPago _negocioFormaPago = new CN_FormaPago();
+        private readonly CN_TasaCambio _negocioTasaCambio = new CN_TasaCambio();
+        private readonly CN_Concepto _negocioConcepto = new CN_Concepto();
         private AperturaCaja _aperturaActual;
         private List<Transaccion> _movimientosActuales = new List<Transaccion>();
+
+        /// <summary>Movimientos mostrados actualmente en guna2DataGridView1, en el mismo orden que sus filas (para ubicar la fila seleccionada al anular).</summary>
+        private List<Transaccion> _movimientosGridMovimientos = new List<Transaccion>();
 
         public fmrInicio()
         {
@@ -33,6 +41,17 @@ namespace CapaPresentacion
             guna2DataGridView6.AllowUserToAddRows = false;
             guna2DataGridView1.ReadOnly = true;
             guna2DataGridView1.AllowUserToAddRows = false;
+
+            // Colorea la columna "Estado" (verde Activo, rojo Inactivo) en todas las grillas que la tienen.
+            foreach (DataGridView grilla in new DataGridView[]
+            {
+                guna2DataGridView1, guna2DataGridView2, guna2DataGridView3, guna2DataGridView4,
+                guna2DataGridView5, guna2DataGridView6, dgvRoles, dgvMonedas, dgvFormasPago,
+                dgvTasas, dgvOperaciones
+            })
+            {
+                grilla.CellFormatting += ColorearCeldaEstado;
+            }
 
             guna2ComboBox1.SelectedIndex = 0;
             guna2ComboBox2.SelectedIndex = 0;
@@ -102,10 +121,74 @@ namespace CapaPresentacion
             // con una caja abierta, o la abrio otra instancia).
             _aperturaActual = _negocioCaja.ObtenerUltimaAperturaAbierta();
             ActualizarEstadoCaja();
+            CargarFiltroOperacionInicio();
             CargarMovimientos();
             CargarHistorial();
             CargarCajas();
             CargarDatosReportes();
+            CargarUsuarios();
+            CargarRoles();
+            CargarMonedas();
+            CargarFormasPago();
+            CargarTasas();
+            CargarOperaciones();
+            CargarTasasInicio();
+
+            // Rango por defecto del KPI de Mesa de Cambio: el ultimo mes (modificable por el usuario).
+            dtpKpiDesde.Value = DateTime.Today.AddMonths(-1);
+            dtpKpiHasta.Value = DateTime.Today;
+            CargarKpiMesaCambio();
+        }
+
+        /// <summary>Trae de la base de datos las tasas de cambio vigentes y refresca el panel "Tasas de Cambio" del Inicio.</summary>
+        private void CargarTasasInicio()
+        {
+            List<TasaCambio> tasas = _negocioTasaCambio.Listar().Where(t => t.Estado).ToList();
+
+            var tabla = new DataTable();
+            tabla.Columns.Add("Moneda");
+            tabla.Columns.Add("Tipo");
+            tabla.Columns.Add("Valor");
+
+            foreach (TasaCambio t in tasas.OrderBy(t => t.MonedaNombre).ThenBy(t => t.TipoOperacion))
+            {
+                tabla.Rows.Add(
+                    $"{t.MonedaNombre} ({t.MonedaCodigo})",
+                    t.TipoOperacion == "COMPRA" ? "Compra" : "Venta",
+                    t.Valor.ToString("N4", CultureInfo.CurrentCulture));
+            }
+
+            guna2DataGridView7.DataSource = tabla;
+            guna2DataGridView7.ReadOnly = true;
+            guna2DataGridView7.AllowUserToAddRows = false;
+        }
+
+        /// <summary>Codigo de la divisa extranjera que maneja Mesa de Cambio (ver Frmlcambiodivisas).</summary>
+        private const string CodigoMonedaExtranjera = "USD";
+
+        /// <summary>
+        /// Suma el total de dolares comprados y vendidos en Mesa de Cambio en el rango de fechas
+        /// seleccionado y actualiza las tarjetas KPI. Compra = la caja recibe USD (INGRESO);
+        /// Venta = la caja entrega USD (EGRESO).
+        /// </summary>
+        private void CargarKpiMesaCambio()
+        {
+            DateTime desde = dtpKpiDesde.Value.Date;
+            DateTime hasta = dtpKpiHasta.Value.Date;
+            if (hasta < desde) return; // rango invalido: se espera a que el usuario termine de ajustar las fechas
+
+            List<Transaccion> movimientos = _negocioTransaccion.ListarCambiosDivisaParaReporte(desde, hasta);
+
+            decimal totalCompras = movimientos.Where(t => t.Tipo == "INGRESO" && t.MonedaCodigo == CodigoMonedaExtranjera).Sum(t => t.Monto);
+            decimal totalVentas = movimientos.Where(t => t.Tipo == "EGRESO" && t.MonedaCodigo == CodigoMonedaExtranjera).Sum(t => t.Monto);
+
+            lblKpiComprasValor.Text = "$" + totalCompras.ToString("N2", CultureInfo.CurrentCulture);
+            lblKpiVentasValor.Text = "$" + totalVentas.ToString("N2", CultureInfo.CurrentCulture);
+        }
+
+        private void FiltroKpiCambio_ValueChanged(object sender, EventArgs e)
+        {
+            CargarKpiMesaCambio();
         }
 
         /// <summary>Trae de la base de datos todas las cajas registradoras (activas e inactivas) y refresca la pestaña Cajas.</summary>
@@ -280,6 +363,34 @@ namespace CapaPresentacion
 
             AplicarFiltro(guna2DataGridView6, guna2ComboBox1);
             AplicarFiltro(guna2DataGridView1, guna2ComboBox2);
+            CargarResumenCajaDia();
+            CargarKpiMesaCambio();
+            ActualizarSaldoDisponible();
+        }
+
+        /// <summary>Trae de la base de datos el total de ingresos y egresos de hoy (todas las cajas) y refresca el panel "Resumen de caja".</summary>
+        private void CargarResumenCajaDia()
+        {
+            DateTime hoy = DateTime.Today;
+            List<Transaccion> movimientosHoy = _negocioTransaccion.ListarParaReporte(hoy, hoy);
+
+            label24.Text = FormatoTotalPorMoneda(movimientosHoy.Where(t => t.Tipo == "INGRESO"));
+            label25.Text = FormatoTotalPorMoneda(movimientosHoy.Where(t => t.Tipo == "EGRESO"));
+        }
+
+        /// <summary>Suma los montos agrupados por moneda (no tiene sentido sumar cordobas con dolares) y los formatea "Simbolo Total".</summary>
+        private static string FormatoTotalPorMoneda(IEnumerable<Transaccion> movimientos)
+        {
+            var porMoneda = movimientos
+                .GroupBy(t => new { t.MonedaCodigo, t.MonedaSimbolo })
+                .Select(g => new { g.Key.MonedaCodigo, g.Key.MonedaSimbolo, Total = g.Sum(t => t.Monto) })
+                .OrderBy(x => x.MonedaCodigo)
+                .ToList();
+
+            if (porMoneda.Count == 0) return "0.00";
+
+            return string.Join(" / ", porMoneda.Select(x =>
+                $"{(string.IsNullOrWhiteSpace(x.MonedaSimbolo) ? x.MonedaCodigo : x.MonedaSimbolo)} {x.Total:N2}"));
         }
 
         private void AplicarFiltro(DataGridView grilla, ComboBox comboFiltro)
@@ -293,9 +404,32 @@ namespace CapaPresentacion
                 movimientos = movimientos.Where(t => t.Tipo == "EGRESO");
 
             if (grilla == guna2DataGridView6)
+            {
+                int? conceptoId = (cboFiltroOperacionInicio.SelectedItem as OpcionFiltro)?.Id;
+                if (conceptoId.HasValue)
+                    movimientos = movimientos.Where(t => t.ConceptoId == conceptoId.Value);
+
                 LlenarGridInicio(movimientos);
+            }
             else
+            {
                 LlenarGridMovimientos(movimientos);
+            }
+        }
+
+        /// <summary>Llena el combo "Tipo de Operacion" de Movimientos del Turno con los conceptos activos (Ingreso y Egreso).</summary>
+        private void CargarFiltroOperacionInicio()
+        {
+            cboFiltroOperacionInicio.Items.Clear();
+            cboFiltroOperacionInicio.Items.Add(new OpcionFiltro { Id = null, Texto = "Todas las operaciones" });
+            foreach (Concepto c in _negocioTransaccion.ListarConceptosActivos())
+                cboFiltroOperacionInicio.Items.Add(new OpcionFiltro { Id = c.ConceptoId, Texto = $"{c.Nombre} ({(c.Tipo == "INGRESO" ? "Ingreso" : "Egreso")})" });
+            cboFiltroOperacionInicio.SelectedIndex = 0;
+        }
+
+        private void FiltroOperacionInicio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AplicarFiltro(guna2DataGridView6, guna2ComboBox1);
         }
 
         /// <summary>Orden de columnas de guna2DataGridView6: Fecha, Operacion, Tipo, Moneda, Monto, Descripcion, Forma de pago, Estado.</summary>
@@ -319,8 +453,10 @@ namespace CapaPresentacion
         /// <summary>Orden de columnas de guna2DataGridView1: Fecha, Operacion, Moneda, Tipo, Monto, Forma de pago, Descripcion, Estado.</summary>
         private void LlenarGridMovimientos(IEnumerable<Transaccion> movimientos)
         {
+            _movimientosGridMovimientos = movimientos.ToList();
+
             guna2DataGridView1.Rows.Clear();
-            foreach (Transaccion t in movimientos)
+            foreach (Transaccion t in _movimientosGridMovimientos)
             {
                 guna2DataGridView1.Rows.Add(
                     t.FechaHora.ToString("dd/MM/yyyy hh:mm tt", CultureInfo.CurrentCulture),
@@ -332,6 +468,73 @@ namespace CapaPresentacion
                     t.Descripcion,
                     t.Estado ? "Activo" : "Inactivo");
             }
+        }
+
+        /// <summary>Colorea cualquier columna "Estado" de cualquier grilla: verde para Activo/Activa, rojo para Inactivo/Inactiva.</summary>
+        private void ColorearCeldaEstado(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            var grilla = (DataGridView)sender;
+            if (e.ColumnIndex < 0 || grilla.Columns[e.ColumnIndex].HeaderText != "Estado") return;
+
+            string valor = e.Value as string;
+            if (string.Equals(valor, "Activo", StringComparison.OrdinalIgnoreCase) ||
+                string.Equals(valor, "Activa", StringComparison.OrdinalIgnoreCase))
+                e.CellStyle.ForeColor = System.Drawing.Color.FromArgb(5, 150, 105);
+            else if (string.Equals(valor, "Inactivo", StringComparison.OrdinalIgnoreCase) ||
+                     string.Equals(valor, "Inactiva", StringComparison.OrdinalIgnoreCase))
+                e.CellStyle.ForeColor = System.Drawing.Color.FromArgb(185, 51, 73);
+        }
+
+        /// <summary>Movimiento seleccionado actualmente en guna2DataGridView1, o null si no hay seleccion.</summary>
+        private Transaccion ObtenerMovimientoSeleccionado()
+        {
+            int indice = guna2DataGridView1.CurrentRow?.Index ?? -1;
+            if (indice < 0 || indice >= _movimientosGridMovimientos.Count)
+            {
+                MessageBox.Show("Seleccione un movimiento de la lista.", "Anular Movimiento",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return null;
+            }
+
+            return _movimientosGridMovimientos[indice];
+        }
+
+        /// <summary>Anula (marca como Inactivo) un movimiento registrado por error, y refresca todos los paneles afectados.</summary>
+        private void btnAnularMovimiento_Click(object sender, EventArgs e)
+        {
+            Transaccion movimiento = ObtenerMovimientoSeleccionado();
+            if (movimiento == null) return;
+
+            if (!movimiento.Estado)
+            {
+                MessageBox.Show("Ese movimiento ya esta anulado.", "Anular Movimiento",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            DialogResult confirmacion = MessageBox.Show(
+                $"¿Desea anular este movimiento?\n\n{movimiento.ConceptoNombre} - {movimiento.MonedaCodigo} {movimiento.Monto:N2}\n\n" +
+                "Esta accion no se puede deshacer: el movimiento quedara marcado como Inactivo y ya no contara en los saldos ni en los reportes.",
+                "Anular Movimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (confirmacion != DialogResult.Yes) return;
+
+            try
+            {
+                _negocioTransaccion.AnularTransaccion(movimiento.TransaccionId);
+            }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show(ex.Message, "Anular Movimiento", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo anular el movimiento: " + ex.Message, "Anular Movimiento",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            CargarMovimientos();
         }
 
         private void FiltroMovimientosInicio_SelectedIndexChanged(object sender, EventArgs e)
@@ -360,6 +563,31 @@ namespace CapaPresentacion
 
             guna2Button3.Enabled = _aperturaActual == null;
             btnCerrarCaja.Enabled = _aperturaActual != null;
+        }
+
+        /// <summary>Refleja en el panel "Control de caja" el saldo disponible (monto en sistema) de cada moneda de la apertura actual.</summary>
+        private void ActualizarSaldoDisponible()
+        {
+            if (_aperturaActual == null)
+            {
+                lblSaldoDisponible.Text = string.Empty;
+                return;
+            }
+
+            Dictionary<int, decimal> saldos = _negocioCaja.CalcularMontoSistema(_aperturaActual.AperturaId);
+            if (saldos.Count == 0)
+            {
+                lblSaldoDisponible.Text = string.Empty;
+                return;
+            }
+
+            List<Moneda> monedas = _negocioMoneda.Listar();
+            string detalle = string.Join("     ", saldos
+                .Select(kv => new { Moneda = monedas.Find(m => m.MonedaId == kv.Key), Monto = kv.Value })
+                .OrderBy(x => x.Moneda?.Codigo)
+                .Select(x => $"{(string.IsNullOrWhiteSpace(x.Moneda?.Simbolo) ? x.Moneda?.Codigo : x.Moneda.Simbolo)} {x.Monto.ToString("N2", CultureInfo.CurrentCulture)}"));
+
+            lblSaldoDisponible.Text = "Saldo disponible: " + detalle;
         }
 
         private void guna2Button3_Click(object sender, EventArgs e)
@@ -480,6 +708,587 @@ namespace CapaPresentacion
             Frmclientes cliente = new Frmclientes(); // Crear una instancia de Form2
             cliente.StartPosition = FormStartPosition.CenterParent; // Centrar el formulario emergente
             cliente.ShowDialog(); // Mostrarlo como emergente
+        }
+
+        // ===================== Configuracion: Usuarios =====================
+
+        /// <summary>Trae de la base de datos todos los usuarios y refresca la grilla de la pestaña Usuarios.</summary>
+        private void CargarUsuarios()
+        {
+            List<Usuario> usuarios = _negocioUsuario.Listar();
+
+            var tabla = new DataTable();
+            tabla.Columns.Add("Id", typeof(int));
+            tabla.Columns.Add("Nombre");
+            tabla.Columns.Add("Usuario");
+            tabla.Columns.Add("Rol");
+            tabla.Columns.Add("Fecha de creacion");
+            tabla.Columns.Add("Estado");
+
+            foreach (Usuario u in usuarios)
+            {
+                tabla.Rows.Add(
+                    u.usuario_id,
+                    u.NombreCompleto,
+                    u.usuario,
+                    u.RolDescripcion ?? "-",
+                    u.fechacreacion.ToString("dd/MM/yyyy hh:mm tt", CultureInfo.CurrentCulture),
+                    u.estado ? "Activo" : "Inactivo");
+            }
+
+            guna2DataGridView3.AutoGenerateColumns = false;
+            guna2DataGridView3.DataSource = tabla;
+        }
+
+        /// <summary>Usuario seleccionado actualmente en la grilla de la pestaña Usuarios, o null si no hay seleccion.</summary>
+        private Usuario ObtenerUsuarioSeleccionado()
+        {
+            if (guna2DataGridView3.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione un usuario de la lista.", "Usuarios",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return null;
+            }
+
+            DataRowView fila = (DataRowView)guna2DataGridView3.CurrentRow.DataBoundItem;
+            return _negocioUsuario.Listar().Find(u => u.usuario_id == Convert.ToInt32(fila["Id"]));
+        }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            FrmUsuario nuevo = new FrmUsuario();
+            nuevo.StartPosition = FormStartPosition.CenterParent;
+            if (nuevo.ShowDialog() == DialogResult.OK)
+                CargarUsuarios();
+        }
+
+        private void btnEditarUsuario_Click(object sender, EventArgs e)
+        {
+            Usuario usuario = ObtenerUsuarioSeleccionado();
+            if (usuario == null) return;
+
+            FrmUsuario editor = new FrmUsuario(usuario);
+            editor.StartPosition = FormStartPosition.CenterParent;
+            if (editor.ShowDialog() == DialogResult.OK)
+                CargarUsuarios();
+        }
+
+        private void btnEstadoUsuario_Click(object sender, EventArgs e)
+        {
+            Usuario usuario = ObtenerUsuarioSeleccionado();
+            if (usuario == null) return;
+
+            if (SesionActual.Usuario != null && usuario.usuario_id == SesionActual.Usuario.usuario_id)
+            {
+                MessageBox.Show("No puede desactivar su propia cuenta mientras tiene la sesion iniciada.", "Usuarios",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            bool nuevoEstado = !usuario.estado;
+            string accion = nuevoEstado ? "activar" : "desactivar";
+
+            DialogResult confirmacion = MessageBox.Show(
+                $"¿Desea {accion} al usuario \"{usuario.NombreCompleto}\"?", "Usuarios",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirmacion != DialogResult.Yes) return;
+
+            try
+            {
+                _negocioUsuario.CambiarEstadoUsuario(usuario.usuario_id, nuevoEstado);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo cambiar el estado del usuario: " + ex.Message, "Usuarios",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            CargarUsuarios();
+        }
+
+        // ===================== Configuracion: Roles =====================
+
+        /// <summary>Trae de la base de datos todos los roles y refresca la grilla de la pestaña Roles.</summary>
+        private void CargarRoles()
+        {
+            List<Roles> roles = _negocioRoles.Listar();
+
+            var tabla = new DataTable();
+            tabla.Columns.Add("Id", typeof(int));
+            tabla.Columns.Add("Descripcion");
+            tabla.Columns.Add("Fecha de creacion");
+            tabla.Columns.Add("Estado");
+
+            foreach (Roles r in roles)
+            {
+                tabla.Rows.Add(
+                    r.IdRol,
+                    r.Descripcion,
+                    r.FechaCreacion.ToString("dd/MM/yyyy hh:mm tt", CultureInfo.CurrentCulture),
+                    r.estado ? "Activo" : "Inactivo");
+            }
+
+            dgvRoles.AutoGenerateColumns = false;
+            dgvRoles.DataSource = tabla;
+        }
+
+        /// <summary>Rol seleccionado actualmente en la grilla de la pestaña Roles, o null si no hay seleccion.</summary>
+        private Roles ObtenerRolSeleccionado()
+        {
+            if (dgvRoles.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione un rol de la lista.", "Roles",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return null;
+            }
+
+            DataRowView fila = (DataRowView)dgvRoles.CurrentRow.DataBoundItem;
+            return _negocioRoles.Listar().Find(r => r.IdRol == Convert.ToInt32(fila["Id"]));
+        }
+
+        private void btnNuevoRol_Click(object sender, EventArgs e)
+        {
+            FrmRol nuevo = new FrmRol();
+            nuevo.StartPosition = FormStartPosition.CenterParent;
+            if (nuevo.ShowDialog() == DialogResult.OK)
+                CargarRoles();
+        }
+
+        private void btnEditarRol_Click(object sender, EventArgs e)
+        {
+            Roles rol = ObtenerRolSeleccionado();
+            if (rol == null) return;
+
+            FrmRol editor = new FrmRol(rol);
+            editor.StartPosition = FormStartPosition.CenterParent;
+            if (editor.ShowDialog() == DialogResult.OK)
+                CargarRoles();
+        }
+
+        private void btnEstadoRol_Click(object sender, EventArgs e)
+        {
+            Roles rol = ObtenerRolSeleccionado();
+            if (rol == null) return;
+
+            bool nuevoEstado = !rol.estado;
+            string accion = nuevoEstado ? "activar" : "desactivar";
+
+            DialogResult confirmacion = MessageBox.Show(
+                $"¿Desea {accion} el rol \"{rol.Descripcion}\"?", "Roles",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirmacion != DialogResult.Yes) return;
+
+            try
+            {
+                _negocioRoles.CambiarEstadoRol(rol.IdRol, nuevoEstado);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo cambiar el estado del rol: " + ex.Message, "Roles",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            CargarRoles();
+        }
+
+        // ===================== Configuracion: Monedas =====================
+
+        /// <summary>Trae de la base de datos todas las monedas y refresca la grilla de la pestaña Monedas.</summary>
+        private void CargarMonedas()
+        {
+            List<Moneda> monedas = _negocioMoneda.Listar();
+
+            var tabla = new DataTable();
+            tabla.Columns.Add("Id", typeof(int));
+            tabla.Columns.Add("Nombre");
+            tabla.Columns.Add("Codigo");
+            tabla.Columns.Add("Simbolo");
+            tabla.Columns.Add("Fecha de creacion");
+            tabla.Columns.Add("Estado");
+
+            foreach (Moneda m in monedas)
+            {
+                tabla.Rows.Add(
+                    m.MonedaId,
+                    m.Nombre,
+                    m.Codigo,
+                    m.Simbolo ?? "-",
+                    m.FechaCreacion.ToString("dd/MM/yyyy hh:mm tt", CultureInfo.CurrentCulture),
+                    m.Estado ? "Activo" : "Inactivo");
+            }
+
+            dgvMonedas.AutoGenerateColumns = false;
+            dgvMonedas.DataSource = tabla;
+        }
+
+        /// <summary>Moneda seleccionada actualmente en la grilla de la pestaña Monedas, o null si no hay seleccion.</summary>
+        private Moneda ObtenerMonedaSeleccionada()
+        {
+            if (dgvMonedas.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione una moneda de la lista.", "Monedas",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return null;
+            }
+
+            DataRowView fila = (DataRowView)dgvMonedas.CurrentRow.DataBoundItem;
+            return _negocioMoneda.Listar().Find(m => m.MonedaId == Convert.ToInt32(fila["Id"]));
+        }
+
+        private void btnNuevaMoneda_Click(object sender, EventArgs e)
+        {
+            FrmMoneda nueva = new FrmMoneda();
+            nueva.StartPosition = FormStartPosition.CenterParent;
+            if (nueva.ShowDialog() == DialogResult.OK)
+                CargarMonedas();
+        }
+
+        private void btnEditarMoneda_Click(object sender, EventArgs e)
+        {
+            Moneda moneda = ObtenerMonedaSeleccionada();
+            if (moneda == null) return;
+
+            FrmMoneda editor = new FrmMoneda(moneda);
+            editor.StartPosition = FormStartPosition.CenterParent;
+            if (editor.ShowDialog() == DialogResult.OK)
+                CargarMonedas();
+        }
+
+        private void btnEstadoMoneda_Click(object sender, EventArgs e)
+        {
+            Moneda moneda = ObtenerMonedaSeleccionada();
+            if (moneda == null) return;
+
+            bool nuevoEstado = !moneda.Estado;
+            string accion = nuevoEstado ? "activar" : "desactivar";
+
+            DialogResult confirmacion = MessageBox.Show(
+                $"¿Desea {accion} la moneda \"{moneda.Nombre}\"?", "Monedas",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirmacion != DialogResult.Yes) return;
+
+            try
+            {
+                _negocioMoneda.CambiarEstadoMoneda(moneda.MonedaId, nuevoEstado);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo cambiar el estado de la moneda: " + ex.Message, "Monedas",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            CargarMonedas();
+        }
+
+        // ===================== Configuracion: Formas de Pago =====================
+
+        /// <summary>Trae de la base de datos todas las formas de pago y refresca la grilla de la pestaña Formas de Pago.</summary>
+        private void CargarFormasPago()
+        {
+            List<FormaPago> formasPago = _negocioFormaPago.Listar();
+
+            var tabla = new DataTable();
+            tabla.Columns.Add("Id", typeof(int));
+            tabla.Columns.Add("Nombre");
+            tabla.Columns.Add("Estado");
+
+            foreach (FormaPago f in formasPago)
+            {
+                tabla.Rows.Add(
+                    f.FormaPagoId,
+                    f.Nombre,
+                    f.Estado ? "Activo" : "Inactivo");
+            }
+
+            dgvFormasPago.AutoGenerateColumns = false;
+            dgvFormasPago.DataSource = tabla;
+        }
+
+        /// <summary>Forma de pago seleccionada actualmente en la grilla, o null si no hay seleccion.</summary>
+        private FormaPago ObtenerFormaPagoSeleccionada()
+        {
+            if (dgvFormasPago.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione una forma de pago de la lista.", "Formas de Pago",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return null;
+            }
+
+            DataRowView fila = (DataRowView)dgvFormasPago.CurrentRow.DataBoundItem;
+            return _negocioFormaPago.Listar().Find(f => f.FormaPagoId == Convert.ToInt32(fila["Id"]));
+        }
+
+        private void btnNuevaFormaPago_Click(object sender, EventArgs e)
+        {
+            FrmFormaPago nueva = new FrmFormaPago();
+            nueva.StartPosition = FormStartPosition.CenterParent;
+            if (nueva.ShowDialog() == DialogResult.OK)
+                CargarFormasPago();
+        }
+
+        private void btnEditarFormaPago_Click(object sender, EventArgs e)
+        {
+            FormaPago formaPago = ObtenerFormaPagoSeleccionada();
+            if (formaPago == null) return;
+
+            FrmFormaPago editor = new FrmFormaPago(formaPago);
+            editor.StartPosition = FormStartPosition.CenterParent;
+            if (editor.ShowDialog() == DialogResult.OK)
+                CargarFormasPago();
+        }
+
+        private void btnEstadoFormaPago_Click(object sender, EventArgs e)
+        {
+            FormaPago formaPago = ObtenerFormaPagoSeleccionada();
+            if (formaPago == null) return;
+
+            bool nuevoEstado = !formaPago.Estado;
+            string accion = nuevoEstado ? "activar" : "desactivar";
+
+            DialogResult confirmacion = MessageBox.Show(
+                $"¿Desea {accion} la forma de pago \"{formaPago.Nombre}\"?", "Formas de Pago",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirmacion != DialogResult.Yes) return;
+
+            try
+            {
+                _negocioFormaPago.CambiarEstadoFormaPago(formaPago.FormaPagoId, nuevoEstado);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo cambiar el estado de la forma de pago: " + ex.Message, "Formas de Pago",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            CargarFormasPago();
+        }
+
+        // ===================== Configuracion: Tipos de Cambio =====================
+
+        /// <summary>Trae de la base de datos todas las tasas (vigentes e historicas) y refresca la grilla.</summary>
+        private void CargarTasas()
+        {
+            List<TasaCambio> tasas = _negocioTasaCambio.Listar();
+
+            var tabla = new DataTable();
+            tabla.Columns.Add("Id", typeof(int));
+            tabla.Columns.Add("Moneda");
+            tabla.Columns.Add("Tipo");
+            tabla.Columns.Add("Valor");
+            tabla.Columns.Add("Vigente desde");
+            tabla.Columns.Add("Estado");
+
+            foreach (TasaCambio t in tasas)
+            {
+                tabla.Rows.Add(
+                    t.TasaId,
+                    $"{t.MonedaNombre} ({t.MonedaCodigo})",
+                    t.TipoOperacion == "COMPRA" ? "Compra" : "Venta",
+                    t.Valor.ToString("N4", CultureInfo.CurrentCulture),
+                    t.FechaHora.ToString("dd/MM/yyyy hh:mm tt", CultureInfo.CurrentCulture),
+                    t.Estado ? "Activo" : "Inactivo");
+            }
+
+            dgvTasas.AutoGenerateColumns = false;
+            dgvTasas.DataSource = tabla;
+        }
+
+        /// <summary>Tasa seleccionada actualmente en la grilla, o null si no hay seleccion.</summary>
+        private TasaCambio ObtenerTasaSeleccionada()
+        {
+            if (dgvTasas.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione una tasa de la lista.", "Tipos de Cambio",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return null;
+            }
+
+            DataRowView fila = (DataRowView)dgvTasas.CurrentRow.DataBoundItem;
+            return _negocioTasaCambio.Listar().Find(t => t.TasaId == Convert.ToInt32(fila["Id"]));
+        }
+
+        private void btnNuevaTasa_Click(object sender, EventArgs e)
+        {
+            FrmTasaCambio nueva = new FrmTasaCambio();
+            nueva.StartPosition = FormStartPosition.CenterParent;
+            if (nueva.ShowDialog() == DialogResult.OK)
+            {
+                CargarTasas();
+                CargarTasasInicio();
+            }
+        }
+
+        private void btnEditarTasa_Click(object sender, EventArgs e)
+        {
+            TasaCambio tasa = ObtenerTasaSeleccionada();
+            if (tasa == null) return;
+
+            FrmTasaCambio editor = new FrmTasaCambio(tasa);
+            editor.StartPosition = FormStartPosition.CenterParent;
+            if (editor.ShowDialog() == DialogResult.OK)
+            {
+                CargarTasas();
+                CargarTasasInicio();
+            }
+        }
+
+        private void btnEstadoTasa_Click(object sender, EventArgs e)
+        {
+            TasaCambio tasa = ObtenerTasaSeleccionada();
+            if (tasa == null) return;
+
+            bool nuevoEstado = !tasa.Estado;
+            string accion = nuevoEstado ? "activar" : "desactivar";
+
+            DialogResult confirmacion = MessageBox.Show(
+                $"¿Desea {accion} la tasa de {(tasa.TipoOperacion == "COMPRA" ? "Compra" : "Venta")} de \"{tasa.MonedaNombre}\"?",
+                "Tipos de Cambio", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirmacion != DialogResult.Yes) return;
+
+            try
+            {
+                _negocioTasaCambio.CambiarEstadoTasa(tasa.TasaId, nuevoEstado);
+            }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show(ex.Message, "Tipos de Cambio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo cambiar el estado de la tasa: " + ex.Message, "Tipos de Cambio",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            CargarTasas();
+            CargarTasasInicio();
+        }
+
+        // ===================== Configuracion: Tipos de Operacion (Ingreso/Egreso) =====================
+
+        /// <summary>Trae de la base de datos todos los tipos de operacion y refresca la grilla de la pestaña Operaciones.</summary>
+        private void CargarOperaciones()
+        {
+            List<Concepto> conceptos = _negocioConcepto.Listar();
+
+            var tabla = new DataTable();
+            tabla.Columns.Add("Id", typeof(int));
+            tabla.Columns.Add("Codigo");
+            tabla.Columns.Add("Nombre");
+            tabla.Columns.Add("Tipo");
+            tabla.Columns.Add("Estado");
+
+            foreach (Concepto c in conceptos)
+            {
+                tabla.Rows.Add(
+                    c.ConceptoId,
+                    c.Operacion,
+                    c.Nombre,
+                    c.Tipo == "EGRESO" ? "Egreso" : "Ingreso",
+                    c.Estado ? "Activo" : "Inactivo");
+            }
+
+            dgvOperaciones.AutoGenerateColumns = false;
+            dgvOperaciones.DataSource = tabla;
+        }
+
+        /// <summary>Tipo de operacion seleccionado actualmente en la grilla, o null si no hay seleccion.</summary>
+        private Concepto ObtenerOperacionSeleccionada()
+        {
+            if (dgvOperaciones.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione un tipo de operacion de la lista.", "Operaciones",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return null;
+            }
+
+            DataRowView fila = (DataRowView)dgvOperaciones.CurrentRow.DataBoundItem;
+            return _negocioConcepto.Listar().Find(c => c.ConceptoId == Convert.ToInt32(fila["Id"]));
+        }
+
+        private void btnNuevaOperacion_Click(object sender, EventArgs e)
+        {
+            FrmConcepto nueva = new FrmConcepto();
+            nueva.StartPosition = FormStartPosition.CenterParent;
+            if (nueva.ShowDialog() == DialogResult.OK)
+                CargarOperaciones();
+        }
+
+        private void btnEditarOperacion_Click(object sender, EventArgs e)
+        {
+            Concepto concepto = ObtenerOperacionSeleccionada();
+            if (concepto == null) return;
+
+            FrmConcepto editor = new FrmConcepto(concepto);
+            editor.StartPosition = FormStartPosition.CenterParent;
+            if (editor.ShowDialog() == DialogResult.OK)
+                CargarOperaciones();
+        }
+
+        private void btnEstadoOperacion_Click(object sender, EventArgs e)
+        {
+            Concepto concepto = ObtenerOperacionSeleccionada();
+            if (concepto == null) return;
+
+            bool nuevoEstado = !concepto.Estado;
+            string accion = nuevoEstado ? "activar" : "desactivar";
+
+            DialogResult confirmacion = MessageBox.Show(
+                $"¿Desea {accion} el tipo de operacion \"{concepto.Nombre}\"?", "Operaciones",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirmacion != DialogResult.Yes) return;
+
+            try
+            {
+                _negocioConcepto.CambiarEstadoConcepto(concepto.ConceptoId, nuevoEstado);
+            }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show(ex.Message, "Operaciones", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo cambiar el estado del tipo de operacion: " + ex.Message, "Operaciones",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            CargarOperaciones();
+        }
+
+        private void btnEliminarOperacion_Click(object sender, EventArgs e)
+        {
+            Concepto concepto = ObtenerOperacionSeleccionada();
+            if (concepto == null) return;
+
+            DialogResult confirmacion = MessageBox.Show(
+                $"¿Desea eliminar definitivamente el tipo de operacion \"{concepto.Nombre}\"? Esta accion no se puede deshacer.",
+                "Operaciones", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (confirmacion != DialogResult.Yes) return;
+
+            try
+            {
+                _negocioConcepto.EliminarConcepto(concepto.ConceptoId);
+            }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show(ex.Message, "Operaciones", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo eliminar el tipo de operacion: " + ex.Message, "Operaciones",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            CargarOperaciones();
         }
 
         // ===================== Pestaña Reportes =====================
