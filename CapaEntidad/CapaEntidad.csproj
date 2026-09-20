@@ -160,6 +160,7 @@
     <Compile Include="AperturaCaja.cs" />
     <Compile Include="AperturaCajaMoneda.cs" />
     <Compile Include="Caja.cs" />
+    <Compile Include="Cliente.cs" />
     <Compile Include="CierreCaja.cs" />
     <Compile Include="CierreCajaMoneda.cs" />
     <Compile Include="Concepto.cs" />

@@ -44,6 +44,25 @@ namespace CapaDatos
             return apertura;
         }
 
+        /// <summary>La apertura ABIERTA mas reciente del usuario indicado (para restaurar su propia sesion de caja al iniciar).</summary>
+        public AperturaCaja ObtenerUltimaAperturaAbiertaDeUsuario(int usuarioId)
+        {
+            const string sql =
+                "SELECT TOP 1 a.apertura_id, a.caja_id, a.usuario_id, a.fecha_hora, a.estado, a.observaciones, c.nombre AS CajaNombre " +
+                "FROM AperturaCaja a " +
+                "JOIN Caja c ON c.caja_id = a.caja_id " +
+                "WHERE a.estado = 'ABIERTA' AND a.usuario_id = @usuarioId " +
+                "ORDER BY a.fecha_hora DESC";
+
+            AperturaCaja apertura = LeerAperturaUnica(sql, cmd =>
+                cmd.Parameters.Add("@usuarioId", SqlDbType.Int).Value = usuarioId);
+
+            if (apertura != null)
+                apertura.Montos = ObtenerMontos(apertura.AperturaId);
+
+            return apertura;
+        }
+
         private static AperturaCaja LeerAperturaUnica(string sql, Action<SqlCommand> configurarParametros)
         {
             using (SqlConnection cn = new SqlConnection(conexiondb.cadena))
@@ -197,11 +216,12 @@ namespace CapaDatos
 
         /// <summary>
         /// Historial de sesiones de caja cerradas, una fila por (cierre, moneda),
-        /// del cierre mas reciente al mas antiguo.
+        /// del cierre mas reciente al mas antiguo. Si se indica usuarioId, se limita
+        /// a las sesiones que ese usuario abrio (para que un cajero solo vea lo propio).
         /// </summary>
-        public List<HistorialCierre> ListarHistorialCierres()
+        public List<HistorialCierre> ListarHistorialCierres(int? usuarioId = null)
         {
-            const string sql =
+            string sql =
                 "SELECT a.apertura_id, c.cierre_id, caja.nombre AS CajaNombre, " +
                 "       ua.NombreCompleto AS UsuarioAperturaNombre, uc.NombreCompleto AS UsuarioCierreNombre, " +
                 "       a.fecha_hora AS FechaApertura, c.fecha_hora AS FechaCierre, " +
@@ -216,14 +236,21 @@ namespace CapaDatos
                 "JOIN Usuario uc ON uc.usuario_id = c.usuario_id " +
                 "JOIN CierreCajaMoneda cm ON cm.cierre_id = c.cierre_id " +
                 "JOIN Moneda m ON m.moneda_id = cm.moneda_id " +
-                "LEFT JOIN AperturaCajaMoneda am ON am.apertura_id = a.apertura_id AND am.moneda_id = cm.moneda_id " +
-                "ORDER BY c.fecha_hora DESC, m.codigo";
+                "LEFT JOIN AperturaCajaMoneda am ON am.apertura_id = a.apertura_id AND am.moneda_id = cm.moneda_id ";
+
+            if (usuarioId.HasValue)
+                sql += "WHERE a.usuario_id = @usuarioId ";
+
+            sql += "ORDER BY c.fecha_hora DESC, m.codigo";
 
             var lista = new List<HistorialCierre>();
 
             using (SqlConnection cn = new SqlConnection(conexiondb.cadena))
             using (SqlCommand cmd = new SqlCommand(sql, cn))
             {
+                if (usuarioId.HasValue)
+                    cmd.Parameters.Add("@usuarioId", SqlDbType.Int).Value = usuarioId.Value;
+
                 cn.Open();
                 using (SqlDataReader dr = cmd.ExecuteReader())
                 {

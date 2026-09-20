@@ -158,6 +158,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CN_AperturaCaja.cs" />
+    <Compile Include="CN_Cliente.cs" />
     <Compile Include="CN_TasaCambio.cs" />
     <Compile Include="CN_Transaccion.cs" />
     <Compile Include="CN_Usuario.cs" />

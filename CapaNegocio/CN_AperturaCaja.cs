@@ -59,6 +59,10 @@ namespace CapaNegocio
         /// <summary>La apertura abierta mas reciente, sin importar la caja (para restaurar el estado de la UI al iniciar).</summary>
         public AperturaCaja ObtenerUltimaAperturaAbierta() => _datosApertura.ObtenerUltimaAperturaAbierta();
 
+        /// <summary>La apertura abierta mas reciente del usuario indicado (para restaurar su propia sesion de caja al iniciar).</summary>
+        public AperturaCaja ObtenerUltimaAperturaAbiertaDeUsuario(int usuarioId) =>
+            _datosApertura.ObtenerUltimaAperturaAbiertaDeUsuario(usuarioId);
+
         /// <summary>
         /// Abre una caja con un monto inicial por cada moneda indicada.
         /// </summary>
@@ -95,8 +99,12 @@ namespace CapaNegocio
         /// <summary>Monto esperado en sistema por moneda para la apertura indicada.</summary>
         public Dictionary<int, decimal> CalcularMontoSistema(int aperturaId) => _datosApertura.CalcularMontoSistema(aperturaId);
 
-        /// <summary>Historial de sesiones de caja cerradas, una fila por (cierre, moneda).</summary>
-        public List<HistorialCierre> ListarHistorialCierres() => _datosApertura.ListarHistorialCierres();
+        /// <summary>
+        /// Historial de sesiones de caja cerradas, una fila por (cierre, moneda).
+        /// Si se indica usuarioId, se limita a las sesiones que ese usuario abrio.
+        /// </summary>
+        public List<HistorialCierre> ListarHistorialCierres(int? usuarioId = null) =>
+            _datosApertura.ListarHistorialCierres(usuarioId);
 
         /// <summary>
         /// Cierra una apertura con el monto contado (fisico) de cada moneda.

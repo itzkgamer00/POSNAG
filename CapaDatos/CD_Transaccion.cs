@@ -35,12 +35,13 @@ namespace CapaDatos
         /// Movimientos filtrados por rango de fecha (hasta exclusivo) y, opcionalmente, caja/usuario/concepto.
         /// Para reportes: no esta limitado a una sola apertura.
         /// </summary>
-        public List<Transaccion> ListarParaReporte(DateTime desde, DateTime hastaExclusiva, int? cajaId, int? usuarioId, int? conceptoId)
+        public List<Transaccion> ListarParaReporte(DateTime desde, DateTime hastaExclusiva, int? cajaId, int? usuarioId, int? conceptoId, int? monedaId = null)
         {
             var condiciones = new List<string> { "t.fecha_hora >= @desde", "t.fecha_hora < @hasta" };
             if (cajaId.HasValue) condiciones.Add("t.caja_id = @cajaId");
             if (usuarioId.HasValue) condiciones.Add("t.usuario_id = @usuarioId");
             if (conceptoId.HasValue) condiciones.Add("t.concepto_id = @conceptoId");
+            if (monedaId.HasValue) condiciones.Add("t.moneda_id = @monedaId");
 
             string sql = SelectBase + "WHERE " + string.Join(" AND ", condiciones) + " ORDER BY t.fecha_hora DESC";
 
@@ -51,6 +52,7 @@ namespace CapaDatos
                 if (cajaId.HasValue) cmd.Parameters.Add("@cajaId", SqlDbType.Int).Value = cajaId.Value;
                 if (usuarioId.HasValue) cmd.Parameters.Add("@usuarioId", SqlDbType.Int).Value = usuarioId.Value;
                 if (conceptoId.HasValue) cmd.Parameters.Add("@conceptoId", SqlDbType.Int).Value = conceptoId.Value;
+                if (monedaId.HasValue) cmd.Parameters.Add("@monedaId", SqlDbType.Int).Value = monedaId.Value;
             });
         }
 

@@ -3,6 +3,8 @@ using CapaPresentacion.Utilidades;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Drawing;
+using System.Drawing.Printing;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
@@ -27,8 +29,13 @@ namespace CapaPresentacion
         private readonly CN_FormaPago _negocioFormaPago = new CN_FormaPago();
         private readonly CN_TasaCambio _negocioTasaCambio = new CN_TasaCambio();
         private readonly CN_Concepto _negocioConcepto = new CN_Concepto();
+        private readonly CN_Cliente _negocioCliente = new CN_Cliente();
         private AperturaCaja _aperturaActual;
         private List<Transaccion> _movimientosActuales = new List<Transaccion>();
+
+        /// <summary>True si el usuario logueado es Administrador (ve todas las cajas/cajeros); false para cualquier otro rol (solo ve lo propio).</summary>
+        private static bool EsAdministrador =>
+            string.Equals(SesionActual.Usuario?.RolDescripcion, "Administrador", StringComparison.OrdinalIgnoreCase);
 
         /// <summary>Movimientos mostrados actualmente en guna2DataGridView1, en el mismo orden que sus filas (para ubicar la fila seleccionada al anular).</summary>
         private List<Transaccion> _movimientosGridMovimientos = new List<Transaccion>();
@@ -41,6 +48,8 @@ namespace CapaPresentacion
             guna2DataGridView6.AllowUserToAddRows = false;
             guna2DataGridView1.ReadOnly = true;
             guna2DataGridView1.AllowUserToAddRows = false;
+            guna2DataGridView5.ReadOnly = true;
+            guna2DataGridView5.AllowUserToAddRows = false;
 
             // Colorea la columna "Estado" (verde Activo, rojo Inactivo) en todas las grillas que la tienen.
             foreach (DataGridView grilla in new DataGridView[]
@@ -65,6 +74,9 @@ namespace CapaPresentacion
                             (string.IsNullOrWhiteSpace(usuario.RolDescripcion)
                                 ? string.Empty
                                 : $" ({usuario.RolDescripcion})");
+
+                label2.Text = usuario.NombreCompleto;
+                label3.Text = string.IsNullOrWhiteSpace(usuario.RolDescripcion) ? "Sin rol asignado" : usuario.RolDescripcion;
             }
         }
 
@@ -118,8 +130,11 @@ namespace CapaPresentacion
         private void fmrInicio_Load(object sender, EventArgs e)
         {
             // Restaura el estado real desde la base de datos (por si la app se cerro
-            // con una caja abierta, o la abrio otra instancia).
-            _aperturaActual = _negocioCaja.ObtenerUltimaAperturaAbierta();
+            // con una caja abierta, o la abrio otra instancia), pero solo la propia
+            // sesion de caja del usuario logueado: no debe verse la de otro usuario.
+            _aperturaActual = SesionActual.Usuario == null
+                ? null
+                : _negocioCaja.ObtenerUltimaAperturaAbiertaDeUsuario(SesionActual.Usuario.usuario_id);
             ActualizarEstadoCaja();
             CargarFiltroOperacionInicio();
             CargarMovimientos();
@@ -132,12 +147,24 @@ namespace CapaPresentacion
             CargarFormasPago();
             CargarTasas();
             CargarOperaciones();
+            CargarClientes();
             CargarTasasInicio();
+            CargarConfiguracionImpresora();
 
             // Rango por defecto del KPI de Mesa de Cambio: el ultimo mes (modificable por el usuario).
             dtpKpiDesde.Value = DateTime.Today.AddMonths(-1);
             dtpKpiHasta.Value = DateTime.Today;
             CargarKpiMesaCambio();
+
+            // Se quitan las pestañas de administracion al final, una vez que todas las
+            // grillas ya cargaron sus datos: sacar la pestaña antes de eso deja sin
+            // inicializar los controles internos (p. ej. columnas del DataGridView) y
+            // provoca errores al referenciarlos.
+            if (!EsAdministrador)
+            {
+                guna2TabControl1.TabPages.Remove(tabPage6);
+                guna2TabControl2.TabPages.Remove(tabPage8);
+            }
         }
 
         /// <summary>Trae de la base de datos las tasas de cambio vigentes y refresca el panel "Tasas de Cambio" del Inicio.</summary>
@@ -169,7 +196,8 @@ namespace CapaPresentacion
         /// <summary>
         /// Suma el total de dolares comprados y vendidos en Mesa de Cambio en el rango de fechas
         /// seleccionado y actualiza las tarjetas KPI. Compra = la caja recibe USD (INGRESO);
-        /// Venta = la caja entrega USD (EGRESO).
+        /// Venta = la caja entrega USD (EGRESO). El Administrador ve el total de todos los cajeros;
+        /// cualquier otro rol solo ve lo propio.
         /// </summary>
         private void CargarKpiMesaCambio()
         {
@@ -177,10 +205,11 @@ namespace CapaPresentacion
             DateTime hasta = dtpKpiHasta.Value.Date;
             if (hasta < desde) return; // rango invalido: se espera a que el usuario termine de ajustar las fechas
 
-            List<Transaccion> movimientos = _negocioTransaccion.ListarCambiosDivisaParaReporte(desde, hasta);
+            int? usuarioId = EsAdministrador ? (int?)null : SesionActual.Usuario?.usuario_id;
+            List<Transaccion> movimientos = _negocioTransaccion.ListarCambiosDivisaParaReporte(desde, hasta, usuarioId: usuarioId);
 
-            decimal totalCompras = movimientos.Where(t => t.Tipo == "INGRESO" && t.MonedaCodigo == CodigoMonedaExtranjera).Sum(t => t.Monto);
-            decimal totalVentas = movimientos.Where(t => t.Tipo == "EGRESO" && t.MonedaCodigo == CodigoMonedaExtranjera).Sum(t => t.Monto);
+            decimal totalCompras = movimientos.Where(t => t.Estado && t.Tipo == "INGRESO" && t.MonedaCodigo == CodigoMonedaExtranjera).Sum(t => t.Monto);
+            decimal totalVentas = movimientos.Where(t => t.Estado && t.Tipo == "EGRESO" && t.MonedaCodigo == CodigoMonedaExtranjera).Sum(t => t.Monto);
 
             lblKpiComprasValor.Text = "$" + totalCompras.ToString("N2", CultureInfo.CurrentCulture);
             lblKpiVentasValor.Text = "$" + totalVentas.ToString("N2", CultureInfo.CurrentCulture);
@@ -274,10 +303,14 @@ namespace CapaPresentacion
             CargarCajas();
         }
 
-        /// <summary>Trae de la base de datos las sesiones de caja cerradas y refresca la pestaña Historial.</summary>
+        /// <summary>
+        /// Trae de la base de datos las sesiones de caja cerradas y refresca la pestaña Historial.
+        /// El Administrador ve el historial de todos los cajeros; cualquier otro rol solo ve el propio.
+        /// </summary>
         private void CargarHistorial()
         {
-            List<HistorialCierre> historial = _negocioCaja.ListarHistorialCierres();
+            int? usuarioId = EsAdministrador ? (int?)null : SesionActual.Usuario?.usuario_id;
+            List<HistorialCierre> historial = _negocioCaja.ListarHistorialCierres(usuarioId);
 
             var tabla = new DataTable();
             tabla.Columns.Add("Fecha Apertura");
@@ -368,11 +401,16 @@ namespace CapaPresentacion
             ActualizarSaldoDisponible();
         }
 
-        /// <summary>Trae de la base de datos el total de ingresos y egresos de hoy (todas las cajas) y refresca el panel "Resumen de caja".</summary>
+        /// <summary>
+        /// Trae de la base de datos el total de ingresos y egresos de hoy y refresca el panel "Resumen de caja".
+        /// El Administrador ve todas las cajas/cajeros; cualquier otro rol solo ve lo propio.
+        /// </summary>
         private void CargarResumenCajaDia()
         {
             DateTime hoy = DateTime.Today;
-            List<Transaccion> movimientosHoy = _negocioTransaccion.ListarParaReporte(hoy, hoy);
+            int? usuarioId = EsAdministrador ? (int?)null : SesionActual.Usuario?.usuario_id;
+            List<Transaccion> movimientosHoy = _negocioTransaccion.ListarParaReporte(hoy, hoy, usuarioId: usuarioId)
+                .Where(t => t.Estado).ToList();
 
             label24.Text = FormatoTotalPorMoneda(movimientosHoy.Where(t => t.Tipo == "INGRESO"));
             label25.Text = FormatoTotalPorMoneda(movimientosHoy.Where(t => t.Tipo == "EGRESO"));
@@ -435,8 +473,10 @@ namespace CapaPresentacion
         /// <summary>Orden de columnas de guna2DataGridView6: Fecha, Operacion, Tipo, Moneda, Monto, Descripcion, Forma de pago, Estado.</summary>
         private void LlenarGridInicio(IEnumerable<Transaccion> movimientos)
         {
+            List<Transaccion> lista = movimientos.ToList();
+
             guna2DataGridView6.Rows.Clear();
-            foreach (Transaccion t in movimientos)
+            foreach (Transaccion t in lista)
             {
                 guna2DataGridView6.Rows.Add(
                     t.FechaHora.ToString("dd/MM/yyyy hh:mm tt", CultureInfo.CurrentCulture),
@@ -448,6 +488,8 @@ namespace CapaPresentacion
                     t.FormaPagoNombre ?? "-",
                     t.Estado ? "Activo" : "Inactivo");
             }
+
+            ColorearFilasAnuladas(guna2DataGridView6, lista);
         }
 
         /// <summary>Orden de columnas de guna2DataGridView1: Fecha, Operacion, Moneda, Tipo, Monto, Forma de pago, Descripcion, Estado.</summary>
@@ -468,6 +510,8 @@ namespace CapaPresentacion
                     t.Descripcion,
                     t.Estado ? "Activo" : "Inactivo");
             }
+
+            ColorearFilasAnuladas(guna2DataGridView1, _movimientosGridMovimientos);
         }
 
         /// <summary>Colorea cualquier columna "Estado" de cualquier grilla: verde para Activo/Activa, rojo para Inactivo/Inactiva.</summary>
@@ -483,6 +527,23 @@ namespace CapaPresentacion
             else if (string.Equals(valor, "Inactivo", StringComparison.OrdinalIgnoreCase) ||
                      string.Equals(valor, "Inactiva", StringComparison.OrdinalIgnoreCase))
                 e.CellStyle.ForeColor = System.Drawing.Color.FromArgb(185, 51, 73);
+        }
+
+        /// <summary>Pinta de rojo toda la fila cuyo movimiento correspondiente esta anulado (Estado = false). El orden de "movimientos" debe coincidir con el de las filas ya cargadas en "grilla".</summary>
+        private static void ColorearFilasAnuladas(DataGridView grilla, IReadOnlyList<Transaccion> movimientos)
+        {
+            var fondoAnulada = System.Drawing.Color.FromArgb(255, 205, 210);
+            var textoAnulada = System.Drawing.Color.FromArgb(185, 51, 73);
+
+            for (int i = 0; i < movimientos.Count && i < grilla.Rows.Count; i++)
+            {
+                if (movimientos[i].Estado) continue;
+
+                grilla.Rows[i].DefaultCellStyle.BackColor = fondoAnulada;
+                grilla.Rows[i].DefaultCellStyle.SelectionBackColor = fondoAnulada;
+                grilla.Rows[i].DefaultCellStyle.ForeColor = textoAnulada;
+                grilla.Rows[i].DefaultCellStyle.SelectionForeColor = textoAnulada;
+            }
         }
 
         /// <summary>Movimiento seleccionado actualmente en guna2DataGridView1, o null si no hay seleccion.</summary>
@@ -703,11 +764,94 @@ namespace CapaPresentacion
 
         }
 
+        // ===================== Configuracion: Clientes =====================
+
+        /// <summary>Trae de la base de datos todos los clientes y refresca la grilla de la pestaña Clientes.</summary>
+        private void CargarClientes()
+        {
+            List<Cliente> clientes = _negocioCliente.Listar();
+
+            var tabla = new DataTable();
+            tabla.Columns.Add("Id", typeof(int));
+            tabla.Columns.Add("TipoId");
+            tabla.Columns.Add("NumeroId");
+            tabla.Columns.Add("Nombres");
+            tabla.Columns.Add("Apellidos");
+            tabla.Columns.Add("Telefono");
+            tabla.Columns.Add("Direccion");
+            tabla.Columns.Add("Correo");
+            tabla.Columns.Add("Fecha");
+            tabla.Columns.Add("Estado");
+
+            foreach (Cliente c in clientes)
+            {
+                tabla.Rows.Add(
+                    c.ClienteId,
+                    c.TipoIdentificacion,
+                    c.NumeroIdentificacion,
+                    c.Nombres,
+                    c.Apellidos,
+                    c.Telefono,
+                    c.Direccion,
+                    c.Correo,
+                    c.FechaRegistro.ToString("dd/MM/yyyy", CultureInfo.CurrentCulture),
+                    "Activo");
+            }
+
+            guna2DataGridView5.AutoGenerateColumns = false;
+            guna2DataGridView5.DataSource = tabla;
+        }
+
+        /// <summary>Cliente seleccionado actualmente en la grilla, o null si no hay seleccion.</summary>
+        private Cliente ObtenerClienteSeleccionado()
+        {
+            if (guna2DataGridView5.CurrentRow == null)
+            {
+                MessageBox.Show("Seleccione un cliente de la lista.", "Clientes",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return null;
+            }
+
+            DataRowView fila = (DataRowView)guna2DataGridView5.CurrentRow.DataBoundItem;
+            int clienteId = Convert.ToInt32(fila["Id"]);
+            return _negocioCliente.Listar().Find(c => c.ClienteId == clienteId);
+        }
+
         private void btnnuevocliente_Click(object sender, EventArgs e)
         {
-            Frmclientes cliente = new Frmclientes(); // Crear una instancia de Form2
-            cliente.StartPosition = FormStartPosition.CenterParent; // Centrar el formulario emergente
-            cliente.ShowDialog(); // Mostrarlo como emergente
+            Frmclientes cliente = new Frmclientes();
+            cliente.StartPosition = FormStartPosition.CenterParent;
+            if (cliente.ShowDialog() == DialogResult.OK)
+                CargarClientes();
+        }
+
+        private void guna2Button5_Click(object sender, EventArgs e)
+        {
+            Cliente cliente = ObtenerClienteSeleccionado();
+            if (cliente == null) return;
+
+            DialogResult confirmacion = MessageBox.Show(
+                $"¿Desea eliminar definitivamente al cliente \"{cliente.NombreCompleto}\"? Esta accion no se puede deshacer.",
+                "Clientes", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (confirmacion != DialogResult.Yes) return;
+
+            try
+            {
+                _negocioCliente.EliminarCliente(cliente.ClienteId);
+            }
+            catch (InvalidOperationException ex)
+            {
+                MessageBox.Show(ex.Message, "Clientes", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo eliminar el cliente: " + ex.Message, "Clientes",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            CargarClientes();
         }
 
         // ===================== Configuracion: Usuarios =====================
@@ -1312,13 +1456,25 @@ namespace CapaPresentacion
             combo.SelectedIndex = 0;
         }
 
+        /// <summary>Administrador: puede filtrar por cualquier cajero. Cualquier otro rol: solo ve su propia sesion, fijo.</summary>
         private void CargarComboUsuarios(ComboBox combo)
         {
             combo.Items.Clear();
-            combo.Items.Add(new OpcionFiltro { Id = null, Texto = "Todos los cajeros" });
-            foreach (Usuario u in _negocioUsuario.Listar())
-                combo.Items.Add(new OpcionFiltro { Id = u.usuario_id, Texto = u.NombreCompleto });
+
+            if (EsAdministrador)
+            {
+                combo.Items.Add(new OpcionFiltro { Id = null, Texto = "Todos los cajeros" });
+                foreach (Usuario u in _negocioUsuario.Listar())
+                    combo.Items.Add(new OpcionFiltro { Id = u.usuario_id, Texto = u.NombreCompleto });
+            }
+            else
+            {
+                Usuario actual = SesionActual.Usuario;
+                combo.Items.Add(new OpcionFiltro { Id = actual?.usuario_id, Texto = actual?.NombreCompleto ?? string.Empty });
+            }
+
             combo.SelectedIndex = 0;
+            combo.Enabled = EsAdministrador;
         }
 
         private void CargarComboConceptos(ComboBox combo)
@@ -1327,6 +1483,15 @@ namespace CapaPresentacion
             combo.Items.Add(new OpcionFiltro { Id = null, Texto = "Todos los conceptos" });
             foreach (Concepto c in _negocioTransaccion.ListarConceptosActivos())
                 combo.Items.Add(new OpcionFiltro { Id = c.ConceptoId, Texto = $"{c.Nombre} ({(c.Tipo == "INGRESO" ? "Ingreso" : "Egreso")})" });
+            combo.SelectedIndex = 0;
+        }
+
+        private void CargarComboMonedas(ComboBox combo)
+        {
+            combo.Items.Clear();
+            combo.Items.Add(new OpcionFiltro { Id = null, Texto = "Todas las monedas" });
+            foreach (Moneda m in _negocioTransaccion.ListarMonedasActivas())
+                combo.Items.Add(new OpcionFiltro { Id = m.MonedaId, Texto = $"{m.Nombre} ({m.Codigo})" });
             combo.SelectedIndex = 0;
         }
 
@@ -1340,6 +1505,7 @@ namespace CapaPresentacion
             CargarComboCajas(cboMpCaja);
             CargarComboUsuarios(cboMpUsuario);
             CargarComboConceptos(cboMpConcepto);
+            CargarComboMonedas(cboMpMoneda);
             CargarReporteMovimientosPorConcepto();
         }
 
@@ -1374,6 +1540,7 @@ namespace CapaPresentacion
             detalle.Columns.Add("Monto");
             detalle.Columns.Add("Forma de pago");
             detalle.Columns.Add("Descripcion");
+            detalle.Columns.Add("Estado");
 
             foreach (Transaccion t in movimientos)
             {
@@ -1385,10 +1552,12 @@ namespace CapaPresentacion
                     $"{t.MonedaNombre} ({t.MonedaCodigo})",
                     t.Monto.ToString("N2", CultureInfo.CurrentCulture),
                     t.FormaPagoNombre ?? "-",
-                    t.Descripcion);
+                    t.Descripcion,
+                    t.Estado ? "Activo" : "Anulada");
             }
 
             dgvMcDetalle.DataSource = detalle;
+            ColorearFilasAnuladas(dgvMcDetalle, movimientos);
 
             var resumen = new DataTable();
             resumen.Columns.Add("Moneda");
@@ -1396,6 +1565,7 @@ namespace CapaPresentacion
             resumen.Columns.Add("Total Entregado");
 
             var porMoneda = movimientos
+                .Where(t => t.Estado)
                 .GroupBy(t => new { t.MonedaCodigo, t.MonedaNombre })
                 .Select(g => new
                 {
@@ -1437,14 +1607,16 @@ namespace CapaPresentacion
             int? cajaId = (cboMpCaja.SelectedItem as OpcionFiltro)?.Id;
             int? usuarioId = (cboMpUsuario.SelectedItem as OpcionFiltro)?.Id;
             int? conceptoId = (cboMpConcepto.SelectedItem as OpcionFiltro)?.Id;
+            int? monedaId = (cboMpMoneda.SelectedItem as OpcionFiltro)?.Id;
             string tipoFiltro = cboMpTipo.SelectedItem as string ?? "Todos";
 
-            IEnumerable<Transaccion> movimientos = _negocioTransaccion.ListarParaReporte(desde, hasta, cajaId, usuarioId, conceptoId);
+            IEnumerable<Transaccion> movimientos = _negocioTransaccion.ListarParaReporte(desde, hasta, cajaId, usuarioId, conceptoId, monedaId);
             if (tipoFiltro == "Ingreso")
                 movimientos = movimientos.Where(t => t.Tipo == "INGRESO");
             else if (tipoFiltro == "Egreso")
                 movimientos = movimientos.Where(t => t.Tipo == "EGRESO");
-            movimientos = movimientos.ToList();
+
+            List<Transaccion> listaMovimientos = movimientos.ToList();
 
             var detalle = new DataTable();
             detalle.Columns.Add("Fecha");
@@ -1456,8 +1628,9 @@ namespace CapaPresentacion
             detalle.Columns.Add("Monto");
             detalle.Columns.Add("Forma de pago");
             detalle.Columns.Add("Descripcion");
+            detalle.Columns.Add("Estado");
 
-            foreach (Transaccion t in movimientos)
+            foreach (Transaccion t in listaMovimientos)
             {
                 detalle.Rows.Add(
                     t.FechaHora.ToString("dd/MM/yyyy hh:mm tt", CultureInfo.CurrentCulture),
@@ -1468,10 +1641,12 @@ namespace CapaPresentacion
                     $"{t.MonedaNombre} ({t.MonedaCodigo})",
                     t.Monto.ToString("N2", CultureInfo.CurrentCulture),
                     t.FormaPagoNombre ?? "-",
-                    t.Descripcion);
+                    t.Descripcion,
+                    t.Estado ? "Activo" : "Anulada");
             }
 
             dgvMpDetalle.DataSource = detalle;
+            ColorearFilasAnuladas(dgvMpDetalle, listaMovimientos);
 
             var resumen = new DataTable();
             resumen.Columns.Add("Concepto");
@@ -1480,7 +1655,8 @@ namespace CapaPresentacion
             resumen.Columns.Add("Cantidad");
             resumen.Columns.Add("Total");
 
-            var porConcepto = movimientos
+            var porConcepto = listaMovimientos
+                .Where(t => t.Estado)
                 .GroupBy(t => new { t.ConceptoNombre, t.Tipo, t.MonedaCodigo })
                 .Select(g => new
                 {
@@ -1503,6 +1679,138 @@ namespace CapaPresentacion
             }
 
             dgvMpResumen.DataSource = resumen;
+        }
+
+        // ===================== Configuracion: Impresora =====================
+
+        private const string OpcionImpresoraPredeterminada = "(Predeterminada del sistema)";
+        private const string OpcionPapelPredeterminado = "Usar el de la impresora (recomendado)";
+        private const string OpcionPapel58MM = "58 mm (ticket angosto)";
+        private const string OpcionPapel80MM = "80 mm (ticket ancho)";
+        private const string OpcionPapelPersonalizado = "Personalizado";
+
+        /// <summary>Carga la lista de impresoras instaladas y los valores guardados en Configuracion &gt; Impresora.</summary>
+        private void CargarConfiguracionImpresora()
+        {
+            cmbImpresoraTiquete.Items.Clear();
+            cmbImpresoraTiquete.Items.Add(OpcionImpresoraPredeterminada);
+            foreach (string impresora in ConfiguracionImpresora.ImpresorasInstaladas())
+                cmbImpresoraTiquete.Items.Add(impresora);
+
+            string impresoraGuardada = ConfiguracionImpresora.NombreImpresora;
+            cmbImpresoraTiquete.SelectedItem = string.IsNullOrWhiteSpace(impresoraGuardada)
+                ? OpcionImpresoraPredeterminada
+                : (cmbImpresoraTiquete.Items.Cast<string>().FirstOrDefault(i => i == impresoraGuardada) ?? OpcionImpresoraPredeterminada);
+
+            cmbTamanoPapel.Items.Clear();
+            cmbTamanoPapel.Items.Add(OpcionPapelPredeterminado);
+            cmbTamanoPapel.Items.Add(OpcionPapel58MM);
+            cmbTamanoPapel.Items.Add(OpcionPapel80MM);
+            cmbTamanoPapel.Items.Add(OpcionPapelPersonalizado);
+
+            int anchoGuardado = ConfiguracionImpresora.AnchoPapelMM;
+            if (anchoGuardado == 58) cmbTamanoPapel.SelectedItem = OpcionPapel58MM;
+            else if (anchoGuardado == 80) cmbTamanoPapel.SelectedItem = OpcionPapel80MM;
+            else if (anchoGuardado > 0)
+            {
+                cmbTamanoPapel.SelectedItem = OpcionPapelPersonalizado;
+                numAnchoPersonalizadoMM.Value = Math.Max(numAnchoPersonalizadoMM.Minimum,
+                    Math.Min(numAnchoPersonalizadoMM.Maximum, anchoGuardado));
+            }
+            else cmbTamanoPapel.SelectedItem = OpcionPapelPredeterminado;
+
+            chkMostrarDialogoImpresion.Checked = ConfiguracionImpresora.MostrarDialogoImpresion;
+            ActualizarEstadoAnchoPersonalizado();
+        }
+
+        private void ActualizarEstadoAnchoPersonalizado()
+        {
+            numAnchoPersonalizadoMM.Enabled = Equals(cmbTamanoPapel.SelectedItem, OpcionPapelPersonalizado);
+        }
+
+        private void cmbTamanoPapel_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ActualizarEstadoAnchoPersonalizado();
+        }
+
+        private void btnGuardarImpresora_Click(object sender, EventArgs e)
+        {
+            string impresoraSeleccionada = cmbImpresoraTiquete.SelectedItem as string;
+            ConfiguracionImpresora.NombreImpresora = impresoraSeleccionada == OpcionImpresoraPredeterminada
+                ? string.Empty
+                : impresoraSeleccionada;
+
+            string papelSeleccionado = cmbTamanoPapel.SelectedItem as string;
+            ConfiguracionImpresora.AnchoPapelMM = papelSeleccionado == OpcionPapel58MM ? 58
+                : papelSeleccionado == OpcionPapel80MM ? 80
+                : papelSeleccionado == OpcionPapelPersonalizado ? (int)numAnchoPersonalizadoMM.Value
+                : 0;
+
+            ConfiguracionImpresora.MostrarDialogoImpresion = chkMostrarDialogoImpresion.Checked;
+
+            lblImpresoraEstado.ForeColor = Color.SeaGreen;
+            lblImpresoraEstado.Text = "Configuracion guardada.";
+        }
+
+        private void btnProbarImpresora_Click(object sender, EventArgs e)
+        {
+            using (var documento = new PrintDocument())
+            {
+                ConfiguracionImpresora.Aplicar(documento);
+                documento.PrintPage += (s, ev) => DibujarTiquetePrueba(ev, documento.PrinterSettings.PrinterName);
+
+                if (ConfiguracionImpresora.MostrarDialogoImpresion)
+                {
+                    using (var dialogoImpresion = new PrintDialog { Document = documento, AllowSomePages = false, AllowSelection = false, AllowPrintToFile = false })
+                    {
+                        if (dialogoImpresion.ShowDialog(this) != DialogResult.OK) return;
+                    }
+                }
+
+                try
+                {
+                    documento.Print();
+                    lblImpresoraEstado.ForeColor = Color.SeaGreen;
+                    lblImpresoraEstado.Text = "Tiquet de prueba enviado a la impresora.";
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("No se pudo imprimir el tiquet de prueba: " + ex.Message, "Configuracion de Impresora",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        /// <summary>Dibuja un tiquet simple para validar que la impresora y el ancho de papel configurados imprimen bien.</summary>
+        private void DibujarTiquetePrueba(PrintPageEventArgs e, string nombreImpresora)
+        {
+            Graphics g = e.Graphics;
+            float ancho = e.MarginBounds.Width;
+            float x = e.MarginBounds.Left;
+            float y = e.MarginBounds.Top;
+
+            var fontTitulo = new Font("Consolas", 11F, FontStyle.Bold);
+            var fontTexto = new Font("Consolas", 9F);
+            var centrado = new StringFormat { Alignment = StringAlignment.Center };
+
+            void Escribir(string texto, Font fuente, StringFormat formato = null)
+            {
+                SizeF tamanio = g.MeasureString(texto, fuente, (int)ancho, formato ?? StringFormat.GenericDefault);
+                float alto = tamanio.Height + 6;
+                g.DrawString(texto, fuente, Brushes.Black, new RectangleF(x, y, ancho, alto), formato);
+                y += alto;
+            }
+
+            Escribir("PRUEBA DE IMPRESION", fontTitulo, centrado);
+            Escribir(new string('-', 30), fontTexto);
+            Escribir($"Impresora: {nombreImpresora}", fontTexto);
+            Escribir($"Ancho de impresion: {ancho / 100.0:0.00} pulg", fontTexto);
+            Escribir($"Fecha: {DateTime.Now:dd/MM/yyyy hh:mm tt}", fontTexto);
+            Escribir(new string('-', 30), fontTexto);
+            Escribir("Si este texto se ve completo y sin cortes,", fontTexto);
+            Escribir("la configuracion es correcta.", fontTexto);
+
+            e.HasMorePages = false;
         }
     }
 }

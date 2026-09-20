@@ -5,6 +5,7 @@ using System.Linq;
 using System.Windows.Forms;
 using CapaEntidad;
 using CapaNegocio;
+using Guna.UI2.WinForms;
 
 namespace CapaPresentacion.Formularios
 {
@@ -13,6 +14,7 @@ namespace CapaPresentacion.Formularios
         private const int AltoFila = 42;
         private const int AnchoEtiqueta = 380;
         private const int AnchoMonto = 180;
+        private const int AnchoDetalle = 110;
 
         private readonly CN_AperturaCaja _negocio = new CN_AperturaCaja();
 
@@ -71,11 +73,35 @@ namespace CapaPresentacion.Formularios
                 };
                 txt.KeyPress += MontoTextBox_KeyPress;
 
+                var btnDetalle = new Guna2Button
+                {
+                    Text = "Detallar",
+                    Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold),
+                    ForeColor = System.Drawing.Color.White,
+                    FillColor = System.Drawing.Color.FromArgb(37, 99, 235),
+                    BorderRadius = 6,
+                    Location = new System.Drawing.Point(AnchoEtiqueta + 16 + AnchoMonto + 16, y),
+                    Size = new System.Drawing.Size(AnchoDetalle, 28)
+                };
+                btnDetalle.Click += (s, e) => AbrirDetalleConteo(txt);
+
                 pnlMontos.Controls.Add(lbl);
                 pnlMontos.Controls.Add(txt);
+                pnlMontos.Controls.Add(btnDetalle);
                 _montoPorMoneda[moneda.MonedaId] = txt;
 
                 y += AltoFila;
+            }
+        }
+
+        /// <summary>Abre el contador de efectivo por denominacion y vuelca el total contado en el monto inicial de esa moneda.</summary>
+        private void AbrirDetalleConteo(TextBox destino)
+        {
+            using (FrmDetalle detalle = new FrmDetalle())
+            {
+                detalle.StartPosition = FormStartPosition.CenterScreen;
+                if (detalle.ShowDialog() == DialogResult.OK)
+                    destino.Text = detalle.Total.ToString("N2", CultureInfo.CurrentCulture);
             }
         }
 

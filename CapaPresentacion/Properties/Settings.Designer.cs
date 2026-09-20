@@ -26,5 +26,31 @@ namespace CapaPresentacion.Properties
                 return defaultInstance;
             }
         }
+
+        // Impresora usada para los tiquetes de caja. Vacio = impresora predeterminada del sistema.
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ImpresoraTiquete
+        {
+            get { return ((string)(this["ImpresoraTiquete"])); }
+            set { this["ImpresoraTiquete"] = value; }
+        }
+
+        // Ancho de papel (mm) a forzar en el tiquete. 0 = usar el tamano configurado en la impresora.
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int AnchoPapelTiqueteMM
+        {
+            get { return ((int)(this["AnchoPapelTiqueteMM"])); }
+            set { this["AnchoPapelTiqueteMM"] = value; }
+        }
+
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool MostrarDialogoImpresionTiquete
+        {
+            get { return ((bool)(this["MostrarDialogoImpresionTiquete"])); }
+            set { this["MostrarDialogoImpresionTiquete"] = value; }
+        }
     }
 }

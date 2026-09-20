@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Globalization;
 using System.Windows.Forms;
 using CapaEntidad;
 using CapaNegocio;
+using CapaPresentacion.Formularios;
+using CapaPresentacion.Utilidades;
 
 namespace CapaPresentacion
 {
@@ -16,6 +17,7 @@ namespace CapaPresentacion
 
         private readonly CN_Transaccion _negocio = new CN_Transaccion();
         private readonly CN_TasaCambio _negocioTasa = new CN_TasaCambio();
+        private readonly CN_Cliente _negocioCliente = new CN_Cliente();
         private readonly AperturaCaja _apertura;
 
         /// <summary>Evita que el recalculo cruzado entre Monto Recibido y Monto Entregar se dispare a si mismo.</summary>
@@ -47,7 +49,7 @@ namespace CapaPresentacion
             guna2TextBox1.ReadOnly = true;
             guna2ComboBox1.SelectedIndex = 0; // dispara guna2ComboBox1_SelectedIndexChanged
 
-            CargarHistorial();
+            InicializarPanelCliente();
             InicializarDetalle();
         }
 
@@ -128,33 +130,74 @@ namespace CapaPresentacion
                 cantidad.Text = "0";
         }
 
-        /// <summary>Trae de la base de datos los movimientos de Mesa de Cambio de la apertura actual y refresca la grilla.</summary>
-        private void CargarHistorial()
+        /// <summary>Deja el panel "Informacion del Cliente" en su estado inicial: sin ficha cargada y sin poder agregar hasta buscar.</summary>
+        private void InicializarPanelCliente()
         {
-            var tabla = new DataTable();
-            tabla.Columns.Add("Fecha");
-            tabla.Columns.Add("Operacion");
-            tabla.Columns.Add("Moneda");
-            tabla.Columns.Add("Monto");
-            tabla.Columns.Add("Forma de pago");
-            tabla.Columns.Add("Descripcion");
+            guna2TextBox5.ReadOnly = true;
+            guna2TextBox6.ReadOnly = true;
+            guna2TextBox7.ReadOnly = true;
 
-            if (_apertura != null)
+            MostrarCliente(null, null);
+        }
+
+        /// <summary>Busca el cliente por tipo/numero de identificacion y muestra el resultado en el panel "Informacion del Cliente".</summary>
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            string tipoIdentificacion = guna2ComboBox3.SelectedItem as string;
+            string numeroIdentificacion = guna2TextBox4.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(tipoIdentificacion) || string.IsNullOrWhiteSpace(numeroIdentificacion))
             {
-                List<Transaccion> movimientos = _negocio.ListarCambiosDivisaPorApertura(_apertura.AperturaId);
-                foreach (Transaccion t in movimientos)
-                {
-                    tabla.Rows.Add(
-                        t.FechaHora.ToString("dd/MM/yyyy hh:mm tt", CultureInfo.CurrentCulture),
-                        t.Tipo == "INGRESO" ? "Recibido" : "Entregado",
-                        $"{t.MonedaNombre} ({t.MonedaCodigo})",
-                        t.Monto.ToString("N2", CultureInfo.CurrentCulture),
-                        t.FormaPagoNombre ?? "-",
-                        t.Descripcion);
-                }
+                MessageBox.Show("Seleccione el tipo e ingrese el numero de identificacion para buscar.", "Identificacion del Cliente",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
-            dgvHistorialCambios.DataSource = tabla;
+            Cliente cliente = _negocioCliente.BuscarPorIdentificacion(tipoIdentificacion, numeroIdentificacion);
+            MostrarCliente(cliente, numeroIdentificacion);
+        }
+
+        /// <summary>Abre el formulario "Nuevo Cliente" (con el Tipo/N° de Identificacion ya escritos) para dar de alta
+        /// al cliente que no aparecio en la ultima busqueda; si se guarda, su ficha se muestra en el panel.</summary>
+        private void MesaCambio_Click(object sender, EventArgs e)
+        {
+            string tipoIdentificacion = guna2ComboBox3.SelectedItem as string;
+            string numeroIdentificacion = guna2TextBox4.Text.Trim();
+
+            using (var formNuevoCliente = new Frmclientes(tipoIdentificacion, numeroIdentificacion))
+            {
+                if (formNuevoCliente.ShowDialog(this) == DialogResult.OK)
+                    MostrarCliente(formNuevoCliente.ClienteRegistrado, numeroIdentificacion);
+            }
+        }
+
+        /// <summary>Refleja el resultado de la busqueda en el panel, siempre de solo lectura: la ficha del cliente si existe,
+        /// o vacio si no (en ese caso se completa desde el formulario "Nuevo Cliente" que abre el boton Agregar).</summary>
+        private void MostrarCliente(Cliente cliente, string numeroIdentificacionBuscado)
+        {
+            bool encontrado = cliente != null;
+
+            guna2TextBox5.Text = encontrado ? cliente.NombreCompleto : string.Empty;
+            guna2TextBox6.Text = encontrado ? cliente.Telefono : string.Empty;
+            guna2TextBox7.Text = encontrado ? cliente.Direccion : string.Empty;
+
+            MesaCambio.Enabled = !encontrado && !string.IsNullOrWhiteSpace(numeroIdentificacionBuscado);
+
+            if (string.IsNullOrWhiteSpace(numeroIdentificacionBuscado))
+            {
+                label29.Text = "Busque un cliente por su identificacion para ver o agregar sus datos.";
+                label29.ForeColor = System.Drawing.Color.Black;
+            }
+            else if (encontrado)
+            {
+                label29.Text = $"Cliente encontrado: {cliente.NombreCompleto}";
+                label29.ForeColor = System.Drawing.Color.DarkGreen;
+            }
+            else
+            {
+                label29.Text = $"No existe un cliente con identificacion {numeroIdentificacionBuscado}. Complete los datos y presione Agregar.";
+                label29.ForeColor = System.Drawing.Color.DarkRed;
+            }
         }
 
         private void CargarMonedas()
@@ -284,6 +327,46 @@ namespace CapaPresentacion
             e.Handled = true;
         }
 
+        /// <summary>Imprime una cotizacion con los montos ya calculados en pantalla, sin registrar ninguna operacion.</summary>
+        private void btnCotizar_Click(object sender, EventArgs e)
+        {
+            if (guna2ComboBox4.SelectedValue == null || guna2ComboBox2.SelectedValue == null)
+            {
+                MessageBox.Show("Seleccione la moneda recibida y la moneda entregada.", "Cotizacion",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (!decimal.TryParse(guna2TextBox2.Text, NumberStyles.Number, CultureInfo.CurrentCulture, out decimal montoRecibido) || montoRecibido <= 0)
+            {
+                MessageBox.Show("Ingrese un monto recibido valido (mayor que 0) para cotizar.", "Cotizacion",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                guna2TextBox2.Focus();
+                return;
+            }
+
+            if (!decimal.TryParse(guna2TextBox3.Text, NumberStyles.Number, CultureInfo.CurrentCulture, out decimal montoEntregado) || montoEntregado <= 0)
+            {
+                MessageBox.Show("Ingrese un monto a entregar valido (mayor que 0) para cotizar.", "Cotizacion",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                guna2TextBox3.Focus();
+                return;
+            }
+
+            string operacion = guna2ComboBox1.SelectedItem as string ?? string.Empty;
+            Moneda monedaRecibidaObj = guna2ComboBox4.SelectedItem as Moneda;
+            Moneda monedaEntregadaObj = guna2ComboBox2.SelectedItem as Moneda;
+            FormaPago formaPagoObj = guna2ComboBox5.SelectedItem as FormaPago;
+            string cliente = guna2TextBox5.Text.Trim();
+            string identificacion = guna2TextBox4.Text.Trim();
+            decimal? tasaValor = decimal.TryParse(guna2TextBox1.Text, NumberStyles.Number, CultureInfo.CurrentCulture, out decimal tasa)
+                ? tasa
+                : (decimal?)null;
+
+            ImprimirTiquete(operacion, monedaRecibidaObj, montoRecibido, monedaEntregadaObj, montoEntregado,
+                tasaValor, guna2CheckBox1.Checked, formaPagoObj?.Nombre, cliente, identificacion, esCotizacion: true);
+        }
+
         private void btnguardaringre_Click(object sender, EventArgs e)
         {
             if (_apertura == null)
@@ -348,8 +431,6 @@ namespace CapaPresentacion
                 return;
             }
 
-            CargarHistorial();
-
             DialogResult deseaImprimir = MessageBox.Show(
                 "Operacion de cambio registrada correctamente." + Environment.NewLine + Environment.NewLine +
                 "¿Desea imprimir el tiquet?", "Mesa de Cambio",
@@ -372,39 +453,48 @@ namespace CapaPresentacion
             this.Close();
         }
 
-        /// <summary>Imprime un tiquet de la operacion de cambio recien registrada, dejando elegir la impresora (o cancelar).</summary>
+        /// <summary>Imprime un tiquet de la operacion de cambio (registrada, o solo una cotizacion si esCotizacion es true), dejando elegir la impresora (o cancelar).</summary>
         private void ImprimirTiquete(string operacion, Moneda monedaRecibida, decimal montoRecibido,
             Moneda monedaEntregada, decimal montoEntregado, decimal? tasa, bool tasaPreferencial,
-            string formaPago, string cliente, string identificacion)
+            string formaPago, string cliente, string identificacion, bool esCotizacion = false)
         {
             using (var documento = new System.Drawing.Printing.PrintDocument())
             {
+                // Aplica la impresora, el ancho de papel y los margenes configurados en
+                // Configuracion > Impresora (o los valores por defecto si no se configuro nada).
+                ConfiguracionImpresora.Aplicar(documento);
                 documento.PrintPage += (sender, e) => DibujarTiquete(e, operacion, monedaRecibida, montoRecibido,
-                    monedaEntregada, montoEntregado, tasa, tasaPreferencial, formaPago, cliente, identificacion);
+                    monedaEntregada, montoEntregado, tasa, tasaPreferencial, formaPago, cliente, identificacion, esCotizacion);
 
-                using (var dialogoImpresion = new PrintDialog { Document = documento, AllowSomePages = false, AllowSelection = false, AllowPrintToFile = false })
+                if (ConfiguracionImpresora.MostrarDialogoImpresion)
                 {
-                    if (dialogoImpresion.ShowDialog(this) != DialogResult.OK) return;
+                    using (var dialogoImpresion = new PrintDialog { Document = documento, AllowSomePages = false, AllowSelection = false, AllowPrintToFile = false })
+                    {
+                        if (dialogoImpresion.ShowDialog(this) != DialogResult.OK) return;
+                    }
+                }
 
-                    try
-                    {
-                        documento.Print();
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("No se pudo imprimir el tiquet: " + ex.Message, "Mesa de Cambio",
-                            MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                try
+                {
+                    documento.Print();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("No se pudo imprimir el tiquet: " + ex.Message, "Mesa de Cambio",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
 
         private void DibujarTiquete(System.Drawing.Printing.PrintPageEventArgs e, string operacion,
             Moneda monedaRecibida, decimal montoRecibido, Moneda monedaEntregada, decimal montoEntregado,
-            decimal? tasa, bool tasaPreferencial, string formaPago, string cliente, string identificacion)
+            decimal? tasa, bool tasaPreferencial, string formaPago, string cliente, string identificacion,
+            bool esCotizacion)
         {
             System.Drawing.Graphics g = e.Graphics;
-            const float anchoTiquete = 280f;
+            // Ancho real del area imprimible (p.ej. ~189 centesimas de pulgada en papel termico
+            // de 58mm/48mm imprimible), en vez de un valor fijo pensado para papel mas ancho.
+            float anchoTiquete = e.MarginBounds.Width;
             float x = e.MarginBounds.Left;
             float y = e.MarginBounds.Top;
 
@@ -412,21 +502,28 @@ namespace CapaPresentacion
             var fontTexto = new System.Drawing.Font("Consolas", 9.5F);
             var fontChico = new System.Drawing.Font("Consolas", 8F);
             var centrado = new System.Drawing.StringFormat { Alignment = System.Drawing.StringAlignment.Center };
-            string separador = new string('-', 34);
+            float anchoGuion = g.MeasureString("-", fontChico, int.MaxValue, System.Drawing.StringFormat.GenericTypographic).Width;
+            int cantidadGuiones = anchoGuion > 0 ? Math.Max(1, (int)(anchoTiquete / anchoGuion)) : 34;
+            string separador = new string('-', cantidadGuiones);
 
             void Escribir(string texto, System.Drawing.Font fuente, System.Drawing.StringFormat formato = null)
             {
-                float alto = fuente.GetHeight(g) + 6;
+                System.Drawing.SizeF tamanio = g.MeasureString(texto, fuente, (int)anchoTiquete,
+                    formato ?? System.Drawing.StringFormat.GenericDefault);
+                float alto = tamanio.Height + 6;
                 g.DrawString(texto, fuente, System.Drawing.Brushes.Black,
                     new System.Drawing.RectangleF(x, y, anchoTiquete, alto), formato);
                 y += alto;
             }
 
             Escribir("SISTEMA DE CAJA", fontTitulo, centrado);
-            Escribir("Mesa de Cambio", fontTexto, centrado);
+            Escribir(esCotizacion ? "COTIZACION" : "Mesa de Cambio", fontTexto, centrado);
+            if (esCotizacion)
+                Escribir("(No es una operacion registrada)", fontChico, centrado);
             Escribir(separador, fontChico);
             Escribir($"Fecha: {DateTime.Now:dd/MM/yyyy hh:mm tt}", fontChico);
-            Escribir($"Caja: {_apertura?.CajaNombre}", fontChico);
+            if (!esCotizacion)
+                Escribir($"Caja: {_apertura?.CajaNombre}", fontChico);
             Escribir($"Cajero: {SesionActual.Usuario?.NombreCompleto}", fontChico);
             Escribir($"Operacion: {operacion}", fontChico);
             Escribir(separador, fontChico);

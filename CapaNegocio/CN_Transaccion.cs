@@ -41,12 +41,12 @@ namespace CapaNegocio
         /// Movimientos filtrados por rango de fecha (inclusive en ambos extremos) y, opcionalmente,
         /// caja/usuario/concepto. Para el reporte de Movimientos por Concepto.
         /// </summary>
-        public List<Transaccion> ListarParaReporte(DateTime desde, DateTime hasta, int? cajaId = null, int? usuarioId = null, int? conceptoId = null)
+        public List<Transaccion> ListarParaReporte(DateTime desde, DateTime hasta, int? cajaId = null, int? usuarioId = null, int? conceptoId = null, int? monedaId = null)
         {
             if (hasta.Date < desde.Date)
                 throw new ArgumentException("La fecha 'hasta' no puede ser anterior a la fecha 'desde'.");
 
-            return _datosTransaccion.ListarParaReporte(desde.Date, hasta.Date.AddDays(1), cajaId, usuarioId, conceptoId);
+            return _datosTransaccion.ListarParaReporte(desde.Date, hasta.Date.AddDays(1), cajaId, usuarioId, conceptoId, monedaId);
         }
 
         /// <summary>

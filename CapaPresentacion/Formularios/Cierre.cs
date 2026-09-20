@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Windows.Forms;
 using CapaEntidad;
 using CapaNegocio;
+using Guna.UI2.WinForms;
 
 namespace CapaPresentacion.Formularios
 {
@@ -14,6 +15,7 @@ namespace CapaPresentacion.Formularios
         private const int AnchoSistema = 150;
         private const int AnchoContado = 150;
         private const int AnchoDiferencia = 150;
+        private const int AnchoDetalle = 100;
 
         private readonly CN_AperturaCaja _negocio = new CN_AperturaCaja();
         private readonly AperturaCaja _apertura;
@@ -54,6 +56,7 @@ namespace CapaPresentacion.Formularios
             pnlMontos.Controls.Add(new Label { Text = "Monto Sistema", Font = fuenteEncabezado, Location = new System.Drawing.Point(8 + AnchoMoneda, 6), Size = new System.Drawing.Size(AnchoSistema, 22), TextAlign = System.Drawing.ContentAlignment.MiddleRight });
             pnlMontos.Controls.Add(new Label { Text = "Monto Contado", Font = fuenteEncabezado, Location = new System.Drawing.Point(8 + AnchoMoneda + AnchoSistema + 16, 6), Size = new System.Drawing.Size(AnchoContado, 22), TextAlign = System.Drawing.ContentAlignment.MiddleRight });
             pnlMontos.Controls.Add(new Label { Text = "Diferencia", Font = fuenteEncabezado, Location = new System.Drawing.Point(8 + AnchoMoneda + AnchoSistema + AnchoContado + 24, 6), Size = new System.Drawing.Size(AnchoDiferencia, 22), TextAlign = System.Drawing.ContentAlignment.MiddleRight });
+            pnlMontos.Controls.Add(new Label { Text = "Detalle", Font = fuenteEncabezado, Location = new System.Drawing.Point(8 + AnchoMoneda + AnchoSistema + AnchoContado + AnchoDiferencia + 40, 6), Size = new System.Drawing.Size(AnchoDetalle, 22), TextAlign = System.Drawing.ContentAlignment.MiddleCenter });
 
             int y = 32;
             foreach (AperturaCajaMoneda monto in _apertura.Montos)
@@ -91,17 +94,41 @@ namespace CapaPresentacion.Formularios
                     ForeColor = System.Drawing.Color.FromArgb(185, 51, 73)
                 };
 
+                var btnDetalle = new Guna2Button
+                {
+                    Text = "Detallar",
+                    Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold),
+                    ForeColor = System.Drawing.Color.White,
+                    FillColor = System.Drawing.Color.FromArgb(37, 99, 235),
+                    BorderRadius = 6,
+                    Location = new System.Drawing.Point(8 + AnchoMoneda + AnchoSistema + AnchoContado + AnchoDiferencia + 40, y),
+                    Size = new System.Drawing.Size(AnchoDetalle, 28)
+                };
+
                 var fila = new FilaCierre { MonedaId = monto.MonedaId, MontoSistema = sistema, Contado = txtContado, Diferencia = lblDiferencia };
                 txtContado.KeyPress += MontoTextBox_KeyPress;
                 txtContado.TextChanged += (s, e) => ActualizarDiferencia(fila);
+                btnDetalle.Click += (s, e) => AbrirDetalleConteo(fila);
 
                 pnlMontos.Controls.Add(lblMoneda);
                 pnlMontos.Controls.Add(lblSistema);
                 pnlMontos.Controls.Add(txtContado);
                 pnlMontos.Controls.Add(lblDiferencia);
+                pnlMontos.Controls.Add(btnDetalle);
                 _filas.Add(fila);
 
                 y += AltoFila;
+            }
+        }
+
+        /// <summary>Abre el contador de efectivo por denominacion y vuelca el total contado en el Monto Contado de esa fila.</summary>
+        private void AbrirDetalleConteo(FilaCierre fila)
+        {
+            using (FrmDetalle detalle = new FrmDetalle())
+            {
+                detalle.StartPosition = FormStartPosition.CenterScreen;
+                if (detalle.ShowDialog() == DialogResult.OK)
+                    fila.Contado.Text = detalle.Total.ToString("N2", CultureInfo.CurrentCulture);
             }
         }
 

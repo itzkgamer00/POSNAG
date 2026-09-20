@@ -282,6 +282,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Utilidades\ExportadorCsv.cs" />
+    <Compile Include="Utilidades\ConfiguracionImpresora.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Formularios\Apertura.resx">
       <DependentUpon>Apertura.cs</DependentUpon>
