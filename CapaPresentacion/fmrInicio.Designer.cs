@@ -206,6 +206,8 @@
             this.cboMcCaja = new Guna.UI2.WinForms.Guna2ComboBox();
             this.lblMcCajero = new System.Windows.Forms.Label();
             this.cboMcUsuario = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.lblMcOperacion = new System.Windows.Forms.Label();
+            this.cboMcOperacion = new Guna.UI2.WinForms.Guna2ComboBox();
             this.btnMcBuscar = new Guna.UI2.WinForms.Guna2Button();
             this.btnMcExportar = new Guna.UI2.WinForms.Guna2Button();
             this.dgvMcDetalle = new Guna.UI2.WinForms.Guna2DataGridView();
@@ -318,6 +320,8 @@
             this.cmbImpresoraTiquete = new Guna.UI2.WinForms.Guna2ComboBox();
             this.lblImpresoraSeleccion = new System.Windows.Forms.Label();
             this.lblImpresoraInfo = new System.Windows.Forms.Label();
+            this.pbVistaPreviaTiquete = new System.Windows.Forms.PictureBox();
+            this.lblVistaPreviaTitulo = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -381,6 +385,7 @@
             this.grpTamanoPapel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numAnchoPersonalizadoMM)).BeginInit();
             this.grpImpresora.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbVistaPreviaTiquete)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -2096,14 +2101,14 @@
             this.tlpReporteMesaCambio.Location = new System.Drawing.Point(3, 3);
             this.tlpReporteMesaCambio.Name = "tlpReporteMesaCambio";
             this.tlpReporteMesaCambio.RowCount = 3;
-            this.tlpReporteMesaCambio.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 54F));
+            this.tlpReporteMesaCambio.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 90F));
             this.tlpReporteMesaCambio.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tlpReporteMesaCambio.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 140F));
             this.tlpReporteMesaCambio.Size = new System.Drawing.Size(1242, 499);
             this.tlpReporteMesaCambio.TabIndex = 0;
-            // 
+            //
             // pnlFiltrosMesaCambio
-            // 
+            //
             this.pnlFiltrosMesaCambio.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnlFiltrosMesaCambio.Controls.Add(this.lblMcDesde);
             this.pnlFiltrosMesaCambio.Controls.Add(this.dtpMcDesde);
@@ -2113,12 +2118,14 @@
             this.pnlFiltrosMesaCambio.Controls.Add(this.cboMcCaja);
             this.pnlFiltrosMesaCambio.Controls.Add(this.lblMcCajero);
             this.pnlFiltrosMesaCambio.Controls.Add(this.cboMcUsuario);
+            this.pnlFiltrosMesaCambio.Controls.Add(this.lblMcOperacion);
+            this.pnlFiltrosMesaCambio.Controls.Add(this.cboMcOperacion);
             this.pnlFiltrosMesaCambio.Controls.Add(this.btnMcBuscar);
             this.pnlFiltrosMesaCambio.Controls.Add(this.btnMcExportar);
             this.pnlFiltrosMesaCambio.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlFiltrosMesaCambio.Location = new System.Drawing.Point(3, 3);
             this.pnlFiltrosMesaCambio.Name = "pnlFiltrosMesaCambio";
-            this.pnlFiltrosMesaCambio.Size = new System.Drawing.Size(1236, 48);
+            this.pnlFiltrosMesaCambio.Size = new System.Drawing.Size(1236, 84);
             this.pnlFiltrosMesaCambio.TabIndex = 0;
             // 
             // lblMcDesde
@@ -2133,11 +2140,11 @@
             // 
             // dtpMcDesde
             // 
-            this.dtpMcDesde.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpMcDesde.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpMcDesde.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpMcDesde.Location = new System.Drawing.Point(70, 8);
             this.dtpMcDesde.Name = "dtpMcDesde";
-            this.dtpMcDesde.Size = new System.Drawing.Size(154, 34);
+            this.dtpMcDesde.Size = new System.Drawing.Size(175, 30);
             this.dtpMcDesde.TabIndex = 1;
             // 
             // lblMcHasta
@@ -2152,12 +2159,13 @@
             // 
             // dtpMcHasta
             // 
-            this.dtpMcHasta.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpMcHasta.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpMcHasta.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpMcHasta.Location = new System.Drawing.Point(310, 8);
             this.dtpMcHasta.Name = "dtpMcHasta";
-            this.dtpMcHasta.Size = new System.Drawing.Size(146, 34);
+            this.dtpMcHasta.Size = new System.Drawing.Size(163, 30);
             this.dtpMcHasta.TabIndex = 3;
+            this.dtpMcHasta.Value = new System.DateTime(2026, 9, 22, 21, 33, 0, 0);
             // 
             // lblMcCaja
             // 
@@ -2208,9 +2216,34 @@
             this.cboMcUsuario.Name = "cboMcUsuario";
             this.cboMcUsuario.Size = new System.Drawing.Size(170, 32);
             this.cboMcUsuario.TabIndex = 7;
-            // 
+            //
+            // lblMcOperacion
+            //
+            this.lblMcOperacion.AutoSize = true;
+            this.lblMcOperacion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lblMcOperacion.Location = new System.Drawing.Point(8, 52);
+            this.lblMcOperacion.Name = "lblMcOperacion";
+            this.lblMcOperacion.Size = new System.Drawing.Size(80, 20);
+            this.lblMcOperacion.TabIndex = 8;
+            this.lblMcOperacion.Text = "Operacion:";
+            //
+            // cboMcOperacion
+            //
+            this.cboMcOperacion.BackColor = System.Drawing.Color.Transparent;
+            this.cboMcOperacion.BorderRadius = 6;
+            this.cboMcOperacion.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboMcOperacion.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboMcOperacion.FocusedColor = System.Drawing.Color.Empty;
+            this.cboMcOperacion.Font = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.cboMcOperacion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cboMcOperacion.ItemHeight = 26;
+            this.cboMcOperacion.Location = new System.Drawing.Point(96, 46);
+            this.cboMcOperacion.Name = "cboMcOperacion";
+            this.cboMcOperacion.Size = new System.Drawing.Size(150, 32);
+            this.cboMcOperacion.TabIndex = 9;
+            //
             // btnMcBuscar
-            // 
+            //
             this.btnMcBuscar.BorderRadius = 6;
             this.btnMcBuscar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
             this.btnMcBuscar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
@@ -2218,12 +2251,12 @@
             this.btnMcBuscar.Location = new System.Drawing.Point(936, 8);
             this.btnMcBuscar.Name = "btnMcBuscar";
             this.btnMcBuscar.Size = new System.Drawing.Size(90, 34);
-            this.btnMcBuscar.TabIndex = 8;
+            this.btnMcBuscar.TabIndex = 10;
             this.btnMcBuscar.Text = "Buscar";
             this.btnMcBuscar.Click += new System.EventHandler(this.btnMcBuscar_Click);
-            // 
+            //
             // btnMcExportar
-            // 
+            //
             this.btnMcExportar.BorderRadius = 6;
             this.btnMcExportar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(150)))), ((int)(((byte)(105)))));
             this.btnMcExportar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
@@ -2231,7 +2264,7 @@
             this.btnMcExportar.Location = new System.Drawing.Point(1032, 8);
             this.btnMcExportar.Name = "btnMcExportar";
             this.btnMcExportar.Size = new System.Drawing.Size(159, 34);
-            this.btnMcExportar.TabIndex = 9;
+            this.btnMcExportar.TabIndex = 11;
             this.btnMcExportar.Text = "Exportar a Excel";
             this.btnMcExportar.Click += new System.EventHandler(this.btnMcExportar_Click);
             // 
@@ -2260,13 +2293,13 @@
             this.dgvMcDetalle.DefaultCellStyle = dataGridViewCellStyle24;
             this.dgvMcDetalle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvMcDetalle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvMcDetalle.Location = new System.Drawing.Point(3, 57);
+            this.dgvMcDetalle.Location = new System.Drawing.Point(3, 93);
             this.dgvMcDetalle.Name = "dgvMcDetalle";
             this.dgvMcDetalle.ReadOnly = true;
             this.dgvMcDetalle.RowHeadersVisible = false;
             this.dgvMcDetalle.RowHeadersWidth = 51;
             this.dgvMcDetalle.RowTemplate.Height = 40;
-            this.dgvMcDetalle.Size = new System.Drawing.Size(1236, 299);
+            this.dgvMcDetalle.Size = new System.Drawing.Size(1236, 263);
             this.dgvMcDetalle.TabIndex = 1;
             this.dgvMcDetalle.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvMcDetalle.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -3983,6 +4016,8 @@
             this.tabPage16.Controls.Add(this.grpTamanoPapel);
             this.tabPage16.Controls.Add(this.grpImpresora);
             this.tabPage16.Controls.Add(this.lblImpresoraInfo);
+            this.tabPage16.Controls.Add(this.pbVistaPreviaTiquete);
+            this.tabPage16.Controls.Add(this.lblVistaPreviaTitulo);
             this.tabPage16.Location = new System.Drawing.Point(184, 4);
             this.tabPage16.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage16.Name = "tabPage16";
@@ -4071,6 +4106,7 @@
             0,
             0,
             0});
+            this.numAnchoPersonalizadoMM.ValueChanged += new System.EventHandler(this.numAnchoPersonalizadoMM_ValueChanged);
             // 
             // lblAnchoPersonalizado
             // 
@@ -4157,6 +4193,7 @@
             this.cmbImpresoraTiquete.Name = "cmbImpresoraTiquete";
             this.cmbImpresoraTiquete.Size = new System.Drawing.Size(430, 36);
             this.cmbImpresoraTiquete.TabIndex = 1;
+            this.cmbImpresoraTiquete.SelectedIndexChanged += new System.EventHandler(this.cmbImpresoraTiquete_SelectedIndexChanged);
             // 
             // lblImpresoraSeleccion
             // 
@@ -4177,6 +4214,28 @@
             this.lblImpresoraInfo.Size = new System.Drawing.Size(684, 22);
             this.lblImpresoraInfo.TabIndex = 0;
             this.lblImpresoraInfo.Text = "Configura la impresora y el papel usados para imprimir los tiquetes de caja.";
+            // 
+            // pbVistaPreviaTiquete
+            // 
+            this.pbVistaPreviaTiquete.BackColor = System.Drawing.Color.White;
+            this.pbVistaPreviaTiquete.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbVistaPreviaTiquete.Location = new System.Drawing.Point(760, 50);
+            this.pbVistaPreviaTiquete.Name = "pbVistaPreviaTiquete";
+            this.pbVistaPreviaTiquete.Size = new System.Drawing.Size(280, 480);
+            this.pbVistaPreviaTiquete.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbVistaPreviaTiquete.TabIndex = 7;
+            this.pbVistaPreviaTiquete.TabStop = false;
+            // 
+            // lblVistaPreviaTitulo
+            // 
+            this.lblVistaPreviaTitulo.AutoSize = true;
+            this.lblVistaPreviaTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVistaPreviaTitulo.Location = new System.Drawing.Point(760, 20);
+            this.lblVistaPreviaTitulo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblVistaPreviaTitulo.Name = "lblVistaPreviaTitulo";
+            this.lblVistaPreviaTitulo.Size = new System.Drawing.Size(205, 22);
+            this.lblVistaPreviaTitulo.TabIndex = 6;
+            this.lblVistaPreviaTitulo.Text = "Vista previa del tiquet";
             // 
             // panel1
             // 
@@ -4324,6 +4383,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numAnchoPersonalizadoMM)).EndInit();
             this.grpImpresora.ResumeLayout(false);
             this.grpImpresora.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbVistaPreviaTiquete)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -4356,6 +4416,8 @@
         private Guna.UI2.WinForms.Guna2ComboBox cboMcCaja;
         private System.Windows.Forms.Label lblMcCajero;
         private Guna.UI2.WinForms.Guna2ComboBox cboMcUsuario;
+        private System.Windows.Forms.Label lblMcOperacion;
+        private Guna.UI2.WinForms.Guna2ComboBox cboMcOperacion;
         private Guna.UI2.WinForms.Guna2Button btnMcBuscar;
         private Guna.UI2.WinForms.Guna2Button btnMcExportar;
         private Guna.UI2.WinForms.Guna2DataGridView dgvMcDetalle;
@@ -4483,6 +4545,8 @@
         private Guna.UI2.WinForms.Guna2Button btnGuardarImpresora;
         private Guna.UI2.WinForms.Guna2Button btnProbarImpresora;
         private System.Windows.Forms.Label lblImpresoraEstado;
+        private System.Windows.Forms.Label lblVistaPreviaTitulo;
+        private System.Windows.Forms.PictureBox pbVistaPreviaTiquete;
         private Guna.UI2.WinForms.Guna2DataGridView guna2DataGridView1;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel4;
         private System.Windows.Forms.Label label17;

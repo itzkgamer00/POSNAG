@@ -75,6 +75,7 @@
             this.textBox29 = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
+            this.btnImprimirDetalle = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -525,6 +526,19 @@
             this.iconButton1.UseVisualStyleBackColor = true;
             this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             //
+            // btnImprimirDetalle
+            //
+            this.btnImprimirDetalle.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnImprimirDetalle.IconColor = System.Drawing.Color.Black;
+            this.btnImprimirDetalle.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnImprimirDetalle.Location = new System.Drawing.Point(17, 612);
+            this.btnImprimirDetalle.Name = "btnImprimirDetalle";
+            this.btnImprimirDetalle.Size = new System.Drawing.Size(150, 48);
+            this.btnImprimirDetalle.TabIndex = 48;
+            this.btnImprimirDetalle.Text = "Imprimir Detalle";
+            this.btnImprimirDetalle.UseVisualStyleBackColor = true;
+            this.btnImprimirDetalle.Click += new System.EventHandler(this.btnImprimirDetalle_Click);
+            //
             // FrmDetalle
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -534,6 +548,7 @@
             this.Controls.Add(this.textBox29);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.iconButton1);
+            this.Controls.Add(this.btnImprimirDetalle);
             this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("Bahnschrift", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -597,6 +612,7 @@
         private System.Windows.Forms.TextBox textBox24;
         private System.Windows.Forms.TextBox textBox23;
         private FontAwesome.Sharp.IconButton iconButton1;
+        private FontAwesome.Sharp.IconButton btnImprimirDetalle;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox textBox29;
     }

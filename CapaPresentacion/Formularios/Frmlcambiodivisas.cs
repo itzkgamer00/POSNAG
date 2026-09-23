@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Windows.Forms;
 using CapaEntidad;
 using CapaNegocio;
@@ -128,6 +129,96 @@ namespace CapaPresentacion
         {
             foreach (TextBox cantidad in _filasDetalle.Keys)
                 cantidad.Text = "0";
+        }
+
+        /// <summary>Boton "Imprimir Detalle": imprime el desglose por denominacion del efectivo entregado/contado en el panel "Detalle".</summary>
+        private void btnImprimirDetalle_Click(object sender, EventArgs e)
+        {
+            decimal total = decimal.TryParse(textBox29.Text, NumberStyles.Number, CultureInfo.CurrentCulture, out decimal t) ? t : 0m;
+
+            if (!_filasDetalle.Any(par => int.TryParse(par.Key.Text, out int cantidad) && cantidad > 0))
+            {
+                MessageBox.Show("No hay cantidades cargadas en el Detalle para imprimir.", "Imprimir Detalle",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            ImprimirDetalleConteo(total);
+        }
+
+        /// <summary>Imprime el desglose por denominacion (cantidad x denominacion = subtotal) del panel "Detalle", dejando elegir la impresora (o cancelar).</summary>
+        private void ImprimirDetalleConteo(decimal total)
+        {
+            using (var documento = new System.Drawing.Printing.PrintDocument())
+            {
+                ConfiguracionImpresora.Aplicar(documento);
+                documento.PrintPage += (s, e) => DibujarDetalleConteo(e, total);
+
+                if (ConfiguracionImpresora.MostrarDialogoImpresion)
+                {
+                    using (var dialogoImpresion = new PrintDialog { Document = documento, AllowSomePages = false, AllowSelection = false, AllowPrintToFile = false })
+                    {
+                        if (dialogoImpresion.ShowDialog(this) != DialogResult.OK) return;
+                    }
+                }
+
+                try
+                {
+                    documento.Print();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("No se pudo imprimir el detalle: " + ex.Message, "Imprimir Detalle",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void DibujarDetalleConteo(System.Drawing.Printing.PrintPageEventArgs e, decimal total)
+        {
+            System.Drawing.Graphics g = e.Graphics;
+            float anchoTiquete = e.MarginBounds.Width;
+            float x = e.MarginBounds.Left;
+            float y = e.MarginBounds.Top;
+
+            var fontTitulo = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
+            var fontTexto = new System.Drawing.Font("Consolas", 9.5F);
+            var fontChico = new System.Drawing.Font("Consolas", 8F);
+            var centrado = new System.Drawing.StringFormat { Alignment = System.Drawing.StringAlignment.Center };
+            float anchoGuion = g.MeasureString("-", fontChico, int.MaxValue, System.Drawing.StringFormat.GenericTypographic).Width;
+            int cantidadGuiones = anchoGuion > 0 ? Math.Max(1, (int)(anchoTiquete / anchoGuion)) : 34;
+            string separador = new string('-', cantidadGuiones);
+
+            void Escribir(string texto, System.Drawing.Font fuente, System.Drawing.StringFormat formato = null)
+            {
+                System.Drawing.SizeF tamanio = g.MeasureString(texto, fuente, (int)anchoTiquete,
+                    formato ?? System.Drawing.StringFormat.GenericDefault);
+                float alto = tamanio.Height + 6;
+                g.DrawString(texto, fuente, System.Drawing.Brushes.Black,
+                    new System.Drawing.RectangleF(x, y, anchoTiquete, alto), formato);
+                y += alto;
+            }
+
+            Escribir("SISTEMA DE CAJA", fontTitulo, centrado);
+            Escribir("Detalle de Efectivo Entregado", fontTexto, centrado);
+            Escribir(separador, fontChico);
+            Escribir($"Fecha: {DateTime.Now:dd/MM/yyyy hh:mm tt}", fontChico);
+            Escribir($"Cajero: {SesionActual.Usuario?.NombreCompleto}", fontChico);
+            Escribir(separador, fontChico);
+
+            foreach (KeyValuePair<TextBox, FilaDenominacion> par in _filasDetalle)
+            {
+                int cantidad = int.TryParse(par.Key.Text, out int c) ? c : 0;
+                if (cantidad <= 0) continue;
+
+                decimal subtotal = cantidad * par.Value.Valor;
+                Escribir($"{cantidad} x {par.Value.Valor.ToString("N2", CultureInfo.CurrentCulture)}  =  {subtotal.ToString("N2", CultureInfo.CurrentCulture)}", fontTexto);
+            }
+
+            Escribir(separador, fontChico);
+            Escribir($"TOTAL: {total.ToString("N2", CultureInfo.CurrentCulture)}", fontTitulo);
+
+            e.HasMorePages = false;
         }
 
         /// <summary>Deja el panel "Informacion del Cliente" en su estado inicial: sin ficha cargada y sin poder agregar hasta buscar.</summary>
@@ -407,6 +498,17 @@ namespace CapaPresentacion
             string cliente = guna2TextBox5.Text.Trim();
             string identificacion = guna2TextBox4.Text.Trim();
             string tipoCambio = guna2TextBox1.Text.Trim();
+
+            Moneda monedaRecibidaConfirm = guna2ComboBox4.SelectedItem as Moneda;
+            Moneda monedaEntregadaConfirm = guna2ComboBox2.SelectedItem as Moneda;
+
+            DialogResult confirmacion = MessageBox.Show(
+                $"¿Confirma la operacion de {operacion}?" + Environment.NewLine + Environment.NewLine +
+                $"Recibe: {montoRecibido.ToString("N2", CultureInfo.CurrentCulture)} {monedaRecibidaConfirm?.Codigo}" + Environment.NewLine +
+                $"Entrega: {montoEntregado.ToString("N2", CultureInfo.CurrentCulture)} {monedaEntregadaConfirm?.Codigo}",
+                "Confirmar operacion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirmacion != DialogResult.Yes) return;
 
             string descripcion = $"Mesa de Cambio {operacion}".Trim();
             if (!string.IsNullOrWhiteSpace(tipoCambio))

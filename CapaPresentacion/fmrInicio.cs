@@ -151,8 +151,8 @@ namespace CapaPresentacion
             CargarTasasInicio();
             CargarConfiguracionImpresora();
 
-            // Rango por defecto del KPI de Mesa de Cambio: el ultimo mes (modificable por el usuario).
-            dtpKpiDesde.Value = DateTime.Today.AddMonths(-1);
+            // Rango por defecto del KPI de Mesa de Cambio: el dia de hoy (modificable por el usuario).
+            dtpKpiDesde.Value = DateTime.Today;
             dtpKpiHasta.Value = DateTime.Today;
             CargarKpiMesaCambio();
 
@@ -1495,11 +1495,22 @@ namespace CapaPresentacion
             combo.SelectedIndex = 0;
         }
 
+        /// <summary>Filtro Compra/Venta del reporte de Mesa de Cambio (no hay Id: el texto se traduce directo al codigo de operacion).</summary>
+        private void CargarComboOperacionCambio(ComboBox combo)
+        {
+            combo.Items.Clear();
+            combo.Items.Add("Todas");
+            combo.Items.Add("Compra");
+            combo.Items.Add("Venta");
+            combo.SelectedIndex = 0;
+        }
+
         /// <summary>Llena los combos de filtro y ejecuta la primera busqueda de ambos reportes. Se llama desde fmrInicio_Load (requiere BD).</summary>
         private void CargarDatosReportes()
         {
             CargarComboCajas(cboMcCaja);
             CargarComboUsuarios(cboMcUsuario);
+            CargarComboOperacionCambio(cboMcOperacion);
             CargarReporteMesaCambio();
 
             CargarComboCajas(cboMpCaja);
@@ -1528,8 +1539,12 @@ namespace CapaPresentacion
 
             int? cajaId = (cboMcCaja.SelectedItem as OpcionFiltro)?.Id;
             int? usuarioId = (cboMcUsuario.SelectedItem as OpcionFiltro)?.Id;
+            string operacionSeleccionada = cboMcOperacion.SelectedItem as string;
+            string operacionCambio = operacionSeleccionada == "Compra" ? "COMPRA"
+                : operacionSeleccionada == "Venta" ? "VENTA"
+                : null;
 
-            List<Transaccion> movimientos = _negocioTransaccion.ListarCambiosDivisaParaReporte(desde, hasta, cajaId, usuarioId);
+            List<Transaccion> movimientos = _negocioTransaccion.ListarCambiosDivisaParaReporte(desde, hasta, cajaId, usuarioId, operacionCambio);
 
             var detalle = new DataTable();
             detalle.Columns.Add("Fecha");
@@ -1721,6 +1736,7 @@ namespace CapaPresentacion
 
             chkMostrarDialogoImpresion.Checked = ConfiguracionImpresora.MostrarDialogoImpresion;
             ActualizarEstadoAnchoPersonalizado();
+            ActualizarVistaPreviaTiquete();
         }
 
         private void ActualizarEstadoAnchoPersonalizado()
@@ -1731,6 +1747,27 @@ namespace CapaPresentacion
         private void cmbTamanoPapel_SelectedIndexChanged(object sender, EventArgs e)
         {
             ActualizarEstadoAnchoPersonalizado();
+            ActualizarVistaPreviaTiquete();
+        }
+
+        private void cmbImpresoraTiquete_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ActualizarVistaPreviaTiquete();
+        }
+
+        private void numAnchoPersonalizadoMM_ValueChanged(object sender, EventArgs e)
+        {
+            ActualizarVistaPreviaTiquete();
+        }
+
+        /// <summary>Ancho de papel (mm) elegido actualmente en el combo "Tamano", sin importar si ya se guardo. 0 = usar el de la impresora.</summary>
+        private int ObtenerAnchoPapelSeleccionadoMM()
+        {
+            string papelSeleccionado = cmbTamanoPapel.SelectedItem as string;
+            return papelSeleccionado == OpcionPapel58MM ? 58
+                : papelSeleccionado == OpcionPapel80MM ? 80
+                : papelSeleccionado == OpcionPapelPersonalizado ? (int)numAnchoPersonalizadoMM.Value
+                : 0;
         }
 
         private void btnGuardarImpresora_Click(object sender, EventArgs e)
@@ -1740,16 +1777,77 @@ namespace CapaPresentacion
                 ? string.Empty
                 : impresoraSeleccionada;
 
-            string papelSeleccionado = cmbTamanoPapel.SelectedItem as string;
-            ConfiguracionImpresora.AnchoPapelMM = papelSeleccionado == OpcionPapel58MM ? 58
-                : papelSeleccionado == OpcionPapel80MM ? 80
-                : papelSeleccionado == OpcionPapelPersonalizado ? (int)numAnchoPersonalizadoMM.Value
-                : 0;
-
+            ConfiguracionImpresora.AnchoPapelMM = ObtenerAnchoPapelSeleccionadoMM();
             ConfiguracionImpresora.MostrarDialogoImpresion = chkMostrarDialogoImpresion.Checked;
 
             lblImpresoraEstado.ForeColor = Color.SeaGreen;
             lblImpresoraEstado.Text = "Configuracion guardada.";
+        }
+
+        /// <summary>
+        /// Redibuja la vista previa del tiquet (pbVistaPreviaTiquete) con datos de ejemplo, usando el
+        /// ancho de papel elegido actualmente en pantalla (aunque todavia no se haya guardado), para
+        /// que el usuario vea como quedaria el tiquet antes de imprimir uno real.
+        /// </summary>
+        private void ActualizarVistaPreviaTiquete()
+        {
+            int anchoMM = ObtenerAnchoPapelSeleccionadoMM();
+            if (anchoMM <= 0) anchoMM = 80; // "usar el de la impresora": se previsualiza con un ancho tipico
+
+            const float pxPorMM = 3.78f; // ~96 DPI, para que se vea nitido en pantalla
+            int anchoPx = Math.Max(150, (int)(anchoMM * pxPorMM));
+            const int altoPx = 520;
+
+            var bitmap = new Bitmap(anchoPx, altoPx);
+            using (Graphics g = Graphics.FromImage(bitmap))
+            {
+                g.Clear(Color.White);
+                DibujarTiquetePreview(g, anchoPx);
+            }
+
+            Image anterior = pbVistaPreviaTiquete.Image;
+            pbVistaPreviaTiquete.Image = bitmap;
+            anterior?.Dispose();
+        }
+
+        /// <summary>Dibuja, con datos de ejemplo, un tiquet de Mesa de Cambio igual en formato al que imprime Frmlcambiodivisas, para previsualizar el resultado con la impresora/papel configurados.</summary>
+        private void DibujarTiquetePreview(Graphics g, float anchoTiquete)
+        {
+            float x = 4f;
+            float y = 4f;
+            anchoTiquete -= 8f;
+
+            var fontTitulo = new Font("Consolas", 12F, FontStyle.Bold);
+            var fontTexto = new Font("Consolas", 9.5F);
+            var fontChico = new Font("Consolas", 8F);
+            var centrado = new StringFormat { Alignment = StringAlignment.Center };
+            float anchoGuion = g.MeasureString("-", fontChico, int.MaxValue, StringFormat.GenericTypographic).Width;
+            int cantidadGuiones = anchoGuion > 0 ? Math.Max(1, (int)(anchoTiquete / anchoGuion)) : 34;
+            string separador = new string('-', cantidadGuiones);
+
+            void Escribir(string texto, Font fuente, StringFormat formato = null)
+            {
+                SizeF tamanio = g.MeasureString(texto, fuente, (int)anchoTiquete, formato ?? StringFormat.GenericDefault);
+                float alto = tamanio.Height + 6;
+                g.DrawString(texto, fuente, Brushes.Black, new RectangleF(x, y, anchoTiquete, alto), formato);
+                y += alto;
+            }
+
+            Escribir("SISTEMA DE CAJA", fontTitulo, centrado);
+            Escribir("Mesa de Cambio", fontTexto, centrado);
+            Escribir(separador, fontChico);
+            Escribir($"Fecha: {DateTime.Now:dd/MM/yyyy hh:mm tt}", fontChico);
+            Escribir("Caja: Caja Principal", fontChico);
+            Escribir($"Cajero: {SesionActual.Usuario?.NombreCompleto ?? "Cajero de ejemplo"}", fontChico);
+            Escribir("Operacion: Compra de Divisas", fontChico);
+            Escribir(separador, fontChico);
+            Escribir("Recibido:  C$3,500.00 NIO", fontTexto);
+            Escribir("Entregado: $100.00 USD", fontTexto);
+            Escribir("Tasa: 35.0000", fontChico);
+            Escribir("Forma de pago: Efectivo", fontChico);
+            Escribir("Cliente: Cliente de ejemplo", fontChico);
+            Escribir(separador, fontChico);
+            Escribir("Gracias por su preferencia", fontChico, centrado);
         }
 
         private void btnProbarImpresora_Click(object sender, EventArgs e)

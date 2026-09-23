@@ -51,14 +51,15 @@ namespace CapaNegocio
 
         /// <summary>
         /// Solo movimientos de Mesa de Cambio, filtrados por rango de fecha (inclusive en ambos extremos)
-        /// y, opcionalmente, caja/usuario. Para el reporte de Mesa de Cambio.
+        /// y, opcionalmente, caja/usuario/operacion (COMPRA o VENTA). Para el reporte de Mesa de Cambio.
         /// </summary>
-        public List<Transaccion> ListarCambiosDivisaParaReporte(DateTime desde, DateTime hasta, int? cajaId = null, int? usuarioId = null)
+        public List<Transaccion> ListarCambiosDivisaParaReporte(DateTime desde, DateTime hasta, int? cajaId = null,
+            int? usuarioId = null, string operacionCambio = null)
         {
             if (hasta.Date < desde.Date)
                 throw new ArgumentException("La fecha 'hasta' no puede ser anterior a la fecha 'desde'.");
 
-            return _datosTransaccion.ListarCambiosDivisaParaReporte(desde.Date, hasta.Date.AddDays(1), cajaId, usuarioId);
+            return _datosTransaccion.ListarCambiosDivisaParaReporte(desde.Date, hasta.Date.AddDays(1), cajaId, usuarioId, operacionCambio);
         }
 
         public Transaccion RegistrarIngreso(AperturaCaja apertura, int usuarioId, int conceptoId, int monedaId,

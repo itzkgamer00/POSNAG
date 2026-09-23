@@ -41,13 +41,14 @@ namespace CapaPresentacion.Formularios
             this.pnlMontos = new System.Windows.Forms.Panel();
             this.txtObservaciones = new System.Windows.Forms.TextBox();
             this.btnCerrarCaja = new Guna.UI2.WinForms.Guna2Button();
+            this.btnExportarExcel = new Guna.UI2.WinForms.Guna2Button();
             this.btnCancelarCierre = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Separator1 = new Guna.UI2.WinForms.Guna2Separator();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            //
+            // 
             // panel1
-            //
+            // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(119)))), ((int)(((byte)(6)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.panel1.Controls.Add(this.lblTitulo);
@@ -56,9 +57,9 @@ namespace CapaPresentacion.Formularios
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(981, 61);
             this.panel1.TabIndex = 0;
-            //
+            // 
             // lblTitulo
-            //
+            // 
             this.lblTitulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(119)))), ((int)(((byte)(6)))));
             this.lblTitulo.Font = new System.Drawing.Font("Bahnschrift", 19.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.Color.White;
@@ -69,61 +70,62 @@ namespace CapaPresentacion.Formularios
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "CIERRE DE CAJA";
             this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            //
+            // 
             // lblCaja
-            //
+            // 
             this.lblCaja.AutoSize = true;
             this.lblCaja.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCaja.Location = new System.Drawing.Point(19, 75);
             this.lblCaja.Name = "lblCaja";
-            this.lblCaja.Size = new System.Drawing.Size(60, 25);
+            this.lblCaja.Size = new System.Drawing.Size(58, 31);
             this.lblCaja.TabIndex = 1;
             this.lblCaja.Text = "Caja";
-            //
+            // 
             // lblUsuario
-            //
+            // 
             this.lblUsuario.AutoSize = true;
             this.lblUsuario.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuario.Location = new System.Drawing.Point(504, 75);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(88, 25);
+            this.lblUsuario.Size = new System.Drawing.Size(94, 31);
             this.lblUsuario.TabIndex = 2;
             this.lblUsuario.Text = "Usuario";
-            //
+            // 
             // lblFechaHora
-            //
+            // 
             this.lblFechaHora.AutoSize = true;
             this.lblFechaHora.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFechaHora.Location = new System.Drawing.Point(19, 165);
             this.lblFechaHora.Name = "lblFechaHora";
-            this.lblFechaHora.Size = new System.Drawing.Size(180, 25);
+            this.lblFechaHora.Size = new System.Drawing.Size(250, 31);
             this.lblFechaHora.TabIndex = 3;
             this.lblFechaHora.Text = "Fecha y Hora de Cierre";
-            //
+            // 
             // lblMontos
-            //
+            // 
             this.lblMontos.AutoSize = true;
             this.lblMontos.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMontos.Location = new System.Drawing.Point(19, 255);
             this.lblMontos.Name = "lblMontos";
-            this.lblMontos.Size = new System.Drawing.Size(300, 25);
+            this.lblMontos.Size = new System.Drawing.Size(279, 31);
             this.lblMontos.TabIndex = 4;
             this.lblMontos.Text = "Conteo Final por Moneda";
-            //
+            // 
             // lblObservaciones
-            //
+            // 
             this.lblObservaciones.AutoSize = true;
             this.lblObservaciones.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblObservaciones.Location = new System.Drawing.Point(19, 458);
             this.lblObservaciones.Name = "lblObservaciones";
-            this.lblObservaciones.Size = new System.Drawing.Size(180, 25);
+            this.lblObservaciones.Size = new System.Drawing.Size(167, 31);
             this.lblObservaciones.TabIndex = 5;
             this.lblObservaciones.Text = "Observaciones";
-            //
+            // 
             // txtCaja
-            //
+            // 
             this.txtCaja.BackColor = System.Drawing.Color.Transparent;
             this.txtCaja.BorderRadius = 6;
+            this.txtCaja.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtCaja.DefaultText = "";
             this.txtCaja.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtCaja.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -140,11 +142,12 @@ namespace CapaPresentacion.Formularios
             this.txtCaja.SelectedText = "";
             this.txtCaja.Size = new System.Drawing.Size(465, 48);
             this.txtCaja.TabIndex = 6;
-            //
+            // 
             // txtUsuario
-            //
+            // 
             this.txtUsuario.BackColor = System.Drawing.Color.Transparent;
             this.txtUsuario.BorderRadius = 6;
+            this.txtUsuario.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtUsuario.DefaultText = "";
             this.txtUsuario.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtUsuario.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -161,11 +164,12 @@ namespace CapaPresentacion.Formularios
             this.txtUsuario.SelectedText = "";
             this.txtUsuario.Size = new System.Drawing.Size(445, 48);
             this.txtUsuario.TabIndex = 7;
-            //
+            // 
             // txtFechaHora
-            //
+            // 
             this.txtFechaHora.BackColor = System.Drawing.Color.Transparent;
             this.txtFechaHora.BorderRadius = 6;
+            this.txtFechaHora.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.txtFechaHora.DefaultText = "";
             this.txtFechaHora.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
             this.txtFechaHora.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
@@ -182,27 +186,27 @@ namespace CapaPresentacion.Formularios
             this.txtFechaHora.SelectedText = "";
             this.txtFechaHora.Size = new System.Drawing.Size(465, 48);
             this.txtFechaHora.TabIndex = 8;
-            //
+            // 
             // pnlMontos
-            //
+            // 
             this.pnlMontos.AutoScroll = true;
             this.pnlMontos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlMontos.Location = new System.Drawing.Point(18, 283);
             this.pnlMontos.Name = "pnlMontos";
             this.pnlMontos.Size = new System.Drawing.Size(936, 160);
             this.pnlMontos.TabIndex = 9;
-            //
+            // 
             // txtObservaciones
-            //
+            // 
             this.txtObservaciones.Font = new System.Drawing.Font("Microsoft JhengHei UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtObservaciones.Location = new System.Drawing.Point(18, 486);
             this.txtObservaciones.Multiline = true;
             this.txtObservaciones.Name = "txtObservaciones";
             this.txtObservaciones.Size = new System.Drawing.Size(570, 90);
             this.txtObservaciones.TabIndex = 10;
-            //
+            // 
             // btnCerrarCaja
-            //
+            // 
             this.btnCerrarCaja.BorderRadius = 10;
             this.btnCerrarCaja.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnCerrarCaja.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -212,15 +216,32 @@ namespace CapaPresentacion.Formularios
             this.btnCerrarCaja.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrarCaja.ForeColor = System.Drawing.Color.White;
             this.btnCerrarCaja.Image = global::CapaPresentacion.Properties.Resources.Checked_Checkbox;
-            this.btnCerrarCaja.Location = new System.Drawing.Point(647, 486);
+            this.btnCerrarCaja.Location = new System.Drawing.Point(647, 474);
             this.btnCerrarCaja.Name = "btnCerrarCaja";
             this.btnCerrarCaja.Size = new System.Drawing.Size(307, 46);
             this.btnCerrarCaja.TabIndex = 11;
             this.btnCerrarCaja.Text = "Cerrar Caja";
             this.btnCerrarCaja.Click += new System.EventHandler(this.btnCerrarCaja_Click);
-            //
+            // 
+            // btnExportarExcel
+            // 
+            this.btnExportarExcel.BorderRadius = 10;
+            this.btnExportarExcel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnExportarExcel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnExportarExcel.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnExportarExcel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnExportarExcel.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(150)))), ((int)(((byte)(105)))));
+            this.btnExportarExcel.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportarExcel.ForeColor = System.Drawing.Color.White;
+            this.btnExportarExcel.Location = new System.Drawing.Point(774, 237);
+            this.btnExportarExcel.Name = "btnExportarExcel";
+            this.btnExportarExcel.Size = new System.Drawing.Size(180, 40);
+            this.btnExportarExcel.TabIndex = 12;
+            this.btnExportarExcel.Text = "Exportar a Excel";
+            this.btnExportarExcel.Click += new System.EventHandler(this.btnExportarExcel_Click);
+            // 
             // btnCancelarCierre
-            //
+            // 
             this.btnCancelarCierre.BorderRadius = 10;
             this.btnCancelarCierre.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnCancelarCierre.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -230,31 +251,32 @@ namespace CapaPresentacion.Formularios
             this.btnCancelarCierre.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelarCierre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(58)))), ((int)(((byte)(138)))));
             this.btnCancelarCierre.Image = global::CapaPresentacion.Properties.Resources.Close_Window;
-            this.btnCancelarCierre.Location = new System.Drawing.Point(647, 538);
+            this.btnCancelarCierre.Location = new System.Drawing.Point(647, 540);
             this.btnCancelarCierre.Name = "btnCancelarCierre";
             this.btnCancelarCierre.Size = new System.Drawing.Size(307, 38);
-            this.btnCancelarCierre.TabIndex = 12;
+            this.btnCancelarCierre.TabIndex = 13;
             this.btnCancelarCierre.Text = "Cancelar";
             this.btnCancelarCierre.Click += new System.EventHandler(this.btnCancelarCierre_Click);
-            //
+            // 
             // guna2Separator1
-            //
+            // 
             this.guna2Separator1.BackColor = System.Drawing.Color.Transparent;
             this.guna2Separator1.FillColor = System.Drawing.Color.Gray;
             this.guna2Separator1.FillStyle = System.Drawing.Drawing2D.DashStyle.Custom;
             this.guna2Separator1.FillThickness = 3;
-            this.guna2Separator1.Location = new System.Drawing.Point(647, 583);
+            this.guna2Separator1.Location = new System.Drawing.Point(647, 526);
             this.guna2Separator1.Name = "guna2Separator1";
             this.guna2Separator1.Size = new System.Drawing.Size(307, 8);
-            this.guna2Separator1.TabIndex = 13;
-            //
+            this.guna2Separator1.TabIndex = 14;
+            // 
             // Cierre
-            //
+            // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.ClientSize = new System.Drawing.Size(981, 601);
+            this.ClientSize = new System.Drawing.Size(981, 651);
             this.Controls.Add(this.guna2Separator1);
             this.Controls.Add(this.btnCancelarCierre);
+            this.Controls.Add(this.btnExportarExcel);
             this.Controls.Add(this.btnCerrarCaja);
             this.Controls.Add(this.txtObservaciones);
             this.Controls.Add(this.pnlMontos);
@@ -294,6 +316,7 @@ namespace CapaPresentacion.Formularios
         private System.Windows.Forms.Panel pnlMontos;
         private System.Windows.Forms.TextBox txtObservaciones;
         private Guna.UI2.WinForms.Guna2Button btnCerrarCaja;
+        private Guna.UI2.WinForms.Guna2Button btnExportarExcel;
         private Guna.UI2.WinForms.Guna2Button btnCancelarCierre;
         private Guna.UI2.WinForms.Guna2Separator guna2Separator1;
     }

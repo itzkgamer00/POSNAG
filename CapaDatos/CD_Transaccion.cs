@@ -58,9 +58,15 @@ namespace CapaDatos
 
         /// <summary>
         /// Solo movimientos de Mesa de Cambio (conceptos CAMBIO_DIVISA_*), filtrados por rango de fecha
-        /// (hasta exclusivo) y, opcionalmente, caja/usuario. Para el reporte de Mesa de Cambio.
+        /// (hasta exclusivo) y, opcionalmente, caja/usuario/operacion. Para el reporte de Mesa de Cambio.
         /// </summary>
-        public List<Transaccion> ListarCambiosDivisaParaReporte(DateTime desde, DateTime hastaExclusiva, int? cajaId, int? usuarioId)
+        /// <param name="operacionCambio">
+        /// "COMPRA" o "VENTA" para filtrar por tipo de operacion, o null para no filtrar. No hay una columna
+        /// de operacion en Transacciones: cada cambio de divisa guarda "Mesa de Cambio COMPRA/VENTA..." en
+        /// descripcion (ver CN_Transaccion.RegistrarCambioDivisa), asi que se filtra por ese prefijo.
+        /// </param>
+        public List<Transaccion> ListarCambiosDivisaParaReporte(DateTime desde, DateTime hastaExclusiva, int? cajaId,
+            int? usuarioId, string operacionCambio = null)
         {
             var condiciones = new List<string>
             {
@@ -68,6 +74,7 @@ namespace CapaDatos
             };
             if (cajaId.HasValue) condiciones.Add("t.caja_id = @cajaId");
             if (usuarioId.HasValue) condiciones.Add("t.usuario_id = @usuarioId");
+            if (!string.IsNullOrEmpty(operacionCambio)) condiciones.Add("t.descripcion LIKE @operacionPatron");
 
             string sql = SelectBase + "WHERE " + string.Join(" AND ", condiciones) + " ORDER BY t.fecha_hora DESC";
 
@@ -77,6 +84,8 @@ namespace CapaDatos
                 cmd.Parameters.Add("@hasta", SqlDbType.DateTime).Value = hastaExclusiva;
                 if (cajaId.HasValue) cmd.Parameters.Add("@cajaId", SqlDbType.Int).Value = cajaId.Value;
                 if (usuarioId.HasValue) cmd.Parameters.Add("@usuarioId", SqlDbType.Int).Value = usuarioId.Value;
+                if (!string.IsNullOrEmpty(operacionCambio))
+                    cmd.Parameters.Add("@operacionPatron", SqlDbType.NVarChar, 100).Value = $"Mesa de Cambio {operacionCambio}%";
             });
         }
 

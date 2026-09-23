@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Windows.Forms;
 using CapaEntidad;
 using CapaNegocio;
+using CapaPresentacion.Utilidades;
 using Guna.UI2.WinForms;
 
 namespace CapaPresentacion.Formularios
@@ -190,6 +191,14 @@ namespace CapaPresentacion.Formularios
                 return;
             }
 
+            DialogResult deseaImprimir = MessageBox.Show(
+                "Caja cerrada correctamente." + Environment.NewLine + Environment.NewLine +
+                "¿Desea imprimir el tiquet de cierre?", "Cierre de caja",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (deseaImprimir == DialogResult.Yes)
+                ImprimirCierre();
+
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
@@ -198,6 +207,123 @@ namespace CapaPresentacion.Formularios
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        /// <summary>Exporta el conteo final (sistema, contado, diferencia) de cada moneda y las observaciones a un CSV que Excel abre como hoja de calculo.</summary>
+        private void btnExportarExcel_Click(object sender, EventArgs e)
+        {
+            var encabezados = new[] { "Moneda", "Monto Sistema", "Monto Contado", "Diferencia" };
+            var filas = new List<string[]>();
+
+            foreach (FilaCierre fila in _filas)
+            {
+                decimal.TryParse(fila.Contado.Text, NumberStyles.Number, CultureInfo.CurrentCulture, out decimal contado);
+                decimal diferencia = contado - fila.MontoSistema;
+
+                AperturaCajaMoneda monto = _apertura.Montos.Find(m => m.MonedaId == fila.MonedaId);
+                string etiqueta = monto != null ? $"{monto.MonedaNombre} ({monto.MonedaCodigo})" : fila.MonedaId.ToString();
+
+                filas.Add(new[]
+                {
+                    etiqueta,
+                    fila.MontoSistema.ToString("N2", CultureInfo.CurrentCulture),
+                    contado.ToString("N2", CultureInfo.CurrentCulture),
+                    diferencia.ToString("N2", CultureInfo.CurrentCulture)
+                });
+            }
+
+            var notas = new List<string>
+            {
+                $"Caja: {txtCaja.Text}",
+                $"Usuario: {txtUsuario.Text}",
+                $"Fecha: {txtFechaHora.Text}",
+                "Observaciones:",
+                string.IsNullOrWhiteSpace(txtObservaciones.Text) ? "(Sin observaciones)" : txtObservaciones.Text
+            };
+
+            ExportadorCsv.Exportar(this, encabezados, filas, "CierreCaja", notas);
+        }
+
+        /// <summary>Imprime un tiquet con el conteo final (sistema, contado, diferencia) de cada moneda y las observaciones del cierre, dejando elegir la impresora (o cancelar).</summary>
+        private void ImprimirCierre()
+        {
+            using (var documento = new System.Drawing.Printing.PrintDocument())
+            {
+                ConfiguracionImpresora.Aplicar(documento);
+                documento.PrintPage += (s, e) => DibujarTiqueteCierre(e);
+
+                if (ConfiguracionImpresora.MostrarDialogoImpresion)
+                {
+                    using (var dialogoImpresion = new PrintDialog { Document = documento, AllowSomePages = false, AllowSelection = false, AllowPrintToFile = false })
+                    {
+                        if (dialogoImpresion.ShowDialog(this) != DialogResult.OK) return;
+                    }
+                }
+
+                try
+                {
+                    documento.Print();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("No se pudo imprimir el cierre: " + ex.Message, "Cierre de caja",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void DibujarTiqueteCierre(System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            System.Drawing.Graphics g = e.Graphics;
+            float anchoTiquete = e.MarginBounds.Width;
+            float x = e.MarginBounds.Left;
+            float y = e.MarginBounds.Top;
+
+            var fontTitulo = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
+            var fontTexto = new System.Drawing.Font("Consolas", 9.5F);
+            var fontChico = new System.Drawing.Font("Consolas", 8F);
+            var centrado = new System.Drawing.StringFormat { Alignment = System.Drawing.StringAlignment.Center };
+            float anchoGuion = g.MeasureString("-", fontChico, int.MaxValue, System.Drawing.StringFormat.GenericTypographic).Width;
+            int cantidadGuiones = anchoGuion > 0 ? Math.Max(1, (int)(anchoTiquete / anchoGuion)) : 34;
+            string separador = new string('-', cantidadGuiones);
+
+            void Escribir(string texto, System.Drawing.Font fuente, System.Drawing.StringFormat formato = null)
+            {
+                System.Drawing.SizeF tamanio = g.MeasureString(texto, fuente, (int)anchoTiquete,
+                    formato ?? System.Drawing.StringFormat.GenericDefault);
+                float alto = tamanio.Height + 6;
+                g.DrawString(texto, fuente, System.Drawing.Brushes.Black,
+                    new System.Drawing.RectangleF(x, y, anchoTiquete, alto), formato);
+                y += alto;
+            }
+
+            Escribir("SISTEMA DE CAJA", fontTitulo, centrado);
+            Escribir("Cierre de Caja", fontTexto, centrado);
+            Escribir(separador, fontChico);
+            Escribir($"Caja: {txtCaja.Text}", fontChico);
+            Escribir($"Usuario: {txtUsuario.Text}", fontChico);
+            Escribir($"Fecha: {txtFechaHora.Text}", fontChico);
+            Escribir(separador, fontChico);
+
+            foreach (FilaCierre fila in _filas)
+            {
+                decimal.TryParse(fila.Contado.Text, NumberStyles.Number, CultureInfo.CurrentCulture, out decimal contado);
+                decimal diferencia = contado - fila.MontoSistema;
+
+                AperturaCajaMoneda monto = _apertura.Montos.Find(m => m.MonedaId == fila.MonedaId);
+                string etiqueta = monto != null ? $"{monto.MonedaNombre} ({monto.MonedaCodigo})" : fila.MonedaId.ToString();
+
+                Escribir(etiqueta, fontTexto);
+                Escribir($"  Sistema:    {fila.MontoSistema.ToString("N2", CultureInfo.CurrentCulture)}", fontTexto);
+                Escribir($"  Contado:    {contado.ToString("N2", CultureInfo.CurrentCulture)}", fontTexto);
+                Escribir($"  Diferencia: {diferencia.ToString("N2", CultureInfo.CurrentCulture)}", fontTexto);
+            }
+
+            Escribir(separador, fontChico);
+            Escribir("Observaciones:", fontTexto);
+            Escribir(string.IsNullOrWhiteSpace(txtObservaciones.Text) ? "(Sin observaciones)" : txtObservaciones.Text, fontTexto);
+
+            e.HasMorePages = false;
         }
     }
 }

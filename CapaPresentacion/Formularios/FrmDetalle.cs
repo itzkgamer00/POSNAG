@@ -1,6 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Windows.Forms;
+using CapaNegocio;
+using CapaPresentacion.Utilidades;
 
 namespace CapaPresentacion
 {
@@ -86,6 +89,100 @@ namespace CapaPresentacion
         {
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        /// <summary>Boton "Imprimir Detalle": imprime el desglose por denominacion del efectivo contado/entregado.</summary>
+        private void btnImprimirDetalle_Click(object sender, EventArgs e)
+        {
+            bool hayCantidades = false;
+            foreach (TextBox cantidad in _filas.Keys)
+            {
+                if (int.TryParse(cantidad.Text, out int valor) && valor > 0) { hayCantidades = true; break; }
+            }
+
+            if (!hayCantidades)
+            {
+                MessageBox.Show("No hay cantidades cargadas para imprimir.", "Imprimir Detalle",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            ImprimirDetalleConteo();
+        }
+
+        /// <summary>Imprime el desglose por denominacion (cantidad x denominacion = subtotal), dejando elegir la impresora (o cancelar).</summary>
+        private void ImprimirDetalleConteo()
+        {
+            using (var documento = new System.Drawing.Printing.PrintDocument())
+            {
+                ConfiguracionImpresora.Aplicar(documento);
+                documento.PrintPage += (s, e) => DibujarDetalleConteo(e);
+
+                if (ConfiguracionImpresora.MostrarDialogoImpresion)
+                {
+                    using (var dialogoImpresion = new PrintDialog { Document = documento, AllowSomePages = false, AllowSelection = false, AllowPrintToFile = false })
+                    {
+                        if (dialogoImpresion.ShowDialog(this) != DialogResult.OK) return;
+                    }
+                }
+
+                try
+                {
+                    documento.Print();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("No se pudo imprimir el detalle: " + ex.Message, "Imprimir Detalle",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void DibujarDetalleConteo(System.Drawing.Printing.PrintPageEventArgs e)
+        {
+            System.Drawing.Graphics g = e.Graphics;
+            float anchoTiquete = e.MarginBounds.Width;
+            float x = e.MarginBounds.Left;
+            float y = e.MarginBounds.Top;
+
+            var fontTitulo = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold);
+            var fontTexto = new System.Drawing.Font("Consolas", 9.5F);
+            var fontChico = new System.Drawing.Font("Consolas", 8F);
+            var centrado = new System.Drawing.StringFormat { Alignment = System.Drawing.StringAlignment.Center };
+            float anchoGuion = g.MeasureString("-", fontChico, int.MaxValue, System.Drawing.StringFormat.GenericTypographic).Width;
+            int cantidadGuiones = anchoGuion > 0 ? Math.Max(1, (int)(anchoTiquete / anchoGuion)) : 34;
+            string separador = new string('-', cantidadGuiones);
+
+            void Escribir(string texto, System.Drawing.Font fuente, System.Drawing.StringFormat formato = null)
+            {
+                System.Drawing.SizeF tamanio = g.MeasureString(texto, fuente, (int)anchoTiquete,
+                    formato ?? System.Drawing.StringFormat.GenericDefault);
+                float alto = tamanio.Height + 6;
+                g.DrawString(texto, fuente, System.Drawing.Brushes.Black,
+                    new System.Drawing.RectangleF(x, y, anchoTiquete, alto), formato);
+                y += alto;
+            }
+
+            Escribir("SISTEMA DE CAJA", fontTitulo, centrado);
+            Escribir("Detalle de Efectivo Entregado", fontTexto, centrado);
+            Escribir(separador, fontChico);
+            Escribir($"Fecha: {DateTime.Now:dd/MM/yyyy hh:mm tt}", fontChico);
+            Escribir($"Cajero: {SesionActual.Usuario?.NombreCompleto}", fontChico);
+            Escribir(separador, fontChico);
+
+            foreach (KeyValuePair<TextBox, FilaDenominacion> par in _filas)
+            {
+                int cantidad = int.TryParse(par.Key.Text, out int c) ? c : 0;
+                if (cantidad <= 0) continue;
+
+                decimal subtotal = cantidad * par.Value.Valor;
+                Escribir($"{cantidad} x {par.Value.Valor.ToString("N2", CultureInfo.CurrentCulture)}  =  {subtotal.ToString("N2", CultureInfo.CurrentCulture)}", fontTexto);
+            }
+
+            Escribir(separador, fontChico);
+            Escribir($"TOTAL: {Total.ToString("N2", CultureInfo.CurrentCulture)}", fontTitulo);
+
+            e.HasMorePages = false;
         }
 
         private void RecalcularTotal()

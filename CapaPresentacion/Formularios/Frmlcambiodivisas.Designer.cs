@@ -105,6 +105,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.guna2GroupBox4 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnImprimirDetalle = new Guna.UI2.WinForms.Guna2Button();
             this.textBox29 = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -1096,6 +1097,7 @@
             // 
             this.guna2GroupBox4.BackColor = System.Drawing.Color.Transparent;
             this.guna2GroupBox4.Controls.Add(this.guna2Button2);
+            this.guna2GroupBox4.Controls.Add(this.btnImprimirDetalle);
             this.guna2GroupBox4.Controls.Add(this.textBox29);
             this.guna2GroupBox4.Controls.Add(this.label26);
             this.guna2GroupBox4.Controls.Add(this.label25);
@@ -1168,6 +1170,24 @@
             this.guna2Button2.TabIndex = 77;
             this.guna2Button2.Text = "Limpiar";
             this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
+            //
+            // btnImprimirDetalle
+            //
+            this.btnImprimirDetalle.BackColor = System.Drawing.Color.Transparent;
+            this.btnImprimirDetalle.BorderRadius = 8;
+            this.btnImprimirDetalle.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnImprimirDetalle.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnImprimirDetalle.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnImprimirDetalle.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnImprimirDetalle.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.btnImprimirDetalle.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimirDetalle.ForeColor = System.Drawing.Color.White;
+            this.btnImprimirDetalle.Location = new System.Drawing.Point(24, 639);
+            this.btnImprimirDetalle.Name = "btnImprimirDetalle";
+            this.btnImprimirDetalle.Size = new System.Drawing.Size(130, 36);
+            this.btnImprimirDetalle.TabIndex = 78;
+            this.btnImprimirDetalle.Text = "Imprimir Detalle";
+            this.btnImprimirDetalle.Click += new System.EventHandler(this.btnImprimirDetalle_Click);
             // 
             // textBox29
             // 
@@ -1304,5 +1324,6 @@
         private System.Windows.Forms.TextBox textBox29;
         private System.Windows.Forms.Label label26;
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
+        private Guna.UI2.WinForms.Guna2Button btnImprimirDetalle;
     }
 }

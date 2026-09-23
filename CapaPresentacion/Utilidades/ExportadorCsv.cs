@@ -1,20 +1,49 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
 namespace CapaPresentacion.Utilidades
 {
     /// <summary>
-    /// Exporta el contenido visible de un DataGridView a un archivo CSV que Excel abre directamente
-    /// como una hoja de calculo (la linea "sep=," fuerza la coma como delimitador sin importar la
-    /// configuracion regional de Windows).
+    /// Exporta datos tabulares (un DataGridView, o encabezados + filas construidos a mano) a un archivo
+    /// CSV que Excel abre directamente como una hoja de calculo (la linea "sep=," fuerza la coma como
+    /// delimitador sin importar la configuracion regional de Windows).
     /// </summary>
     public static class ExportadorCsv
     {
         public static void Exportar(IWin32Window propietario, DataGridView grilla, string nombreSugerido)
         {
             if (grilla == null || grilla.Rows.Count == 0 || grilla.Columns.Count == 0)
+            {
+                MessageBox.Show("No hay datos para exportar. Realice una busqueda primero.", "Exportar a Excel",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            var filas = new List<string[]>();
+            foreach (DataGridViewRow fila in grilla.Rows)
+            {
+                if (fila.IsNewRow) continue;
+                filas.Add(ObtenerValores(fila));
+            }
+
+            Exportar(propietario, ObtenerEncabezados(grilla), filas, nombreSugerido);
+        }
+
+        /// <summary>
+        /// Exporta encabezados + filas armados por el llamador (para pantallas sin DataGridView, como un
+        /// resumen de cierre de caja). <paramref name="notasFinales"/> se agrega como texto libre al final,
+        /// util para observaciones que no encajan en una columna.
+        /// </summary>
+        public static void Exportar(IWin32Window propietario, string[] encabezados, IEnumerable<string[]> filas,
+            string nombreSugerido, IEnumerable<string> notasFinales = null)
+        {
+            List<string[]> listaFilas = filas?.ToList() ?? new List<string[]>();
+
+            if (encabezados == null || encabezados.Length == 0 || listaFilas.Count == 0)
             {
                 MessageBox.Show("No hay datos para exportar. Realice una busqueda primero.", "Exportar a Excel",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -33,12 +62,16 @@ namespace CapaPresentacion.Utilidades
                 {
                     var sb = new StringBuilder();
                     sb.AppendLine("sep=,");
-                    sb.AppendLine(FilaCsv(ObtenerEncabezados(grilla)));
+                    sb.AppendLine(FilaCsv(encabezados));
 
-                    foreach (DataGridViewRow fila in grilla.Rows)
+                    foreach (string[] fila in listaFilas)
+                        sb.AppendLine(FilaCsv(fila));
+
+                    if (notasFinales != null)
                     {
-                        if (fila.IsNewRow) continue;
-                        sb.AppendLine(FilaCsv(ObtenerValores(fila)));
+                        sb.AppendLine();
+                        foreach (string nota in notasFinales)
+                            sb.AppendLine(FilaCsv(new[] { nota }));
                     }
 
                     File.WriteAllText(dialogo.FileName, sb.ToString(), new UTF8Encoding(true));

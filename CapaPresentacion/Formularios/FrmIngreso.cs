@@ -100,6 +100,17 @@ namespace CapaPresentacion.Formularios
             int monedaId = Convert.ToInt32(guna2ComboBox2.SelectedValue);
             int? formaPagoId = guna2ComboBox3.SelectedValue == null ? (int?)null : Convert.ToInt32(guna2ComboBox3.SelectedValue);
 
+            Concepto conceptoSeleccionado = guna2ComboBox1.SelectedItem as Concepto;
+            Moneda monedaSeleccionada = guna2ComboBox2.SelectedItem as Moneda;
+
+            DialogResult confirmacion = MessageBox.Show(
+                $"¿Confirma registrar el ingreso?" + Environment.NewLine + Environment.NewLine +
+                $"Concepto: {conceptoSeleccionado?.Nombre}" + Environment.NewLine +
+                $"Monto: {monto.ToString("N2", CultureInfo.CurrentCulture)} {monedaSeleccionada?.Codigo}",
+                "Confirmar ingreso", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirmacion != DialogResult.Yes) return;
+
             try
             {
                 _negocio.RegistrarIngreso(_apertura, SesionActual.Usuario.usuario_id, conceptoId, monedaId,
