@@ -92,9 +92,9 @@
             this.guna2Button2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(80)))), ((int)(((byte)(255)))));
             this.guna2Button2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Location = new System.Drawing.Point(376, 209);
+            this.guna2Button2.Location = new System.Drawing.Point(355, 200);
             this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(121, 45);
+            this.guna2Button2.Size = new System.Drawing.Size(142, 45);
             this.guna2Button2.TabIndex = 5;
             this.guna2Button2.Text = "Guardar";
             this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
@@ -110,14 +110,14 @@
             this.btncancelcjregis.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(42)))), ((int)(((byte)(57)))));
             this.btncancelcjregis.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btncancelcjregis.ForeColor = System.Drawing.Color.White;
-            this.btncancelcjregis.Location = new System.Drawing.Point(238, 209);
+            this.btncancelcjregis.Location = new System.Drawing.Point(193, 200);
             this.btncancelcjregis.Name = "btncancelcjregis";
             this.btncancelcjregis.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.btncancelcjregis.Size = new System.Drawing.Size(121, 45);
+            this.btncancelcjregis.Size = new System.Drawing.Size(137, 45);
             this.btncancelcjregis.TabIndex = 6;
             this.btncancelcjregis.Text = "Cancelar";
             this.btncancelcjregis.Click += new System.EventHandler(this.btncancelcjregis_Click);
-            //
+            // 
             // guna2TextBox1
             // 
             this.guna2TextBox1.BorderColor = System.Drawing.Color.Transparent;
@@ -130,7 +130,8 @@
             this.guna2TextBox1.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
             this.guna2TextBox1.FillColor = System.Drawing.Color.LightGray;
             this.guna2TextBox1.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2TextBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2TextBox1.ForeColor = System.Drawing.Color.Black;
             this.guna2TextBox1.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.guna2TextBox1.Location = new System.Drawing.Point(37, 110);
             this.guna2TextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -141,14 +142,15 @@
             this.guna2TextBox1.Size = new System.Drawing.Size(460, 59);
             this.guna2TextBox1.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
             this.guna2TextBox1.TabIndex = 4;
-            //
+            // 
             // chkActiva
-            //
+            // 
+            this.chkActiva.Checked = true;
             this.chkActiva.CheckedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.chkActiva.CheckedState.BorderRadius = 0;
             this.chkActiva.CheckedState.BorderThickness = 0;
             this.chkActiva.CheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.chkActiva.Checked = true;
+            this.chkActiva.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chkActiva.ForeColor = System.Drawing.Color.Black;
             this.chkActiva.Location = new System.Drawing.Point(37, 175);
             this.chkActiva.Name = "chkActiva";
@@ -161,7 +163,7 @@
             this.chkActiva.UncheckedState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(137)))), ((int)(((byte)(149)))));
             this.chkActiva.UseVisualStyleBackColor = false;
             this.chkActiva.Visible = false;
-            //
+            // 
             // guna2Panel1
             // 
             this.guna2Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(52)))), ((int)(((byte)(60)))));
@@ -188,7 +190,7 @@
             this.Controls.Add(this.guna2Button2);
             this.Controls.Add(this.chkActiva);
             this.Controls.Add(this.guna2TextBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.Name = "Frmcajaregistradora";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

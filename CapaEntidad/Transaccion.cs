@@ -34,5 +34,9 @@ namespace CapaEntidad
         public string FormaPagoNombre { get; set; }
         public string CajaNombre { get; set; }
         public string UsuarioNombre { get; set; }
+
+        /// <summary>Administrador que autorizo la anulacion y cuando. Null si la transaccion no esta anulada.</summary>
+        public string AnuladoPorNombre { get; set; }
+        public DateTime? FechaAnulacion { get; set; }
     }
 }

@@ -141,6 +141,7 @@
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ESTADO = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.anuladoPor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.guna2GroupBox4 = new Guna.UI2.WinForms.Guna2GroupBox();
             this.btningreso = new Guna.UI2.WinForms.Guna2Button();
             this.btnegreso = new Guna.UI2.WinForms.Guna2Button();
@@ -1100,7 +1101,8 @@
             this.monto,
             this.dataGridViewTextBoxColumn6,
             this.descripcion,
-            this.ESTADO});
+            this.ESTADO,
+            this.anuladoPor});
             this.guna2DataGridView1.ContextMenuStrip = this.guna2ContextMenuStrip1;
             dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
@@ -1191,6 +1193,12 @@
             this.ESTADO.HeaderText = "Estado";
             this.ESTADO.MinimumWidth = 6;
             this.ESTADO.Name = "ESTADO";
+            //
+            // anuladoPor
+            //
+            this.anuladoPor.HeaderText = "Anulado por";
+            this.anuladoPor.MinimumWidth = 6;
+            this.anuladoPor.Name = "anuladoPor";
             // 
             // guna2GroupBox4
             // 
@@ -1481,7 +1489,8 @@
             // 
             dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
             this.guna2DataGridView4.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle12;
-            this.guna2DataGridView4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.guna2DataGridView4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.guna2DataGridView4.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -1509,7 +1518,7 @@
             this.guna2DataGridView4.RowHeadersVisible = false;
             this.guna2DataGridView4.RowHeadersWidth = 51;
             this.guna2DataGridView4.RowTemplate.Height = 34;
-            this.guna2DataGridView4.Size = new System.Drawing.Size(1160, 219);
+            this.guna2DataGridView4.Size = new System.Drawing.Size(1160, 311);
             this.guna2DataGridView4.TabIndex = 56;
             this.guna2DataGridView4.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.guna2DataGridView4.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -2106,9 +2115,9 @@
             this.tlpReporteMesaCambio.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 140F));
             this.tlpReporteMesaCambio.Size = new System.Drawing.Size(1242, 499);
             this.tlpReporteMesaCambio.TabIndex = 0;
-            //
+            // 
             // pnlFiltrosMesaCambio
-            //
+            // 
             this.pnlFiltrosMesaCambio.BackColor = System.Drawing.Color.WhiteSmoke;
             this.pnlFiltrosMesaCambio.Controls.Add(this.lblMcDesde);
             this.pnlFiltrosMesaCambio.Controls.Add(this.dtpMcDesde);
@@ -2216,19 +2225,19 @@
             this.cboMcUsuario.Name = "cboMcUsuario";
             this.cboMcUsuario.Size = new System.Drawing.Size(170, 32);
             this.cboMcUsuario.TabIndex = 7;
-            //
+            // 
             // lblMcOperacion
-            //
+            // 
             this.lblMcOperacion.AutoSize = true;
             this.lblMcOperacion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblMcOperacion.Location = new System.Drawing.Point(8, 52);
             this.lblMcOperacion.Name = "lblMcOperacion";
-            this.lblMcOperacion.Size = new System.Drawing.Size(80, 20);
+            this.lblMcOperacion.Size = new System.Drawing.Size(84, 20);
             this.lblMcOperacion.TabIndex = 8;
             this.lblMcOperacion.Text = "Operacion:";
-            //
+            // 
             // cboMcOperacion
-            //
+            // 
             this.cboMcOperacion.BackColor = System.Drawing.Color.Transparent;
             this.cboMcOperacion.BorderRadius = 6;
             this.cboMcOperacion.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
@@ -2241,9 +2250,9 @@
             this.cboMcOperacion.Name = "cboMcOperacion";
             this.cboMcOperacion.Size = new System.Drawing.Size(150, 32);
             this.cboMcOperacion.TabIndex = 9;
-            //
+            // 
             // btnMcBuscar
-            //
+            // 
             this.btnMcBuscar.BorderRadius = 6;
             this.btnMcBuscar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(99)))), ((int)(((byte)(235)))));
             this.btnMcBuscar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
@@ -2254,9 +2263,9 @@
             this.btnMcBuscar.TabIndex = 10;
             this.btnMcBuscar.Text = "Buscar";
             this.btnMcBuscar.Click += new System.EventHandler(this.btnMcBuscar_Click);
-            //
+            // 
             // btnMcExportar
-            //
+            // 
             this.btnMcExportar.BorderRadius = 6;
             this.btnMcExportar.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(150)))), ((int)(((byte)(105)))));
             this.btnMcExportar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
@@ -4612,6 +4621,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn descripcion;
         private System.Windows.Forms.DataGridViewTextBoxColumn ESTADO;
+        private System.Windows.Forms.DataGridViewTextBoxColumn anuladoPor;
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox5;
         private Guna.UI2.WinForms.Guna2ComboBox guna2ComboBox2;
         private System.Windows.Forms.Label label22;

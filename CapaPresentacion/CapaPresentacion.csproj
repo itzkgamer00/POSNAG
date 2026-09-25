@@ -181,6 +181,12 @@
     <Compile Include="Formularios\Apertura.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Formularios\FrmAutorizacionAdmin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formularios\FrmAutorizacionAdmin.Designer.cs">
+      <DependentUpon>FrmAutorizacionAdmin.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formularios\Apertura.Designer.cs">
       <DependentUpon>Apertura.cs</DependentUpon>
     </Compile>
@@ -289,6 +295,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Cierre.resx">
       <DependentUpon>Cierre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formularios\FrmAutorizacionAdmin.resx">
+      <DependentUpon>FrmAutorizacionAdmin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formularios\Frmcajaregistradora.resx">
       <DependentUpon>Frmcajaregistradora.cs</DependentUpon>

@@ -492,7 +492,7 @@ namespace CapaPresentacion
             ColorearFilasAnuladas(guna2DataGridView6, lista);
         }
 
-        /// <summary>Orden de columnas de guna2DataGridView1: Fecha, Operacion, Moneda, Tipo, Monto, Forma de pago, Descripcion, Estado.</summary>
+        /// <summary>Orden de columnas de guna2DataGridView1: Fecha, Operacion, Moneda, Tipo, Monto, Forma de pago, Descripcion, Estado, Anulado por.</summary>
         private void LlenarGridMovimientos(IEnumerable<Transaccion> movimientos)
         {
             _movimientosGridMovimientos = movimientos.ToList();
@@ -508,11 +508,30 @@ namespace CapaPresentacion
                     t.Monto.ToString("N2", CultureInfo.CurrentCulture),
                     t.FormaPagoNombre ?? "-",
                     t.Descripcion,
-                    t.Estado ? "Activo" : "Inactivo");
+                    t.Estado ? "Activo" : "Inactivo",
+                    TextoAnuladoPor(t));
             }
 
             ColorearFilasAnuladas(guna2DataGridView1, _movimientosGridMovimientos);
         }
+
+        /// <summary>"Nombre (fecha)" del Administrador que anulo el movimiento; "-" si esta activo o se anulo antes de existir la auditoria.</summary>
+        private static string TextoAnuladoPor(Transaccion t)
+        {
+            string nombre = NombreAnuladoPor(t);
+            string fecha = FechaAnulacionTexto(t);
+            return fecha == "-" || nombre == "-" ? nombre : $"{nombre} ({fecha})";
+        }
+
+        /// <summary>Nombre del Administrador que anulo el movimiento; "-" si esta activo o no hay auditoria.</summary>
+        private static string NombreAnuladoPor(Transaccion t) =>
+            t.Estado || string.IsNullOrEmpty(t.AnuladoPorNombre) ? "-" : t.AnuladoPorNombre;
+
+        /// <summary>Fecha de anulacion formateada; "-" si esta activo o no hay auditoria.</summary>
+        private static string FechaAnulacionTexto(Transaccion t) =>
+            t.Estado || !t.FechaAnulacion.HasValue
+                ? "-"
+                : t.FechaAnulacion.Value.ToString("dd/MM/yyyy hh:mm tt", CultureInfo.CurrentCulture);
 
         /// <summary>Colorea cualquier columna "Estado" de cualquier grilla: verde para Activo/Activa, rojo para Inactivo/Inactiva.</summary>
         private void ColorearCeldaEstado(object sender, DataGridViewCellFormattingEventArgs e)
@@ -579,9 +598,17 @@ namespace CapaPresentacion
                 "Anular Movimiento", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             if (confirmacion != DialogResult.Yes) return;
 
+            Usuario administrador;
+            using (var autorizacion = new FrmAutorizacionAdmin(
+                "Para anular este movimiento se requieren las credenciales de un Administrador."))
+            {
+                if (autorizacion.ShowDialog(this) != DialogResult.OK) return;
+                administrador = autorizacion.AdministradorAutorizante;
+            }
+
             try
             {
-                _negocioTransaccion.AnularTransaccion(movimiento.TransaccionId);
+                _negocioTransaccion.AnularTransaccion(movimiento.TransaccionId, administrador.usuario_id);
             }
             catch (InvalidOperationException ex)
             {
@@ -1556,6 +1583,8 @@ namespace CapaPresentacion
             detalle.Columns.Add("Forma de pago");
             detalle.Columns.Add("Descripcion");
             detalle.Columns.Add("Estado");
+            detalle.Columns.Add("Anulado por");
+            detalle.Columns.Add("Fecha anulación");
 
             foreach (Transaccion t in movimientos)
             {
@@ -1568,7 +1597,9 @@ namespace CapaPresentacion
                     t.Monto.ToString("N2", CultureInfo.CurrentCulture),
                     t.FormaPagoNombre ?? "-",
                     t.Descripcion,
-                    t.Estado ? "Activo" : "Anulada");
+                    t.Estado ? "Activo" : "Anulada",
+                    NombreAnuladoPor(t),
+                    FechaAnulacionTexto(t));
             }
 
             dgvMcDetalle.DataSource = detalle;
@@ -1644,6 +1675,8 @@ namespace CapaPresentacion
             detalle.Columns.Add("Forma de pago");
             detalle.Columns.Add("Descripcion");
             detalle.Columns.Add("Estado");
+            detalle.Columns.Add("Anulado por");
+            detalle.Columns.Add("Fecha anulación");
 
             foreach (Transaccion t in listaMovimientos)
             {
@@ -1657,7 +1690,9 @@ namespace CapaPresentacion
                     t.Monto.ToString("N2", CultureInfo.CurrentCulture),
                     t.FormaPagoNombre ?? "-",
                     t.Descripcion,
-                    t.Estado ? "Activo" : "Anulada");
+                    t.Estado ? "Activo" : "Anulada",
+                    NombreAnuladoPor(t),
+                    FechaAnulacionTexto(t));
             }
 
             dgvMpDetalle.DataSource = detalle;

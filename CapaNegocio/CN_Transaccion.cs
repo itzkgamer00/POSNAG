@@ -130,9 +130,9 @@ namespace CapaNegocio
 
         /// <summary>Anula un movimiento (ingreso, egreso o Mesa de Cambio) registrado por error. Queda en el historial marcado como Inactivo.</summary>
         /// <exception cref="InvalidOperationException">Si la transaccion no existe o ya estaba anulada.</exception>
-        public void AnularTransaccion(int transaccionId)
+        public void AnularTransaccion(int transaccionId, int anuladoPorUsuarioId)
         {
-            if (!_datosTransaccion.Anular(transaccionId))
+            if (!_datosTransaccion.Anular(transaccionId, anuladoPorUsuarioId))
                 throw new InvalidOperationException("La transaccion no existe o ya estaba anulada.");
         }
     }

@@ -135,5 +135,28 @@ namespace CapaNegocio
             encontrado.password_hash = null; // no propagar el hash a la capa de presentación
             return ResultadoAutenticacion.Ok(encontrado);
         }
+
+        /// <summary>
+        /// Valida credenciales para autorizar una operación sensible (p. ej. anular un movimiento).
+        /// Solo es exitoso si las credenciales son válidas y el usuario tiene rol Administrador.
+        /// </summary>
+        public ResultadoAutenticacion AutorizarAdministrador(string usuario, string contrasena)
+        {
+            ResultadoAutenticacion resultado = Autenticar(usuario, contrasena);
+            if (!resultado.Exitoso)
+                return resultado;
+
+            bool esAdministrador = string.Equals(
+                resultado.Usuario.RolDescripcion, "Administrador", StringComparison.OrdinalIgnoreCase);
+
+            if (!esAdministrador)
+            {
+                return ResultadoAutenticacion.Fallo(
+                    MotivoAutenticacion.CredencialesInvalidas,
+                    "El usuario indicado no tiene permisos de Administrador.");
+            }
+
+            return resultado;
+        }
     }
 }

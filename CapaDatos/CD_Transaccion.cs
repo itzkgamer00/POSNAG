@@ -13,13 +13,15 @@ namespace CapaDatos
             "       t.forma_pago_id, t.tipo, t.monto, t.descripcion, t.fecha_hora, t.estado, " +
             "       c.nombre AS ConceptoNombre, c.operacion AS ConceptoOperacion, " +
             "       m.nombre AS MonedaNombre, m.codigo AS MonedaCodigo, m.simbolo AS MonedaSimbolo, " +
-            "       fp.nombre AS FormaPagoNombre, cj.nombre AS CajaNombre, u.NombreCompleto AS UsuarioNombre " +
+            "       fp.nombre AS FormaPagoNombre, cj.nombre AS CajaNombre, u.NombreCompleto AS UsuarioNombre, " +
+            "       ua.NombreCompleto AS AnuladoPorNombre, t.fecha_anulacion " +
             "FROM Transacciones t " +
             "JOIN Concepto c ON c.concepto_id = t.concepto_id " +
             "JOIN Moneda m ON m.moneda_id = t.moneda_id " +
             "JOIN Caja cj ON cj.caja_id = t.caja_id " +
             "JOIN Usuario u ON u.usuario_id = t.usuario_id " +
-            "LEFT JOIN FormaPago fp ON fp.forma_pago_id = t.forma_pago_id ";
+            "LEFT JOIN FormaPago fp ON fp.forma_pago_id = t.forma_pago_id " +
+            "LEFT JOIN Usuario ua ON ua.usuario_id = t.anulado_por ";
 
         /// <summary>Movimientos (ingresos/egresos) de una apertura, del mas reciente al mas antiguo.</summary>
         public List<Transaccion> ListarPorApertura(int aperturaId) =>
@@ -134,7 +136,9 @@ namespace CapaDatos
                 MonedaSimbolo = dr["MonedaSimbolo"] as string,
                 FormaPagoNombre = dr["FormaPagoNombre"] as string,
                 CajaNombre = dr["CajaNombre"] as string,
-                UsuarioNombre = dr["UsuarioNombre"] as string
+                UsuarioNombre = dr["UsuarioNombre"] as string,
+                AnuladoPorNombre = dr["AnuladoPorNombre"] as string,
+                FechaAnulacion = dr["fecha_anulacion"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(dr["fecha_anulacion"])
             };
         }
 
@@ -169,15 +173,21 @@ namespace CapaDatos
             }
         }
 
-        /// <summary>Anula (estado = 0) una transaccion activa. Devuelve false si no existe o ya estaba anulada.</summary>
-        public bool Anular(int transaccionId)
+        /// <summary>
+        /// Anula (estado = 0) una transaccion activa, registrando el Administrador que la autorizo y la fecha.
+        /// Devuelve false si no existe o ya estaba anulada.
+        /// </summary>
+        public bool Anular(int transaccionId, int anuladoPorUsuarioId)
         {
-            const string sql = "UPDATE Transacciones SET estado = 0 WHERE transaccion_id = @transaccionId AND estado = 1";
+            const string sql =
+                "UPDATE Transacciones SET estado = 0, anulado_por = @anuladoPor, fecha_anulacion = GETDATE() " +
+                "WHERE transaccion_id = @transaccionId AND estado = 1";
 
             using (SqlConnection cn = new SqlConnection(conexiondb.cadena))
             using (SqlCommand cmd = new SqlCommand(sql, cn))
             {
                 cmd.Parameters.Add("@transaccionId", SqlDbType.Int).Value = transaccionId;
+                cmd.Parameters.Add("@anuladoPor", SqlDbType.Int).Value = anuladoPorUsuarioId;
                 cn.Open();
                 return cmd.ExecuteNonQuery() > 0;
             }
