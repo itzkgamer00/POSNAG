@@ -74,8 +74,8 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox29 = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.btnImprimirDetalle = new FontAwesome.Sharp.IconButton();
+            this.iconButton1 = new Guna.UI2.WinForms.Guna2Button();
+            this.btnImprimirDetalle = new Guna.UI2.WinForms.Guna2Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -515,28 +515,28 @@
             // 
             // iconButton1
             // 
-            this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.iconButton1.IconColor = System.Drawing.Color.Black;
-            this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.iconButton1.BorderRadius = 10;
+            this.iconButton1.FillColor = System.Drawing.Color.Silver;
+            this.iconButton1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.iconButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(58)))), ((int)(((byte)(138)))));
             this.iconButton1.Location = new System.Drawing.Point(261, 612);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.Size = new System.Drawing.Size(100, 48);
             this.iconButton1.TabIndex = 47;
-            this.iconButton1.Text = "Acceptar";
-            this.iconButton1.UseVisualStyleBackColor = true;
+            this.iconButton1.Text = "Aceptar";
             this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             //
             // btnImprimirDetalle
             //
-            this.btnImprimirDetalle.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btnImprimirDetalle.IconColor = System.Drawing.Color.Black;
-            this.btnImprimirDetalle.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnImprimirDetalle.BorderRadius = 10;
+            this.btnImprimirDetalle.FillColor = System.Drawing.Color.Silver;
+            this.btnImprimirDetalle.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImprimirDetalle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(58)))), ((int)(((byte)(138)))));
             this.btnImprimirDetalle.Location = new System.Drawing.Point(17, 612);
             this.btnImprimirDetalle.Name = "btnImprimirDetalle";
             this.btnImprimirDetalle.Size = new System.Drawing.Size(150, 48);
             this.btnImprimirDetalle.TabIndex = 48;
             this.btnImprimirDetalle.Text = "Imprimir Detalle";
-            this.btnImprimirDetalle.UseVisualStyleBackColor = true;
             this.btnImprimirDetalle.Click += new System.EventHandler(this.btnImprimirDetalle_Click);
             //
             // FrmDetalle
@@ -611,8 +611,8 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textBox24;
         private System.Windows.Forms.TextBox textBox23;
-        private FontAwesome.Sharp.IconButton iconButton1;
-        private FontAwesome.Sharp.IconButton btnImprimirDetalle;
+        private Guna.UI2.WinForms.Guna2Button iconButton1;
+        private Guna.UI2.WinForms.Guna2Button btnImprimirDetalle;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox textBox29;
     }
