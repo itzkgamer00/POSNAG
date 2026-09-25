@@ -4,6 +4,11 @@
    carpeta /sql, en el orden en que deben ejecutarse.
    ============================================================ */
 
+/* Requerido por los indices filtrados; sqlcmd lo deja OFF por defecto.
+   Aplica a toda la sesion, asi que cubre todo el script. */
+SET QUOTED_IDENTIFIER ON;
+GO
+
 
 /* ============================================================
    ARCHIVO: 01_esquema_seguridad.sql

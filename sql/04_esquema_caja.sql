@@ -11,6 +11,10 @@
 USE SistemaCaja;
 GO
 
+/* Requerido por los indices filtrados (p.ej. UX_UnaAperturaAbiertaPorCaja); sqlcmd lo deja OFF por defecto. */
+SET QUOTED_IDENTIFIER ON;
+GO
+
 /* ---------- Tabla Caja (cajas registradoras/puntos de cobro) ---------- */
 IF OBJECT_ID('dbo.Caja', 'U') IS NULL
 BEGIN

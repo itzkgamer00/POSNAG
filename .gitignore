@@ -364,3 +364,6 @@ FodyWeavers.xsd
 # Cadena de conexion local (contiene credenciales) - no versionar
 connections.config
 **/connections.config
+
+# Salida del instalador (Inno Setup)
+instalador/Output/
